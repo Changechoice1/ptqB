@@ -1,0 +1,17 @@
+<!--component/button/button.wxml-->
+<view class='btn-box'>
+  <view 
+    class="btn btn-{{type || 'm'}} btn-{{theme || 'bg-r1'}} {{disabled ? 'disabled' : ''}} weui-btn" 
+    style="{{width ? 'width:' + width + 'rpx; padding:0;' : ''}}{{fontSize ? 'font-size:' + fontSize + 'rpx;' : ''}}{{color ? 'color:' + color + ';' : ''}}{{bgColor ? 'background-color:' + bgColor + ';' : ''}}{{bdColor ? 'border-color:' + bdColor : bgColor ?  'border-color:' + bgColor : ''}}" 
+    bindtap="{{disabled || isLoading ? '' : 'tapEvent'}}" 
+    loading="{{loading}}"
+  >
+    {{text}}
+    <!-- 加载中特效 -->
+    <view wx:if="{{isLoading}}" class="spinner">
+      <view wx:for="{{[1, 2, 3]}}" wx:key="{{index}}" class="spinner-container container{{item}}">
+        <view wx:for="{{[1, 2, 3, 4]}}" wx:key="{{index}}" wx:for-item="subItem" wx:for-index="subIndex" class="circle circle{{subItem}}"  style="{{ldColor ? 'background-color:' + ldColor : color ? 'background-color:' + color : '' }}"></view>
+      </view>
+    </view>
+  </view>
+</view>

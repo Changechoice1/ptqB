@@ -1,0 +1,30 @@
+<!--packageMarketing/brandCenter/index.wxml-->
+<import src="/template/template.wxml" />
+
+<compage id="compage">
+  <view class="container">
+    <view class="header flex-between">
+      <view class="header_title">{{info.category}}-{{info.subCategory}}</view>
+      <view class="header_btn" bindtap="goSetting">
+        <icon class="icon-pq-indet"></icon>
+        <text>切换行业</text>
+      </view>
+    </view>
+
+    <view wx:if="{{tab == 0 && !noList}}" class="act_list">
+      <view class="act_list_item" wx:for="{{list}}" wx:key="{{index}}" bindtap="goPage" data-upage="brandInfo/index?id={{item.id}}" style="background-image: url({{item.imgUrl || 'https://ptq.oss-cn-hangzhou.aliyuncs.com/ptq/merchant/drpt.jpg'}})"></view>
+    </view>
+
+    <view wx:if="{{tab == 1 && !noList}}" class="customized_list">
+      
+    </view>
+
+    <view class="no_list" wx:if="{{noList}}">
+      <template is="nullData" data="{{noListData}}"></template>
+    </view>
+
+    <view class="tab">
+      <view wx:for="{{tabs}}" wx:key="{{index}}" class="tab_item {{tab == index ? 'active' : ''}}" data-index="{{index}}" bindtap="switchTab">{{item.title}}</view>
+    </view>
+  </view>
+</compage>

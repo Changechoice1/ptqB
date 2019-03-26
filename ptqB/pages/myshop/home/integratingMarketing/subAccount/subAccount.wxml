@@ -1,0 +1,179 @@
+<!-- 子账号 -->
+<import src="/template/template.wxml" />
+<view class="index_all_box">
+    <!-- 头部 -->
+    <view class='subhead' bindtap="showEwm">
+        <view class='sub_con'>
+            <view class='sub_img cenFlex'>
+                <image src='{{imgUrl}}bus3_ico1.png'></image>
+            </view>
+            <view class='sub_text'>
+                <view class='sub_text_1'>二维码</view>
+                <view class='sub_text_2'>扫一扫！成为子账号！</view>
+            </view>
+        </view>
+        <view class='sub_to cenFlex'>
+            <image src='{{imgUrl}}gy_ico.png'></image>
+        </view>
+    </view>
+
+    <!-- 主体部分 -->
+    <view class='main'>
+        <view class='nav'>
+            <view class='nav_inner'>
+                <view class='nav_block {{status == 1 ? "active" : ""}}'>
+                    <view class='nav_text' data-status='1' bindtap='changeNav'>已审核</view>
+                    <view class='nav_line'></view>
+                </view>
+                <view class='nav_block {{status == 0 ? "active" : ""}}'>
+                    <view class='nav_text' data-status='0' bindtap='changeNav'>待审核</view>
+                    <view class='nav_line'></view>
+                </view>
+            </view>
+        </view>
+
+        <!-- 暂无 -->
+        <view class='sub_none' wx:if='{{status == 1 && list1.length == 0}}'>
+            <view class='sub_none_img cenFlex'>
+                <image src='/images/zzh_none.png'></image>
+            </view>
+            <view class='sub_none_text'>
+                您还没有授权子账号
+            </view>
+        </view>
+        <!-- 列表 -->
+        <view class='sub_list' wx:if='{{status == 1 && list1.length > 0}}'>
+            <view class='sub_block' wx:for='{{list1}}' data-id='{{item.account_id}}' wx:key="{{index}}" data-index="{{index}}" bindtap="{{!editDelFlag?'onceSelectBtn':''}}">
+                <view class='sub_b_1'>
+                    <view class='sub_b1_inner'>
+                        <view class='sub_choose_all' wx:if='{{editStatus == 1}}'>
+                            <view wx:if='{{!onceRadArr[index]}}' class="button_footer_box_l_rad">
+                            </view>
+                            <view wx:if='{{onceRadArr[index]}}' class='button_footer_box_l_rad_act cenFlex'>
+                                <image src='{{imgUrl}}ab_ico1.png'></image>
+                            </view>
+                        </view>
+                        <view class='sub_b1_img cenFlex'>
+                            <image src='{{item.wx_img}}'></image>
+                        </view>
+                        <view class='sub_b1_text'>
+                            <view class='sub_b1_t_1'>
+                                {{item.wx_name}}
+                            </view>
+                            <view class='sub_b1_t_2'>
+                                加入时间：{{item.update_time}}
+                            </view>
+                        </view>
+                    </view>
+                    <view class='sub_b1_status'>
+                        已同意
+                    </view>
+                </view>
+                <view class='sub_b_2'>
+                    <view class='sub_b2_1'>
+                        <text>员工姓名：</text>{{item.is_remark == '0' ? '未备注' : item.remark}}
+                    </view>
+                    <view class='sub_b2_2' data-id='{{item.account_id}}' data-remark='{{item.remark}}' data-status='{{item.is_remark}}' bindtap='openEditRemark'>
+                        修改备注
+                    </view>
+                </view>
+            </view>
+        </view>
+        <!-- 编辑按钮 -->
+        <view class='sub_btn' wx:if='{{editStatus == 0 && status == 1 && list1.length > 0}}'>
+            <view class='sub_btn_inner' bindtap='changeEdit' data-status='1'>编辑</view>
+        </view>
+        <view class='sub_btn sub_btn_1' wx:if='{{editStatus == 1 && status == 1 && list1.length > 0}}'>
+            <view class='sub_choose' bindtap="allSelectBtn">
+                <view class='sub_choose_all button_footer_box_l'>
+                    <view wx:if='{{!allSelectFlag}}' class="button_footer_box_l_rad">
+                    </view>
+                    <view wx:if='{{allSelectFlag}}' class='button_footer_box_l_rad_act cenFlex'>
+                        <image src='{{imgUrl}}ab_ico1.png'></image>
+                    </view>
+                    <view class="button_footer_box_l_txt">{{allSelectFlag?'取消全选':'全选'}}</view>
+                </view>
+            </view>
+            <view class='sub_btn_con'>
+                <view class='sub_btn_inner' bindtap='changeEdit' data-status='0'>取消</view>
+                <!-- <view class='sub_btn_inner sub_btn_inner_1' data-index="{{index}}" data-id="{{item.account_id}}" catchtap="delBtn">删除</view> -->
+                <view class='sub_btn_inner sub_btn_inner_1' data-index="{{index}}" data-id="{{item.account_id}}" bindtap="delbusArrBtn">删除</view>
+            </view>
+        </view>
+
+
+        <!-- 暂无 -->
+        <view class='sub_none' wx:if='{{status == 0 && list2.length == 0}}'>
+            <view class='sub_none_img cenFlex'>
+                <image src='/images/zzh_none.png'></image>
+            </view>
+            <view class='sub_none_text'>
+                暂无员工申请成为子账号
+            </view>
+        </view>
+        <!-- 列表 -->
+        <view class='sub_list' wx:if='{{status == 0 && list2.length > 0}}'>
+            <view class='sub_block' wx:for='{{list2}}' wx:key='{{index}}' data-index='{{index}}' data-id='{{item.account_id}}'>
+                <view class='sub_b_1'>
+                    <view class='sub_b1_inner'>
+                        <view class='sub_b1_img cenFlex'>
+                            <image src='{{item.wx_img}}'></image>
+                        </view>
+                        <view class='sub_b1_text'>
+                            <view class='sub_b1_t_1'>
+                                {{item.wx_name}}
+                            </view>
+                            <view class='sub_b1_t_2'>
+                                申请时间：{{item.update_time}}
+                            </view>
+                        </view>
+                    </view>
+                    <view class='sub_b1_status'>
+                        <!-- <view class='sub_b1_1' data-index="{{index}}" data-id="{{item.account_id}}" catchtap="emptyBtn"> -->
+                        <view class='sub_b1_1' data-index="{{index}}" data-id="{{item.account_id}}" catchtap="listDel">
+                            拒绝
+                        </view>
+                        <view class='sub_b1_2' data-id="{{item.account_id}}" data-index="{{index}}" bindtap="agreeBtn">
+                            同意
+                        </view>
+                    </view>
+                </view>
+            </view>
+        </view>
+    </view>
+
+    <!-- 修改备注名 -->
+    <view class='sub_edit_remark' wx:if='{{editRemark == 1}}'>
+        <view class='sub_edit_inner'>
+            <view class='sub_e_h'>
+                请修改子账号备注
+            </view>
+            <view class='sub_e_main'>
+                <view class='sub_em_h'>
+                    备注名
+                </view>
+                <view class='sub_em_input'>
+                    <input type='text' placeholder='修改备注名' data-index="0"  maxlength="8" data-pattern="Cha3" data-minlen="2" data-maxlen="8"  bindinput="inputTxt" value="{{inputArr[0]}}" bindconfirm="inputTxt"  placeholder-class='placeholder_color'></input>
+                </view>
+            </view>
+            <view class='sub_e_btn'>
+                <view class='sub_eb_1' bindtap='closeEditRemark'>暂不修改</view>
+                <view class='sub_eb_2' data-id='{{account_idEidt}}' bindtap='confirmEditRemark'>确定</view>
+            </view>
+        </view>
+    </view>
+
+    <!-- 提示拒绝 -->
+    <template is="noTModale" data="{{notMData}}" />
+
+    <!-- 二维码 -->
+    <view class="allmenban" bindtap="hideEwm" wx:if="{{ewmF}}"></view>
+    <view class="storeEwm" wx:if="{{ewmF}}" data-index="{{ewmImg}}" bindtap="shopEwmBtn">
+        <view class="storeEwm_in_img cenFlex">
+            <image src="{{ewmImg}}"></image>
+        </view>
+        <view class="storeEwm_in_txt cenFlex">
+            扫一扫！添加成为商家子账号!
+        </view>
+    </view>
+</view>

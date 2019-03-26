@@ -1,0 +1,9 @@
+<!--component/tab/tab.wxml-->
+<view class="weui-navbar border-b tab">
+   <block wx:for="{{tabs}}" wx:key="index">
+      <view bindtap='change' data-value="{{item}}" data-index="{{index}}" class="weui-navbar__item {{actIndex == index ? 'weui-bar__item_on' : ''}}">
+         <view class="weui-navbar__title" wx:if="{{item.value}}">{{item.value}}</view>
+         <view class="weui-navbar__title" wx:else>{{item}}</view>
+      </view>
+   </block>
+</view>

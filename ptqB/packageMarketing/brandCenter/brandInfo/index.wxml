@@ -1,0 +1,93 @@
+<!--packageMarketing/brandCenter/brandInfo/index.wxml-->
+<import src="/template/template.wxml" />
+<import src="/template/activity/actType/actType.wxml" />
+
+<compage id="compage">
+   <view class="container">
+      <view class='BrandOfficialEvent' style='padding-bottom:158rpx' wx:if="{{footerNavConf[0].checked&&!nullFlag}}">
+         <view class="top-banner" wx:if="{{banner.length>0}}">
+            <swiper class="" indicator-dots="true" indicator-color="#ccc" indicator-active-color="#e60012" circular="true" autoplay="true" current="0" interval="4000" duration="500">
+               <block wx:for="{{banner}}" wx:key="{{index}}">
+                  <swiper-item class="item-img">
+                     <view class="img-content" data-id="{{item.goods_id}}" data-item="{{item}}" bindtap='goTDetail'>
+                        <image mode="aspectFill" src='{{item.goods_img}}'></image>
+                        <view class="imgSelf flex-c" style="background-color:#{{item.is_group==1?'ff4949':item.is_group==3?'FF5581':item.is_group==4?'ffa625':item.is_group==6?'E971D7':''}}">{{item.is_group==3?'多人拼团':item.is_group==1?'拼团立减':item.is_group==4?'限时专享':item.is_group==6?'砍价':''}}</view>
+                        <view class="suspend-content">
+                           <view class="top-roll">
+                              <swiper class="swiper_container" vertical="true" autoplay="true" circular="true" interval="2000">
+                                 <block wx:for="{{item.stores}}" wx:key="index" wx:for-item="use_item">
+                                    <swiper-item>
+                                       <view class="roll">
+                                          <view class="logo">
+                                             <image mode="aspectFill" src="{{use_item.storelogo}}" mode="aspectFill"></image>
+                                          </view>
+                                          <view class="use-busi">【{{use_item.storename}}】使用了该方案</view>
+                                       </view>
+                                    </swiper-item>
+                                 </block>
+                              </swiper>
+                           </view>
+                           <view class="sus-bottom-b"></view>
+                           <view class="sus-bottom">
+                              <view class="b-l">帮助商家累计销量提升{{item.sales_count}}单</view>
+                              <view class="b-r">已有{{item.same_kind_count}}个同行使用</view>
+                           </view>
+                        </view>
+                     </view>
+                     <view class="item-activiname">{{item.goods_des}}</view>
+
+                  </swiper-item>
+               </block>
+            </swiper>
+         </view>
+         <view class='contant'>
+            <view class='brandBox'>
+               <view class='brandItem' wx:for="{{brandList}}" wx:key="index">
+                  <view class='brand_header'>
+                     <view class='brand_header_cont'>
+                        <view class='brand_logo'>
+                           <image mode='aspectFill' src='{{item.brand_logo}}'></image>
+                        </view>
+                        <view class='brand_name'>{{item.brand}}</view>
+                     </view>
+                     <view class="more-solu" data-id='{{item.id}}' data-name='{{item.brand}}' bindtap='allSolution'>
+                        <text>更多方案</text>
+                        <icon class="icon-pq-rightarr"></icon>
+                     </view>
+                  </view>
+                  <view class='goodList'>
+                     <view class='look_block' wx:for='{{item.models}}' wx:key='{{index}}' data-item='{{item}}' bindtap='goTDetail'>
+                        <view class='look_1'>
+                           <view class='look_1_img'>
+                              <view class='look_1_img_inner cenFlex'>
+                                 <image mode="aspectFill" src='{{item.goods_img}}'></image>
+                              </view>
+                           </view>
+                           <view class='look_1_text'>
+                              <view class='look_1_h'>
+                                 {{item.goods_des}}
+                              </view>
+                              <view class='look_1_price'>
+                                 <view class='look_1_p'>
+                                    已有{{item.same_kind_count}}个同行使用
+                                 </view>
+                                 <template is="actType" data="{{...item}}"></template>
+                              </view>
+                           </view>
+                        </view>
+                     </view>
+                  </view>
+               </view>
+            </view>
+         </view>
+      </view>
+      <view class="no_list" wx:if="{{footerNavConf[1].checked||nullFlag}}">
+         <template is="nullData" data="{{noListData}}"></template>
+      </view>
+      <view class='footerNav'>
+         <view class="{{item.checked?'foot_nav_item foot_nav_checked':'foot_nav_item'}}" wx:for="{{footerNavConf}}" wx:key="index" data-i='{{index}}' bindtap='footTap'>
+            <text>{{item.text}}</text>
+         </view>
+      </view>
+   </view>
+</compage>

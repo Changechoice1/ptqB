@@ -1,0 +1,17 @@
+<!--component/userauth/userauth.wxml-->
+<view class='renzheng {{auth==1?"rz":""}}'>
+	<block wx:if="{{auth=='1'}}">
+    <block wx:if="{{type=='1'}}">
+		  <image src="/images/goods3_ico1.png"></image>
+		  <text>个人认证</text>
+    </block>
+    <block wx:if="{{type=='2'}}">
+		  <image src="/images/index3_ico3.png"></image>
+		  <text>店铺认证</text>
+    </block>
+	</block>
+	<block wx:else>
+		<image src="{{imgUrl}}authen_ico1_a.png"></image>
+		<text>未认证</text>
+	</block>
+</view>

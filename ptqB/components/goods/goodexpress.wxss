@@ -1,0 +1,29 @@
+/* component/goods/goodexpress.wxss */
+.exp{
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+   text-align: left;
+}
+.good_title_sm{
+   display: inline-block;
+   margin-right: 20rpx;
+   font-size: 24rpx;
+   line-height: 2;
+   color: #e60012;
+}
+.good_title_sm:last-child{
+  margin-right: 0;
+}
+.yyy{
+     color: #999;
+}
+/* .dot{
+  position: relative;
+}
+.dot::after{
+  position: absolute;
+  top: 0;
+  left: 0;
+
+} */

@@ -1,0 +1,52 @@
+<import src="/template/activity/actType/actType.wxml" />
+
+<!-- 营销数据列表 -->
+<template name="marketing">
+  <view class='active_l_block'>
+    <view class='active_lb_inner' bindtap='toGroupList' data-item="{{item}}"  data-type="{{item.is_group}}">
+      <view class='active_l_img cenFlex'>
+        <image mode="aspectFill" src="{{item.goods_slide}}"></image>
+      </view>
+      <view class='active_l_content'>
+        <view class='active_l_h'>{{item.goods_name}}</view>
+        <view class='active_l_sku'>
+          <view class='active_l_sku_1l'>{{item.is_group == 3 ?'拼团价':item.is_group == 4 ?'优惠价':item.is_group == 1 ?'最低价':'最低价'}}：￥
+            <text>{{item.goods_price}}</text>
+          </view>
+          <view class='active_l_sku_1l'>
+            <text>活动浏览量：{{item.browse_count}}</text>
+          </view>
+          <view class='active_l_sku_1l'>
+            <text>下单参与人数：{{item.order_count}}</text>
+          </view>
+        </view>
+      </view>
+    </view>
+  </view>
+</template>
+
+<!-- 营销数据  人气聚焦 -->
+<template name="marketingGoods">
+  <view class="p-t">
+    <view class="goods-info" >
+		 <navigator class="mini_program" target="miniProgram" open-type="navigate" app-id="wxd25131b98741c7cb" path="/pages/goodsInfo{{popularFocus.is_group==1?'/goodsGroup/goodsGroup':popularFocus.is_group==3?'/goodsPeople/goodsPeople':popularFocus.is_group==4?'/goodsSale/goodsSale':'/goodsSale/goodsSale'}}?goods_id={{popularFocus.id}}&group_id={{popularFocus.group_id}}" />
+      <view class="goods-l">
+        <image mode="aspectFill" src="{{popularFocus.goods_slide}}"></image>
+      </view>
+      <view class="goods-r">
+        <view class="goods-title twoFontNow">{{popularFocus.goods_name}}</view>
+        <view class="goods-b">
+          <view class="goods-b-l">
+            <view class="goods-b-op onFontNow">{{popularFocus.is_group==1?'团长价':popularFocus.is_group==3?'原价':popularFocus.is_group==4?'原价':'原价'}}:￥
+              <text class="line-t">{{popularFocus.goods_price}}</text>
+            </view>
+            <view class="goods-b-bp onFontNow">{{popularFocus.is_group==1?'最低价':popularFocus.is_group==3?'拼团价':popularFocus.is_group==4?'优惠价':popularFocus.is_group==6?'底价':'最低价'}}:￥{{popularFocus.secs_price}}</view>
+          </view>
+          <view class="goods-b-r">
+            <template is="actType" data="{{...popularFocus}}"></template>
+          </view>
+        </view>
+      </view>
+    </view>
+  </view>
+</template>

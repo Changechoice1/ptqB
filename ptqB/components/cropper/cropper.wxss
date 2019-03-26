@@ -1,0 +1,121 @@
+.crop-layer{
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+}
+
+/* 1 */
+.crop-layer1{
+  z-index: 10004;
+}
+.crop-box{
+  position: relative;
+  box-sizing: border-box;
+  margin: 200rpx auto 0;
+  /* background: linear-gradient(to left, #fff, #fff) left top no-repeat, 
+              linear-gradient(to bottom, #fff, #fff) left top no-repeat, 
+              linear-gradient(to left, #fff, #fff) right top no-repeat,
+              linear-gradient(to bottom, #fff, #fff) right top no-repeat, 
+              linear-gradient(to left, #fff, #fff) left bottom no-repeat,
+              linear-gradient(to bottom, #fff, #fff) left bottom no-repeat,
+              linear-gradient(to left, #fff, #fff) right bottom no-repeat,
+              linear-gradient(to left, #fff, #fff) right bottom no-repeat;
+  background-size: 4rpx 60rpx, 60rpx 4rpx, 4rpx 60rpx, 60rpx 4rpx; */
+  /* border: 4rpx solid #fff; */
+}
+.crop-box > view{
+  position: absolute;
+  width: 60rpx;
+  height: 60rpx;
+}
+.crop-box-angle1{
+  top: -2rpx;
+  left: -4rpx;
+  border-left: 4rpx solid #fff;
+  border-top: 4rpx solid #fff;
+}
+.crop-box-angle2{
+  top: -2rpx;
+  right: 0;
+  border-right: 4rpx solid #fff;
+  border-top: 4rpx solid #fff;
+}
+.crop-box-angle3{
+  right: 0;
+  bottom: -2rpx;
+  border-right: 4rpx solid #fff;
+  border-bottom: 4rpx solid #fff;
+}
+.crop-box-angle4{
+  left: -4rpx;
+  bottom: -2rpx;
+  border-left: 4rpx solid #fff;
+  border-bottom: 4rpx solid #fff;
+}
+.crop-opt{
+  display: flex;
+  justify-content: space-between;
+  align-items: flex-end;
+  box-sizing: border-box;
+  position: fixed;
+  left: 0;
+  bottom: 0;
+  padding: 40rpx;
+  width: 100%;
+}
+.crop-opt-cancel{
+  width: 36rpx;
+  height: 36rpx;
+}
+.crop-opt-rate{
+  text-align: center;
+}
+.crop-opt-rate-box{
+  margin: 0 auto;
+  border: 2rpx solid #FF2828;
+  width: 51rpx;
+  height: 34rpx;
+}
+.crop-opt-rate-txt{
+  margin-top: 12rpx;
+  line-height: 1;
+  color: #fff;
+  font-size: 22rpx;
+}
+.crop-opt-save{
+  width: 48rpx;
+  height: 32rpx;
+}
+
+/* 2 */
+.crop-layer2{
+  z-index: 10003;
+  margin-top: 200rpx;
+  overflow: hidden;
+}
+
+/* 3 */
+.crop-layer3{
+  z-index: 10002;
+  background-color: rgba(0, 0, 0, .3);
+}
+
+/* 4 */
+.crop-layer4{
+  z-index: 10000;
+  background-color: #000;
+  overflow: hidden;
+}
+.crop-origin-img{
+  position: absolute;
+  z-index: 10001;
+}
+
+canvas{
+  position: fixed;
+  z-index: 10006;
+  left: -750rpx; 
+  top: 0;
+}

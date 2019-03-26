@@ -1,0 +1,6 @@
+{
+    "usingComponents":{
+        "diyMoadel": "/components/diyMoadel/diyMoadel"
+    },
+    "navigationBarTitleText": "群发信息"
+}

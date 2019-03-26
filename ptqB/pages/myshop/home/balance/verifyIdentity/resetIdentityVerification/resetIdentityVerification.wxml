@@ -1,0 +1,16 @@
+<view class="index_all_box">
+	<view class="psa_t">
+		<view class="psa_t_txt">
+			<text style="margin-left: 20rpx;">重设安全密码</text>
+		</view>
+		<view class="psa_t_input">
+			<input placeholder="请输入您的真实姓名" data-index="0" maxlength="8" data-pattern="Cha0" data-minlen="2" data-maxlen="8"  bindinput="inputTxt" value="{{inputArr[0]}}" bindconfirm="inputTxt" />
+		</view>
+		<view class="psa_t_input">
+			<input placeholder="请输入您的证件号码" data-index="1" maxlength="18" data-pattern="IDCard" data-minlen="15" data-maxlen="18"  bindinput="inputTxt" value="{{inputArr[1]}}" bindconfirm="inputTxt"/>
+		</view>
+	</view>
+	<view class="ad_add cenFlex" style="background: #{{clickF?'e60012':'cccccc'}}" bindtap="nextPage">下一步</view>
+</view>
+
+<diyModal id='diyModal' titleHide='{{tip.showTitle}}' onceConfirm='{{tip.hideCancel}}' content='{{tip.content}}' bind:cancelEvent='{{tip.fail}}' bind:confirmEvent='{{tip.success}}'></diyModal>

@@ -1,0 +1,84 @@
+.pageHerd{
+   background: #ffffff;
+   display: flex;
+   flex-wrap: nowrap;
+   
+   align-items: center;
+   justify-content: space-between;
+   padding: 0 30rpx;
+   height: 100rpx
+}
+.pageHerd .title{
+   color: #333333;
+   font-size: 30rpx;
+
+}
+
+.pageHerd .logo{
+   width: 122rpx;
+   height: 36rpx;
+}
+
+.pageBody{
+   margin-top: 20rpx;
+   background: #ffffff;
+   box-shadow:0rpx 10rpx 16rpx 0rpx rgba(97,97,97,0.13);
+   font-size: 28rpx;
+   color: #333333;
+}
+.itemBox{
+   position: relative;
+   display: flex;
+   flex-wrap: nowrap;
+   align-items: center;
+   padding-left: 30rpx;
+   height: 100rpx;
+   border-bottom: 1px #EEEEEE solid;
+}
+.labelList>.itemBox .itemText{
+   box-sizing: border-box;
+   padding-left: 121rpx;
+   overflow:hidden;
+   text-overflow:ellipsis;
+   white-space:nowrap;
+   word-break:break-all;
+   flex: 1 0;
+}
+.rightarr{
+   position: absolute;
+   right: 24rpx;
+   width: 24rpx;
+   height: 24rpx;
+}
+.itemChildenBox .itemBox{
+   padding-left: 60rpx;
+   padding-right: 30rpx;
+   height: 88rpx;
+   display: flex;
+   flex-wrap: nowrap;
+   
+   justify-content: space-between;
+}
+.itemChildenBox .checked{
+   color: #E60012;
+}
+.itemChildenBox .checkedImg{
+   width: 40rpx;
+   height: 40rpx;
+}
+.submitBtn{
+   margin: auto;
+   width:480rpx;
+   height:92rpx;
+   background:rgba(230,0,18,1);
+   border-radius:20rpx;
+   color:#ffffff;
+   text-align: center;
+   line-height: 92rpx;
+}
+.btnBox{
+   position: absolute;
+   bottom: 180rpx;
+   width: 100%;
+
+}

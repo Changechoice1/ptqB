@@ -1,0 +1,8 @@
+{
+    "navigationBarTitleText": "订单详情",
+    "component": true,
+    "usingComponents": {
+      "compage": "/vwx/component/template/",
+      "diyModal": "/components/diyMoadel/diyMoadel"
+    }
+}

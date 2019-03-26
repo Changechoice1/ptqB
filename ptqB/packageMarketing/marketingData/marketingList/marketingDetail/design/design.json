@@ -1,0 +1,7 @@
+{
+   "navigationBarTitleText": "申请物料设计",
+   "component": true,
+   "usingComponents": {
+      "compage": "/vwx/component/template/"
+   }
+}

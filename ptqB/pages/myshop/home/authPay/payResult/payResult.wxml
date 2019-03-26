@@ -1,0 +1,18 @@
+<!--pages/myshop/applyPay/payResult/payResult.wxml-->
+<compage id='compage'>
+  <view class='cont'>
+    <view class='cont_logo cenFlex'>
+      <image src='/images/success.png'></image>
+    </view>
+    <view class='cont_tip'>支付成功</view>
+    <view class='cont_txt'>使用拼团趣，帮助商家拓客</view>
+  </view>
+  <view class='opts'>
+    <!-- <view class='cenFlex'>
+      <view class='opts_btn' wx:if='{{!isAuth}}' bindtap='goPage' data-upage='/pages/myshop/my/qualificationCert/index'>去补充认证资料</view>
+    </view> -->
+    <view class='cenFlex'>
+      <view class="opts_btn" bindtap='goPage' data-upage='reLaunch:///pages/myshop/home/index'>进入商家后台</view>
+    </view>
+  </view>
+</compage>

@@ -1,0 +1,8 @@
+{
+  "component": true,
+  "usingComponents": {
+    "compage": "/vwx/component/template", 
+    "diyModal": "/components/diyMoadel/diyMoadel",
+    "cipherSix": "/components/cipherSix/cipherSix"
+  }
+}

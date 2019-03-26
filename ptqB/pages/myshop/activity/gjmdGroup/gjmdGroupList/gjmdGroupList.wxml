@@ -1,0 +1,67 @@
+<import src="/template/template.wxml" />
+<compage id="compage">
+  <view class="index_all_box">
+      <view class='active_choose_con'>
+          <view class='active_choose'>
+              <view class='active_c_1'>
+                  <view class='active_c1_inner active_c1_inner1' bindtap='showHide'>
+                      {{statusList[status].name}}
+                      <view class='active_c1_icon cenFlex'>
+                          <image src='{{imgUrl}}right_icon.png'></image>
+                      </view>
+                  </view>
+              </view>
+              <view class='active_c_2'>
+                  数量：{{num}}
+              </view>
+          </view>
+      </view>
+      <view class='active_mask' wx:if='{{showStatusList}}' bindtap='showHide'></view>
+      <view class='active_c_dropdown' wx:if='{{showStatusList}}'>
+          <view class='active_cd_block' wx:for='{{statusList}}' wx:key='{{index}}' data-index='{{index}}' bindtap="typeChecked">
+              <text class="{{status == index ? 'active_status' : ''}}">{{item.name}}</text>
+              <view class="active_cd_okBtn cenFlex">
+                  <image src="{{imgUrl}}near3_ico4.png" wx:if="{{status == index}}"></image>
+              </view>
+          </view>
+      </view>
+
+
+      <view wx:if="{{!noList}}" class='list'>
+          <view class="item" wx:for='{{list}}' wx:key="{{index}}" data-id="{{item.initiator_id}}">
+              <view class="info1 flex">
+                <navigator class="mini_program" target="miniProgram" open-type="navigate" app-id="wxd25131b98741c7cb" path="/packageFree/detailsFree/detailsFree?initiator_id={{item.initiator_id}}" />
+                <view class="info_logo">
+                  <image src="{{item.wx_img}}"></image>
+                </view>
+                <view class="info_box">
+                  <view class="info_name">
+                    <text class="info_name_label">发起者：</text>
+                    <text>{{item.wx_name}}</text>
+                  </view>
+                  <view class="info_amount flex-between">
+                    <view>
+                      <text>已免单：</text>
+                      <text class="info_amount_value">￥{{item.free_money}}</text>
+                      <text class="info_amount_other">（{{item.rate}}）</text>
+                    </view>
+                    <view>
+                      <text>代金券：</text>
+                      <text class="info_amount_value">￥{{item.all_voucher_money}}</text>
+                      <text class="info_amount_other">（{{item.voucher_join_num}}人）</text>
+                    </view>
+                  </view>
+                </view>
+              </view>
+              <view class="info2">
+                <view class="info_status">{{item.status == 1 ? '刮奖中' : '完成'}}</view>
+                <view class="info_end_date">有效期至：{{item.end_time}}</view>
+                <view class="opt_box fr">
+                  <vwx-button type="mi" text="刮奖明细" color="#333" bdColor="#999" bgColor="#fff" width="150" data-id="{{item.initiator_id}}" bind:tap-event="goGroupDetail"></vwx-button>
+                </view>
+              </view>
+          </view>
+      </view>
+      <template is="nullData" data="{{noListData}}" wx:if="{{noList}}"/>
+  </view>
+</compage>

@@ -1,0 +1,7 @@
+{
+   "navigationBarTitleText": "品牌中心",
+   "component": true,
+   "usingComponents": {
+      "compage": "/vwx/component/template/"
+   }
+}

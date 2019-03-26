@@ -1,0 +1,8 @@
+<!--component/template.wxml-->
+<view class='wx_main' wx:if="show">
+   <slot></slot>
+   <view class='wx_toast' wx:if="{{toastShow}}">
+      <view class='contxt'>{{toastTxt}}</view>
+   </view>
+</view>
+<vwx-modal id="modal"></vwx-modal>

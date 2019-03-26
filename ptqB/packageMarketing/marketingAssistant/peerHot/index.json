@@ -1,0 +1,7 @@
+{
+    "navigationBarTitleText": "同行热门",
+    "component": true,
+    "usingComponents": {
+      "compage": "/vwx/component/template/"
+    }
+}

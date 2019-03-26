@@ -1,0 +1,7 @@
+{
+    "usingComponents":{
+        "diyMoadel": "/components/diyMoadel/diyMoadel",
+        "cipherSix": "/components/cipherSix/cipherSix"
+    },
+    "navigationBarTitleText": "短信充值"
+}

@@ -1,0 +1,14 @@
+<view class="payPass_box1" wx:if="{{allinputF1}}">
+	<view class="qiueBtn" bindtap="hideBox">关闭</view>
+	<view class="payPass_box_t">请输入您的支付密码</view>
+	<view class="payPass_box_m">
+		<view class="payPass_box_m_in" bindtap="focusInput">
+			<view class="payPass_box_m_in_in" wx:for="{{6}}" wx:key="{{index}}">
+				<input data-index="{{index}}" bindinput="allInputBtn" type="number" confirm-hold="true" value="{{inputArr[index]}}" disabled="true" maxlength="1" password="{{true}}"/>
+			</view>
+		</view>
+		<view class="indexTopInput">
+			<input value="{{inputStr}}" focus="{{allinputF1}}" maxlength="6" type="number" bindinput="passInput"/>
+		</view>
+	</view>
+</view>

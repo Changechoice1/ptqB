@@ -1,0 +1,101 @@
+<!-- 员工提成详情 -->
+<view class="index_all_box" wx:if="{{staffInfoData}}">
+    <view class='rank_divide' bindtap="openChoose">
+        <view class='divide_1'>
+            <view class='divide_img cenFlex'>
+                <image src='{{imgUrl}}staffing_icon_1.png'></image>
+            </view>
+            <view class='divide_text'>自然月</view>
+        </view>
+        <view class='divide_2'>
+            <view class='divide_time'>{{timeNow}}</view>
+            <view class='divide_icon cenFlex'>
+                <image src='{{imgUrl}}gy_ico.png'></image>
+            </view>
+        </view>
+    </view>
+    <!-- 员工信息 -->
+    <view class='info'>
+        <view class='info_inner'>
+            <view class='info_head'>
+                <view class='info_img cenFlex'>
+                    <image src='{{staffInfoData.wx_img}}'></image>
+                </view>
+                <view class='info_name'>
+                    <view class='info_name_1'>{{staffInfoData.wx_name}}</view>
+                    <view class='info_name_2'>
+                        <text>员工姓名：</text>{{staffInfoData.remark}}
+                    </view>
+                </view>
+            </view>
+            <view class='info_main'>
+                <view class='info_m_block'>
+                    <view class='info_m_t'>
+                        总奖励
+                    </view>
+                    <view class='info_m_money'>
+                        {{staffInfoData.all_info.all_amount}}
+                    </view>
+                    <view class='info_m_num'>
+                        {{staffInfoData.all_info.num}}笔
+                    </view>
+                </view>
+                <view class='info_m_block'>
+                    <view class='info_m_t'>
+                        月奖励
+                    </view>
+                    <view class='info_m_money'>
+                        {{staffInfoData.month_all_info.all_amount}}
+                    </view>
+                    <view class='info_m_num'>
+                        {{staffInfoData.month_all_info.num}}笔
+                    </view>
+                </view>
+            </view>
+        </view>
+    </view>
+    <view class='divide'>
+        {{staffInfoData.month_str}}
+    </view>
+    <!-- 详细列表 -->
+    <view class='detail_list'>
+        <view class='list_inner'>
+            <view class='list_block' wx:for='{{staffList}}' wx:key='{{index}}' data-index='{{index}}' data-id='{{item.order_id}}' bindtap="goOrderInfo">
+                <view class='list_left'>
+                    <view class='list_h'>
+                        订单：{{item.order_no}}
+                    </view>
+                    <view class='list_t'>
+                        {{item.time}}
+                    </view>
+                </view>
+                <view class='list_right'>
+                    {{item.amount || '0.00'}}
+                </view>
+            </view>
+        </view>
+        <view class="cenFlex" wx:if="{{!staffList[0]}}">
+            <view class="noStaff cenFlex">本月暂无提成</view>
+        </view>
+    </view>
+    <!-- 选择开启/关闭时间 -->
+    <view class='choose_oc_time' wx:if='{{chooseTime}}'>
+        <view class='choose_oc_inner'>
+            <view class='choose_oc_h'>
+                选择时间和日期
+            </view>
+            <picker-view indicator-style="height: 100rpx;" value="{{value}}" bindchange="bindChange">
+                <picker-view-column>
+                    <view wx:for="{{years}}" wx:key='{{index}}' class='choose_oc_line'>{{item}}年</view>
+                </picker-view-column>
+                <picker-view-column>
+                    <view wx:for="{{months}}" wx:key='{{index}}' class='choose_oc_line'>{{item}}月</view>
+                </picker-view-column>
+            </picker-view>
+            <view class='choose_oc_btn'>
+                <view class='cancle' bindtap='closeChoose'>取消</view>
+                <view class='confirm' bindtap="confirmTimeBtn">确定</view>
+            </view>
+        </view>
+    </view>
+</view>

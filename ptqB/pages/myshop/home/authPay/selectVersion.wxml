@@ -1,0 +1,37 @@
+<!--pages/myshop/authPay/selectVersion.wxml-->
+<compage id="compage">
+  <view class="sel_ver_box">
+    <view wx:if="{{item.active}}" wx:for='{{payInfo}}' wx:key='{{index}}' data-index='{{index}}' class="sel_ver_item {{selectedVer == 0 && selectedVer == index ? 'sel_ver_item_b' : selectedVer == 1 && selectedVer == index ? 'sel_ver_item_f' : ''}}" bindtap="{{type == 3 && index == 1 ? '' : 'selectVersion'}}">
+      <view class='item_header'>
+        <view class="item_header_v {{selectedVer == 0 && selectedVer == index ? 'item_header_v_b' : selectedVer == 1 && selectedVer == index ? 'item_header_v_f' : ''}}">{{item.version}}</view>
+        <view class='item_header_c sbFlex'>
+          <view class='item_header_c_comm'>{{item.comm}}</view>
+          <view class='item_header_c_money'>{{item.money}}/年</view>
+        </view>
+      </view>
+      <view class='item_cont'>
+        <view>【收费说明】</view>
+        <view>{{item.desc}}</view>
+      </view>
+    </view>
+  </view>
+  <view wx:if="{{type == 3}}" class="sel_ver_tip">
+    <view class='sel_ver_tip_text'>{{tipInfo[type]}}</view>
+  </view>
+  <view wx:if="{{type == 2}}" class='sel_ver_tip'>
+    <view class='sel_ver_tip_box sbFlex'>
+      <view class='sel_ver_tip_inbox'>
+        <view class='sel_ver_tip_icon'>
+          <image src='/images/selected.png'></image>
+        </view>
+        <view class='sel_ver_tip_text'>{{payInfo[selectedVer].version}}</view>
+      </view>
+      <view>{{payInfo[selectedVer].money}}</view>
+    </view>
+  </view>
+  <view class="{{type == 2 ? 'sel_ver_btn_box2' : type == 3 ? 'sel_ver_btn_box3' : ''}} cenFlex">
+    <view class='sel_ver_btn' bindtap='goPage' data-upage='applyPay/applyPay?v={{payInfo[selectedVer].verNo}}&type={{type}}'>去支付 ￥{{payNum}}</view>
+  </view>
+
+  <diyModal id='diyModal' titleHide='{{tipShowTitle}}' title='{{tipTitle}}' onceConfirm='{{tipHideCancel}}' txtAlign='{{tipTextAlign}}' zstype='{{tipShowType}}' nodesStr="{{tipShowType == 4 ? tipText : ''}}" showList='{{tipText}}' content='{{tipText}}' redTxt='{{tipImpCont}}' bind:cancelEvent='{{tipFail}}' cancelText='{{tipCancelText}}' bind:confirmEvent='{{tipSuccess}}' confirmText='{{tipConfirmText}}' btnArr='{{tipBtnArr}}' bind:touchBtn="btnFn"></diyModal>
+</compage>

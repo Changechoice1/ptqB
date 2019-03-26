@@ -1,0 +1,7 @@
+{
+	"navigationBarTitleText": "营销数据",
+	"usingComponents": {
+		"vwx-canvas": "/components/ch-canvas/ch-canvas",
+		"compage": "/vwx/component/template/"
+	}
+}

@@ -1,0 +1,8 @@
+{
+	"navigationBarTitleText": "我的余额明细",
+  "component": true,
+  "usingComponents": {
+    "compage": "/vwx/component/template",
+    "modal": "/components/modal/modal"
+  }
+}

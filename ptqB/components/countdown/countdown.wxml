@@ -1,0 +1,8 @@
+<!--component/countdown/countdown.wxml-->
+<view class='good_avt_time weui-flex__item'>
+   距离结束仅剩
+   <text>{{dt.d}}</text>天
+   <text>{{dt.h}}</text>小时
+   <text>{{dt.m}}</text>分
+   <text>{{dt.s}}</text>秒
+</view>

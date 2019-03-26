@@ -1,0 +1,7 @@
+
+<compage id="compage">
+  <view class='header'>商家PC端后台登录入口</view>
+  <view class='cont'>{{url}}</view>
+  <view class='btn' bindtap='copyUrl'>复制链接</view>
+  <diyModal id='diyModal' onceConfirm='{{tipHideCancel}}' content='{{tipText}}' redTxt='{{tipImpCont}}' bind:confirmEvent='{{tipSuccess}}' confirmText='{{tipConfirmText}}'></diyModal>
+</compage>

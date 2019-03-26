@@ -1,0 +1,35 @@
+<!--pages/myshop/my/index.wxml-->
+<import src="/template/template.wxml" />
+<compage id="compage"> 
+  <view wx:if="{{showContainer}}" id="container">
+    <view class="banner">
+      <view class="banner_video" bindtap="playVideo">
+        <video wx:if="{{showVideo}}" id="video" src="{{info1.video}}" direction="90"></video>
+        <image wx:if="{{!showVideo}}" src="{{info1.picture}}"></image>
+      </view>
+    </view>
+    <view class="menu">
+      <view wx:for="{{menu}}" wx:key="{{index}}" class="menu_block">
+        <view wx:if="{{info.is_account == 0 && item1.allowMain || info.is_account == 1 && item1.allowSub}}" wx:for="{{item}}" wx:key="{{index}}" wx:for-item="item1" wx:for-index="index2" class="menu_block_item flex-between" bindtap="{{item1.tapEvent}}">
+          <view class="flex-center">
+            <icon class="{{item1.icon}}" style="font-size: {{item1.iconSize}}; color: {{item1.iconColor}}"></icon>
+            <text class="menu_block_item_title">{{item1.title}}</text>
+          </view>
+          <view class="flex-center">
+            <text class="menu_block_item_value">{{item1.field ? info[item1.field] : ''}}</text>
+            <icon class="icon-pq-rightarr"></icon>
+          </view>
+        </view>
+      </view>
+    </view>
+    <!-- footer -->
+    <view class="footer">
+      <view class="footer_logo">
+        <image src="/images/my_ico32.png"></image>
+      </view>
+      <view class="footer_tip">拼团趣提供技术支持</view>
+      <view class="footer_protocol" bindtap="goPage" data-upage='/pages/protocol/protocol?id=1'>已签订《商家使用协议》</view>
+    </view>
+  </view>
+  <template wx:if="{{!showContainer}}" is="nullData" data="{{noAuth}}"/>
+</compage>

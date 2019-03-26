@@ -1,0 +1,8 @@
+{
+    "navigationBarTitleText": "拼团趣-订单",
+    "component": true,
+    "usingComponents": {
+      "compage": "/vwx/component/template/",
+      "diyModal": "/components/diyMoadel/diyMoadel"
+    }
+}

@@ -1,0 +1,238 @@
+.userInfo_box {
+    padding: 0rpx 25rpx;
+    background: #fff;
+    display: flex;
+    flex-wrap: wrap;
+    margin-top: 10rpx;
+}
+
+.userInfo_box .userInfo_box_in {
+    display: flex;
+    align-items: center;
+    width: 100%;
+    height: 80rpx;
+    margin: 0rpx auto;
+    border-bottom: 2rpx #f5f5f5 solid;
+}
+
+.userInfo_box .userInfo_box_in .userInfo_box_in_l {
+    width: 150rpx;
+}
+
+.prompt_box {
+    color: #666;
+    padding: 20rpx 25rpx;
+    font-size: 0.75em;
+}
+
+.tel_info {
+    color: #666;
+    font-size: 0.75em;
+    margin-top: 10rpx;
+    padding: 10rpx 0 20rpx;
+}
+
+.UserId {
+    background: #fff;
+    padding: 25rpx;
+    font-size: 0.75em;
+    color: #333;
+}
+
+.UserId .UserId_w {
+    margin-top: 25rpx;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.UserId .UserId_w .UserId_w_l {
+    width: 190px;
+    min-width: 190rpx;
+    height: 170rpx;
+}
+
+.UserId .UserId_w .UserId_w_l .UserId_w_l_in {
+    width: 100%;
+    height: 100%;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.UserId .UserId_w_r {
+    margin-left: 45rpx;
+    /* display: flex;  *//* flex-wrap: wrap; *//* justify-content: center; */
+    height: 100%;
+    font-size: 1.2em;
+}
+
+.UserId_h {
+    font-size: 1.2em;
+    color: #666;
+}
+
+.UserId .UserId_w_r .UserId_w_r_b {
+    width: 45%;
+    height: 60rpx;
+    line-height: 60rpx;
+    text-align: center;
+    background: #e60012;
+    color: #fff;
+    margin-top: 40rpx;
+    border-radius: 15rpx;
+}
+
+.UserId .UserId_w_l_in1 {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    flex-wrap: wrap;
+    position: relative;
+    width: 100%;
+    height: 100%;
+}
+
+.UserId .UserId_w_l_in1 .UserId_w_l_in1Img image {
+    width: 100%;
+    height: 100%;
+}
+
+.UserId .UserId_w_l_in1 .UserId_w_l_in1_t {
+    width: 80rpx;
+    height: 80rpx;
+}
+
+.UserId .UserId_w_l_in1 .UserId_w_l_in1_t image {
+    width: 100%;
+    height: 100%;
+}
+
+.UserId .UserId_w_l_in1 .UserId_w_l_in1_b {
+    font-size: 0.9em;
+    width: 100%;
+    text-align: center;
+    color: #07c0ac;
+    margin-top: 15rpx;
+}
+
+.UserId .UserId_w_l_in2 {
+    width: 100%;
+    height: 100%;
+}
+
+.UserId_w_l_in1Img {
+    width: 100%;
+    height: 100%;
+    position: absolute;
+    top: 0rpx;
+    left: 0rpx;
+}
+
+.UserId_w_l_in1_r {
+    position: absolute;
+    width: 50rpx;
+    height: 50rpx;
+    background: linear-gradient(-45deg, red 50%, transparent 50%);
+    z-index: 999;
+    right: 0rpx;
+    bottom: 0rpx;
+    color: #fff;
+    font-size: 0.75em;
+}
+
+.UserId_w_l_in1_r_in {
+    margin-top: 20rpx;
+    margin-left: 26rpx;
+}
+
+.UserId .UserId_w_l_in2 image {
+    width: 100%;
+    height: 100%;
+}
+
+.upInfo_box {
+    margin-top: 20rpx;
+    padding: 30rpx;
+    background: #fff;
+}
+
+.upInfo_box .upInfo_box_t {
+    font-size: 0.9em;
+    color: #eb5648;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.upInfo_box .upInfo_box_t .upInfo_box_t1 {
+    width: 141rpx;
+    height: 2rpx;
+    background: #eb5648;
+}
+
+.upInfo_box .upInfo_box_t .upInfo_box_t2 {
+    margin: 45rpx 20rpx 0;
+    font-size: 1em;
+}
+
+.upInfo_box .upInfo_box_b > view {
+    width: 100%;
+    height: 80rpx;
+    line-height: 80rpx;
+    text-align: center;
+    color: #fff;
+    background: #e60012;
+    border-radius: 12rpx;
+    margin-top: 55rpx;
+    letter-spacing: 2rpx;
+}
+
+.upInfo_box .upInfo_box_b > view.noclick {
+    background: #ccc;
+}
+
+
+.pay_all_box2_in {
+    width: 100%;
+    height: 640rpx;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    color: #05c1b0;
+}
+
+.pay_all_box2_in_in {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    flex-wrap: wrap;
+}
+
+.pay_all_box2_in_in_t {
+    width: 180rpx;
+    height: 180rpx;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    min-width: 180rpx;
+    min-height: 180rpx;
+    margin-bottom: 25rpx;
+}
+
+.pay_all_box2_in_in_t image {
+    width: 100%;
+    height: 100%;
+}
+
+.pay_all_box2_in_in_b {
+    width: 100%;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+radio .wx-radio-input {
+    width: 32rpx;
+    height: 32rpx;
+}

@@ -1,0 +1,35 @@
+/* pages/myshop/applyPay/payResult/payResult.wxss */
+.cont{
+  padding: 60rpx 0 50rpx;
+  background-color: #fff;
+}
+.cont_logo > image{
+  width: 118rpx;
+  height: 118rpx;
+}
+.cont_tip{
+  margin-top: 30rpx;
+  color: #e60012;
+  font-size: 36rpx;
+  text-align: center;
+}
+.cont_txt{
+  margin-top: 35rpx;
+  color: #999;
+  font-size: 28rpx;
+  text-align: center;
+}
+
+.opts{}
+.opts_btn{
+  margin-top: 125rpx;
+  border: 1rpx solid #e60012;
+  border-radius: 20rpx;
+  width: 480rpx;
+  height: 92rpx;
+  line-height: 93rpx;
+  background-color: #e60012;
+  text-align: center;
+  color: #fff;
+  font-size: 32rpx;
+}

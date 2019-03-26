@@ -1,0 +1,19 @@
+<!-- 消息中心 -->
+<import src="/template/template.wxml" />
+<view class="index_all_box">
+    <template is="nullData" data="{{nullData}}" wx:if='{{infoArr.length == 0}}' />
+    <view class='info_con' wx:if='{{messData.list.length > 0}}'>
+        <view class='info_block' data-index="{{index}}" bindtap="toDetail" wx:for="{{messData.list}}" wx:key="{{index}}" data-id="{{item.message_id}}" bindtap="toDetail">
+            <view class='info_img cenFlex'>
+                <image src='{{item.img_slide}}'></image>
+            </view>
+            <view class='info_text'>
+                <text>{{item.title}}</text>
+                <text class='info_content'>{{item.content}}</text>
+            </view>
+            <view class='info_time'>
+                {{item.add_time}}
+            </view>
+        </view>
+    </view>
+</view>

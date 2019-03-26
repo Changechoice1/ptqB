@@ -1,0 +1,31 @@
+<view class="picker_modal" bindtap='cancelPicker' catchtouchmove='preventTouchMove'>
+  <view class='picker'>
+    <view class='picker_title'>{{title}}</view>
+    <picker-view indicator-style="height: 50rpx;" value="{{date}}" bindchange="chooseDate">
+        <picker-view-column>
+            <view wx:for="{{years}}" wx:key='{{index}}' class='picker_item'>{{item}}年</view>
+        </picker-view-column>
+        <picker-view-column>
+            <view wx:for="{{months}}" wx:key='{{index}}' class='picker_item'>{{item}}月</view>
+        </picker-view-column>
+        <picker-view-column>
+            <view wx:for="{{days}}" wx:key='{{index}}' class='picker_item'>{{item}}日</view>
+        </picker-view-column>
+    </picker-view>
+    <picker-view indicator-style="height: 50rpx;" value="{{time}}" bindchange="chooseTime">
+        <picker-view-column>
+            <view wx:for="{{hours}}" wx:key='{{index}}' class='picker_item'>{{item}}时</view>
+        </picker-view-column>
+        <picker-view-column>
+            <view wx:for="{{minutes}}" wx:key='{{index}}' class='picker_item'>{{item}}分</view>
+        </picker-view-column>
+        <picker-view-column>
+            <view wx:for="{{seconds}}" wx:key='{{index}}' class='picker_item'>{{item}}秒</view>
+        </picker-view-column>
+    </picker-view>
+    <view class='picker_btn'>
+        <view class='picker_cancel'>取消</view>
+        <view class='picker_confirm' bindtap='confirmPicker'>确定</view>
+    </view>
+  </view>
+</view>

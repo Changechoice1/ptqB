@@ -1,0 +1,18 @@
+<import src="/template/template.wxml"/>
+<compage id="compage">
+  <view class="index_all_box" bindtouchmove="hideChange">
+  
+    <template is="nullData" data="{{nullData}}" wx:if='{{noList}}'/>
+    <view wx:if='{{!noList}}' class='dm_box'>
+      <view class="dm_box_in" wx:for='{{list}}' wx:key="{{index}}" bindtap="toDetail" data-id="{{item.id}}">
+        <view class="dm_box_in_l">
+          <view class="dm_box_in_l_in1"><text wx:if="{{item.is_freeze==1}}" style="margin-right: 10rpx;color: red">[冻结]</text>{{item.title}}</view>
+          <view class="dm_box_in_l_in2">{{item.create_at}}</view>
+        </view>
+        <view class="{{item.type==0 || item.type==2?'dm_box_in_r1':'dm_box_in_r'}}">{{item.type==1 || item.type==5 ? '+' : '-'}}{{item.amount}}</view>
+      </view>
+      <view class="bottomtx" wx:if="{{!noList && isLastPage && !isLoading}}">已经没有更多了~</view>
+      <view class="bottomtx" wx:if="{{!noList && !isLastPage && isLoading}}"><image src="https://www.pintuanqu.cn/Public/WeChatApps/images/onBloading.png"></image>正在加载,请稍候！</view>
+    </view>
+  </view>
+</compage> 

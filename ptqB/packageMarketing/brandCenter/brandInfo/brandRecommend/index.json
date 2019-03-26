@@ -1,0 +1,7 @@
+{
+  "navigationBarTitleText": "品牌推荐",
+  "component": true,
+  "usingComponents": {
+    "compage": "/vwx/component/template/"
+  }
+}

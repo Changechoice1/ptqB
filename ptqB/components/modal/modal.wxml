@@ -1,0 +1,41 @@
+<!--components/diyMoadel.wxml-->
+<view class='wx_dialog_container' wx:if="{{isShow}}" catchtouchmove='preventTouchMove'>
+    <view class='wx-mask' catchtap="{{!showCancel ? '_confirmEvent':'_cancelEvent'}}"></view>
+    <view class='wx-dialog'>
+        <view class='wx-dialog-title cenFlex' wx:if="{{showTitle}}" style="color:{{titleColor}}">{{title}}</view>
+        <!-- 提示内容 -->
+        <view class="wx-dialog-content" style="text-align: {{txtAlign}}">
+            <!-- 默认 -->
+            <view wx:if="{{contType == 0}}" style="width: 100%;">
+                <text style="color:#e80012" wx:if="{{redTxt}}}">{{redTxt}}</text>
+                <text>{{content}}</text>
+            </view>
+            <!-- 列表 -->
+            <view class="wx-dialog-bin" wx:if="{{contType == 1}}" wx:for="{{content}}" wx:key="{{index}}" style="text-align: {{contAlign}}; color: {{item.color || '#333'}}">
+                <view class="wx-dialog-bin-title" wx:if="item.label">{{item.label}}</view>
+                <view class="wx-dialog-bin-con">
+                    <text>{{item.text}}</text>
+                </view>
+            </view>
+            <!-- 富文本 -->
+            <rich-text wx:if="{{contType == 2}}" style='width: 100%;' nodes="{{content}}"></rich-text>
+
+            <!-- 按钮 -->
+            <view class="wx_dialog_content_btn" wx:if="{{btnType == 1}}">
+                <view class="wx_dialog_content_btn_in cenFlex" style="background-color: {{item.bgColor || '#fff'}}; border-color: {{ item.bdColor || '#333'}}; color: {{item.color || '#333'}}" wx:for="{{btnList}}" wx:key="{{index}}" bindtap="_success" data-index="{{index}}">
+                    {{item.text}}
+                </view>
+            </view>
+        </view>
+        <view class='wx-dialog-footer' wx:if="{{(btnType == 0) && showCancel}}">
+            <view class='wx-dialog-btn' bindtap="_fail">{{cancelText}}</view>
+            <!-- catchtap='_cancelEvent'  -->
+            <view class='wx-dialog-btn' bindtap="_success">{{confirmText}}</view>
+             <!-- catchtap='_confirmEvent' -->
+        </view>
+        <view class="wx-dialog-footer" wx:if="{{btnType == 0 && !showCancel}}"  bindtap="_success">
+        <!-- catchtap='_confirmEvent' -->
+            <view class="wx_dialog_once">{{confirmText}}</view>
+        </view>
+    </view>
+</view>

@@ -1,0 +1,36 @@
+/* component/template.wxss */
+.wx_main{
+  position: absolute;
+  width: 100%;
+  height: 100%;
+}
+.wx_toast {
+  position: fixed;
+  z-index: 999;
+  width: 100%;
+  top: 40%;
+  text-align: center;
+}
+
+.wx_toast .contxt {
+  display: inline-block;
+  font-size: 14px;
+  min-width: 60px;
+  margin: auto;
+  line-height: 1.6;
+  background-color: rgba(0, 0, 0, 0.6);
+  color: #fff;
+  border-radius: 6rpx;
+  animation: opacity 0.6s;
+  -webkit-animation: opacity 0.6s;
+  padding: 4px 6px;
+}
+
+@keyframes opacity {
+  from {
+    opacity: 0;
+  }
+  to {
+    opacity: 1;
+  }
+}

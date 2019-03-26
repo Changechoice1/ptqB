@@ -1,0 +1,7 @@
+{
+    "navigationBarTitleText": "评价管理",
+    "component": true,
+    "usingComponents": {
+      "compage": "/vwx/component/template/"
+    }
+}

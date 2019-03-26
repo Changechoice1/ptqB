@@ -1,0 +1,130 @@
+{
+  "pages": [
+    "pages/loading/loading",
+    "pages/login/login",
+    "pages/loading/instruction/instruction",
+    "pages/userPower/userPower",
+    "pages/protocol/protocol",
+    "pages/authoritySetting/authoritySetting",
+    "pages/register/register",
+    "pages/myshop/setting/setting",
+    "pages/myshop/home/index",
+    "pages/myshop/home/authPay/selectVersion",
+    "pages/myshop/home/authPay/applyPay/applyPay",
+    "pages/myshop/home/authPay/payResult/payResult",
+    "pages/myshop/home/balance/balance",
+    "pages/myshop/home/balance/withdraw/withdraw",
+    "pages/myshop/home/balance/turnoverList/turnoverList",
+    "pages/myshop/home/balance/turnoverDetail/turnoverDetail",
+    "pages/myshop/home/balance/setPassword/setPassword",
+    "pages/myshop/home/balance/verifyIdentity/setIdentityVerification/setIdentityVerification",
+    "pages/myshop/home/balance/verifyIdentity/resetIdentityVerification/resetIdentityVerification",
+    "pages/myshop/home/subBalance/subBalance",
+    "pages/myshop/home/subBalance/withdraw/withdraw",
+    "pages/myshop/home/subBalance/turnoverList/turnoverList",
+    "pages/myshop/home/exVipCard/exVipCard",
+    "pages/myshop/home/exVipCard/saleRecord/saleRecord",
+    "pages/myshop/home/exVipCard/detail/detail",
+    "pages/myshop/home/qrcode/qrcode",
+    "pages/myshop/home/marketingPromotion/publishAct/publishAct",
+    "pages/myshop/home/marketingPromotion/publishGjmd/publishGjmd",
+    "pages/myshop/home/marketingPromotion/freight/freight",
+    "pages/myshop/home/marketingPromotion/freight/edit/edit",
+    "pages/myshop/home/marketingPromotion/evaluate/evaluate",
+    "pages/myshop/home/socialMarketing/fans/list",
+    "pages/myshop/home/socialMarketing/fans/customer/cusDetail",
+    "pages/myshop/home/socialMarketing/businessUnion/businessUnion",
+    "pages/myshop/home/socialMarketing/groupMsg/groupMsg",
+    "pages/myshop/home/socialMarketing/groupMsg/recharge/recharge",
+    "pages/myshop/home/integratingMarketing/staff/staff",
+    "pages/myshop/home/integratingMarketing/staff/addStaff/addStaff",
+    "pages/myshop/home/integratingMarketing/staff/staffDetail/staffDetail",
+    "pages/myshop/home/integratingMarketing/subAccount/subAccount",
+    "pages/myshop/activity/list",
+    "pages/myshop/activity/drptGroupList/drptGroupList",
+    "pages/myshop/activity/ptljGroupList/ptljGroupList",
+    "pages/myshop/activity/gjmdGroup/gjmdGroupList/gjmdGroupList",
+    "pages/myshop/activity/gjmdGroup/gjmdGroupDetail/gjmdGroupDetail",
+    "pages/myshop/activity/kjGroupList/kjGroupList",
+    "pages/myshop/order/list",
+    "pages/myshop/order/orderInfo/orderInfo",
+    "pages/myshop/my/index",
+    "pages/myshop/my/qualificationCert/index",
+    "pages/myshop/my/qualificationCert/personalCert/personalCert",
+    "pages/myshop/my/qualificationCert/shopCert/shopCert",
+    "pages/myshop/my/qualificationCert/tip/tip",
+    "pages/myshop/my/qualificationCert/certResult/certResult",
+    "pages/myshop/my/FAQ/FAQ",
+    "pages/myshop/my/FAQ/article/article",
+    "pages/myshop/my/msgCenter/msgCenter",
+    "pages/myshop/my/pcManagement/pcManagement",
+    "pages/myshop/my/switchIdentity/switchIdentity"
+  ],
+  "subPackages": [
+    {
+      "root": "packageMarketing",
+      "pages": [
+        "marketingAssistant/index",
+        "marketingAssistant/peerHot/index",
+        "marketingAssistant/industryCustom/index",
+        "marketingAssistant/actTDetail/ptljTDetail/ptljTDetail",
+        "marketingAssistant/actTDetail/drptTDetail/drptTDetail",
+        "marketingAssistant/actTDetail/xszxTDetail/xszxTDetail",
+        "marketingAssistant/actTDetail/kjTDetail/kjTDetail",
+        "marketingData/index",
+        "marketingData/impMarketingAbility/index",
+        "marketingData/marketingList/marketingDetail/marketingDetail",
+        "marketingData/marketingList/marketingDetail/design/design",
+        "marketingData/marketingList/marketingList",
+        "brandCenter/index",
+        "brandCenter/brandInfo/index",
+        "brandCenter/brandInfo/brandRecommend/index"
+      ]
+    }
+  ],
+  "window": {
+    "backgroundTextStyle": "light",
+    "navigationBarBackgroundColor": "#393a3f",
+    "navigationBarTitleText": "拼团趣",
+    "navigationBarTextStyle": "white",
+    "backgroundColor": "#f3f3f3"
+  },
+  "tabBar": {
+    "color": "#666",
+    "selectedColor": "#e60012",
+    "borderStyle": "black",
+    "backgroundColor": "#ffffff",
+    "list": [
+      {
+        "pagePath": "pages/myshop/home/index",
+        "text": "首页",
+        "iconPath": "images/tabbar-home.jpg",
+        "selectedIconPath": "images/tabbar-home1.jpg"
+      },
+      {
+        "pagePath": "pages/myshop/activity/list",
+        "text": "活动",
+        "iconPath": "images/tabbar-activity.jpg",
+        "selectedIconPath": "images/tabbar-activity1.jpg"
+      },
+      {
+        "pagePath": "pages/myshop/order/list",
+        "text": "订单",
+        "iconPath": "images/tabbar-order.jpg",
+        "selectedIconPath": "images/tabbar-order1.jpg"
+      },
+      {
+        "pagePath": "pages/myshop/my/index",
+        "text": "我的",
+        "iconPath": "images/tabbar-my.jpg",
+        "selectedIconPath": "images/tabbar-my1.jpg"
+      }
+    ]
+  },
+  "debug": false,
+  "navigateToMiniProgramAppIdList": [
+    "wxd25131b98741c7cb",
+    "wx6de5e3a338bc09e5",
+    "wx429f42a870cd65c0"
+  ]
+}

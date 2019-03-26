@@ -1,0 +1,11 @@
+<view class="index_all_box">
+	<view class="up_t cenFlex">
+		<view class="up_t_in">
+			<image src="/images/up_ico1.png"></image>
+		</view>	
+	</view>
+	<view class="cenFlex up_m">是否使用微信{{regFlag==1?'授权':'登录'}}拼团趣?</view>
+	<view class="cenFlex up_b">
+		<button class="cenFlex" open-type="getUserInfo" bindgetuserinfo="userDataBtn">{{regFlag==1?'授权':'登录'}}</button>
+	</view>
+</view>

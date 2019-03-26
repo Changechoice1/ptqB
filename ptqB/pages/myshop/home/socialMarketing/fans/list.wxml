@@ -1,0 +1,85 @@
+<!--pages/myshop/expand/fans/list.wxml-->
+<compage id="compage">
+<view class="container {{noList ? 'no' : 'yes'}}">
+  <view class='header flex-between b-b'>
+    <view class="header_l {{selectedTab == 0 ? 'active' : ''}}" data-index='0' bindtap='selectTab'>客户</view>
+    <view class="header_r {{selectedTab == 1 ? 'active' : ''}}" data-index='1' bindtap='selectTab'>微信粉丝</view>
+  </view>
+  <view class="cont}}">
+    <!-- 无数据 -->
+    <view wx:if='{{noList}}' class='no_list'>
+      <view class='tip_img flex-x-center'>
+        <image src='{{noListInfo[selectedTab].img}}'></image>
+      </view>
+      <view class='tip_txt'>{{noListInfo[selectedTab].txt}}</view>
+    </view>
+    <!-- 有数据 -->
+    <view wx:if='{{!noList}}'>
+      <view class='cont_title b-b flex-between'>
+        <view>
+          {{selectedTab == 0 ? '客户' : '粉丝'}}数量：{{nums}}
+          <view wx:if='{{selectedTab == 1}}' class='followed_fans_nums inline-block'>（关注公众号数量：{{followedNums}}）</view>
+        </view>
+        <view class='cont_title_btn' bindtap='groupMsg' wx:if="{{is_account == 0}}">群发消息</view>
+      </view>
+      <!-- 客户 -->
+      <view wx:if='{{selectedTab == 0}}' class='cus_list'>
+        <view wx:for='{{list}}' wx:key='{{index}}' class='cus_list_item' data-id='{{item.user_id}}' data-index='{{index}}' bindtap='detail'>
+          <view class='cus_item_t b-b flex-between'>
+            <view class='cus_item_info flex-between'>
+              <view class='cus_item_info_logo'>
+                <image src='{{item.wx_img}}'></image>
+              </view>
+              <view class='cus_item_info_name'>{{item.wx_name}}</view>
+            </view>
+            <view class='cus_item_opt flex-center' data-id='{{item.user_id}}' data-index='{{index}}'>
+              <view class='cus_item_opt_txt'>详情</view>
+              <view class='cus_item_opt_icon'>
+                <image src='/images/go.png'></image>
+                <!-- <icon class=''></icon> -->
+              </view>
+            </view>
+          </view>
+          <view class='cus_item_b flex-between'>
+            <view>
+              <view class='cus_item_msg_lab'>最近下单时间</view>
+              <view class='cus_item_msg_val'>{{item.recent_time}}
+                <text class="{{item.type == 0 ? 'gj' : item.type == 2 ? 'kj' : ''}}">{{item.type == 0 ? '(刮奖)' : item.type == 2 ? '(砍价)' : ''}}</text>
+              </view>
+            </view>
+            <view>
+              <view class='cus_item_msg_lab'>参与活动次数</view>
+              <view class='cus_item_msg_val'>{{item.take_part_times}}</view>
+            </view>
+            <view>
+              <view class='cus_item_msg_lab'>累计消费金额</view>
+              <view class='cus_item_msg_val'>{{item.total_fee}}</view>
+            </view>
+          </view>
+        </view>
+      </view>
+
+      <!-- 微信粉丝 -->
+      <view wx:if='{{selectedTab == 1}}' class='fans_list'>
+        <view class='list_header b-b flex-between'>
+          <view class='list_c1 txt-center color-mg'>昵称</view>
+          <view class='list_c2 txt-center color-mg'>关注店铺时间</view>
+          <view class='list_c3 txt-center color-mg'>是否关注公众号</view>
+        </view>
+        <view wx:for='{{list}}' wx:key='{{index}}' class='fans_list_item b-b flex-between'>
+          <view class='fans_item_info flex list_c1'>   
+            <view class='fans_item_info_logo'>
+              <image src='{{item.wx_img}}'></image>
+            </view>
+            <view class='fans_item_info_name'>{{item.wx_name}}</view>
+          </view>
+          <view class='fans_item_follow_time txt-center list_c2'>{{item.attention_time}}</view>
+          <view class="fans_item_is_followed_wechat txt-center list_c3 {{item.is_attention_str == '是' ? 'no_followed' : ''}}">{{item.is_attention_str}}</view>
+        </view>
+      </view>
+    </view>
+  </view>
+</view>
+
+<diyMoadel id='diyMoadel' title='{{tip.title}}' content='{{tip.content}}' cancelText='{{tip.cancelText}}' confirmText='{{tip.confirmText}}' txtAlign='{{tip.txtAlign}}' titleHide='{{tip.titleHide}}' onceConfirm='{{tip.onceConfirm}}' bind:confirmEvent='closeTip'></diyMoadel>
+</compage>

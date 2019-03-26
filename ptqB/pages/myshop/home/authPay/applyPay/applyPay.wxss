@@ -1,0 +1,92 @@
+/* pages/myshop/applyPay/applyPay.wxss */
+.payInfo{
+  padding: 60rpx 30rpx 45rpx;
+  background-color: #fff;
+}
+.payInfo_sum{
+  color: #e60012;
+  font-size: 36rpx;
+}
+.payInfo_remark{
+  margin-top: 20rpx;
+  color: #666;
+  font-size: 28rpx;
+}
+
+.payment{
+  margin-top: 15rpx;
+  padding: 50rpx 30rpx;
+  background-color: #fff;
+}
+.payment_title{
+  color: #666;
+  font-size: 28rpx;
+}
+.payment_sel{
+  margin-top: 50rpx;
+}
+.payment_sel_lab{
+  display: flex;
+}
+.payment_sel_lab_icon{
+  width: 60rpx;
+  height: 60rpx;
+}
+.payment_sel_lab_icon > image{
+  width: 100%;
+  height: 100%;
+}
+.payment_sel_lab_text{
+  margin-left: 30rpx;
+  height: 60rpx;
+  line-height: 60rpx;
+  font-size: 30rpx;
+}
+.payment_sel_lab_text1 > view{
+  line-height: 1;
+}
+.payment_sel_lab_text_tip{
+  margin-top: 14rpx;
+  color: #e60012;
+  font-size: 22rpx;
+}
+.payment_sel_lab_text_disabled{
+  color: #999;
+}
+.payment_sel_btn, .agree_btn{
+  width: 40rpx;
+  min-width: 40rpx;
+  height: 40rpx;
+}
+.payment_sel_btn > image, .agree_btn > image{
+  width: 100%;
+  height: 100%;
+}
+
+.agree{
+  display: flex;
+  padding: 40rpx 30rpx;
+}
+.agree_text{
+  margin-left: 20rpx;
+  color: #666;
+  font-size: 28rpx;
+}
+
+
+.submit{
+  margin-top: 70rpx;
+}
+.submit_btn{
+  background-color: #ccc;
+  border-radius: 20rpx;
+  width: 480rpx;
+  height: 92rpx;
+  line-height: 92rpx;
+  text-align: center;
+  color: #fff;
+  font-size: 32rpx;
+}
+.canSubmit{
+  background-color: #e60012;
+}

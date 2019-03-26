@@ -1,0 +1,45 @@
+/* pages/myshop/myBalance/redetail/redetail.wxss */
+.redetail_block{
+    background: #fff;
+    border-bottom: 2rpx solid #eee;
+    padding: 20rpx 30rpx;
+}
+.redetail_block:last-child{
+    border-bottom: none;
+}
+.redetail_con1{
+    margin-top: 20rpx;
+}
+.redetail_con2{
+    margin-top: 15rpx;
+}
+.redetail_con3{
+    margin-top: 20rpx;
+}
+.redetail_b_inner{
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+}
+.redetail_btn{
+    display: flex;
+    align-items: center;
+    justify-content: flex-end;
+    padding: 30rpx;
+}
+.redetail_btn_inner{
+    width: 160rpx;
+    height: 56rpx;
+    line-height: 56rpx;
+    text-align: center;
+    background: #e60012;
+    color: #fff;
+    border-radius: 10rpx;
+}
+
+.plus{
+  color: #3cb500;
+}
+.minus{
+  color: #333;
+}

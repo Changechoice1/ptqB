@@ -1,0 +1,54 @@
+<import src="/template/template.wxml" />
+<compage id="compage">
+  <view class="index_all_box">
+      <view class='active_choose_con'>
+          <view class='active_choose'>
+              <view class='active_c_1'>
+                  <view class='active_c1_inner active_c1_inner1' bindtap='showHide'>
+                      {{statusList[status].name}}
+                      <view class='active_c1_icon cenFlex'>
+                          <image src='{{imgUrl}}right_icon.png'></image>
+                      </view>
+                  </view>
+              </view>
+              <view class='active_c_2'>
+                  数量：{{num}}
+              </view>
+          </view>
+      </view>
+      <view class='active_mask' wx:if='{{showStatusList}}' bindtap='showHide'></view>
+      <view class='active_c_dropdown' wx:if='{{showStatusList}}'>
+          <view class='active_cd_block' wx:for='{{statusList}}' wx:key='{{index}}' data-index='{{index}}' bindtap="typeChecked">
+              <text class="{{status == index ? 'active_status' : ''}}">{{item.name}}</text>
+              <view class="active_cd_okBtn cenFlex">
+                  <image src="{{imgUrl}}near3_ico4.png" wx:if="{{status == index}}"></image>
+              </view>
+          </view>
+      </view>
+
+      <view wx:if="{{!noList}}" class='list'>
+          <view class="item" wx:for='{{list}}' wx:key="{{index}}" data-id="{{item.id}}">
+              <navigator wx:if="{{!showStatusList}}" class="mini_program" target="miniProgram" open-type="navigate" app-id="wxd25131b98741c7cb" path="/pages/goodsInfo/goodsBargain/bargainDetail/bargainDetail?bargain_id={{item.id}}&goods_id={{item.goods_id}}" />
+              <view class="base_info flex-between">
+                <view class="user_info flex">
+                  <image class="user_logo" src="{{item.wx_img}}"></image>
+                  <view class="user_name">{{item.wx_name}}</view>
+                </view>
+                <view class="act_status">
+                    {{item.bar_status_str}}
+                    <view class="pay_type">{{item.success_pay_type}}</view>
+                </view>
+              </view>
+              <view class="bargin_info">
+                  <view class="flex">
+                    <view>砍价至：{{item.now_amount}}元</view>
+                    <view class="participants_num">已砍价：{{item.now_num}}人</view>
+                  </view>
+                  <view class="start_time">开始时间：{{item.create_time}}</view>
+                  <view class="customer_tel">联系方式：{{item.telephone}}</view>
+              </view>
+          </view>
+      </view>
+      <template is="nullData" data="{{noListData}}" wx:if="{{noList}}"/>
+  </view>
+</compage>

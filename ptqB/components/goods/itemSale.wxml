@@ -1,0 +1,24 @@
+<!--component/goods/itemSale.wxml-->
+   <view bindtap='gotop' data-value="{{data}}" class='home_act_item'>
+      <view class='home_act_item_img border' style='background-image: url({{data.goods_img}})'>
+         <view class='home_yhlx {{data.is_group==3?"people":""}}'>
+            <text>{{data.is_group == 1 ? '拼团立减' : data.is_group == 3 ? '多人拼团' : data.is_group == 4 ? '限时专享' : '未知类型'}}</text>
+         </view>
+          <view class="not_inv" wx:if="{{data.inventory==0}}">
+                <image src="/images/in3_ico30.png"></image>
+        </view>
+        <view class="not_inv" wx:if="{{data.end_time<=0}}">
+                <image src="/images/in3_ico31.png"></image>
+        </view>
+      </view>
+      <view class='h3 clamp1'>{{data.goods_name}}</view>
+      <view class='weui-flex'>
+         <view class='weui-flex__item h_yh_txt'>
+            优惠价：￥{{data.bottom_price}}
+            <text>原价：{{data.goods_price}}</text>
+         </view>
+         <view class="{{data.inventory>0?'home_btn_a':'home_btn_a1'}}" >
+            <button class="weui-btn  mini-btn" type="primary" size="mini">{{data.type_a}}</button>
+         </view>
+      </view>
+   </view>

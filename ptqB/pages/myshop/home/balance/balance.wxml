@@ -1,0 +1,48 @@
+<compage id='compage'>
+    <view class="index_all_box">
+        <view class="mb_t_out" bindtap="detailBtn">
+            <view class="mb_t">
+                <view class="mb_t_l">我的钱包</view>
+                <view class="mb_t_r cenFlex">
+                    <view class="mb_t_r_txt">余额明细</view>
+                    <view class="mb_t_r_img">
+                        <image src="{{imgUrl}}gy_ico.png"></image>
+                    </view>
+                </view>
+            </view>
+        </view>
+        <view class="myBlalance_box">
+            <view class="myBlalance_box_in">
+                <view class="myBlalance_box_in1" style="margin-left: -{{5*24}}rpx">
+                    <text>可提现金额</text>￥{{balanceData.wallet}}</view>
+                <view class="myBlalance_box_in2" wx:if="{{balanceData.identity==2}}" bindtap='detailBtn' data-index="1">冻结款项：￥{{balanceData.freeze_wallet || '0.00'}}</view>
+            </view>
+        </view>
+        <view class="balance_bottom_box" wx:if="{{balanceData.identity==2}}">
+            <view class="balance_bottom_box_in balance_bottom_box_in2" bindtap='detailBtn' data-index="1">
+                <view class="balance_bottom_box_in_t">待发货</view>
+                <view class="balance_bottom_box_in_b">￥{{balanceData.take_wallet || '0.00'}}</view>
+            </view>
+            <view class="balance_bottom_box_in balance_bottom_box_in3" bindtap='detailBtn' data-index="1">
+                <view class="balance_bottom_box_in_t">待使用</view>
+                <view class="balance_bottom_box_in_b">￥{{balanceData.use_wallet || '0.00'}}</view>
+            </view>
+        </view>
+        <view class="money_box_my">
+            <view class="my_sm_box" bindtap="paySec" wx:if="{{balanceData.identity==2}}">
+                <view class="my_icoBox">
+                    <text>安全密码</text>
+                </view>
+                <view class="my_moreBox">
+                    <image src="{{imgUrl}}gy_ico.png"></image>
+                </view>
+            </view>
+        </view>
+        <view class="withdraw_deposit_box">
+            <view class="withdraw_deposit_btn" bindtap="withDBtn">提现</view>
+        </view>
+    </view>
+
+  <diyModal id='diyModal' titleHide='{{tipShowTitle}}' title='{{tipTitle}}' onceConfirm='{{tipHideCancel}}' content='{{tipContent}}' bind:cancelEvent='{{tipFail}}' bind:confirmEvent='{{tipSuccess}}' confirmText='{{tipConfirmText}}'></diyModal>
+
+</compage>

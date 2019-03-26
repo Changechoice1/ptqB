@@ -1,0 +1,204 @@
+
+.money_box_my{
+	/* border-top: 20rpx #f5f5f5 solid; */
+  margin-top: 20rpx;
+	background-color: #fff;
+}
+.money_box_my .my_sm_box{
+	border-bottom: 1px #f5f5ff solid;
+	/* width: 93%; */
+	/* margin-left: 5%; */
+	height: 90rpx;
+	display: flex;
+	justify-content: space-between;
+	align-items: center;
+	line-height: 90rpx;
+    padding: 0 30rpx;
+
+}
+.my_sm_box .my_icoBox{
+	display: flex;
+	justify-content: center;
+	align-items: center;
+}
+.my_sm_box .my_icoBox image{
+	width: 35rpx;
+	height: 35rpx;
+	margin-right: 20rpx;
+	vertical-align: middle;
+}
+.my_sm_box .my_icoBox text{
+	font-size: 26rpx;
+	color: #333;
+}
+.my_moreBox{
+	position: relative;
+	display: flex;
+	align-items: center;
+	width: 30rpx;
+	height: 30rpx;
+}
+.my_moreBox .more_num{
+	color: #b5b5b5;
+	font-size: 40rpx;
+	margin-right: 10rpx;
+}
+.red_radus{
+	display: block;
+	width: 15rpx;
+	height: 15rpx;
+	background-color: red;
+	border-radius: 50%; 
+}
+.my_moreBox image{
+	
+	vertical-align: middle;
+}
+.identTapBox_my{
+	width: 80%;
+	height: 70%;
+	background: #ffffff;
+	border-radius: 20rpx;
+	position: fixed;
+	box-shadow: 0rpx 0rpx 25rpx #999;
+	border: 1px black solid;
+	top: 20%;
+	left: 10%;
+}
+.iden_body_box{
+	background: #ffffff;
+	padding: 0rpx 25rpx;
+	margin-top: 20rpx;
+}
+.iden_body_box .iden_in_box{
+	border-bottom: solid 1px #f2f2f2;
+	height: 130rpx;
+	display: flex;
+	justify-content: space-between;
+	align-items: center;
+	font-size: 26rpx;
+	color: #333;
+}
+.iden_body_box .iden_in_box .iden_imgBox_in{
+	width: 40rpx;
+	height: 40rpx;
+}
+.iden_body_box .iden_in_box .iden_imgBox_in image{
+	width:100%;
+	height: 100%;
+	vertical-align: middle;
+}
+.identBox_btn{
+	width: 100%;
+	height: 130rpx;
+	display: flex;
+	justify-content: center;
+	align-items: center;
+	margin-top: 10rpx;
+}
+.identBox_btn view{
+	width: 300rpx;
+	height: 80rpx;
+	border-radius: 10rpx;
+	text-align: center;
+	line-height: 80rpx;
+	color: #ffffff;
+}
+.btn_success{
+	background: #05c2ac;
+}
+.btn_orange{
+	background: #f39800;
+}
+
+.myBlalance_box{
+	padding: 20rpx;
+	background: #fff;
+	display: flex;
+	justify-content: center;
+	position: relative;
+}
+.myBlalance_box_in{
+	margin-top: 60rpx;
+	text-align: center;
+	line-height: 50rpx;
+}
+.myBlalance_box_in1{
+	color:#e60012;
+  font-size: 72rpx;
+	font-weight: 600;
+}
+.myBlalance_box_in1 > text {
+    margin-right: 10rpx;
+    font-size: 28rpx;
+}
+.myBlalance_box_in2{
+	margin-top: 28rpx;
+	color:#999;
+  font-size: 28rpx;
+}
+.balance_bottom_box{
+	display: flex;
+	justify-content: space-around;
+	align-items: center;
+	background: #fff;
+	padding: 10rpx 0rpx;
+	margin-top: 2rpx;
+	height: 80rpx;
+}
+.balance_bottom_box_in{
+	height: 80%;
+	border-left: 2rpx #f5f5f5 solid;
+	width: 100%;
+	display: flex;
+	justify-content: center;
+	align-items: center;
+	flex-wrap: wrap;
+	color: #000;
+}
+.balance_bottom_box_in1{
+	border-left: 0rpx #f5f5f5 solid;
+}
+.balance_bottom_box_in_t{
+	text-align: center;
+}
+.balance_bottom_box_in_b{
+	text-align: center;
+	margin-left: 40rpx;
+}
+.mb_t_out{
+	padding: 0rpx 30rpx;
+	background: #fff;
+	border-bottom: 2rpx #f0f0f0 solid;
+}
+.mb_t{
+	padding: 20rpx 0rpx;
+	padding-top: 40rpx;
+	display: flex;
+	justify-content: space-between;
+	align-items: center;
+}
+.mb_t_r{
+	color: #999;
+}
+.mb_t_r_img{
+  margin-left: 5rpx;
+	width: 30rpx;
+	height: 30rpx;
+	min-width: 30rpx;
+}
+
+/* 提现 */
+.withdraw_deposit_box{
+  margin-top: 100rpx;
+  padding: 0 30rpx;
+}
+.withdraw_deposit_btn{
+  height: 90rpx;
+  line-height: 90rpx;
+  border-radius: 20rpx;
+  background-color: #e60012;
+  text-align: center;
+  color: #fff;
+  font-size: 36rpx;
+}

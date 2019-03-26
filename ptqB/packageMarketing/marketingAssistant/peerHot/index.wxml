@@ -1,0 +1,26 @@
+<!--packageMarketing/peerHot/index.wxml-->
+<import src="/template/template.wxml" />
+<compage id="compage">
+<view bindtouchstart="touchStart" bindtouchmove="touchMove" bindtouchend="touchEnd" style="height:100%">
+<view class="tabs">
+  <view class="item-tab {{index==0?'active':''}}" data-index="0" data-month="{{month}}" bindtap='choiceMonth'>{{month}}月活动</view>
+  <view class="item-tab {{index==1?'active':''}}" data-index="1" data-month="{{nextMonth}}" bindtap='choiceMonth'>{{nextMonth}}月活动</view>
+  <view class="item-tab {{index==2?'active':''}}" data-index="2" data-month="{{nextMonth2}}" bindtap='choiceMonth'>{{nextMonth2}}月活动</view>
+</view>
+<view class="industry">{{category_pname}}行业</view>
+<view style="padding:30rpx" wx:if="{{hotList.length>0}}">
+ <view class="custom-list" >
+    <block wx:for="{{hotList}}" wx:key="index">
+      <template is="industry-custom-list1" data="{{item}}"></template>
+    </block>
+  </view>
+  </view>
+  <view class="null_data" wx:if="{{hotList.length<=0}}">
+  <view class="null_img">
+    <image src="{{nullData.nullImg}}"></image>
+  </view>
+  <view class="no_activi">{{nullData.noActiviti}}</view>
+</view>
+</view>
+</compage>
+

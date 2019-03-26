@@ -1,0 +1,19 @@
+@import '../detail/detail.wxss';
+
+.buy_one {
+    padding: 30rpx;
+    color: #333;
+    background: #fff;
+    border-bottom: 2rpx solid #eee;
+}
+
+.exc_li_block_1 {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+}
+
+.exc_li_icon {
+    width: 43rpx;
+    height: 43rpx;
+}

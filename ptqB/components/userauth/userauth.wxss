@@ -1,0 +1,21 @@
+/* component/userauth/userauth.wxss */
+@import "../../css/weui.wxss";
+.icon-pq-ggrz:before { content: "\e6eb"; }
+.icon-pq-dprz:before { content: "\e6f7"; }
+.renzheng{
+   font-size: 12px;
+   color: #666;
+}
+.rz{
+   color: #ffa625;
+}
+.renzheng image{
+   width: 30rpx;
+   height: 30rpx;
+   margin-right: 6rpx;
+   vertical-align: middle;
+}
+.renzheng text{
+   vertical-align:middle;
+   font-size: 12px;
+}

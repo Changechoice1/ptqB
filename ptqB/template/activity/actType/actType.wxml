@@ -1,0 +1,5 @@
+<template name="actType">
+    <view class="act-type-box flex-y-center {{is_group == 1 ? 'ptlj-box' : is_group == 3 ? 'drpt-box' : is_group == 4 ? 'xszx-box' : is_group == 5 ? 'gjmd-box':is_group == 6 ? 'kj-box' : ''}}">
+        <view class="act-type-inbox {{is_group == 1 ? 'ptlj-inbox' : is_group == 3 ? 'drpt-inbox' : is_group == 4 ? 'xszx-inbox' : is_group == 5 ? 'gjmd-inbox':is_group == 6 ? 'kj-inbox' : ''}}">{{is_group == 1 ? '拼团立减' : is_group == 3 ? '多人拼团' : is_group == 4 ? '限时专享' : is_group == 5 ? '刮奖免单':is_group == 6 ? '砍价' : '未知类型'}}</view>
+    </view>
+</template>

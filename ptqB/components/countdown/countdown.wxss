@@ -1,0 +1,14 @@
+/* component/countdown/countdown.wxss */
+@import "../../css/weui.wxss";
+
+.good_avt_time{
+   line-height: 2;
+   color: #ffffff;
+}
+.good_avt_time text{
+   border-radius: 6rpx;
+   background-color: #ffffff;
+   color: #ff0000;
+   padding:6rpx 10rpx;
+   margin: 0 6rpx;
+}

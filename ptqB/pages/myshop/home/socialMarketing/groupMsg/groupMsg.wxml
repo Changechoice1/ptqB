@@ -1,0 +1,197 @@
+<import src="/template/template.wxml" />
+<import src="/template/activity/actType/actType.wxml" />
+
+<diyMoadel id='diyMoadel' content="{{modelData.con || ''}}" titleHide="{{modelData.titleHide}}" onceConfirm="{{modelData.onceConfirm}}" bind:cancelEvent="{{modelData.cancelEvent || 'hideDialog'}}" bind:confirmEvent="{{modelData.confirmEvent  || 'hideDialog'}}" zstype="{{modelData.zstype || '1'}}" showList="{{modelData.bindArr}}" txtAlign="{{modelData.txtAlign}}" nodesStr="{{modelData.nodesStr}}" redTxt="{{modelData.redTxt || ''}}" confirmText="{{modelData.confirmText}}">
+</diyMoadel>
+<!-- 短信预览的盒子 -->
+<view class='wx_dialog_container' hidden="{{!isMessShow}}">
+    <view class='wx-mask' catchtap="hideDialog"></view>
+    <view class='wx-dialog' >
+        <view class='wx-dialog-title cenFlex' style="color:#333;">短信预览</view>
+        <!-- 正常的文字展示 -->
+        <view class='wx-dialog-content' style="padding: 30rpx;background: #f7f7f7;">
+            <view class="mess_con">
+                <view class="mess_con_img">
+                    <image src="/images/bus3_ico21.png"></image>
+                </view>
+                <view class="mess_con_txt" style="background: #fff;">
+                    <text wx:if="{{messAdd[0]}}">【{{storeName}}】</text>{{areaTxt}}
+                    <text wx:if="{{messAdd[1]}}">点击<text style="color:#1795ff">{{storeUrl}}#</text>查看</text>
+                </view>
+            </view>
+        </view>
+        <view class="wx-dialog-footer" catchtap='hideDialog'>
+            <view class="wx_dialog_once">确定</view>
+        </view>
+    </view>
+</view>
+<view class="index_all_box">
+    <view class="scroll_tip">
+      <!-- <scroll-view class="scroll_tip_inner" scroll-x bindscroll="scrollTip" bindscrolltolower="scrollTipEnd" scroll-left="{{scrollLeft}}">
+         <view  class="scroll_tip_cont">{{swiperTip}}<view></view></view>
+      </scroll-view> -->
+      <view class="scroll_tip_inner">
+         <view class="scroll_tip_cont" style="left: {{-scrollLeft}}rpx">{{swiperTip}}</view>
+      </view>
+    </view>
+    <view class="top_header" wx:if='{{ is_authentication == 0}}'>
+        <view class="top_header_l" wx:if="{{due_time>0 }}">(20天免费试用时间)</view>
+        <view class="top_header_l" wx:if="{{due_time<=0}}">试用期已过，请去实名认证</view>
+        <view class="top_header_r" wx:if="{{due_time<=0}}" bindtap="navAut">去认证</view>
+    </view>
+    <view class="gm_t {{is_authentication == 0 ? 'gm_t_no_auth' : ''}} cenFlex">
+        <view class="gm_t_in {{changeQfArr[0]?'gm_t_in_r':''}} cenFlex" data-index="0" bindtap="changeQf" style="margin-right: 120rpx;">
+            客户群发
+            <view class="wh" catchtap="binInfoBtn" data-index="0">?</view>
+        </view>
+        <view class="gm_t_in {{changeQfArr[1]?'gm_t_in_r':''}} cenFlex" data-index="1" bindtap="changeQf">
+            粉丝群发
+            <view class="wh" catchtap="binInfoBtn" data-index="1">?</view>
+        </view>
+    </view>
+    <!-- 粉丝群发的盒子 -->
+    <view class="fans_box" wx:if="{{changeQfArr[1]}}" style="padding-top: 298rpx;">
+        <!-- 联盟的切换 -->
+        <view class="gm_tab sbFlex">
+            <view class="gm_tab_l cenFlex">
+                <view class="gm_tab_btn  {{chosenNav==0?'gm_tab_btn_r':''}}" bindtap='dpNav'>店铺活动</view>
+                <view class="gm_tab_btn {{chosenNav==1?'gm_tab_btn_r':''}}" bindtap='lmNav'>联盟活动</view>
+            </view>
+            <view class="gm_tab_r cenFlex" style="font-size: 26rpx;">可发送粉丝总数：{{fansNum}}</view>
+        </view>
+        <!-- 本店商品切换的盒子 -->
+        <template is="nullData1" data="{{...nullData}}" wx:if='{{chosenNav==0 && goods_list.length == 0}}' />
+        <template is="nullData1" data="{{...nullData1}}" wx:if='{{chosenNav==1 && data_list.length == 0}}' />
+        <view class='active_block' wx:if='{{chosenNav==0 && goods_list.length > 0}}' wx:for='{{goods_list}}' wx:key="{{index}}" bindtap='shareGoods' data-index='{{ index }}' data-id="{{item.goods_id}}">
+            <view class='active_choose'>
+                <view class="active_choose_in">
+                    <view class="radio_img_out">
+                        <view class='radio_img_none' wx:for-item="it" wx:key="{{index}}"></view>
+                        <view class="red_font" style="opacity: 0">1</view>
+                    </view>
+                    <view class="radio_img_out">
+                        <view class='radio_img cenFlex' wx:for-item="it" wx:if='{{it == item.goods_id}}' wx:for="{{sortNumArr}}" wx:key="{{index}}">
+                            <image src='{{imgUrl}}ab_ico1.png'></image>
+                        </view>
+                        <!-- <view class="red_font" wx:for-item="it" wx:if='{{it == item.goods_id}}' wx:for="{{sortNumArr}}" wx:key="{{index}}">{{index+1}}</view> -->
+                    </view>
+                </view>
+            </view>
+            <view class='active_img cenFlex'>
+              <view class="not_inventory" wx:if="{{item.inventory == 0}}">
+                  <image src="/images/in3_ico30.png"></image>
+              </view>
+                <image mode="aspectFill" src='{{item.goods_img}}'></image>
+            </view>
+            <view class='active_content'>
+                <view class="active_content_t">
+                    <template is="actType" data="{{...item}}"></template>
+                    <view class="active_content_gn onFontNow">{{item.goods_name}}</view>
+                </view>
+                <view class='active_price'>优惠价：<view class="onFontNow" style="max-width: 200rpx;">¥{{item.bottom_price}}</view></view>
+            </view>
+        </view>
+        <view class='active_block_2' wx:if='{{chosenNav==1 && data_list.length > 0}}' wx:for='{{data_list}}' wx:key="{{index}}">
+            <view class='active_b2_t'>
+                <view class='active_b2_head cenFlex'>
+                    <image mode="aspectFill" src='{{item.store_logo}}'></image>
+                </view>
+                <view class='active_b2_name'>
+                    {{item.store_name}}
+                </view>
+            </view>
+            <view class='active_block' wx:for='{{item.goods_list}}' wx:key='{{ index }}' bindtap='shareGoods' data-index='{{ index }}' data-id="{{item.goods_id}}">
+                <view class='active_choose'>
+                    <view class="active_choose_in">
+                        <view class="radio_img_out">
+                            <view class='radio_img_none' wx:for-item="it" wx:key="{{index}}"></view>
+                            <view class="red_font" style="opacity: 0">1</view>
+                        </view>
+                        <view class="radio_img_out">
+                            <view class='radio_img cenFlex' wx:for-item="it" wx:if='{{it == item.goods_id}}' wx:for="{{sortNumArr}}" wx:key="{{index}}">
+                                <image src='{{imgUrl}}ab_ico1.png'></image>
+                            </view>
+                            <!-- <view class="red_font" wx:for-item="it" wx:if='{{it == item.goods_id}}' wx:for="{{sortNumArr}}" wx:key="{{index}}">{{index+1}}</view> -->
+                        </view>
+                    </view>
+                </view>
+                <view class='active_img cenFlex'>
+                    <image mode="aspectFill" src='{{item.goods_img}}'></image>
+                </view>
+                <view class='active_content'>
+                    <view class="active_content_t">
+                        <template is="actType" data="{{...item}}"></template>
+                        <view class="active_content_gn onFontNow">{{item.goods_name}}</view>
+                    </view>
+                    <view class='active_price'>优惠价：<view class="onFontNow" style="max-width: 200rpx;">¥{{item.bottom_price}}</view></view>
+                </view>
+            </view>
+        </view>
+    </view>
+    <!-- 客户的盒子 -->
+    <view class="fans_box" wx:if="{{changeQfArr[0]}}" style="padding-top: 198rpx;">
+        <view class="kh_t">
+            <view class="kh_t_area">
+                <view class="kh_t_area_t" wx:if="{{messAdd[0]}}">
+                    【{{storeName || '加载中...'}}】
+                </view>
+                <textarea wx:if="{{areaFlag}}" placeholder="请您输入短信发送内容" bindinput="areaInput" value="{{areaTxt}}" maxlength="{{allTxtNum-(messAdd[1]?storeUrl.length+4:0)}}"></textarea>
+                <view class="kh_t_area_b sbFlex">
+                    <view class="kh_t_area_b_l">
+                        <text wx:if="{{messAdd[1]}}">点击{{storeUrl || '加载中...'}}查看</text>
+                    </view>
+                    <view class="kh_t_area_b_r" style="color:{{areaTxtNum>allTxtNum?'#e80012':'#999'}}">{{areaTxtNum}}/{{allTxtNum}}</view>
+                </view>
+            </view>
+            <view class="kh_t_chare sbFlex">
+<!--                 <view class="kh_t_chare_l cenFlex" data-index="0" bindtap="messChareBtn">
+                    <view class="active_choose_in cenFlex">
+                        <view class='radio_img cenFlex' wx:if='{{messAdd[0]}}'>
+                            <image src='{{imgUrl}}ab_ico1.png'></image>
+                        </view>
+                        <view class='radio_img_none' wx:if='{{!messAdd[0]}}'></view>
+                    </view>
+                    <view class="kh_t_chare_txt">短信附加店铺名称</view>
+                </view> -->
+                <view class="kh_t_chare_r cenFlex" data-index="1" bindtap="messChareBtn">
+                    <view class="active_choose_in cenFlex">
+                        <view class='radio_img cenFlex' wx:if='{{messAdd[1]}}'>
+                            <image src='{{imgUrl}}ab_ico1.png'></image>
+                        </view>
+                        <view class='radio_img_none' wx:if='{{!messAdd[1]}}'></view>
+                    </view>
+                    <view class="kh_t_chare_txt">短信附加店铺网址</view>
+                </view>
+            </view>
+        </view>
+        <view class="kh_m_txt cenFlex">
+            <view>本次发送有{{messgObj.customer_qty || messgObj.customer_qty==0?messgObj.customer_qty:'加载中...'}}名客户收到</view>
+        </view>
+        <view class="kh_m_btn cenFlex kh_m_btn_g" style="background:{{areaTxt.length>0 && messgObj.customer_qty>0?'#e80012':'#ccc'}}" bindtap="{{areaTxt.length>0 && messgObj.customer_qty>0?'upMessBtnPd':''}}">
+            短信群发
+        </view>
+        <view class="kh_m_btn cenFlex kh_m_btn_r" bindtap="showMessBtn">
+            短信预览
+        </view>
+    </view>
+    <!-- 底部的粉丝发送布局 -->
+    <view class="gm_bottom sbFlex" wx:if="{{changeQfArr[1]}}">
+        <view class="gm_bottom_l">
+            <view class="gm_bottom_l_in">今日剩余群发次数：<text style="color:#e80012">{{qfNum}}</text>
+            </view>
+            <view class="gm_bottom_l_in">本次可发送1个活动<view style="color:#999;">（已选择<text style="color:#e80012">{{sortNumArr.length}}</text>个活动）</view>
+            </view>
+        </view>
+        <view class="gm_bottom_r cenFlex" data-index="{{index}}" style="background: #{{sortNumArr.length>0 && qfNum>0?'e80012':'ccc'}}" data-id="{{1}}" catchtap="{{sortNumArr.length>0 && qfNum>0&&clickF?'confirmBtn':''}}">微信群发</view>
+    </view>
+    <!-- 底部的客户发送布局 -->
+    <view class="gm_bottom sbFlex" wx:if="{{changeQfArr[0]}}">
+        <view class="gm_bottom_l">
+            <view class="gm_bottom_l_in">可用短信数量：<text style="color:#e80012">{{messgObj.usable_qty || messgObj.usable_qty==0?messgObj.usable_qty:'加载中...'}}</text>
+            </view>
+            <view class="gm_bottom_l_in">本次使用数量：<text style="color:#e80012">{{messgObj.customer_qty || messgObj.customer_qty==0?messgObj.customer_qty:'加载中...'}}</text>
+            </view>
+        </view>
+        <view class="gm_bottom_r cenFlex" catchtap="messRecharge">短信充值</view>
+    </view>
+</view>

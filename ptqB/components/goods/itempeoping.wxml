@@ -1,0 +1,21 @@
+<!--component/goods/itempeoping.wxml-->
+<view class='ptmore'>
+   <view class="weui-cell weui-cell_access" wx:for="{{list}}" wx:for-item="people" wx:key="index">
+      <view class="weui-cell__hd">
+         <image src="{{people.wx_img}}" alt="" class="avatar" style="margin-right:5px;"></image>
+      </view>
+      <view class="weui-cell__bd weui-cell_primary">
+         <view style="text-align: left;">{{people.wx_name}}</view>
+      </view>
+      <view class="weui-flex">
+         <view class="weui-flex__people">
+            <view class="p_num">还差
+               <text>{{people.lack_num}}</text>人拼成</view>
+            <view class="p_time" wx:if="{{people.time}}">剩余{{people.time.d}}天{{people.time.h}}小时{{people.time.m}}分{{people.time.s}}秒</view>
+         </view>
+         <view class="gop">
+            <view bindtap="onlyMFShow" data-people='{{people}}' class="weui-btn weui-btn_mini weui-btn_warn">去拼单</view>
+         </view>
+      </view>
+   </view>
+</view>

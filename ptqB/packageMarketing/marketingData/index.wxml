@@ -1,0 +1,131 @@
+<!--packageMarketing/marketingData/index.wxml-->
+<import src="/template/marketing/marketing.wxml" />
+<compage id="compage">
+  <view class="container" style="{{showCanvas?'height:100%;overflow:hidden':''}}">
+    <!-- 顶部雷达图  start -->
+    <view class="top">
+      <view class="top-t"></view>
+      <view class="top-c {{storeInfo.level == 0?'back3':storeInfo.level==1?'back2':storeInfo.level==2?'back1':''}}">
+        <view class="u-info">
+          <view class="info-t">
+            <view class="wx_img">
+              <image src="{{storeInfo.store_logo}}"></image>
+            </view>
+            <view class="wx_name">{{storeInfo.store_name}}</view>
+          </view>
+          <view class="info-b">上周获得荣誉称号</view>
+        </view>
+      </view>
+    </view>
+		<view style="{{showCanvas || showModals?'position:relative;left:1000px':''}}">
+			<vwx-canvas canvasId='radar' id='radar' centerTxt="{{centerTxt}}" ></vwx-canvas>
+		</view>
+    <view class="share-content">
+      <view class="share-l">
+        <view class="s-l-t">经过上周的努力您的综合评分为：
+          <text class="b-r">{{radarData.week_score}}</text>
+        </view>
+        <view class="s-l-b">您已超过
+          <text class="b-r">{{radarData.week_rate}}</text>的同行！为自己鼓个掌吧！</view>
+      </view>
+      <view class="share-r" bindtap="showShare">
+        <icon class="icon-pq-share"></icon>
+        <view class="share-txt">炫耀一下</view>
+      </view>
+    </view>
+    <view class="promote" bindtap='goPage' data-upage="/packageMarketing/marketingData/impMarketingAbility/index">如何才能提升营销能力值?</view>
+    <!-- 顶部雷达图  end -->
+    <!-- 客户来源 start-->
+    <view class="origin">
+      <view class="title">近7天客户来源</view>
+      <view class="origin-center">
+        <view class="o-l">
+					<view class="ringImg" wx:if="{{noData}}">
+						<image src="/images/ringImg.png"></image>
+						<view class="noText">暂无数据</view>
+					</view>
+          <vwx-canvas canvasId='ring' id='ring' wx:else style="{{showCanvas || showModals?'position:relative;left:1000px':''}}"></vwx-canvas>
+        </view>
+        <view class="o-r-c">
+          <view class="o-r" wx:for="{{activitiData}}" wx:key="index">
+            <view class="a-name">
+              <text class="dot-n-b" style="background-color:{{item.color}}"></text>{{item.name}}</view>
+            <view class="a-scan">
+              <text class="a-b">{{item.num}}</text>人浏览</view>
+          </view>
+        </view>
+      </view>
+      <view class="btn-list">
+        <view class="btn-item" wx:for="{{btnList}}" wx:key="index">{{item.text1}}
+          <text class="red">{{item.num}}</text>{{item.text2}}</view>
+      </view>
+      <view class="o-hint">*实时数据统计周期：近7天</view>
+    </view>
+    <!-- 客户来源 end-->
+    <!-- 人气聚焦  start -->
+    <view class="popular-focus" wx:if="{{popularFocus.id}}">
+      <view class="p-title">近30天人气聚焦</view>
+      <view class="p-c">
+        <template is="marketingGoods" data="{{popularFocus}}"></template>
+        <view class="p-b">
+          <view class="p-b-c">
+            <view class="reward-l">
+              <image mode="aspectFill" src="http://ptq.oss-cn-hangzhou.aliyuncs.com/ptq/wxxcx/marketData1.png"></image>
+            </view>
+            <view class="reward-r">
+              <view class="reward-t">太厉害了!</view>
+              <view class="reward-b">本次活动共吸引
+                <text class="red">{{popularFocus.browse_count}}</text>人浏览，
+                <text class="red">{{popularFocus.order_count}}</text>人下单</view>
+              <view class="reward-bb">聚客效果超越了
+                <text class="red">{{popularFocus.more_peer}}％</text>的同行</view>
+            </view>
+          </view>
+        </view>
+      </view>
+      <view class="p-check" bindtap='goPage' data-upage="/packageMarketing/marketingData/marketingList/marketingList?id={{storeId}}">查看其它活动数据</view>
+    </view>
+    <!-- 人气聚焦  end -->
+    <!-- 营销秘籍  start -->
+    <view class="marketing-secrets">
+      <view class="marketing-t">
+        <view class="m-t">营销秘籍</view>
+        <view class="m-b">看看还有什么还未使用的营销利器</view>
+      </view>
+      <view class="card-list">
+        <view class="card-item" wx:for="{{marketingList}}" wx:key="index" data-type="{{item.type}}" bindtap="goCard">
+          <view class="c-t">
+            <view class="c-t-l">
+							<view class="c-t-l-inner"  data-value="{{item.rate}}">{{item.activity_scale}}</view>
+							<view class="l-box-content" style="width:40rpx;height:80rpx;overflow:hidden;">
+								<view class="l-box" animation="{{item.animation.anim1}}"></view>
+							</view>
+							<view class="r-box-content" style="width:40rpx;height:80rpx;overflow:hidden">
+								<view class="r-box" animation="{{item.animation.anim2}}"></view>
+							</view>
+						</view>
+            <view class="c-t-r">
+              <view class="c-r-t">{{item.activity_sec}}</view>
+              <view class="c-r-b">
+                <view class="c-content">{{item.txt}}</view>
+                <view class="{{item.is_use==1?'use':'nouse'}}">{{item.is_use==1?'已使用':'去使用'}}</view>
+              </view>
+            </view>
+          </view>
+          <view class="c-b">{{item.activity_scale}}的同行在使用{{item.activity_sec}}活动</view>
+        </view>
+				<view style="height:130rpx;"></view>
+      </view>
+    </view>
+    <!-- 营销秘籍  end -->
+
+    <!-- 蒙版 -->
+    <view class="mengban" bindtap="cancel" wx:if="{{showCanvas}}"></view>
+    <view class='canvas' style="{{showCanvas?'left:50%':'left:10000%'}}">
+      <canvas canvas-id="canvasContent" bindtouchstart="canvasTouchStart" bindtouchend="canvasTouchEnd" class='canvasBtn' style="width:{{canvasW}}px;height:{{canvasH}}px;overflow:hidden;"></canvas>
+      <view wx:if="{{showCanvas}}" class='saveImgBtn' bindtap="hideAllBtn">
+        <view class='saveImgBtn_in' catchtap='saveImgBtn'>保存到相册</view>
+      </view>
+    </view>
+  </view>
+</compage>

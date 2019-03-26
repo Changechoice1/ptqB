@@ -1,0 +1,30 @@
+<!-- 添加员工 -->
+<import src="/template/template.wxml" />
+<view class="index_all_box">
+    <view class='divide'>
+        添加员工
+    </view>
+    <view class='add_main'>
+        <view class='add_inner'>
+            <template is="nullData" data="{{nullData}}" wx:if="{{staffData.length == 0}}" />
+            <view class='add_block' wx:if="{{staffData.length > 0}}" wx:for='{{staffData}}' wx:key='{{index}}' data-index='{{index}}' data-id='{{item.id}}'>
+                <view class='add_info'>
+                    <view class='add_img cenFlex'>
+                        <image src='{{item.wx_img}}'></image>
+                    </view>
+                    <view class='add_name'>
+                        <view class='add_name_1'>
+                            {{item.wx_name}}
+                        </view>
+                        <view class='add_name_2'>
+                            <text>员工姓名：</text>{{item.remark}}
+                        </view>
+                    </view>
+                </view>
+                <view class='add_status' data-id="{{item.account_id}}" bindtap="{{item.is_staff == 0 ?'staffJoinBtn':''}}" style='background: #{{item.is_staff == 0 ? "e60012" : "cccccc"}}'>
+                    {{item.is_staff == 0 ? "添加" : "已添加"}}
+                </view>
+            </view>
+        </view>
+    </view>
+</view>

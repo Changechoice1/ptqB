@@ -1,0 +1,6 @@
+{
+  "component": true,
+  "usingComponents":{
+   "vwx-modal": "/components/modal/modal"
+  }
+}

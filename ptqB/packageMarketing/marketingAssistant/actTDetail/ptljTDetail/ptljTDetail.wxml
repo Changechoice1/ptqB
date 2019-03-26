@@ -1,0 +1,99 @@
+<import src="/template/activity/actType/actType.wxml" />
+<compage id="compage">
+  <view>
+    <!-- 拼团立减活动页面 -->
+    <view class='group_page'>
+      <!-- 拼团立减头部信息 -->
+      <view class='group_top'>
+        <view class='headerImgBox '>
+          <!--活动图片轮播图  -->
+          <swiper class='activity_img' indicator-dots indicator-active-color="#e60012" autoplay circular indicator-color="rgba(255, 255, 255, 1)">
+            <swiper-item wx:for="{{goods_info.goods_slide}}" wx:key="{{index}}">
+              <image mode="aspectFill" src='{{item}}' style='width:100%'></image>
+            </swiper-item>
+          </swiper>
+          <!-- 轮播图上的图片(分享图片以及活动状态) -->
+          <view class="headerImgBox_share cenFlex">
+            <image src="/images/in3_ico32.png"></image>
+          </view>
+
+          <!-- 返回个人中心 -->
+          <view class="go_per_c flex-center" bindtap="goPersonalCenter">
+            <icon class="icon-pq-personal"></icon>
+            个人中心
+          </view>
+        </view>
+        <!--活动的基本信息  -->
+        <view class='group_title'>
+          <view class='group_title_price'>
+            <template is="actType" data="{{is_group}}"></template>
+            <text class='g_price'>￥{{pay_info.pay_fee}}</text>
+            <text class='r_price'>原价：￥{{goods_info.goods_price}}</text>
+          </view>
+          <view class='zx_card'>
+            <text class='zx_card_txt'>{{goods_info.goods_name}}</text>
+          </view>
+          <view class="group_title_yxd">
+            <view class="group_title_yxd_in">
+              <text>限购：{{goods_info.restriction==0?'不限':goods_info.restriction+'件'}}</text>
+            </view>
+            <view class="group_title_yxd_in">
+              <text>已下单999件</text>
+            </view>
+            <view class="group_title_yxd_in1" style="color:#999">
+              <text>仅剩{{goods_info.inventory}}件</text>
+            </view>
+          </view>
+          <!--几人团  -->
+          <view class="gd_few cenFlex">
+            <view class="gd_few_in {{group_info.group.length==2?'groupMenMr':''}}" wx:for="{{group_info.group}}" wx:key="{{index}}">
+              <view class="gd_few_in_img cenFlex">
+                <view class="gd_few_in_img_in">
+                  <image mode="aspectFill" src="{{item.wx_img}}"></image>
+                </view>
+              </view>
+              <view class="gd_few_in_t {{item.is_vain==1?'gd_few_in_t_hide':''}} cenFlex">
+                {{item.group_type}}
+              </view>
+              <view class="gd_few_in_b {{item.is_vain==1?'gd_few_in_b_hide':''}} cenFlex">
+                ¥{{item.group_price}}
+              </view>
+            </view>
+          </view>
+          <!--取货方式  -->
+          <vwx-good-express genre="{{goods_info.genre}}" starttime="{{store_info.start_time}}" endtime="{{store_info.end_time}}"></vwx-good-express>
+
+        </view>
+        <!--拼团立减玩法详情  -->
+        <view class='activity_flow'>
+          <view class='activity_flow_title'>
+            <view class='activity_flow_title_le'>
+              <text>拼团立减玩法</text>
+            </view>
+            <view class='activity_flow_title_r'>
+              <text>玩法详情</text>
+              <icon class='icon-pq-rightarr'></icon>
+            </view>
+          </view>
+          <!--活动流程  -->
+          <view class="gd_play_w cenFlex">
+            <view class="gd_play_w_in cenFlex" wx:for="{{groupPlay}}" wx:key="{{index}}">
+              <view class="gd_play_w_in_t cenFlex">
+                <image src="{{imgUrl}}{{item.img}}"></image>
+              </view>
+              <view class="gd_play_w_in_b cenFlex">{{item.name}}</view>
+            </view>
+          </view>
+        </view>
+      </view>
+      <vwx-shop-item data="{{store_info}}"></vwx-shop-item>
+      <!--更多活动详情  -->
+      <vwx-good-more info="{{goods_info}}" comments="{{evaluate_list}}"></vwx-good-more>
+      <!--页面复制添加bar  -->
+      <view class="shopBarPage">
+        <view>已有{{applyNum}}位同行使用</view>
+        <vwx-button type='s' text="复制并使用该方案" bindtap='copyAdd'></vwx-button>
+      </view>
+    </view>
+  </view>
+</compage>

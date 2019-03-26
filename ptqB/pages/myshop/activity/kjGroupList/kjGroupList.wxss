@@ -1,0 +1,64 @@
+@import '../drptGroupList/drptGroupList.wxss';
+@import '/template/template.wxss';
+
+page{
+  font-size: 28rpx;
+}
+.list{
+  background-color: #f0f0f0;
+}
+.item{
+  position: relative;
+  margin-bottom: 16rpx;
+  padding: 24rpx 30rpx;
+  background-color: #fff;
+}
+.base_info{}
+.user_info{
+  height: 68rpx;
+  line-height: 68rpx;
+}
+.user_logo{
+  width: 68rpx;
+  height: 68rpx;
+  border-radius: 50%;
+  overflow: hidden;
+}
+.user_name{
+  margin-left: 18rpx;
+  font-size: 26rpx;
+  font-weight: 500;
+}
+.act_status{
+  position: relative;
+  padding: 0 10rpx;
+  font-size: 28rpx;
+  color: #e60012;
+  font-weight: 500;
+}
+.pay_type{
+  position: absolute;
+  bottom: -30rpx;
+  left: 0;
+  width: 100%;
+  font-size: 22rpx;
+  color: #666;
+  text-align: center;
+
+}
+.bargin_info{
+  margin-top: 30rpx;
+  line-height: 1;
+  font-size: 24rpx;
+  color: #666;
+  font-weight: 500;
+}
+.participants_num{
+  margin-left: 63rpx;
+}
+.start_time, .customer_tel{
+  margin-top: 19rpx;
+}
+.opt_box{
+  padding: 15rpx 0;
+}

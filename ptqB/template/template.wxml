@@ -1,0 +1,137 @@
+<!-- 拼团趣3.0 -->
+<template name="indexAll">
+    <view class="nowDay_box" data-id="{{item.goods_id}}" data-type="{{item.is_group}}" bindtap="navStore">
+        <view class="nowDay_box_t" style="background: url({{item.goods_img}}) no-repeat;background-size: 100% 100%;">
+            <view class="nowDay_box_t_title cenFlex" style="background: #{{item.is_group==1?'ff4949':item.is_group==3?'ff5581':item.is_group==4?'ffa625':'fff'}}">{{item.is_group==1?'拼团立减':item.is_group==3?'多人拼团':item.is_group==4?'限时专享':'未知类型'}}</view>
+        </view>
+        <view class="nowDay_box_txt">
+            {{item.goods_name}}
+        </view>
+        <view class="nowDay_box_btn">
+            <view class="nowDay_box_btn_l cenFlex">
+                <view class="nowDay_box_btn_l_in1">优惠价:¥20.80</view>
+                <view class="nowDay_box_btn_l_in2">原价:¥156.00</view>
+            </view>
+            <view class="nowDay_box_btn_r cenFlex">
+                <view class="nowDay_box_btn_r_in1">立即抢购</view>
+                <view class="nowDay_box_btn_r_in2 cenFlex">
+                    <image src="/images/index3_ico6.png"></image>
+                </view>
+            </view>
+        </view>
+    </view>
+</template>
+<!-- 首页拼团立减的样式 -->
+<template name="indexAll2">
+    <view class="groupGoods_box">
+        <view class="groupGoods_box_t cenFlex">
+            <image src="{{item.goods_img}}"></image>
+        </view>
+        <view class="groupGoods_box_txt onFontNow">{{item.goods_name}}</view>
+        <view class="groupGoods_box_price">
+            <view class="groupGoods_box_price_l">
+                ¥46.00
+            </view>
+            <view class="groupGoods_box_price_r">
+                6545人下单
+            </view>
+        </view>
+    </view>
+</template>
+
+<!-- 六位密码模版 -->
+<template name="passBox">
+    <view class="payPass_box1" wx:if="{{passObj.allinputF1}}">
+        <view class="qiueBtn" bindtap="hideBox">关闭</view>
+        <view class="payPass_box_t">请输入您的支付密码</view>
+        <view class="payPass_box_m">
+            <view class="payPass_box_m_in" bindtap="focusInput">
+                <view class="payPass_box_m_in_in" wx:for="{{6}}" wx:key="{{index}}">
+                    <input data-index="{{index}}" bindinput="allInputBtn" type="number" confirm-hold="{{true}}" value="{{passObj.inputArr[index]}}" disabled="{{true}}" maxlength="1" password="{{true}}"/>
+                </view>
+            </view>
+            <view class="indexTopInput">
+                <input value="{{passObj.inputStr}}" focus="{{passObj.allinputF1}}" maxlength="6" type="number" bindinput="passInput"/>
+            </view>
+        </view>
+    </view>
+</template>
+<!-- 下方的加在更多模板 -->
+<template name="moreData">
+    <view class="bottomtx" wx:if="{{(dataBottom.flage || dataBottom.list.length<8) && dataBottom.frist && dataBottom.list[0]}}">已经没有更多了~</view>
+    <view class="bottomtx" wx:if="{{!dataBottom.flage && dataBottom.list.length>=8 && dataBottom.frist && dataBottom.list[0]}}"><image src="https://www.pintuanqu.cn/Public/WeChatApps/images/onBloading.png"></image>正在加载,请稍候！</view>
+</template>
+<!-- 订单按钮模板 -->
+<template name="orderShareBtn">
+    <view class="del_btn_box1"  data-id="{{item.goods_id}}" data-type="{{item.is_group}}" data-index="{{item.group_id}}" bindtap="goodsNav">分享</view>
+    <view class="del_btn_box1" bindtap="goodsIdBtn" data-id="{{item.order_id}}" data-type="{{item.type}}">订单详情</view>
+</template>
+<!-- 如果为空出现的 -->
+<template name="nullData">
+    <view class="nD_i">
+        <view class="nD_i_in cenFlex">
+            <view class="nD_i_in_t">
+                <view class="nD_i_in_t_img cenFlex">
+                    <image src="{{nullData.img || noAuth.img || noListData.img}}"></image>
+                </view>
+                <view class="nD_i_in_t_txt cenFlex">{{nullData.txt || noAuth.txt || noListData.txt}}</view>
+            </view>
+        </view>
+    </view>
+</template>
+<template name="nullData1">
+    <view class="nD_i">
+        <view class="nD_i_in cenFlex">
+            <view class="nD_i_in_t">
+                <view class="nD_i_in_t_img cenFlex" style="width: {{w || 300}}rpx;height: {{h || 300}}rpx;margin-top:{{t || 0}}rpx;">
+                    <image src="{{img}}"></image>
+                </view>
+                <view class="nD_i_in_t_txt cenFlex" style="margin-top:{{tt || 0}}rpx;">{{txt}}</view>
+            </view>
+        </view>
+    </view>
+</template>
+<!-- 提示的模板 -->
+<template name="noTModale">
+    <view class="noMMb" wx:if="{{notMData.show}}" bindtap="modelHide"></view>
+    <view class="noM" wx:if="{{notMData.show}}">
+        <view class="noM_t cenFlex">
+            <view class="noM_t_in">{{notMData.txt}}</view>
+        </view>
+        <view class="noM_b">
+            <view class="noM_b_in cenFlex" bindtap="{{notMData.cancel}}">取消</view>
+            <view class="noM_b_in noM_b_in_red cenFlex" data-allData="{{notMData.data || 0}}" bindtap="{{notMData.ok}}">确定</view>
+        </view>
+    </view>
+</template>
+
+<!-- 行业定制列表 -->
+<template name="industry-custom-list1">
+      <view class="item-custom" data-item="{{item}}" data-id="{{item.goods_id}}" data-type="{{item.is_group}}" bindtap='goTDetail'>
+        <view class="item-img">
+          <image src="{{item.goods_img}}" mode="aspectFill"></image>
+          <view class="imgSelfS flex-c" style="background-color:#{{item.is_group==3?'FF5581':item.is_group==1?'FF4949':item.is_group==4?'ffa625':item.is_group==6?'E971D7':''}}">{{item.is_group==3?'多人拼团':item.is_group==1?'拼团立减':item.is_group==4?'限时专享':item.is_group==6?'砍价':''}}</view>
+        <view class="item-use-b"></view>
+        <view class="item-use">已有{{item.same_kind_count}}个同行使用</view>
+        </view>
+        <view class="item-custom-name">
+          <view class="des">{{item.goods_des}}</view>
+        </view>
+      </view>
+</template>
+<!-- 行业定制列表 -->
+<!-- 行业热门营销方案列表 -->
+<template name="industry-hot-list1">
+    <view class="item-custom" data-item="{{item}}" data-id="{{item.goods_id}}" data-type="{{item.is_group}}" bindtap='goTDetail'>
+      <view class="item-img">
+        <image src="{{item.goods_img}}" mode="aspectFill"></image>
+        <view class="imgSelfS flex-c" style="background-color:#{{item.is_group==3?'FF5581':item.is_group==1?'FF4949':item.is_group==4?'ffa625':item.is_group==6?'E971D7':''}}">{{item.is_group==3?'多人拼团':item.is_group==1?'拼团立减':item.is_group==4?'限时专享':item.is_group==6?'砍价':''}}</view>
+       <view class="item-use-b"></view>
+      <view class="item-use">已有{{item.same_kind_count}}个同行使用</view>
+      </view>
+      <view class="item-custom-name item-hot-name">
+        <view class="des">{{item.goods_des}}</view>
+      </view>
+    </view>
+</template>
+<!-- 行业热门营销方案列表 -->

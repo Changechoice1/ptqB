@@ -1,0 +1,40 @@
+.act-type-box{
+  box-sizing: border-box;
+  width: 120rpx;
+  height: 44rpx;
+  line-height: 44rpx;
+  border-top: 2rpx dashed #eee;
+  border-right: 2rpx solid #eee;
+  border-bottom: 2rpx dashed #eee;
+  border-left: 2rpx solid #eee;
+  border-radius: 4rpx;
+}
+.act-type-inbox{
+  width: 100%;
+  height: 28rpx;
+  line-height: 28rpx;
+  background-color: #eee;
+  font-size: 20rpx;
+  color: #fff;
+  text-align: center;
+}
+
+/* 拼团立减 */
+.ptlj-box{ border-color: #FF4949 }
+.ptlj-inbox{ background-color: #FF4949 }
+
+/* 多人拼团 */
+.drpt-box{ border-color: #FF5581 }
+.drpt-inbox{ background-color: #FF5581 }
+
+/* 限时专享 */
+.xszx-box{ border-color: #FFA625 }
+.xszx-inbox{ background-color: #FFA625 }
+
+/* 刮奖免单 */
+.gjmd-box{ border-color: #eee }
+.gjmd-inbox{ background-color: #eee }
+
+/* 砍价 */
+.kj-box{ border-color: #E971D7 }
+.kj-inbox{ background-color: #E971D7 }

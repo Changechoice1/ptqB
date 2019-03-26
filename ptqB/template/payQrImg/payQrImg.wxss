@@ -1,0 +1,94 @@
+.img-box{
+  margin: 0 auto;
+  background-color: #fff;
+  border-radius: 20rpx;
+  width: 620rpx;
+  overflow: hidden;
+}
+
+/* 一、banner */
+.img-banner{
+  padding: 20rpx 0;
+  background: linear-gradient(#FF1426, #FE1B50);
+  line-height: 1;
+  text-align: center;
+}
+.img-banner-inbox{
+  padding: 0 100rpx;
+}
+.img-banner-logo{
+  padding: 0 100rpx;
+  color: #fff;
+  text-align: center;
+}
+.img-banner-info{
+  width: 200rpx;
+}
+.img-banner-info-logo{
+  margin: 0 auto;
+  background-color: rgba(255, 255, 255, .6);
+  border-radius: 50%;
+  overflow: hidden;
+  width: 66rpx;
+  height: 66rpx;
+}
+.img-banner-info-logo > image{
+  border-radius: 50%;
+  overflow: hidden;
+  width: 60rpx;
+  height: 60rpx;
+}
+.img-banner-info-name{
+  margin-top: 14rpx;
+  color: #fff;
+  font-size: 24rpx;
+}
+.img-banner-ico{
+  height: 66rpx;
+  line-height: 66rpx;
+  font-size: 55rpx;
+  font-weight: 300;
+  color: #fff;
+}
+.img-banner-title{
+  margin-top: 28rpx;
+  font-size: 32rpx;
+  color: #FFD450;
+}
+
+/* 二、content */
+.img-content{
+  padding: 50rpx 0;
+  border-bottom: 2rpx solid #eee;
+  text-align: center;
+}
+.img-content-qr{
+  margin: 20rpx auto;
+  width: 274rpx;
+  height: 274rpx;
+}
+.img-content-title{
+  margin-top: 30rpx;
+  font-size: 32rpx;
+  color: #222;
+  font-weight: 500;
+}
+
+/* 三、footer */
+.img-footer{
+  padding: 40rpx;
+}
+.img-footer-title{
+  line-height: 1;
+  font-size: 30rpx;
+  text-align: center;
+  font-weight: 600;
+}
+.img-footer-content{
+  margin-top: 25rpx;
+  font-size: 24rpx;
+  color: #666;
+}
+.img-footer-btn{
+  margin-top: 30rpx;
+}

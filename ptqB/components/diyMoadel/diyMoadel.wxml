@@ -1,0 +1,37 @@
+<!--components/diyMoadel.wxml-->
+<view class='wx_dialog_container' wx:if="{{isShow}}" style="font-size: 32rpx;">
+    <view class='wx-mask' catchtap="{{onceConfirm?'_confirmEvent':'_cancelEvent'}}"></view>
+    <view class='wx-dialog'>
+        <view class='wx-dialog-title cenFlex' wx:if="{{titleHide}}" style="color:{{titleColor}}">{{ title }}</view>
+        <!-- 正常的文字展示 -->
+        <!-- 富文本+按钮展示 -->
+        <view class="wx-dialog-content" style="text-align: {{txtAlign || 'center'}}">
+            <view wx:if="{{content && zstype == 1}}" style="width: 100%;font-size: 32rpx;">
+                <text style="color:#e80012" wx:if="{{redTxt}}}">{{redTxt}}</text>
+                <text wx:if="{{content}}">{{ content }}</text>
+            </view>
+            <!-- 规则列表展示 -->
+            <view class="wx-dialog-bin" wx:if="{{zstype == 2}}" wx:for="{{showList}}" wx:key="{{index}}" style="text-align: {{txtAlign || 'center'}}">
+                <view class="wx-dialog-bin-title" wx:if="item.title">{{item.title}}</view>
+                <view class="wx-dialog-bin-con">
+                    <text>{{item.content}}</text>
+                </view>
+            </view>
+            <!-- 富文本展示 -->
+            <rich-text style='width: 100%;' nodes="{{nodesStr}}" wx:if="{{nodesStr}}"></rich-text>
+            <!-- 按钮 -->
+            <view class="wx_dialog_content_btn" wx:if="{{btnArr[0].txt}}">
+                <view class="wx_dialog_content_btn_in cenFlex {{item.fill?'wx_dialog_content_btn_in_r':''}}" wx:if="{{btnArr[0]}}" wx:for="{{btnArr}}" wx:key="{{index}}" bindtap="navOtherBtn" data-btn="{{item.btn}}">
+                    {{item.txt}}
+                </view>
+            </view>
+        </view>
+        <view class='wx-dialog-footer' wx:if="{{!onceConfirm && zstype!=4}}">
+            <view class='wx-dialog-btn' catchtap='_cancelEvent'>{{ cancelText }}</view>
+            <view class='wx-dialog-btn' catchtap='_confirmEvent'>{{ confirmText || '确定'}}</view>
+        </view>
+        <view class="wx-dialog-footer" wx:if="{{onceConfirm && zstype!=4}}" catchtap='_confirmEvent'>
+            <view class="wx_dialog_once">{{ confirmText || '我知道了'}}</view>
+        </view>
+    </view>
+</view>

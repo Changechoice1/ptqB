@@ -1,0 +1,48 @@
+page {
+    width: 100%;
+    height: 100%;
+    background: #fff;
+    overflow: hidden;
+}
+
+.index_all_box {
+    width: 100%;
+    height: 100%;
+    padding: 50rpx 0;
+}
+
+.auth_text_h {
+    height: 105rpx;
+    width: 100%;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    font-size: 1.2em;
+    color: #000;
+}
+
+.auth_text_body {
+    padding: 35rpx;
+    color: #000;
+    line-height: 40rpx;
+    margin-bottom: 120rpx;
+}
+
+.auth_text_body_t {
+    color: #999;
+    margin-left: -5rpx;
+}
+
+.auth_text_body_b {
+    margin-bottom: 50rpx;
+    margin-top: 20rpx;
+}
+
+.okNext {
+    border-radius: 16rpx;
+}
+
+.okNext_bTxt {
+    margin-top: 40rpx;
+    font-size: 1em;
+}

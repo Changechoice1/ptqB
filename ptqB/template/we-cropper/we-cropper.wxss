@@ -1,0 +1,68 @@
+.cropper-wrapper{
+    position: relative;
+    display: flex;
+    flex-direction: row;
+    justify-content: space-between;
+    align-items: center;
+    justify-content: center;
+    height: 100%;
+    background-color: #e5e5e5;
+}
+
+.cropper-buttons{
+    display: flex;
+    flex-direction: row;
+    justify-content: space-between;
+    align-items: center;
+    justify-content: center;
+    position: absolute;
+    bottom: 0;
+    left: 0;
+    width: 100%;
+}
+
+.cropper-buttons .upload, .cropper-buttons .getCropperImage{
+    width: 50%;
+    text-align: center;
+}
+
+.cropper{
+    position: absolute;
+    top: 0;
+    left: 0;
+}
+
+.crop-opt{
+  display: flex;
+  justify-content: space-between;
+  align-items: flex-end;
+  box-sizing: border-box;
+  position: fixed;
+  left: 0;
+  bottom: 0;
+  padding: 40rpx;
+  width: 100%;
+}
+.crop-opt-cancel{
+  width: 36rpx;
+  height: 36rpx;
+}
+.crop-opt-rate{
+  text-align: center;
+}
+.crop-opt-rate-box{
+  margin: 0 auto;
+  border: 2rpx solid #FF2828;
+  width: 51rpx;
+  height: 34rpx;
+}
+.crop-opt-rate-txt{
+  margin-top: 12rpx;
+  line-height: 1;
+  color: #fff;
+  font-size: 22rpx;
+}
+.crop-opt-save{
+  width: 48rpx;
+  height: 32rpx;
+}

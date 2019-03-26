@@ -1,0 +1,53 @@
+<!--component/evaluationList/evaluationList.wxml-->
+  <view class="evaluationList_com">
+      <!-- 有评价 -->
+      <view class="eval_li" wx:for="{{eval_list}}" wx:key="{{index}}" data-index="{{index}}" wx:if="{{eval_list.length!=0}}">
+          <!--评价信息  -->
+          <view class="user_info" >
+              <view class='user_info_img'>
+                  <image mode="aspectFill" src='{{item.wx_img}}'></image>
+              </view>
+              <view class='user_info_name'>
+                  <text class='user_info_name_txt'>{{item.wx_name}}</text>
+                  <view class='user_info_score '>
+                  <view class="user_info_score_in cenFlex ">
+                      <view class="user_info_score_num  " wx:for="{{5}}" wx:key="{{index}}" wx:for-item="startItem">
+                      <image src="{{ index< item.score ? '../../images/rate_yellow.png' : '../../images/rate_grey.png' }}"></image>
+                      </view>
+                  </view>
+                  <view class='user_info_time'>
+                       {{item.add_time}}
+                  </view>
+              </view>
+              </view>
+          </view>
+          <!--评论内容  -->
+          <view class='user_evalCon'>
+              <view class='user_evalCont'>
+                  {{item.content}}
+              </view>
+              <!--查看评论图片  -->
+              <view class='user_evalImg'  wx:if="{{item.img_array.length!=0}}">
+                  <view class='user_evalImg_in' wx:for="{{item.img_array}}" wx:key="{{index}}" data-imgUrl="{{item}}" bindtap="seeImgBtn">
+                        <image mode="aspectFill" src="{{item}}"></image>
+                  </view>
+              </view>
+              <!--商家回复  -->
+               <view class="user_eval_store" wx:if="{{item.is_reply==1}}">
+                    <view class="user_eval_store_in">
+                        商家回复:<text style="color:#999;">{{item.reply_content}}</text>
+                    </view>
+                </view>
+          </view>
+      </view>
+      <!--无评价  -->
+      <view class="eval_li_not "  wx:key="{{index}}" wx:if="{{eval_list.length==0}}">
+          <view class="notEva_img cenFlex">
+              <image src="../../images/n3_ico5.png"></image> 
+              
+          </view>
+          <view class="notEva_not">该商品暂无评价</view>
+          
+      </view>
+</view>
+     

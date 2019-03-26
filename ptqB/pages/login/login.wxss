@@ -1,0 +1,34 @@
+.verification_box{
+	width: 80%;
+	height: 400rpx;
+	margin: 20rpx auto;
+}
+.verification_box .verification_in_box{
+	display: flex;
+	width: 100%;
+	height: 70rpx;
+	border-bottom: 4rpx #777 solid;
+	font-size: 28rpx;
+	line-height: 70rpx;
+	align-items: center;
+	margin-top: 40rpx;
+}
+.verification_box .verification_in_box .verification_in_box_l{
+	width: 150rpx;
+	height: 100%;
+	padding-left: 10rpx;
+}
+.verification_in_box .verification_in_box_r{
+	width: 200rpx;
+}
+.success_over_box{
+	color: #fff;
+	width: 100%;
+	height: 80rpx;
+	border-radius:40rpx;
+	background: #ffc600;
+	display: flex;
+	justify-content: center;
+	align-items: center;
+	margin-top: 52rpx;
+}

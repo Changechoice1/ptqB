@@ -1,0 +1,105 @@
+/* packageMarketing/marketingList/marketingDetail/marketingDetail.wxss */
+
+@import '/template/payQrImg/payQrImg.wxss';
+@import '/template/marketing/marketing.wxss';
+@import '../../../../pages/myshop/home/marketingPromotion/publishGjmd/qrImgCanvas.wxss';
+
+.goPageList{
+   background: #ffffff;
+   margin-top: 16rpx;
+   width: 100%; 
+}
+.goPageList .textBox{
+   box-sizing: border-box;
+   padding: 30rpx;
+   width: 100%;
+   
+}
+.goPageList .textBox .text{
+   /* margin: 30rpx; */
+   padding: 28rpx;
+   box-sizing: border-box;
+   width: 100%;
+   background: #FEFAF2;
+   font-size: 24rpx;
+}
+.listTitle{
+   box-sizing: border-box;
+   padding: 20rpx 32rpx;
+}
+.listTitle view{
+   font-size: 28rpx;
+   display: inline-block;
+}
+.listTitle text{
+   color: #999999;
+   font-size: 20rpx;
+   display: inline-block;
+   margin-left: 26rpx;
+   vertical-align: baseline;
+}
+.goPageItem{
+   border-top: 2rpx solid #EEEEEE;
+   display: flex;
+   justify-content: space-between;
+   align-items: center;
+   padding: 20rpx 30rpx;
+}
+.item_l{
+   display: flex;
+}
+.itemLogoBox{
+   width: 72rpx;
+   height: 72rpx;
+   border-radius: 36rpx;
+   background: #F0F0F0;
+
+}
+.itemLogoBox image{
+   width: 100%;
+   height: 100%;
+}
+.itemContent{
+   margin-left: 16rpx;
+   display: flex;
+   flex-direction: column;
+   justify-content: space-between;
+}
+.itemTitle{
+   font-size: 24rpx;
+   line-height: 1.5;
+}
+.itemText{
+   font-size: 20rpx;
+   line-height: 1.5;
+   color: #999999;
+
+}
+.item_r{
+   max-width: 200rpx;
+   align-self:flex-end;
+}
+.item_r .button {
+    padding: 14rpx 0;
+    border: 2rpx solid #E7383D;
+    color: #E7383D;
+    border-radius: 10rpx;
+    width: 150rpx;
+    line-height: 1;
+    text-align: center;
+    position: relative;
+}
+.item_r .button .mini_program {
+   position:absolute;
+   z-index:10;
+   top:0;
+   left:0;
+   width:100%;
+   height:100%;
+   background-color:rgba(255, 255, 255, 0);
+}
+
+.item_r .itemLink{
+   font-size: 24rpx;
+   color: #999999;
+}

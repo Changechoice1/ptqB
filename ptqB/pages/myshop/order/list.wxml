@@ -1,0 +1,85 @@
+<import src="/template/template.wxml" />
+<import src="/template/activity/actType/actType.wxml" />
+
+<compage id="compage">
+  <!-- 活动类型选择 -->
+  <scroll-view scroll-x class="all_headerBox" scroll-left="{{titleBoxL}}">
+      <view class="allOrderBtn cenFlex" wx:for="{{orTabArr}}" wx:key="{{index}}" data-index="{{index}}" bindtap="ordBtn">
+          <view class="cenFlex">
+              <view class="all_headerBox_in cenFlex" style="{{thatIndex == index ? 'color:#e60012;border-color:#e60012' : ''}}">{{item}}</view>
+          </view>
+      </view>
+  </scroll-view>
+  <!-- 查询条件 -->
+  <view class="search_box sbFlex">
+    <view wx:if="{{noSearchCriteria}}" class="search_btn" bindtap="popDatePicker">搜索下单时间</view>
+    <view wx:if="{{!noSearchCriteria}}" class="search_txt">
+      <view class="search_txt_title">起止时间：</view>
+      <view class="search_txt_value" bindtap="popDatePicker">{{startDate}} 到 {{endDate}}</view>
+      <view wx:if="{{!noSearchCriteria}}" class="search_txt_btn cenFlex" bindtap="clearSearch">
+        <image src="{{imgUrl}}with3_ico3.png"></image>
+      </view>
+    </view>
+    <view class="order_nums">数量：{{orderNum}}</view>
+  </view>
+  <view class="index_all_box">
+      <template is="nullData" data="{{nullData}}" wx:if='{{order_list.length == 0}}' />
+      <!-- 商家页面商品详情 -->
+      <view class="or_gd" wx:for='{{order_list.length > 0}}' wx:for='{{order_list}}' wx:key='{{index}}' data-index='{{index}}' data-id='{{item.id}}' bindtap="toOrderDetail">
+          <view class="or_gd_l">
+              <image mode="aspectFill" src="{{item.goods_img}}"></image>
+          </view>
+          <view class="or_gd_r">
+              <view class="or_gd_r_t flex" style="max-width: 430rpx;">
+                  <template is="actType" data="{{...item}}"></template>
+                  <text>{{item.goods_name}}</text>
+              </view>
+              <view class="or_gd_r_m">下单时间：{{item.add_time}}</view>
+              <view class="or_gd_r_m">数量：{{item.nums}}</view>
+              <view class="or_gd_r_b">
+                  <view class="or_gd_r_b_l">总价：￥{{item.pay_fee}}</view>
+                  <view class="or_gd_r_b_r">{{item.status_str}}</view>
+
+              </view>
+          </view>
+      </view>
+  </view>
+  <!-- 选择搜索下单日期 -->
+  <view  catchtouchmove="preventTouchMove" class='mask' wx:if='{{showDatePicker}}' bindtap='closeDatePicker'></view>
+  <view class='choose_oc_time' wx:if='{{showDatePicker}}'>
+      <view class='choose_oc_inner'>
+          <view class='choose_oc_h'>
+              选择开始时间
+          </view>
+          <picker-view indicator-style="height: 50rpx;" value="{{startDateArr}}" bindchange="selectStartDate">
+              <picker-view-column>
+                  <view wx:for="{{years}}" wx:key='{{index}}' class='choose_oc_line'>{{item}}年</view>
+              </picker-view-column>
+              <picker-view-column>
+                  <view wx:for="{{months}}" wx:key='{{index}}' class='choose_oc_line'>{{item}}月</view>
+              </picker-view-column>
+              <picker-view-column>
+                  <view wx:for="{{days}}" wx:key='{{index}}' class='choose_oc_line'>{{item}}日</view>
+              </picker-view-column>
+          </picker-view>
+          <view class='choose_oc_h'>
+              选择截至时间
+          </view>
+          <picker-view indicator-style="height: 50rpx;" value="{{endDateArr}}" bindchange="selectEndDate">
+              <picker-view-column>
+                  <view wx:for="{{years}}" wx:key='{{index}}' class='choose_oc_line' bindchange="selectEndYear">{{item}}年</view>
+              </picker-view-column>
+              <picker-view-column>
+                  <view wx:for="{{months}}" wx:key='{{index}}' class='choose_oc_line' bindchange="selectEndMonth">{{item}}月</view>
+              </picker-view-column>
+              <picker-view-column>
+                  <view wx:for="{{days}}" wx:key='{{index}}' class='choose_oc_line'>{{item}}日</view>
+              </picker-view-column>
+          </picker-view>
+          <view class='choose_oc_btn'>
+              <view class='cancle' bindtap='closeDatePicker'>取消</view>
+              <view class='confirm' bindtap='selectDate'>确定</view>
+          </view>
+      </view>
+  </view>
+</compage>

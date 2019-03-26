@@ -1,0 +1,17 @@
+<compage id="compage">
+  <view class="index_all_box1">
+    <view class="txyu1" >
+      <view class="txyuMiddleBox">
+        <view class="imgBox">
+          <image src="https://pintuanqu.cn/Public/Miniapps/images/empty.png" mode="widthFix"></image>
+        </view>
+        <view class="textBox">
+          亲！您还没有授权,请设置允许后或者打开手机的定位功能再使用本程序...
+        </view>
+      </view>
+    </view>
+
+    <view class="txyu1_Btn" bindtap="authorizeBtn">点击权限设置</view>
+    
+  </view>
+</compage>

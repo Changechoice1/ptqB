@@ -1,0 +1,20 @@
+<!--component/goods/itemSale2.wxml-->
+<view class='indexGoodItem2 ' bindtap='openGoods'>
+
+   <view class='img  '>
+      <image src='{{data.goods_img}}'></image>
+      <view class="groupGoods_box_img cenFlex"> 
+          <view class="not_inv " wx:if="{{data.inventory==0}}">
+                <image src="/images/in3_ico30.png"></image>
+          </view>
+          <view class="not_inv" wx:if="{{data.end_time<=0}}">
+              <image src="/images/in3_ico31.png"></image>
+          </view>
+      </view>
+   </view>
+   <view class='h5'>{{data.goods_name}}</view>
+   <view class='weui-flex'>
+      <view class='weui-flex__item'>￥{{data.goods_price}}</view>
+      <view>{{data.buy_num}}人下单</view>
+   </view>
+</view>

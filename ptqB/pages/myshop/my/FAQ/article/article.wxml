@@ -1,0 +1,24 @@
+<import src="../../../../../wxParse/wxParse.wxml"/>
+<view class="index_all_box" wx:if="{{artInfo}}">
+	<view class="ai">
+		<view class="ai_t">{{artInfo.theme}}</view>
+		<view class="ai_m">
+			<view class="ai_m_in">{{artInfo.show_time}}</view>
+			<view class="ai_m_in">{{messInfo==1?'拼团趣公告':'商家学堂'}}</view>
+			<view class="ai_m_in1">拼团趣</view>
+		</view>
+		<view class="ai_video" wx:if="{{artInfo.is_video == 1}}">
+			<video src="{{artInfo.video}}" wx:if="{{artInfo.is_video == 1}}" controls="{{true}}" autoplay="{{true}}" loop="{{true}}"></video>
+		</view>
+		<view class="ai_b">
+			<view class="ai_b_txt">
+				<template is="wxParse" data="{{wxParseData:article.nodes}}"/>
+			</view>
+		</view>
+		<view class="ai_b_btn" wx:if="{{messInfo != 1}}">
+			<view class="ai_b_btn_in">阅：{{artInfo.read_num}}</view>
+			<view class="ai_b_btn_in" bindtap="clickZanBtn">赞：{{artInfo.like_num}}</view>
+			<view class="ai_b_btn_in">分享：{{artInfo.share_num}}</view>
+		</view>
+	</view>
+</view>

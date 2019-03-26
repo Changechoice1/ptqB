@@ -1,0 +1,274 @@
+<import src="/template/activity/actType/actType.wxml" />
+
+<compage id="compage">
+  <view class="container">
+    <view class="index_all_box">
+      <view class="orbi_send">
+        <view class="orbi_send_name">买家：{{order_info.wx_name}}</view>
+        <view class="orbi_send_img">
+          <image mode="aspectFill" src="{{order_info.wx_img}}"></image>
+        </view>
+      </view>
+      <!-- 收货地址 -->
+      <view class="orbi_adress" wx:if="{{order_info.genre==0}}">
+        <view class="orbi_adress_l">
+          <view class="orbi_adress_l_img">
+            <image src="{{imgUrl}}bor_ico1.png"></image>
+          </view>
+        </view>
+        <view class="orbi_adress_r">
+          <view class="orbi_adress_r_1">
+            <view class="orbi_adress_r_1_l">客户信息：{{order_info.consignee || '暂无'}}</view>
+            <view class="orbi_adress_r_1_r">{{order_info.telephone || '暂无'}}</view>
+          </view>
+          <view class="orbi_adress_r_2">{{order_info.province}}{{order_info.city}}{{order_info.district}}{{order_info.address}}</view>
+        </view>
+      </view>
+      <!-- 商品的详情列表 -->
+      <view class="orbi_gdi">
+        <view class="orbi_gdi_l">
+          <image mode="aspectFill" src="{{order_info.goods_img}}"></image>
+        </view>
+        <view class="orbi_gdi_r">
+          <view class="orbi_gdi_r_t">
+            <view class="orbi_gdi_r_t_l">{{order_info.goods_name}}</view>
+            <view class="orbi_gdi_r_t_r">
+              <view class="orbi_gdi_r_t_r_in">¥{{order_info.goods_price}}</view>
+              <view class="orbi_gdi_r_t_r_in">x{{order_info.nums}}</view>
+            </view>
+          </view>
+          <view class="orbi_gdi_r_b">
+            <view class="orbi_gdi_r_b_l">{{order_info.status_str}}</view>
+            <template is="actType" data="{{...order_info}}"></template>
+          </view>
+        </view>
+        <navigator class="mini_program" target="miniProgram" open-type="navigate" app-id="wxd25131b98741c7cb" path="/pages/goodsInfo/{{order_info.is_group == 1 ? 'goodsGroup/goodsGroup' : order_info.is_group == 3 ? 'goodsPeople/goodsPeople' : order_info.is_group == 4 ? 'goodsSale/goodsSale' : order_info.is_group == 6 ? 'goodsBargain/goodsBargain' : 'goodsGroup/goodsGroup'}}?group_id={{order_info.group_id}}&goods_id={{order_info.goods_id}}"
+        />
+      </view>
+      <!-- 商品的运费统计之类的 -->
+      <view class="orbi_gdp">
+        <text wx:if="{{order_info.genre==0}}">(运费：{{order_info.postage == '0.00' ? '包邮' : order_info.postage}})</text>共{{order_info.nums}}件商品 合计¥{{order_info.pay_fee}}
+      </view>
+      <!-- 代发货的发货页面 -->
+      <view class="orbi_ad_log_t">
+        <view class="orbi_eval_t_in" wx:if="{{order_info.genre==1 && order_info.status_str == '拼团中'}}">客户姓名：{{order_info.hx_name || '暂无'}}</view>
+        <view class="orbi_eval_t_in" wx:if="{{order_info.genre==1 && order_info.status_str == '拼团中'}}">客户电话：{{order_info.hx_tel || '暂无'}}</view>
+
+        <view class="orbi_ad_log_t_in">订单编号：{{order_info.order_no}}</view>
+        <view class="orbi_ad_log_t_in">下单时间：{{order_info.add_time}}</view>
+        <view class="orbi_ad_log_t_in">客户留言：{{order_info.remark || '客户暂无留言'}}</view>
+      </view>
+      <view class="orbi_ad_log" wx:if="{{order_info.group_status != 0 || order_info.group_status != 2}}">
+        <!-- 选择物流的按钮 -->
+        <view class="orbi_ad_log_m" wx:if="{{order_info.status == 2 && order_info.genre == 0}}">
+          <view class="orbi_ad_log_m_t">
+            <view class="orbi_ad_log_m_l">是否选择物流：</view>
+            <view class="orbi_ad_log_m_r">
+              <view class="orbi_ad_log_m_r_in" data-index="{{1}}" bindtap="logChangeBtn">
+                <view class="orbi_ad_log_m_r_in_rad" wx:if='{{!logChangeFlag}}'>
+                </view>
+                <view class="orbi_ad_log_m_r_in_img" wx:if='{{logChangeFlag}}'>
+                  <image src="{{imgUrl}}ab_ico1.png"></image>
+                </view>
+                <view class="orbi_ad_log_m_r_in_txt">是</view>
+              </view>
+              <view class="orbi_ad_log_m_r_in" data-index="{{2}}" bindtap="logChangeBtn">
+                <view class="orbi_ad_log_m_r_in_rad" wx:if='{{logChangeFlag}}'>
+                </view>
+                <view class="orbi_ad_log_m_r_in_img" wx:if='{{!logChangeFlag}}'>
+                  <image src="{{imgUrl}}ab_ico1.png"></image>
+                </view>
+                <view class="orbi_ad_log_m_r_in_txt">否</view>
+              </view>
+            </view>
+          </view>
+        </view>
+        <!-- 输入选择物流 -->
+        <view class="orbi_ad_log_b" wx:if='{{logChangeFlag && order_info.status == 2 && order_info.genre == 0}}'>
+          <view class="orbi_ad_log_b_in">
+            <view class="orbi_ad_log_b_in_1">
+              选择物流：
+            </view>
+            <picker bindchange="logisticsChange" value="{{index}}" range="{{express_list1}}" class="logisticsBox_r">
+              <view class="orbi_ad_log_b_in_2">
+                <input type="text" placeholder="请选择物流" value='{{logisticsStr}}' placeholder-class='placeholder_color' disabled='disabled' />
+              </view>
+            </picker>
+          </view>
+          <view class="orbi_ad_log_b_in" style="margin-top: 40rpx;">
+            <view class="orbi_ad_log_b_in_1">
+              物流单号：
+            </view>
+            <view class="orbi_ad_log_b_in_2">
+              <input type="text" placeholder="填写物流单号" bindinput="logisticsInput" value="{{logisticsInput}}" placeholder-class='placeholder_color' />
+            </view>
+          </view>
+        </view>
+        <!-- 按钮 -->
+        <view class="orbi_ad_log_foot" bindtap="logisticsUpDataBtn" wx:if="{{order_info.status==2 && order_info.genre==0}}">
+          <view class="orbi_ad_log_foot_btn cenFlex">发货</view>
+        </view>
+      </view>
+
+      <!-- 待评价的下方数据 -->
+      <view class="orbi_eval" wx:if="{{ order_info.status == 4 && order_info.genre==1 && is_group != 3 }}">
+        <view wx:if="{{ order_info.is_group==3 && (order_info.group_status ==1 || order_info.group_status ==2)  }}">
+          <view class="orbi_eval_t">
+            <view class="orbi_eval_t_in">客户姓名：{{order_info.hx_name || '暂无'}}</view>
+            <view class="orbi_eval_t_in">客户电话：{{order_info.hx_tel || '暂无'}}</view>
+            <view class='orbi_eval_t_in' wx:if='{{(order_info.is_group == 3 &&order_info.group_status != 0) || order_info.is_group != 3 && order_info.genre==1}}'>核销时间：{{order_info.cancel_time}}</view>
+            <view class='orbi_eval_t_in' wx:if='{{(order_info.is_group == 3 &&order_info.group_status != 0) || order_info.is_group != 3 && order_info.genre==1 && order_info.is_exclusive != 1}}'>核销方式：{{order_info.cancel_type_str || '扫码核销'}}</view>
+            <view class="orbi_eval_t_in" wx:if='{{order_info.is_subscribe == 1}}'>预约设置：{{order_info.subscribe}}</view>
+            <view class="orbi_eval_t_in" wx:if='{{order_info.is_time == 1}}'>有效时间：{{order_info.user_time_str}}</view>
+          </view>
+        </view>
+        <view wx:if="{{ order_info.is_group !=3 }}">
+          <view class="orbi_eval_t">
+            <view class="orbi_eval_t_in" wx:if='{{(order_info.is_group == 3 &&order_info.group_status != 0) || order_info.is_group != 3 && order_info.genre==1}}'>客户姓名：{{order_info.hx_name || '暂无'}}</view>
+            <view class="orbi_eval_t_in" wx:if='{{(order_info.is_group == 3 &&order_info.group_status != 0) || order_info.is_group != 3 && order_info.genre==1}}'>客户电话：{{order_info.hx_tel || '暂无'}}</view>
+            <view class='orbi_eval_t_in' wx:if='{{(order_info.is_group == 3 &&order_info.group_status != 0) || order_info.is_group != 3 && order_info.genre==1}}'>核销时间：{{order_info.cancel_time}}</view>
+            <view class="orbi_eval_t_in" wx:if='{{order_info.is_subscribe == 1}}'>预约设置：{{order_info.subscribe}}</view>
+            <view class="orbi_eval_t_in" wx:if='{{order_info.is_time == 1}}'>有效时间：{{order_info.user_time_str}}</view>
+            <view class='orbi_eval_t_in' wx:if='{{(order_info.is_group == 3 &&order_info.group_status != 0) || order_info.is_group != 3 && order_info.genre==1 && order_info.is_exclusive != 1}}'>核销方式：{{order_info.cancel_type_str || '扫码核销'}}</view>
+          </view>
+        </view>
+      </view>
+
+      <!-- 待使用的核销按钮 -->
+      <view class="orbi_eval" wx:if="{{order_info.is_cancel_after == 1}}">
+        <view class="orbi_eval_t">
+          <view class="orbi_eval_t_in">客户姓名：{{order_info.hx_name || '暂无'}}</view>
+          <view class="orbi_eval_t_in">客户电话：{{order_info.hx_tel || '暂无'}}</view>
+          <view class="orbi_eval_t_in" wx:if='{{order_info.is_subscribe == 1}}'>预约设置：{{order_info.subscribe}}</view>
+          <view class="orbi_eval_t_in" wx:if='{{order_info.is_time == 1}}'>有效时间：{{order_info.user_time_str}}</view>
+        </view>
+      </view>
+      <view class="orbi_user" wx:if="{{order_info.is_cancel_after == 1 && order_info.hexiao_status == 0}}">
+        <view class="orbi_user_in cenFlex" data-id="{{order_info.order_id}}" wx:if="{{order_info.is_cancel_after==1}}" bindtap="writeBtn">点击核销</view>
+      </view>
+			<view class="wait-confirm" wx:if="{{order_info.hexiao_status == 3}}">
+				<view class="wait-btn">等待确认</view>
+				<view class="wait-info">商家自主核销用户订单需要用户确认核销，若用户未主动确认核销，48小时后系统将自动通过您的此次核销。</view>
+			</view>
+
+      <!-- 待收货模块 -->
+      <view class="orbi_eval" wx:if="{{order_info.status == 3 && order_info.is_cancel_after == 0 && order_info.genre==0}}">
+        <!-- 选择物流的按钮 -->
+        <view class="orbi_ad_log_m">
+          <view class="orbi_ad_log_m_t">
+            <view class="orbi_ad_log_m_l">是否选择物流：</view>
+            <view class="orbi_ad_log_m_r">
+              <view class="orbi_ad_log_m_r_in" data-index="{{1}}" bindtap="logChangeBtn">
+                <view class="orbi_ad_log_m_r_in_rad" wx:if='{{!logChangeFlag}}'>
+                </view>
+                <view class="orbi_ad_log_m_r_in_img" wx:if='{{logChangeFlag}}'>
+                  <image src="{{imgUrl}}ab_ico1.png"></image>
+                </view>
+                <view class="orbi_ad_log_m_r_in_txt">是</view>
+              </view>
+              <view class="orbi_ad_log_m_r_in" data-index="{{2}}" bindtap="logChangeBtn">
+                <view class="orbi_ad_log_m_r_in_rad" wx:if='{{logChangeFlag}}'>
+                </view>
+                <view class="orbi_ad_log_m_r_in_img" wx:if='{{!logChangeFlag}}'>
+                  <image src="{{imgUrl}}ab_ico1.png"></image>
+                </view>
+                <view class="orbi_ad_log_m_r_in_txt">否</view>
+              </view>
+            </view>
+          </view>
+        </view>
+        <!-- 输入选择物流 -->
+        <view class="orbi_ad_log_b" wx:if='{{logChangeFlag}}'>
+          <view class="orbi_ad_log_b_in">
+            <view class="orbi_ad_log_b_in_1">
+              选择物流：
+            </view>
+            <picker bindchange="logisticsChange" value="{{index}}" range="{{express_list1}}" class="logisticsBox_r">
+              <view class="orbi_ad_log_b_in_2">
+                <input type="text" placeholder="请选择物流" value='{{logisticsStr}}' placeholder-class='placeholder_color' disabled='disabled' />
+              </view>
+            </picker>
+          </view>
+          <view class="orbi_ad_log_b_in" style="margin-top: 40rpx;">
+            <view class="orbi_ad_log_b_in_1">
+              物流单号：
+            </view>
+            <view class="orbi_ad_log_b_in_2">
+              <input type="text" placeholder="填写物流单号" bindinput="logisticsInput" value="{{logisticsInput}}" placeholder-class='placeholder_color' />
+            </view>
+          </view>
+        </view>
+        <!-- 按钮 -->
+        <view class="orbi_ad_log_foot" bindtap="logisticsUpDataBtn">
+          <view class="orbi_ad_log_foot_btn cenFlex">确认修改</view>
+        </view>
+      </view>
+
+      <!-- 已完成模块 -->
+      <view class="orbi_eval" wx:if="{{order_info.status == 5}}">
+        <view class="orbi_eval_t">
+          <view class="orbi_eval_t_in">客户姓名：{{order_info.hx_name || '暂无'}}</view>
+          <view class="orbi_eval_t_in">客户电话：{{order_info.hx_tel || '暂无'}}</view>
+          <view class="orbi_eval_t_in">订单编号：{{order_info.order_no || '暂无'}}</view>
+          <view class='orbi_eval_t_in' wx:if='{{order_info.genre == 1}}'>核销时间：{{order_info.cancel_time}}</view>
+          <view class='orbi_eval_t_in' wx:if='{{order_info.genre == 1}}'>核销方式：{{order_info.cancel_type_str}}</view>
+          <view class="orbi_eval_t_in" wx:if='{{order_info.is_subscribe == 1}}'>预约设置：{{order_info.subscribe}}</view>
+          <view class="orbi_eval_t_in" wx:if='{{order_info.is_time == 1}}'>有效时间：{{order_info.user_time_str}}</view>
+        </view>
+      </view>
+      <view class='divide' wx:if="{{order_info.status == 5 && order_info.evaluate_info}}">买家评价</view>
+      <view class="eva" wx:if="{{order_info.status == 5 && order_info.evaluate_info}}">
+        <!-- 头部 -->
+        <view class="eva_t">
+          <view class="eva_t_l cenFlex">
+            <image mode="aspectFill" src="{{order_info.wx_img}}"></image>
+          </view>
+          <view class="eva_t_r">
+            <view class="eva_t_r_in">
+              <view class="eva_t_r_in_l">{{order_info.wx_name}}</view>
+              <view class="eva_t_r_in_r cenFlex">
+              </view>
+            </view>
+            <view class="eva_t_r_in" style="margin-top: 15rpx;">
+              <view class="eva_t_r_in_l cenFlex">
+                <view class="stratNum" wx:for="{{evaluate_info.score}}" wx:key="{{index}}">
+                  <image src="{{imgUrl}}goods3_ico11.png"></image>
+                </view>
+              </view>
+              <view class="eva_t_r_in_r">
+                {{evaluate_info.time}}
+              </view>
+            </view>
+          </view>
+        </view>
+        <!-- 文字评价 -->
+        <view class="eva_txt">
+          {{evaluate_info.content}}
+        </view>
+        <!-- 图片评价 -->
+        <view class="eva_img" wx:if="{{evaluate_info.img_array[0]}}">
+          <view class="eva_img_in" wx:for="{{evaluate_info.img_array}}" wx:key="{{index}}">
+            <image mode="aspectFill" src="{{item}}"></image>
+          </view>
+        </view>
+        <!-- 点击回复 -->
+        <view class='eva_content' wx:if='{{evaluate_info.is_reply == 1}}' style="margin-top: {{evaluate_info.img_array[0] ? '10' : '0'}}rpx">
+          商家回复：{{evaluate_info.reply_content}}
+        </view>
+        <view class='eva_text' wx:if='{{evaluate_info.is_reply == 0}}' style="margin-top: {{evaluate_info.img_array[0] ? '10' : '0'}}rpx">
+          <textarea placeholder='请回复' value="{{eval_text}}" placeholder-class='placeholder_color' maxlength='500' data-index='0' data-pattern="5"  data-minlen="2" data-maxlen="500" bindinput="evalText" bindconfirm='inputTxt' bindblur='endInputTxt'></textarea>
+        </view>
+        <view class="eva_storeHf" data-id='{{evaluate_info.evaluate_id}}' bindtap='returnEval' wx:if='{{evaluate_info.is_reply == 0}}'>
+          <view class="eva_storeHf_in cenFlex">回复</view>
+        </view>
+      </view>
+    </view>
+    <view class="bsn">
+      <view class="bsn_in" bindtap="navMy">
+        返回商家中心
+      </view>
+    </view>
+  </view>
+  <diyModal id='diyModal' titleHide='{{tipShowTitle}}' title='{{tipTitle}}' onceConfirm='{{tipHideCancel}}' zstype='{{tipShowType}}' showList='{{tipShowList}}' content='{{tipText}}' redTxt='{{tipImpCont}}' bind:cancelEvent='{{tipFail}}' cancelText='{{tipCancelText}}'
+    bind:confirmEvent='{{tipSuccess}}' confirmText='{{tipConfirmText}}'></diyModal>
+</compage>

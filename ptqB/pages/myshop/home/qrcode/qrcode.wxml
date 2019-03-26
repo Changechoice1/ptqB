@@ -1,0 +1,77 @@
+<!-- 我的二维码 -->
+<compage id="compage">
+  <view class="index_all_box">
+    <!-- 切换导航 -->
+    <view class='nav'>
+      <view class='nav_inner'>
+        <view class='nav_block {{nav == 0 ? "active" : ""}}'>
+          <view class='nav_text' data-nav='0' bindtap='changeNav'>关注店铺</view>
+          <view class='nav_line'></view>
+        </view>
+        <view class='nav_block {{nav == 1 ? "active" : ""}}'>
+          <view class='nav_text' data-nav='1' bindtap='changeNav'>直接访问店铺</view>
+          <view class='nav_line'></view>
+        </view>
+      </view>
+    </view>
+
+    <!-- 关注店铺二维码 -->
+    <view class='qrcode' wx:if='{{nav == 0}}'>
+      <view class="store-share">
+        <view class="s-l">
+          <view class="s-img">
+            <image src="{{store_logo}}"></image>
+          </view>
+          <view class="s-name">{{ewmData.store_name}}的店铺</view>
+        </view>
+        <view class="s-r" bindtap="showCan">分享</view>
+      </view>
+      <view class="code" data-type="{{ewmData.ticket_code.qr_code_url}}" bindtap="seeImgUrl">
+        <image src="{{ewmData.ticket_code.qr_code_url}}"></image>
+      </view>
+      <view class="s-hint">扫描二维码先关注再进入我的店铺</view>
+    </view>
+
+
+    <!-- 直接访问店铺 -->
+    <view class='qrcode' wx:if='{{nav == 1}}'>
+      <view class="store-share">
+        <view class="s-l">
+          <view class="s-img">
+            <image src="{{store_logo}}"></image>
+          </view>
+          <view class="s-name">{{ewmData.store_name}}的店铺</view>
+        </view>
+        <view class="s-r" bindtap="showCan">分享</view>
+      </view>
+      <view class="code" data-type="{{ewmData.qr_code_url}}" bindtap="seeImgUrl">
+        <image src="{{ewmData.qr_code_url}} "></image>
+      </view>
+      <view class="s-hint ">扫描二维码进入我的店铺</view>
+    </view>
+    <view class="mask" wx:if="{{showCanvas}}" bindtap='hideCan'></view>
+    <view class="maskContent" wx:if="{{showCanvas}}">
+      <view class="mask-t" style="background-image:url('https://ptq.oss-cn-hangzhou.aliyuncs.com/ptq/wxxcx/imgStore.png');background-size:100%">
+        <view class="m-t-l">
+          <image class="" src="/images/sh3_ico21.png"></image>
+        </view>
+        <view class="m-wimg">
+          <image src='{{store_logo}}'></image>
+          <view class="s-name">{{ewmData.store_name}}</view>
+        </view>
+      </view>
+      <view class="m-c">
+        <view class="m-img">
+          <image src="{{nav == 0 ? ewmData.ticket_code.qr_code_url : ewmData.qr_code_url}}"></image>
+        </view>
+        <view class="m-text">{{nav == 0 ? '扫描二维码先关注再进入我的店铺': '扫描二维码进入我的店铺'}}</view>
+      </view>
+      <view class="m-b">
+        <view class="saveBtn" bindtap="shareBtn">保存二维码图片</view>
+      </view>
+    </view>
+    <view class="canvasContent" style="left:1000px">
+      <canvas canvas-id="storeShare" bindtouchstart="" bindtouchend="" style="width:{{canvsW}}px;height:{{canvsH}}px;margin-top:{{mt}}px"></canvas>
+    </view>
+  </view>
+</compage>

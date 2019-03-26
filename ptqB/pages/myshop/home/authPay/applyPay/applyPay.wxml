@@ -1,0 +1,37 @@
+<!--pages/myshop/applyPay/applyPay.wxml-->
+<compage id="compage">
+<view class="payInfo">
+  <view class='payInfo_sum'>支付金额 ￥{{money}}</view>
+  <view class='payInfo_remark'>{{payInfo[ver].desc}}</view>
+</view>
+
+<view class="payment">
+  <view class='payment_title'>支付方式：</view>
+  <view wx:if="{{showAuthCode || index != 0}}" wx:for='{{payments}}' wx:key='{{index}}' class='payment_sel sbFlex'>
+    <view class='payment_sel_lab'>
+      <view class='payment_sel_lab_icon fl' style="width: {{item.iconW}}rpx; height: {{item.iconH}}rpx; padding: {{(60 - item.iconH) / 2}}rpx {{(60 - item.iconW) / 2}}rpx;}}">
+        <image src='{{selectedPayment == index ? item.icon : item.disIcon}}'></image>
+      </view>
+      <view class="payment_sel_lab_text fl {{item.tip ? 'payment_sel_lab_text1' : ''}}">
+        <view class="{{selectedPayment == index ? '' : 'payment_sel_lab_text_disabled'}}">{{item.text}}</view>
+        <view class='payment_sel_lab_text_tip'>{{item.tip}}</view>
+      </view>
+    </view>
+    <view class='payment_sel_btn'>
+      <image src="/images/{{selectedPayment == index ? 'selected' : 'noSelected'}}.png"></image>
+    </view>
+  </view>
+</view>
+
+<view class='agree'>
+  <view class='agree_btn' bindtap='selectAgree'>
+    <image src="/images/{{isAgree ? 'selected' : 'noSelected'}}.png"></image>
+  </view>
+  <view class='agree_text' bindtap='goPage' data-upage='/pages/protocol/protocol?id=1'>已同意拼团趣《商家使用协议》</view>
+</view>
+
+<view class="submit cenFlex">
+  <view class="submit_btn {{isAgree ? 'canSubmit' : ''}}" bindtap="{{isAgree ? 'applyPay' : ''}}">确认支付</view>
+</view>
+<diyModal id='diyModal' titleHide='{{tipShowTitle}}' title='{{tipTitle}}' onceConfirm='{{tipHideCancel}}' txtAlign='{{tipTextAlign}}' zstype='{{tipShowType}}' nodesStr="{{tipShowType == 4 ? tipText : ''}}" showList='{{tipText}}' content='{{tipText}}' redTxt='{{tipImpCont}}' bind:cancelEvent='{{tipFail}}' cancelText='{{tipCancelText}}' bind:confirmEvent='{{tipSuccess}}' confirmText='{{tipConfirmText}}' btnArr='{{tipBtnArr}}' bind:touchBtn="btnFn"></diyModal>
+</compage>

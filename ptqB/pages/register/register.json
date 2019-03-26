@@ -1,0 +1,9 @@
+{
+  "component": true,
+  "usingComponents": {
+    "diyModal": "/components/diyMoadel/diyMoadel",
+    "compage": "/vwx/component/template/",
+    "vwx-modal": "/components/modal/modal",
+    "vwx-button": "/components/button/button"
+  }
+}

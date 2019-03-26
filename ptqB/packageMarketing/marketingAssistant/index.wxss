@@ -1,0 +1,463 @@
+/* packageMarketing/marketingAssistant/index.wxss */
+@import '/template/template.wxss';
+
+.container {
+  overflow-x:hidden;
+  box-sizing: border-box;
+  width: 100%;
+}
+
+/* 悬浮换行业图片 start*/
+
+.changeIndus {
+  position: fixed;
+  bottom: 200rpx;
+  right: 20rpx;
+  z-index: 9;
+  width: 180rpx;
+  height: 120rpx;
+}
+
+.shake {
+  animation: shake 1s;
+  -o-animation: shake 1s;
+  -webkit-animation: shake 1s;
+  -moz-animation: shake 1s;
+}
+
+@keyframes shake {
+  0%, 100% {
+    transform: rotate(10deg);
+  }
+
+  10%, 30%, 50%, 70%, 90% {
+    transform: rotate(-10deg);
+  }
+
+  20%, 40%, 60%, 80% {
+    transform: rotate(10deg);
+  }
+}
+
+/* @-o-keyframes shake{
+  0%, 100% {
+        -o-transform: rotate(10deg);
+    }
+    10%,
+    30%,
+    50%,
+    70%,
+    90% {
+        -o-transform: rotate(-10deg);
+    }
+    20%,
+    40%,
+    60%,
+    80% {
+        -o-transform: rotate(10deg);
+    }
+} */
+
+/* @-moz-keyframes shake{
+  0%, 100% {
+        -moz-transform: rotate(10deg);
+    }
+    10%,
+    30%,
+    50%,
+    70%,
+    90% {
+        -moz-transform: rotate(-10deg);
+    }
+    20%,
+    40%,
+    60%,
+    80% {
+        -moz-transform: rotate(10deg);
+    }
+} */
+
+@-webkit-keyframes shake {
+  0%, 100% {
+    -webkit-transform: rotate(10deg);
+  }
+
+  10%, 30%, 50%, 70%, 90% {
+    -webkit-transform: rotate(-10deg);
+  }
+
+  20%, 40%, 60%, 80% {
+    -webkit-transform: rotate(10deg);
+  }
+}
+
+/* 悬浮换行业图片 end*/
+
+/* 顶部swiper  start*/
+
+.top-banner {
+  width: 100%;
+  height: 600rpx;
+  border-bottom: 1rpx solid #eee;
+  padding-top: 30rpx;
+  box-sizing: border-box;
+  background-color: #fff;
+}
+
+swiper {
+  width: 100%;
+  height: 100%;
+}
+swiper .item-img{
+   box-sizing: border-box;
+   padding: 0 30rpx;
+}
+
+
+.best-swiper {
+  height: 190rpx;
+}
+
+.img-content {
+  height: 460rpx;
+  width: 100%;
+  position: relative;
+  overflow: hidden;
+}
+
+.imgSelf {
+  color: #fff;
+  position: absolute;
+  transform: rotate(-45deg);
+  top: 40rpx;
+  height: 50rpx;
+  width: 300rpx;
+  left: -75rpx;
+  font-size: 26rpx;
+}
+
+.flex-c {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.img-content image {
+  border-radius: 20rpx;
+}
+
+.item-activiname {
+  font-size: 28rpx;
+  color: #333;
+  text-align: left;
+  height: 70rpx;
+  line-height: 70rpx;
+  padding-left: 20rpx;
+  overflow: hidden;
+  white-space: nowrap;
+  text-overflow: ellipsis;
+  word-break: break-all;
+}
+
+.suspend-content {
+  position: absolute;
+  left: 0;
+  bottom: 0;
+  color: #fff;
+  font-size: 26rpx;
+  display: flex;
+  flex-direction: column;
+  padding: 20rpx;
+  box-sizing: border-box;
+  width: 100%;
+}
+
+.top-roll {
+  height: 50rpx;
+  padding-bottom: 20rpx;
+  display: flex;
+  align-items: center;
+}
+
+.roll {
+  display: flex;
+  align-items: center;
+  height: 55rpx;
+}
+
+.roll .logo {
+  width: 45rpx;
+  min-width: 45rpx;
+  height: 45rpx;
+}
+
+.roll .logo image {
+  border-radius: 50%;
+  border: 3.5rpx solid #fff;
+}
+
+.use-busi {
+  margin-left: 10rpx;
+}
+
+.sus-bottom-b {
+  height: 68rpx;
+  background-color: #000;
+  opacity: 0.3;
+  position: absolute;
+  bottom: 0;
+  width: 100%;
+  left: 0rpx;
+  border-bottom-left-radius: 20rpx;
+  border-bottom-right-radius: 20rpx;
+  z-index: 2;
+}
+
+.sus-bottom {
+  display: flex;
+  justify-content: space-between;
+  width: 100%;
+  z-index: 3;
+  margin-bottom: -20rpx;
+  height: 68rpx;
+  line-height: 68rpx;
+}
+
+.b-l {
+}
+
+.b-r {
+}
+
+/* 顶部swiper  end*/
+
+/* 优秀店铺 start */
+
+.best-store {
+  width: 100%;
+  height: 260rpx;
+  background-color: #fff;
+  display: flex;
+  flex-direction: column;
+  border-bottom: 20rpx solid #f5f5f5;
+}
+
+.title {
+  font-size: 32rpx;
+  color: #333;
+  padding-left: 30rpx;
+  font-weight: 700;
+  height: 70rpx;
+  line-height: 70rpx;
+}
+
+.store-list {
+  display: flex;
+  overflow-x: scroll;
+  position: absolute;
+  top: 0;
+  left: 0;
+}
+
+.store-list::-webkit-scrollbar {
+  display: none;
+}
+
+.item-store {
+  display: flex;
+  flex-direction: column;
+  margin: 20rpx 8.75rpx;
+  width: 170rpx;
+  align-items: center;
+}
+
+.item-logo {
+  width: 88rpx;
+  height: 88rpx;
+}
+
+.item-logo image {
+  border-radius: 50%;
+}
+
+.item-store .item-name {
+  font-size: 24rpx;
+  color: #333;
+  width: 170rpx;
+  overflow: hidden;
+  white-space: nowrap;
+  text-overflow: ellipsis;
+  text-align: center;
+  margin-top: 20rpx;
+}
+
+/* 优秀店铺 end */
+
+/* 行业定制 start */
+
+.indus-custom {
+  display: flex;
+  flex-direction: column;
+  background-color: #fff;
+  padding: 0 30rpx;
+  box-sizing: border-box;
+  border-bottom: 20rpx solid #f5f5f5;
+}
+
+.top-title {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  background-color: #fff;
+}
+
+.custom-title {
+  padding: 20rpx 0;
+  font-size: 32rpx;
+  font-weight: 700;
+  color: #333;
+}
+
+.more-solu {
+  font-size: 28rpx;
+  color: #999;
+  height: 80rpx;
+  line-height: 80rpx;
+}
+.item-custom-name{
+   background-color: #f7f7f7;
+}
+/* 行业定制 end */
+
+.hot-marketing {
+  background-color: #f5f5f5;
+  display: flex;
+  flex-direction: column;
+  box-sizing: border-box;
+}
+
+.hot-title {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  background-color: #fff;
+  padding: 0 30rpx;
+}
+
+.bottom-more {
+  display: flex;
+  color: #999;
+  font-size: 30rpx;
+  height: 100rpx;
+  align-items: center;
+  justify-content: center;
+  padding-bottom: 20px;
+  box-sizing: border-box;
+}
+
+.swiper_container {
+  height: 55rpx;
+  width: 660rpx;
+}
+
+.null_data {
+  box-sizing: border-box;
+  width: 100%;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  padding: 100px 0;
+  background-color: #fff;
+}
+
+.null_img {
+  width: 260rpx;
+  height: 260rpx;
+}
+
+.no_activi {
+  font-size: 32rpx;
+  color: #333;
+  margin: 20rpx 0;
+}
+
+.go_set {
+  font-size: 28rpx;
+  color: #999;
+}
+
+.settingBtn {
+  width: 480rpx;
+  height: 92rpx;
+  background-color: #e60012;
+  color: #fff;
+  font-size: 32rpx;
+  line-height: 92rpx;
+  text-align: center;
+  border-radius: 20rpx;
+  margin-top: 210rpx;
+}
+.custom-list{
+  width: 100%;
+  display: flex;
+  display:-webkit-flex;
+  flex-warp:wrap;
+  -webkit-flex-wrap:wrap;
+  justify-content:space-between;
+}
+/* .custom-list {
+  width: 690rpx;
+  display: flex;
+  display: -webkit-flex;
+  flex-warp: wrap;
+  -webkit-flex-wrap: wrap;
+  margin-bottom: 10rpx;
+} */
+
+/* 无数据 */
+
+.null_data{
+  width:100%;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+.null_img{
+  width:260rpx;
+  height:260rpx;
+}
+.no_solu{
+  font-size:32rpx;
+  color:#333;
+  margin:40rpx 0;
+}
+/* 品牌活动  end*/
+
+/* 底部切换 */
+
+.bottomTab {
+  width: 100%;
+  height: 98rpx;
+  background: rgba(255, 255, 255, 1);
+  position: fixed;
+  bottom: 0;
+  z-index: 999;
+  border-top: 1rpx solid #f5f5f5;
+  display: flex;
+  justify-content: space-around;
+  align-items: center;
+}
+
+.tab1 {
+  font-size: 24rpx;
+  text-align: center;
+}
+
+.tab1.active {
+  color: #e60012;
+}
+
+.tab1 image {
+  width: 44rpx;
+  height: 44rpx;
+}

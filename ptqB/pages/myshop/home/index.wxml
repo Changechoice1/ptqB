@@ -1,0 +1,111 @@
+<import src="/template/payQrImg/payQrImg.wxml" />
+<compage id="compage"> 
+  <view class="container {{payQrImgFlag ? 'nonautoHeight' : ''}}">
+    <!-- banner -->
+    <view class="banner flex-between flex-y-start">
+      <!-- 头像 -->
+      <view class="banner_logo">
+        <image src="{{info.is_account == 1 ? info.account_img : info.store_logo}}"></image>
+      </view>
+      <!-- 信息 -->
+      <view class="banner_info">
+        <view class="banner_info_base flex-between">
+          <view class="banner_info_base_txt">
+            <view class="banner_info_base_txt_name">{{info.is_account == 1 ? info.account_name : info.store_name || ''}}</view>
+            <view wx:if="{{info.is_account == 1}}" class="banner_info_base_txt_cusFans">({{info.store_name || ''}})</view>
+          </view>
+          <view class="banner_info_base_opt flex-center" style="color: {{info.is_authentication == 1 ? '#F7A20E' : '#fff'}}" bindtap="goAuthentication">
+            <view class="banner_info_base_opt_img">
+              <image src="{{info.is_authentication != 1 ? imgUrl+'authen_ico1_a.png' : info.authentication_type == 1 ? '/images/goods3_ico1.png' : info.authentication_type == 2 ? '/images/index3_ico3.png' : ''}}"></image>
+            </view>
+            <view class="banner_info_base_opt_txt">{{info.is_authentication != 1 ? '未认证' : info.authentication_type == 1 ? '个人认证' : info.authentication_type == 2 ? '店铺认证' : ''  || ''}}</view>
+          </view>
+        </view>
+        <!-- 版本信息 -->
+        <view wx:if="{{authInfo.version == 0 || authInfo.isPay != 0}}" class="banner_info_auth">
+          <!-- 未到期 -->
+          <view wx:if="{{!authInfoArr[authInfo.vNumber].isOverdue}}" class="banner_info_auth_noOverdue flex-between">
+            <view class="banner_info_auth_txt {{info.is_account == 1 ? 'banner_info_auth_txt1 flex-between' : ''}}">
+              <view class="banner_info_auth_txt_base flex-between">
+                <view class="banner_info_auth_txt_base_version" style="color: {{authInfo.vNumber == 1 ? '#FF8346' : authInfo.vNumber == 2 ? '#FFCD35' : '#fff'}}">{{authInfoArr[authInfo.vNumber].lab  || ''}}</view>
+              </view>
+              <view class="banner_info_auth_txt_time {{info.is_account == 1 ? 'banner_info_auth_txt_time1' : ''}}">{{(authInfoArr[authInfo.vNumber].txt  || '') + '：' + (authInfoArr[authInfo.vNumber].time  || '')}}</view>
+            </view>
+            <view class="banner_info_auth_opt">
+              <view wx:if="{{info.is_account == 0 && (authInfo.vNumber == 0 || authInfo.vNumber == 1)}}" class="banner_info_auth_opt_btn" bindtap="{{authInfoArr[authInfo.vNumber].btnFn}}">{{show[vInfo.vNumber].btn  || ''}}升级正式版</view>
+            </view>
+          </view>
+          <!-- 已到期 -->
+          <view wx:if="{{authInfoArr[authInfo.vNumber].isOverdue}}" class="banner_info_auth_overdue">{{authInfoArr[authInfo.vNumber].overdueLab || ''}}</view>
+        </view>
+      </view>
+    </view>
+
+    <!-- 操作栏1 -->
+    <view class="operation1 flex-center">
+      <view wx:if="{{!(info.is_account == 1 && info.is_staff != 1 && index == 1)}}" wx:for="{{menu1}}" wx:key="{{index}}" class="operation1_item flex-center" bindtap="{{item.tapEvent}}">
+        <view class="operation1_item_info">
+          <view class="operation1_item_info_name">{{info.is_account == 1 ? item.subTitle : item.title}}</view>
+          <view class="operation1_item_info_value">{{(info.is_account == 1 ? info[item.subField] : info[item.field]) || 0}} {{item.unit}}</view>
+        </view>
+      </view>
+    </view>
+
+    <!-- 操作栏2 -->
+    <view class="operation2 flex-center">
+      <view wx:for="{{menu2}}" wx:key="{{index}}" class="operation2_item flex-center" bindtap="{{item.tapEvent}}">
+        <view class="operation2_item_name"><icon class="{{item.icon}}" style="color: {{item.iconColor}}; font-size: {{item.iconSize}}"></icon></view>
+        <view class="operation2_item_value">{{item.title}}</view>
+        <navigator wx:if="{{index == 0}}" class="mini_program" target="miniProgram" open-type="navigate" app-id="wxd25131b98741c7cb" path="/pages/myStore/index?store_id={{storeId}}" />
+      </view>
+    </view>
+
+    <!-- 菜单 -->
+    <view class="menu">
+      <view wx:for="{{menu3}}" wx:key="{{index}}" class="menu_item">
+        <view class="menu_item_title">{{item.title}}</view>
+        <view class="menu_item_box">
+        
+          <view wx:if="{{item.subMenu[0].length > 0}}" class="menu_item_inbox1 {{item.subMenu[1].length > 0 ? 'bottom' : ''}}">
+            <view>
+              <view wx:for="{{item.subMenu[0]}}" wx:key="{{index}}" wx:for-item="subItem1" wx:for-index="subIndex1" class="menu_item_info1 fl" style="background-image: url({{subItem1.img}})" bindtap="{{subItem1.tapEvent}}">
+                <view class="menu_item_info1_title">{{subItem1.title}}</view>
+                <view wx:if="{{!subItem1.active || subItem1.activeTip}}" class="menu_item_info1_tip">{{subItem1.activeTip || '近期开启'}}</view>
+              </view>
+            </view>
+            <view class="clear"></view>
+          </view>
+
+          <view class="menu_item_inbox2">
+            <view>
+              <view wx:if="{{info.is_account == 0 && subItem2.allowMain || info.is_account == 1 && subItem2.allowSub}}" wx:for="{{item.subMenu[1]}}" wx:key="{{index}}" wx:for-item="subItem2" wx:for-index="subIndex2" class="menu_item_info2 fl" bindtap="{{subItem2.tapEvent}}">
+                <icon class="{{subItem2.icon}}" style="color: {{subItem2.active ? subItem2.iconColor : '#DCDCDC'}}"></icon>
+                <view class="menu_item_info2_title">{{subItem2.title}}</view>
+                <view wx:if="{{!subItem2.active}}" class="menu_item_info2_tip">近期开启</view>
+              </view>
+            </view>
+            <view class="clear"></view>
+          </view>
+        </view>
+      </view>
+    </view>
+
+    <!-- footer -->
+    <view class="footer">
+      <view class="footer_logo">
+        <image src="/images/my_ico32.png"></image>
+      </view>
+      <view class="footer_tip">拼团趣提供技术支持</view>
+      <view class="footer_protocol" bindtap="goPage" data-upage='/pages/protocol/protocol?id=1'>已签订《商家使用协议》</view>
+    </view>
+  </view>
+
+  <!-- canvas -->
+  <view wx:if="{{payQrImgFlag}}" class="canvas_box" bindtap="hidePayQrImg">
+    <template is="payQrImg" data="{{payQrImgInfo}}"></template>
+  </view>
+  <canvas canvas-id='payQrImgCanvas' disable-scroll="true" class="canvas"></canvas>
+
+  <!-- 自定义提示框 -->
+  <diyModal id='diyModal' titleHide='{{tipShowTitle}}' title='{{tipTitle}}' onceConfirm='{{tipHideCancel}}' txtAlign='{{tipTextAlign}}' zstype='{{tipShowType}}' nodesStr="{{tipShowType == 4 ? tipText : ''}}" showList='{{tipText}}' content='{{tipText}}' redTxt='{{tipImpCont}}' bind:cancelEvent='{{tipFail}}' cancelText='{{tipCancelText}}' bind:confirmEvent='{{tipSuccess}}' confirmText='{{tipConfirmText}}' btnArr='{{tipBtnArr}}' bind:touchBtn="btnFn"></diyModal>
+</compage> 

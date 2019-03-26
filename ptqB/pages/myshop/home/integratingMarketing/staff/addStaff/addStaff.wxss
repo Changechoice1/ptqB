@@ -1,0 +1,44 @@
+@import '/template/template.wxss';
+
+.divide{
+  padding: 30rpx;
+}
+.add_main{
+  background: #fff;
+}
+.add_block{
+  padding: 30rpx;
+  border-bottom: 2rpx solid #eee;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+}
+.add_info {
+  display: flex;
+  align-items: center;
+  justify-content: flex-start;
+}
+.add_img{
+  width: 100rpx;
+  height: 100rpx;
+  border-radius: 50%;
+  margin-right: 20rpx;
+}
+.add_name_1{
+  color: #666;
+}
+.add_name_2{
+  margin-top: 10rpx;
+}
+.add_name_2 > text{
+  color: #999;
+}
+.add_status{
+  width: 140rpx;
+  height: 54rpx;
+  line-height: 54rpx;
+  text-align: center;
+  color: #fff;
+  background: #e60012;
+  border-radius: 10rpx;
+}

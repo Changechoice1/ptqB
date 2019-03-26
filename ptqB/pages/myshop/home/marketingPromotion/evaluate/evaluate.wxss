@@ -1,0 +1,158 @@
+@import '/pages/myshop/order/orderInfo/orderInfo.wxss';
+@import '/template/template.wxss';
+@import '/template/activity/actType/actType.wxss';
+.index_all_box{
+	padding-bottom:100rpx;
+	border-top:none;
+
+}
+.eva{
+    padding-bottom: 20rpx;
+}
+.exE_t {
+    position: fixed;
+    width: 86%;
+    top: -4rpx;
+    padding: 0rpx 7%;
+    display: flex;
+    height: 100rpx;
+    background: #fff;
+    justify-content: space-around;
+    z-index: 999;
+    border-bottom: 1rpx #e8e8e8 solid;
+}
+
+.exE_t_in {
+    width: 100%;
+}
+
+.exE_t_in_in {
+    padding: 0rpx 10rpx;
+    width: 160rpx;
+    height: 96rpx;
+    border-bottom: 2rpx #fff solid;
+}
+
+.exE_t_in_in_act {
+    color: #e60012;
+    border-bottom: 2rpx #e60012 solid;
+}
+
+/*评价的样式*/
+
+.exE_canReply {
+	padding:100rpx 0 40rpx 0rpx;
+	/* padding: 40rpx 0rpx;
+	padding-top: 80rpx; */
+}
+
+.exE_t_in_in2::after {
+    content: "";
+    width: 15rpx;
+    height: 15rpx;
+    border-radius: 50%;
+    background: #e60012;
+    position: relative;
+    top: -10rpx;
+    left: 10rpx;
+}
+
+.eva_storeHf {
+    flex-wrap: wrap;
+		padding:20rpx 0 0 0;
+}
+
+.eva_storeHf_t {
+    position: relative;
+    width: 100%;
+    background: #f0f0f0;
+}
+
+.eva_storeHf_t .textarea {
+    box-sizing: border-box;
+    position: absolute;
+    top: 0;
+    left: 0;
+    padding: 20rpx;
+    background: rgba(255, 255, 255, 0);
+    width: 100%;
+    height: 100%;
+}
+.textarea_float{
+    box-sizing: border-box;
+    padding: 20rpx;
+    width: 100%;
+    height: 150rpx;
+}
+.textarea_placehoder{
+    box-sizing: border-box;
+    padding: 20rpx;
+    width: 100%;
+    height: 150rpx;
+    line-height: 1;
+    color: #999;
+}
+
+.eva_storeHf_b {
+    display: flex;
+    flex-direction: row-reverse;
+    align-items: center;
+    margin-top: 20rpx;
+}
+
+.eva_storeHf_b_in1 {
+    width: 130rpx;
+    height: 50rpx;
+    border: 2rpx #999 solid;
+    color: #666;
+    background: #fff;
+    border-radius: 10rpx;
+}
+
+.eva_storeHf_b_in2 {
+    width: 130rpx;
+    height: 50rpx;
+    border: 2rpx #e60012 solid;
+    color: #fff;
+    background: #e60012;
+    border-radius: 10rpx;
+}
+.eva_t_r{
+    position: relative;
+}
+.eva_t_r_in_r_in1{
+    color: #666;
+    font-size: 28rpx;
+    margin-right: 10rpx;
+}
+.eva_t_r_in_r_in2{
+    width: 40rpx;
+    height: 40rpx;
+}
+.clickF{
+    position: absolute;
+    z-index: 999999;
+    right: 0rpx;
+    top: 0rpx;
+    height: 130rpx;
+    width: 200rpx;
+}
+.nD_i_in{
+  margin: 300rpx auto;
+}
+.FocusFiex{
+    box-sizing: border-box;
+    position: fixed;
+    transform: translate(-50%,-100%);
+    top: 50%;
+    left:50%;
+    z-index: 99999999;
+    padding: 0 20px;
+}
+
+.eva_img_in{
+	margin-bottom:24rpx;
+}
+.eva_goods{
+	margin-top:0;
+}

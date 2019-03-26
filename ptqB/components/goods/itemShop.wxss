@@ -1,0 +1,43 @@
+/* component/goods/itemShop.wxss */
+@import "../../css/weui.wxss";
+@import "../../css/com.wxss";
+
+.good_home{
+   position: relative;
+   background-color: #ffffff;
+   padding: 20rpx 30rpx;
+   margin:20rpx 0;
+   align-items:center;
+}
+.good_home_img{
+   width: 140rpx;
+   height: 140rpx;
+   overflow: hidden
+}
+.good_home .good_home_tit{
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+   padding-left: 20rpx;
+   height: 140rpx;
+}
+.good_home .goods_home_name{
+  font-size: 32rpx;
+}
+.good_home .good_home_address{
+   font-size: 24rpx;
+   color: #999;
+}
+.good_home .good_home_tit_3{
+  line-height: 1;
+   font-size: 24rpx;
+}
+.good_home .good_home_tit_3 text{
+   color: #333;
+   padding-right: 40rpx;
+}
+.good_home .good_home_rz{
+   position: absolute;
+   top:20rpx;
+   right: 20rpx;
+}

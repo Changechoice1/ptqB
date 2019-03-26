@@ -1,0 +1,2 @@
+@import '../drptGroupList/drptGroupList.wxss';
+@import '/template/template.wxss';

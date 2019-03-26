@@ -1,0 +1,46 @@
+@import "/wxParse/wxParse.wxss";
+page{
+	background: #fff;
+}
+.ai{
+	padding: 30rpx;
+}
+.ai_t{
+	font-size: 2em;
+	margin: 25rpx 0rpx;
+}
+.ai_video{
+	width: 100%;
+	height: 390rpx;
+	margin-top: 20rpx;
+}
+.ai_video video{
+	width: 100%;
+	height: 100%;
+}
+.ai_m{
+	display: flex;
+	font-size: 1.1em;
+}
+.ai_m_in{
+	color: #999;
+	margin-right: 40rpx;
+}
+.ai_m_in1{
+	color: #e60012;
+}
+.ai_b{
+	margin-top: 45rpx;
+}
+.ai_b_txt{
+	font-size: 1.1em;
+}
+.ai_b_btn{
+	margin-top: 40rpx;
+	display: flex;
+	align-items: center;
+}
+.ai_b_btn_in{
+	width: 180rpx;
+	color: #999;
+}

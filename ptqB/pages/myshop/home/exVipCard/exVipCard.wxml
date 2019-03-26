@@ -1,0 +1,75 @@
+<import src="/template/template.wxml"/>
+<view class="index_all_box">
+	<view class="uv_t">
+		<view class="uv_t_in cenFlex" data-index="0" bindtap="tabVipBtn">
+			<view class="{{tabVipFlag?'uv_t_in_in_act':'uv_t_in_in'}} cenFlex">进行中</view>
+		</view>
+		<view class="uv_t_in cenFlex" data-index="1" bindtap="tabVipBtn">
+			<view class="{{!tabVipFlag?'uv_t_in_in_act':'uv_t_in_in'}} cenFlex">已失效</view>
+		</view>
+	</view>
+	<!-- 专享卡列表 -->
+	<!-- 可用专享卡 -->
+	<view class="uv_m" wx:if="{{tabVipFlag}}">
+		<view class="us_i cenFlex" style="background: url({{imgUrl}}vip_ico1.png) no-repeat;background-size: 100% 100%;" wx:for="{{canUseList}}" wx:key="{{index}}" data-id="{{item.card_id}}" bindtap="uVipInfoNav">
+			<view class="us_i_in">
+				<view class="us_i_in_t">
+					<view class="us_i_in_t_img">
+						<image src="{{item.logo_img}}"></image>
+					</view>
+					<view class="us_i_in_t_txt">
+						<view class="us_i_in_t_txt_t twoFontNow">{{item.card_name || '(暂无名称)'}}</view>
+						<view class="us_i_in_t_txt_b">
+							<view class="us_i_in_t_txt_b_in">优惠价：¥{{item.card_price}}</view>
+						</view>
+					</view>
+				</view>
+				<!-- 底部的获得时间 -->
+				<view class="us_i_in_b">
+					<view class="cenFlex">
+						<view class="us_i_in_b_l">
+							<text class="us_i_in_b_l_in" wx:if="{{item.card_type==2}}">赠</text>
+							<text style="color: #fff;font-size: .7em;margin-right: 10rpx;" wx:if="{{item.card_type==2}}">·</text>
+							专享卡
+						</view>
+						<view class="us_i_in_b_r">有效期至:{{item.card_use_end_time}}</view>
+					</view>
+					<view class="us_i_in_b_l_r">
+						已售:{{item.buy_num}}
+					</view>
+				</view>
+			</view>
+		</view>
+	</view>
+	<!-- 失效的专享卡 -->
+	<view class="uv_m" wx:if="{{!tabVipFlag}}">
+		<view class="us_i cenFlex" style="background: url({{imgUrl}}vip_ico2.png) no-repeat;background-size: 100% 100%;" bindtap="uVipInfoNav" wx:for="{{notUseList}}" wx:key="{{index}}" data-id="{{item.card_id}}">
+			<view class="us_i_in">
+				<view class="us_i_in_t">
+					<view class="us_i_in_t_img">
+						<image src="{{item.logo_img}}"></image>
+					</view>
+					<view class="us_i_in_t_txt">
+						<view class="us_i_in_t_txt_t twoFontNow">{{item.card_name || '暂无名称'}}</view>
+						<view class="us_i_in_t_txt_b">优惠价：¥{{item.card_price}}</view>
+					</view>
+				</view>
+				<!-- 底部的获得时间 -->
+				<view class="us_i_in_b">
+					<view class="cenFlex">
+						<view class="us_i_in_b_l us_i_in_b_l_g">
+							<text class="us_i_in_b_l_in" wx:if="{{item.card_type==2}}">赠</text>
+							<text style="color: #fff;font-size: .7em;margin-right: 10rpx;" wx:if="{{item.card_type==2}}">·</text>
+							专享卡
+						</view>
+						<view class="us_i_in_b_r">有效期至:{{item.card_use_end_time}}</view>
+					</view>
+					<view class="us_i_in_b_l_r">
+						已售:{{item.buy_num}}
+					</view>
+				</view>
+			</view>
+		</view>
+	</view>
+	<template is="nullData" data="{{nullData}}" wx:if="{{((tabVipFlag && canUseList.length==0) || (!tabVipFlag && notUseList.length==0)) && loadingF}}"/>
+</view>

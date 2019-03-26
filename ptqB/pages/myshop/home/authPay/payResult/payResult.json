@@ -1,0 +1,9 @@
+{
+  "navigationBarTitleText": "支付成功",
+  "enablePullDownRefresh": true,
+  "component": true,
+  "usingComponents": {
+    "compage": "/vwx/component/template/",
+    "diyModal": "/components/diyMoadel/diyMoadel"
+  }
+}

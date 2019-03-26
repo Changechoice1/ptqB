@@ -1,0 +1,50 @@
+<import src="/template/template.wxml" />
+<view class="index_all_box">
+    <template is="nullData" data="{{nullData}}" wx:if='{{freData.list.length == 0}}' />
+    <view class="fre" wx:if='{{freData.list.length > 0}}'>
+        <view class="fre_in" wx:for="{{freData.list}}" wx:key="{{index}}">
+            <view class="fre_t">
+                <view class="fre_t_t">
+                    <view class="fre_t_t_l">{{item.name}}</view>
+                    <view class="fre_t_t_r" style="color:#{{item.is_start==0?'999':'e60012'}}">{{item.is_start==0?'不启用':'已启用'}}</view>
+                </view>
+            </view>
+            <view class="fre_m">
+                <view class="fre_m_in">
+                    <view class="fre_m_in_in">
+                        <text style="color: #999">首件：</text>
+                        <text>{{item.first_num}}</text>
+                    </view>
+                    <view class="fre_m_in_in">
+                        <text style="color: #999">运费：</text>
+                        <text>{{item.price}}</text>
+                    </view>
+                </view>
+                <view class="fre_m_in">
+                    <view class="fre_m_in_in">
+                        <text style="color: #999">续件：</text>
+                        <text>{{item.add_num}}</text>
+                    </view>
+                    <view class="fre_m_in_in">
+                        <text style="color: #999">续费：</text>
+                        <text>{{item.add_price}}</text>
+                    </view>
+                </view>
+            </view>
+            <view class="fre_b">
+                <view class="fre_b_l">
+                    {{item.is_full_reduce==1?'已关闭满额包邮':'满额包邮：¥'+item.full_reduce_price}}
+                </view>
+                <view class="fre_b_r cenFlex">
+                    <view class="fre_b_r_in cenFlex" style="margin-right: 30rpx;" data-id="{{item.id}}" bindtap="eidtBtn">编辑</view>
+                    <view class="fre_b_r_in cenFlex" data-id="{{item.id}}" data-index="{{index}}" bindtap="emptyBtn" data-name="{{item.name}}">删除</view>
+                </view>
+            </view>
+        </view>
+
+    </view>
+    <view class="fre_bottom">
+        <view class="fre_bottom_in cenFlex" bindtap="nextRel">添加</view>
+    </view>
+    <template is="noTModale" data="{{notMData}}" />
+</view>

@@ -1,0 +1,6 @@
+<view class="container">
+  <image class="banner" src="https://ptq.oss-cn-hangzhou.aliyuncs.com/ptq/wxxcx/impMarketingAbi.png"></image>
+  <view class="article">
+    <view class="article_item" wx:for="{{article}}" wx:key="{{index}}">{{item}}</view>
+  </view>
+</view>

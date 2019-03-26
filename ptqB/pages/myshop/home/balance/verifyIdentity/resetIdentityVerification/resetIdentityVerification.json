@@ -1,0 +1,7 @@
+{
+	"navigationBarTitleText": "重置安全密码",
+  "component": true,
+  "usingComponents": {
+    "diyModal": "/components/diyMoadel/diyMoadel"
+  }
+}

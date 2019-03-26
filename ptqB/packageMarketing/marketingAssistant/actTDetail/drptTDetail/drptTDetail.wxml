@@ -1,0 +1,98 @@
+<import src="/template/activity/actType/actType.wxml" />
+
+<compage id="compage">
+  <view>
+    <view class="container">
+      <!--活动头部信息  -->
+      <view class='goods_top'>
+        <view class='headerImgBox'>
+          <!--轮播广告  -->
+          <vwx-swiper-good list="{{goods_info.goods_slide}}" type="{{type}}"></vwx-swiper-good>
+          <!-- 轮播图上的图片(分享图片以及活动状态) -->
+          <view class="headerImgBox_share cenFlex">
+            <image src="/images/in3_ico32.png"></image>
+          </view>
+          <!-- 结束提示 -->
+          <!-- <view class="f_mb_img" wx:if="{{type!=0}}">
+            <image src="/images/{{type==3?'in3_ico30.png':'in3_ico31.png'}}"></image>
+        </view> -->
+
+          <!-- 返回个人中心 -->
+          <view class="go_per_c flex-center" bindtap="goPersonalCenter">
+            <icon class="icon-pq-personal"></icon>
+            个人中心
+          </view>
+        </view>
+        <!--活动基本信息  -->
+        <view class='good_title'>
+          <view class='good_title_price'>
+            <template is="actType" data="{{is_group}}"></template>
+            <text class='g_price'>￥{{goods_info.bottom_price}}</text>
+            <text class='r_price'> 原价:￥{{goods_info.goods_price}}</text>
+          </view>
+          <view class='gd_pr_t_in'>
+            <text wx:if="{{goods_info.is_exclusive==1}}">专享卡</text> {{goods_info.goods_name}}
+          </view>
+          <!-- 专享卡与商品都卖的情况 -->
+          <view class="h4 zxkitem" wx:if="{{goods_info.is_exclusive==2}}">
+            <text>赠 <text class="yyy">●</text></text>
+            <text>专享卡 <text class="yyy">●</text></text>
+            <text class="zxcard">{{goods_info.card_info.card_name}}</text>
+          </view>
+
+          <view class="weui-flex sale_info">
+            <view class="weui-flex__item">限购:{{goods_info.restriction==0?'不限':goods_info.restriction+'件'}}</view>
+            <view>已团999件</view>
+          </view>
+          <vwx-good-express genre="{{goods_info.genre}}" starttime="{{store_info.start_time}}" endtime="{{store_info.end_time}}"></vwx-good-express>
+        </view>
+      </view>
+      <!--活动时间  -->
+      <view class='good_avt  weui-flex'>
+        <view class='weui-flex__item'>
+          <vwx-countdown time="{{countdown}}"></vwx-countdown>
+          <!-- {{goods_info.last_time}} -->
+        </view>
+        <view class="near_goods_t_r">
+          <view class="near_goods_t_r_t">{{goods_info.joinnum}}人团</view>
+          <view class="near_goods_t_r_b">仅剩{{goods_info.inventory+'件' || '库存∞'}}</view>
+        </view>
+      </view>
+
+      <!-- 多人拼团玩法   start-->
+      <view class='activity_flow'>
+        <view class='activity_flow_title'>
+          <view class='activity_flow_title_le'>
+            <text>多人拼团玩法</text>
+          </view>
+          <view class='activity_flow_title_r'>
+            <text>玩法详情</text>
+            <icon class='icon-pq-rightarr'></icon>
+          </view>
+        </view>
+        <!--活动流程  -->
+        <view class="gd_play_w cenFlex">
+          <view class="gd_play_w_in cenFlex" wx:for="{{groupPlay}}" wx:key="{{index}}">
+            <view class="gd_play_w_in_t cenFlex">
+              <image src="{{imgUrl}}{{item.img}}"></image>
+            </view>
+            <view class="gd_play_w_in_b cenFlex">{{item.name}}</view>
+          </view>
+        </view>
+      </view>
+
+      <!-- 多人拼团玩法   end-->
+
+      <!--店铺信息  -->
+      <vwx-shop-item data="{{store_info}}"></vwx-shop-item>
+      <!--更多活动详情  -->
+      <vwx-good-more info="{{goods_info}}" comments="{{evaluate_list}}"></vwx-good-more>
+    </view>
+
+    <!--页面复制添加bar  -->
+    <view class="shopBarPage">
+      <view>已有{{applyNum}}位同行使用</view>
+      <vwx-button type='s' text="复制并使用该方案" bindtap='copyAdd'></vwx-button>
+    </view>
+  </view>
+</compage>

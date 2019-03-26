@@ -1,0 +1,173 @@
+/* pages/myshop/expand/fans/cusDetail.wxss */
+@import '/weui.wxss';
+@import '../base.wxss';
+@import '/template/activity/actType/actType.wxss';
+
+.header{
+  padding-top: 30rpx;
+  padding-bottom: 20rpx;
+  background-color: #fff;
+}
+.header_logo{
+  border-radius: 50%;
+  width: 104rpx;
+  height: 104rpx;
+  overflow: hidden;
+}
+.header_logo > image{
+  width: 100%;
+  height: 100%;
+}
+.heder_name{
+  margin-top: 20rpx;
+  font-size: 28rpx;
+}
+
+.box{
+  margin-top: 20rpx;
+  padding: 0 30rpx;
+  background-color: #fff;
+}
+.title{
+  padding: 30rpx 0;
+  line-height: 1;
+  font-size: 28rpx;
+}
+
+.cons_cont{
+  padding: 30rpx 0;
+}
+.const_cont_inbox{
+  margin-top: 25rpx;
+}
+.const_cont_inbox:first-child{
+  margin-top: 0;
+}
+.const_cont_item{
+  width: 33%;
+}
+.const_cont_item .lab{
+  font-size: 26rpx;
+  color: #666;
+}
+.const_cont_item .val{
+  margin-top: 25rpx;
+  font-size: 26rpx;
+}
+.const_cont_item .val > text{
+  font-size: 24rpx;
+}
+.const_cont_item .val > .gj{
+  color: #e60012;
+}
+.const_cont_item .val > .kj{
+  color: #E971D7;
+}
+
+
+.contact_title{
+  position: relative;
+}
+.contact_btn_edit{
+  position: absolute;
+  top: 25rpx;
+  right: 0;
+  font-size: 28rpx;
+  color: #666;
+}
+.contact_btn_calcel{
+  margin-right: 75rpx;
+}
+.contact_item:last-child{
+  border: none;
+}
+.contact_item, .contact_all{
+  padding: 30rpx 0;
+  font-size: 28rpx;
+}
+.contact_sel{
+  margin-right: 30rpx;
+  width: 40rpx;
+  height: 40rpx;
+}
+.contact_sel > image{
+  width: 100%;
+  height: 100%;
+}
+.contact_name{
+  margin-left: 10rpx;
+  color: #666;
+}
+.contact_default{
+  margin-left: 10rpx;
+  color: #e60012;
+}
+.contact_all_txt{
+  font-size: 28rpx;
+  color: #999;
+}
+.contact_all_icon{
+  margin-left: 20rpx;
+  width: 12rpx;
+  height: 24rpx;
+  overflow: hidden;
+}
+.contact_less_icon{
+  width: 60rpx;
+  height: 25rpx;
+  overflow: hidden;
+}
+.contact_all_icon > image, .contact_less_icon > image{
+  display: block;
+  width: 100%;
+  height: 100%;
+}
+
+.order_info{
+  margin-bottom: 100rpx;
+}
+.list_item{
+  padding: 20rpx 0;
+}
+.list_item:first-child{
+  padding-top: 0;
+}
+.list_item:last-child{
+  border: none;
+}
+.item-logo{
+  width: 252rpx;
+  height: 162rpx;
+}
+.item-logo-img{
+  width: 100%;
+  height: 100%;
+}
+.item-cont{
+  position: relative;
+  width: 420rpx;
+  height: 100%;
+}
+.item-name{
+  font-size: 28rpx;
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
+}
+.item-name > text{
+  margin-left: 10rpx;
+}
+.item-time, .item-num, .item-price{
+  margin-top: 15rpx;
+  line-height: 1;
+  font-size: 24rpx;
+  color: #666;
+}
+.item-type{
+  position: absolute;
+  right: 0;
+  bottom: 0;
+  line-height: 1;
+  color: #e60012;
+  font-size: 28rpx;
+}

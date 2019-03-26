@@ -1,0 +1,14 @@
+<view class="index_all_box">
+    <view class="auth_text_h">{{type==1?'个人实名认证流程':'店铺实名认证流程'}}</view>
+    <view class="auth_text_body">
+        <view wx:for="{{authenData}}" wx:key="{{index}}">
+            <view class="auth_text_body_t">流程规则{{index+1}}</view>
+            <view class="auth_text_body_b">{{item}}</view>
+        </view>
+    </view>
+    <view class="okNext" data-type="{{type}}" bindtap="{{checkedFlag?'nextPage':''}}" style="background: #{{checkedFlag?'e60012':'cccccc'}}">我要认证</view>
+    <view class="okNext_bTxt cenFlex">
+        <radio bindtap="checkedBtn" checked="{{checkedFlag}}" />点击即表示同意
+        <text style='color: #ed4e4e;' bindtap="navxy">《拼团趣认证增值服务协议》</text>
+    </view>
+</view>

@@ -1,0 +1,279 @@
+/* packageMarketing/brandCenter/brandInfo/index.wxss */
+@import '/template/template.wxss';
+@import '/template/activity/actType/actType.wxss';
+
+/* 顶部品牌logo  start*/
+.container{
+   height: 100%;
+   box-sizing: border-box;
+}
+.brandLogo{
+   width: 100%;
+   height: auto;
+   font-size: 0;
+}
+.brandLogo image{
+   width: 100%;
+}
+/* 顶部品牌logo  end*/
+
+/* 顶部swiper  start*/
+.top-banner {
+  width: 100%;
+  height: 600rpx;
+  border-bottom: 1rpx solid #eee;
+  padding-top: 30rpx;
+  box-sizing: border-box;
+  background-color: #fff;
+}
+
+swiper {
+  width: 100%;
+  height: 100%;
+}
+swiper .item-img{
+   padding: 0 30rpx;
+   box-sizing: border-box;
+}
+.best-swiper {
+  height: 190rpx;
+}
+
+.img-content {
+  height: 442rpx;
+  width: 100%;
+  position: relative;
+  overflow: hidden;
+}
+
+.imgSelf {
+  color: #fff;
+  position: absolute;
+  transform: rotate(-45deg);
+  top: 40rpx;
+  height: 50rpx;
+  width: 300rpx;
+  left: -75rpx;
+  font-size: 26rpx;
+}
+
+.flex-c {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.img-content image {
+  border-radius: 20rpx;
+}
+
+.item-activiname {
+  font-size: 28rpx;
+  color: #333;
+  text-align: left;
+  height: 70rpx;
+  line-height: 70rpx;
+  padding-left: 20rpx;
+  overflow: hidden;
+  white-space: nowrap;
+  text-overflow: ellipsis;
+  word-break: break-all;
+}
+
+.suspend-content {
+  position: absolute;
+  left: 0;
+  bottom: 0;
+  color: #fff;
+  font-size: 26rpx;
+  display: flex;
+  flex-direction: column;
+  padding: 20rpx;
+  box-sizing: border-box;
+  width: 100%;
+}
+
+.top-roll {
+  height: 50rpx;
+  padding-bottom: 20rpx;
+  display: flex;
+  align-items: center;
+}
+
+.roll {
+  display: flex;
+  align-items: center;
+  height: 50rpx;
+}
+
+.roll .logo {
+  width: 40rpx;
+  min-width: 40rpx;
+  height: 40rpx;
+}
+
+.roll .logo image {
+  border-radius: 50%;
+  border: 3.5rpx solid #fff;
+}
+
+.use-busi {
+  margin-left: 10rpx;
+}
+
+.sus-bottom-b {
+  height: 68rpx;
+  background-color: #000;
+  opacity: 0.3;
+  position: absolute;
+  bottom: 0;
+  width: 100%;
+  left: 0rpx;
+  border-bottom-left-radius: 20rpx;
+  border-bottom-right-radius: 20rpx;
+  z-index: 2;
+}
+
+.sus-bottom {
+  display: flex;
+  justify-content: space-between;
+  width: 100%;
+  z-index: 3;
+  margin-bottom: -20rpx;
+  height: 68rpx;
+  line-height: 68rpx;
+}
+
+.b-l {
+}
+
+.b-r {
+}
+
+/* 顶部swiper  end*/
+/* 品牌列表 start*/
+.contant{
+   margin-top: 20rpx;
+}
+.brand_header{
+   background: #fff;
+   display: flex;
+   justify-content: space-between;
+   align-items: center;
+   border-bottom: 1px solid #eee;
+   padding: 20rpx 30rpx;
+   box-sizing: border-box;
+   width: 100%;
+}
+.brand_header_cont{
+   display: flex;
+   align-items: center;
+}
+.brand_header_cont .brand_logo{
+   width: 72rpx;
+   height: 72rpx;
+   border-radius: 36rpx;
+   overflow: hidden;
+}
+.brand_header_cont .brand_name{
+   font-size: 28rpx;
+   margin-left: 21rpx;
+}
+.brand_header .more-solu{
+   font-size: 28rpx;
+   color: #999;
+
+}
+.look_block {
+    position: relative;
+    background: #fff;
+    padding: 19rpx 30rpx;
+    border-bottom: 1rpx solid #eee;
+}
+
+.look_1 {
+    display: flex;
+}
+
+.look_1_img {
+    padding-right: 16rpx;
+}
+
+.look_1_img_inner {
+    width: 226rpx;
+    height: 145rpx;
+}
+
+.look_1_text {
+   flex: 1;
+   display: flex;
+   flex-direction: column;
+   justify-content: space-between;
+}
+
+.look_1_h {
+    font-size: 26rpx;
+    display: -webkit-box;
+    -webkit-box-orient: vertical;
+    -webkit-line-clamp: 2;
+    overflow: hidden;
+}
+
+.look_1_price {
+    display: flex;
+    align-items: flex-end;
+    justify-content: space-between;
+}
+.look_1_p{
+   font-size: 22rpx;
+   height: 34rpx;
+   line-height: 34rpx;
+   color: #666;
+   border-radius: 17rpx;
+   padding: 0 24rpx;
+   background: #FBEBCF
+}
+
+.rank_divide {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    padding: 30rpx;
+}
+/* 品牌列表 end*/
+/*品牌定制下单 start*/
+.no_list{
+   background: #fff;
+   padding-top: 131rpx;
+   height: 100%;
+   box-sizing: border-box;
+}
+/*品牌定制下单 end*/
+
+/*底部nav start*/
+.footerNav{
+   border-top:#E8E8E8 1rpx solid;
+   display: flex;
+   position: fixed;
+   width: 100%;
+   box-sizing: border-box;
+   justify-content: space-between;
+   height: 98rpx;
+   bottom: 0;
+   left: 0;
+   right: 0;
+}
+.foot_nav_item{
+   width: 100%;
+   flex: 1;
+   background: #fff;
+   color: #333;
+   line-height: 98rpx;
+   text-align: center;
+   font-size: 28rpx;
+}
+.foot_nav_checked{
+   background: #E60012;
+   color: #fff;
+}
+/*底部nav end*/

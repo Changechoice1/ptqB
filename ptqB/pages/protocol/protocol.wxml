@@ -1,0 +1,16 @@
+<import src="/wxParse/wxParse.wxml" />
+<view class="index_all_box">
+    <view class="ai">
+        <view class="ai_t">{{id==1?'拼团趣使用协议':'拼团趣认证增值服务协议'}}</view>
+        <view class="ai_m">
+            <view class="ai_m_in">2018-03-09</view>
+            <view class="ai_m_in">拼团趣</view>
+            <view class="ai_m_in1">拼团趣</view>
+        </view>
+        <view class="ai_b">
+            <view class="ai_b_txt">
+                <template is="wxParse" data="{{wxParseData:article.nodes}}" />
+            </view>
+        </view>
+    </view>
+</view>

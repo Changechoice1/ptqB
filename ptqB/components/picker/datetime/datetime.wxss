@@ -1,0 +1,51 @@
+.picker_modal{
+  position: fixed;
+  top: 0;
+  left: 0;
+  z-index: 100;
+  background-color: rgba(0, 0, 0, 0.6);
+  width: 100%;
+  height: 100%;
+  text-align: center;
+}
+.picker{
+  margin: 100rpx auto 0;
+  background-color: #fff;
+  border-radius: 15rpx;
+  width: 86%;
+}
+.picker_title{
+  padding: 30rpx 0;
+  border-bottom: 2rpx solid #eee;
+  text-align: center;
+}
+picker-view {
+  width:100%;
+  height:300rpx;
+  margin-top:40rpx;
+}
+picker-view-column {
+  -webkit-flex:1;
+  flex:1;
+  position:relative;
+  height:100%;
+  overflow:hidden;
+}
+
+.picker_btn{
+  display: flex;
+  align-items: center;
+  justify-content: flex-end;
+  margin-top: 30rpx;
+  padding: 30rpx;
+}
+.picker_btn > view{
+  width: 15%;
+  text-align: center;
+}
+.picker_cancel{
+  color: #999;
+}
+.picker_confirm{
+  color: #e60012;
+}

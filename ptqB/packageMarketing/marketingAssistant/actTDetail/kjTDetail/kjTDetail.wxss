@@ -1,0 +1,231 @@
+/**index.wxss**/
+@import '/template/activity/actType/actType.wxss';
+@import "../TDetail.wxss";
+@import "../ptljTDetail/ptljTDetail.wxss";
+
+.rcmd_activ {
+  height: 85rpx;
+  background: #fff;
+  width: 100%;
+  font-size: 1.2em;
+}
+
+.gd_ex_l {
+  max-width: 450rpx;
+}
+
+.footerRes {
+  padding-bottom: 100rpx;
+}
+
+.gd_ex {
+  background: #fff;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  height: 85rpx;
+  border-top: 2rpx #f5f5f5 solid;
+}
+
+.gd_ex_r {
+  width: 35rpx;
+  height: 35rpx;
+  min-width: 35rpx;
+}
+
+.cenFlex {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.cenFlexy {
+  display: flex;
+  align-items: center;
+}
+
+.gd_pr_t_in {
+  font-size: 1.2em;
+  color: #000;
+}
+
+.gd_pr_puch2_t_l_out {
+  border: 2rpx #ff6243 solid;
+  border-radius: 10rpx;
+  position: relative;
+  padding: 3rpx 5rpx;
+  font-size: 28rpx;
+}
+
+.gd_pr_puch2_t_l_l::after {
+  content: "";
+  display: block;
+  width: 12rpx;
+  height: 12rpx;
+  background: #fff;
+  left: 0rpx;
+  top: -6rpx;
+  position: absolute;
+  border-radius: 50%;
+}
+
+.gd_pr_puch2_t_l_l::before {
+  content: "";
+  display: block;
+  width: 12rpx;
+  height: 12rpx;
+  background: #fff;
+  left: 0rpx;
+  bottom: -6rpx;
+  position: absolute;
+  border-radius: 50%;
+}
+
+.gd_pr_puch1_l::before {
+  content: "·";
+  font-size: 40rpx;
+  color: #e60012;
+  margin-right: 10rpx;
+  margin-bottom: 5rpx;
+  font-weight: 700;
+}
+
+.gd_pr_puch1_l::after {
+  content: "·";
+  font-size: 40rpx;
+  color: #e60012;
+  margin-left: 10rpx;
+  margin-bottom: 5rpx;
+  font-weight: 700;
+}
+
+.onFontNow {
+  overflow: hidden;
+  text-overflow: ellipsis;
+  white-space: nowrap;
+}
+
+.gd_pr_puch2_t {
+  width: 100%;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin-bottom: 10rpx;
+}
+
+.gd_pr_puch2_t_l_r {
+  padding: 0rpx 10rpx;
+  color: #ff6243;
+  max-width: 380rpx;
+}
+
+.cred {
+  color: #e60012;
+}
+
+.gd_pr_puch2_t_l_in {
+  width: 224rpx;
+  min-width: 224rpx;
+}
+
+.gd_pr_puch2_t_l {
+  width: 100%;
+}
+
+.cssFlex_st {
+  position: fixed;
+  height: 111rpx;
+  width: 180rpx;
+  top: 896rpx;
+  right: 20rpx;
+  z-index: 100;
+}
+
+.cssFlex {
+  position: relative;
+}
+
+.shake {
+  animation: shake 1s;
+  -o-animation: shake 1s;
+  -webkit-animation: shake 1s;
+  -moz-animation: shake 1s;
+}
+
+@keyframes shake {
+  0%, 100% {
+    transform: rotate(10deg);
+  }
+
+  10%, 30%, 50%, 70%, 90% {
+    transform: rotate(-10deg);
+  }
+
+  20%, 40%, 60%, 80% {
+    transform: rotate(10deg);
+  }
+}
+
+/* @-o-keyframes shake{
+  0%, 100% {
+        -o-transform: rotate(10deg);
+    }
+    10%,
+    30%,
+    50%,
+    70%,
+    90% {
+        -o-transform: rotate(-10deg);
+    }
+    20%,
+    40%,
+    60%,
+    80% {
+        -o-transform: rotate(10deg);
+    }
+} */
+
+/* @-moz-keyframes shake{
+  0%, 100% {
+        -moz-transform: rotate(10deg);
+    }
+    10%,
+    30%,
+    50%,
+    70%,
+    90% {
+        -moz-transform: rotate(-10deg);
+    }
+    20%,
+    40%,
+    60%,
+    80% {
+        -moz-transform: rotate(10deg);
+    }
+} */
+
+@-webkit-keyframes shake {
+  0%, 100% {
+    -webkit-transform: rotate(10deg);
+  }
+
+  15%, 30%, 50%, 70%, 90% {
+    -webkit-transform: rotate(-10deg);
+  }
+
+  20%, 40%, 60%, 80% {
+    -webkit-transform: rotate(10deg);
+  }
+}
+
+.mengban {
+    width: 100%;
+    height: 100%;
+    background: #000;
+    opacity: .8;
+    z-index: 1200;
+    top: 0px;
+    left: 0px;
+    position: fixed;
+    overflow: hidden;
+}

@@ -1,0 +1,10 @@
+{
+  "navigationBarTitleText": "活动发布",
+  "component": true,
+  "usingComponents": {
+    "compage": "/vwx/component/template/",
+    "vwx-button": "/components/button/button/",
+    "vwx-datetime": "/components/picker/datetime/datetime/",
+    "vwx-cropper": "/components/cropper/we-cropper"
+  }
+}

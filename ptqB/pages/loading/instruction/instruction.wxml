@@ -1,0 +1,26 @@
+<view class="index_all_box">
+	<view class="reaSon_header">
+		基于版本过低提示说明及解决方案
+	</view>
+	<view class="contentBox">
+		  <text style="margin-left: 40rpx;"></text>抱歉出现此情况给您带来的不便,基于此问题我们列出如下几种对应方案请供参考!
+	</view>
+	<view class="footerBox">
+
+		<view style="color:#333;font-weight: 600;">1. 微信小程序基础版本库过低</view>
+		<view style="font-size: 22rpx;">微信升级到最新版本,却还是无法进入,是因为基础版本库没有跟随微信的升级而进行升级(目前基础版本库无法在微信中查看,只能代码进行检测)</view>
+		<view style="font-size: 22rpx;">(解决方案:升级微信版本或卸载微信重新安装)</view>
+
+		<view style="color:#333;font-weight: 600;">2. 使用了微信分身</view>
+		<view style="font-size: 22rpx;">部分机型微信分身的版本库过低会导致无法使用小程序</view>
+		<view style="font-size: 22rpx;">(解决方案:使用原版微信登录使用)</view>
+
+		<view style="color:#333;font-weight: 600;">3. 手机系统版本过低</view>
+		<view style="font-size: 22rpx;">微信小程序某些组件需要系统自身的系统版本去支撑,所以手机系统版本不支持的情况下也无法进行预览,目前android：5.1.1与IOS8以下的用户会出现错误提示情况</view>
+		<view style="font-size: 22rpx;">(解决方案:升级手机系统版本)</view>
+	</view>
+	<view class="contentBox" style="margin-top: 40rpx;">
+		  <text style="margin-left: 40rpx"></text>
+		  给您带来的不便，深感歉意!
+	</view>
+</view>

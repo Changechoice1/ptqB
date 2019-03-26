@@ -1,0 +1,7 @@
+/* component/goods/goodSwiper.wxss */
+
+.headerImgBox {
+   width: 100%;
+   height: 500rpx;
+   position: relative;
+}

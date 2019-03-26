@@ -1,0 +1,90 @@
+/* packageMarketing/brandCenter/index.wxss */
+@import "/template/template.wxss" ;
+page{
+  background-color: #f0f0f0;
+}
+
+.container{
+  height: 100%;
+}
+
+.header{
+  box-sizing: border-box;
+  position: fixed;
+  top: 0;
+  left: 0;
+  padding: 30rpx;
+  border-bottom: 1rpx solid #e8e8e8;
+  background-color: #fff;
+  width: 100%;
+  line-height: 1;
+}
+.header_title{
+  font-size: 32rpx;
+  font-weight: 800;
+}
+.header_btn{
+  color: #666
+}
+.header_btn > icon{
+  font-size: 32rpx;
+}
+.header_btn > text{
+  margin-left: 15rpx;
+  font-size: 24rpx;
+}
+
+.no_list{
+  box-sizing: border-box;
+  padding: 160rpx 0 98rpx;
+  background-color: #fff;
+  height: 100%;
+}
+
+.act_list{
+  padding: 0 30rpx;
+}
+.act_list_item{
+  display: inline-block;
+  margin-top: 30rpx;
+  width: 337rpx;
+  height: 220rpx;
+  border-radius: 20rpx;
+  background-size: 100% 100%;
+}
+.act_list_item:nth-child(2n){
+  margin-left: 16rpx;
+}
+.item_name{
+  margin-top: 40rpx;
+  line-height: 1;
+  font-size: 26rpx;
+  text-align: center;
+}
+
+.customized_list{
+
+}
+
+.tab{
+  position: fixed;
+  left: 0;
+  bottom: 0;
+  width: 100%;
+  height: 98rpx;
+  line-height: 98rpx;
+  font-size: 28rpx;
+  text-align: center;
+}
+.tab_item{
+  display: inline-block;
+  width: 50%;
+  height: 100%;
+  border-top: 1rpx solid #e8e8e8;
+  background-color: #fff;
+}
+.tab_item.active{
+  border-color: #e60012;
+  background-color: #e60012;
+  color: #fff;
+}

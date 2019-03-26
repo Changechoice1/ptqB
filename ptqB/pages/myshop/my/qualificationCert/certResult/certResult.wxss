@@ -1,0 +1,237 @@
+page {
+    background: #f7f7f7;
+}
+
+.index_all_box {
+    background: #f7f7f7;
+    font-size: 1em;
+    color: #000;
+}
+
+.payYear_h {
+    background: #fff;
+    height: 300rpx;
+    width: 100%;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.payYear_h_in {
+    height: 75rpx;
+    display: flex;
+    max-width: 600rpx;
+    justify-content: space-between;
+    align-items: center;
+    margin-top: 25rpx;
+}
+
+.payYear_h_in1 {
+    display: flex;
+    align-items: center;
+}
+
+.payYear_h_in1_r {
+    width: 46rpx;
+    height: 46rpx;
+    min-width: 46rpx;
+    border: 4rpx solid rgba(255, 67, 82, 0.4);
+    line-height: 46rpx;
+    text-align: center;
+    border-radius: 50%;
+    position: relative;
+    font-size: 1em;
+    color: #fff;
+}
+
+.payYear_h_in1_r image {
+    width: 100%;
+    height: 100%;
+    border-radius: 50%;
+}
+
+.payYear_h_in1_r text {
+    width: 100%;
+    height: 100%;
+    background: #ff4352;
+    display: inline-block;
+    overflow: hidden;
+    border-radius: 50%;
+}
+
+.payYear_h_in1_r::before {
+    content: "支付认证年费";
+    display: block;
+    position: absolute;
+    min-width: 200rpx;
+    color: #666;
+    top: -80rpx;
+    font-size: 1em;
+    left: -82rpx;
+}
+
+.payYear_h_in2 .payYear_h_in1_r::before {
+    content: "认证审核中";
+}
+
+.payYear_h_in3 .payYear_h_in1_r::before {
+    content: "认证成功";
+}
+
+.payYear_h_in1_rr {
+    background: #ff4352;
+    height: 6rpx;
+    width: 106rpx;
+}
+
+.payYear_m {
+    background: #fff;
+    margin-top: 30rpx;
+}
+
+.payYear_m_t {
+    padding: 25rpx 30rpx;
+    background: #fff;
+    color: #727272;
+}
+
+.payYear_m_t > text {
+    color: #e60012;
+    font-size: 1.2em;
+    margin-left: 10rpx;
+}
+
+.payYear_m_b {
+    padding: 20rpx;
+    display: flex;
+    background: #eaeaea;
+}
+
+.payYear_m_b_in {
+    width: 205rpx;
+    height: 80rpx;
+    border: 4rpx #06c1ae solid;
+    border-radius: 5rpx;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    color: #06c1ae;
+}
+
+.payYear_pyStyle_h {
+    height: 80rpx;
+    line-height: 80rpx;
+    padding-left: 30rpx;
+    color: #727272;
+    background: #fff;
+    margin-top: 30rpx;
+}
+
+.payYear_pyStyle_w {
+    padding: 20rpx 20rpx 40rpx;
+    background: #fff;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    position: relative;
+}
+
+.payYear_pyStyle_w_l {
+    display: flex;
+    align-items: center;
+}
+
+.payYear_pyStyle_w_l1 {
+    width: 58rpx;
+    height: 47rpx;
+}
+
+.payYear_pyStyle_w_l1 image {
+    width: 100%;
+    height: 100%;
+}
+
+.payYear_pyStyle_w_l2 {
+    color: #333;
+    margin-left: 20rpx;
+}
+
+.payYear_pyStyle_w_r {
+    height: 100%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+.payYear_pyStyle_w_r_in {
+    width: 35rpx;
+    height: 35rpx;
+}
+
+.payYear_pyStyle_w_r_in image {
+    width: 100%;
+    height: 100%;
+}
+
+.okNext {
+    width: 60%;
+    height: 80rpx;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    color: #fff;
+    background: #e60012;
+    margin: 20rpx auto;
+    border-radius: 15rpx;
+    font-size: 32rpx;
+}
+
+.okNext_bTxt {
+    font-size: 0.9em;
+    width: 100%;
+    text-align: center;
+}
+
+.pay_all_box2_in {
+    width: 100%;
+    height: 640rpx;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    color: #05c1b0;
+}
+
+.pay_all_box2_in_in {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    flex-wrap: wrap;
+}
+
+.pay_all_box2_in_in_t {
+    width: 180rpx;
+    height: 180rpx;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    min-width: 180rpx;
+    min-height: 180rpx;
+    margin-bottom: 25rpx;
+}
+
+.pay_all_box2_in_in_t image {
+    width: 100%;
+    height: 100%;
+}
+
+.pay_all_box2_in_in_b {
+    width: 100%;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+radio .wx-radio-input {
+    width: 32rpx;
+    height: 32rpx;
+}

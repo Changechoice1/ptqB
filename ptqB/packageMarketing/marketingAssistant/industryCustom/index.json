@@ -1,0 +1,7 @@
+{
+  "navigationBarTitleText": "行业定制",
+  "component": true,
+  "usingComponents": {
+    "compage": "/vwx/component/template/"
+  }
+}

@@ -1,0 +1,79 @@
+<!--index.wxml-->
+<import src="/template/activity/actType/actType.wxml" />
+<compage id="compage">
+  <view style="height:{{showCanvas || ptFlage?bHeight:''}}px;overflow:hidden">
+    <view class='footerRes cssFlex '>
+      <!-- shake -->
+      <view class='cssFlex_st ' animation="{{animation}}" bindtap='regis'>
+        <image mode='aspectFit' src='/assets/images/cssFlex.png'></image>
+      </view>
+      <view class="{{showCanvas?'conmentGoods':''}}">
+        <view class="container">
+          <!--活动头部信息  -->
+          <view class='goods_top'>
+            <view class='headerImgBox '>
+              <!--轮播广告  -->
+              <vwx-swiper-good list="{{goods_info.goods_slide}}" type="{{type}}"></vwx-swiper-good>
+              <!-- 轮播图上的图片(分享图片以及活动状态) -->
+              <view class="headerImgBox_share cenFlex" bindtap="showCanvasBtn">
+                <image src="/assets/images/in3_ico32.png"></image>
+              </view>
+              <view class="f_mb_img" wx:if="{{type!=0}}">
+                <image src="/assets/images/{{type==3?'in3_ico30.png':'in3_ico31.png'}}"></image>
+              </view>
+
+              <!-- 返回个人中心 -->
+              <view class="go_per_c flex-center" bindtap="goPersonalCenter">
+                <icon class="icon-pq-personal"></icon>
+                个人中心
+              </view>
+            </view>
+
+            <!--活动基本信息  -->
+            <view class='good_title'>
+              <view class='good_title_price'>
+                <template is="actType" data="{{is_group}}"></template>
+                <text class='g_price'>￥{{goods_info.bottom_price}}</text>
+                <text class='r_price'>原价：￥{{goods_info.goods_price}}</text>
+              </view>
+              <view class='gd_pr_t_in'>
+                <text wx:if="{{goods_info.is_exclusive==1}}" class='cred gd_pr_puch1_l'>专享卡</text> {{goods_info.goods_name}}
+              </view>
+              <!-- 专享卡与商品都卖的情况 -->
+              <view class="gd_pr_puch2_t " wx:if="{{goods_info.is_exclusive==2}}">
+                <view class='gd_pr_puch2_t_l cenFlexy'>
+                  <view class='gd_pr_puch2_t_l_in'>
+                    <text style="font-size: 15px;font-weight: 600;height:25px;margin-right: 5px;color:#e60012">赠</text>
+                    <text class='gd_pr_puch1_l' style="font-size: 15px;font-weight: 600;height:25px;margin-right: 5px;color:#e60012">专享卡</text>
+                  </view>
+                  <view class='gd_pr_puch2_t_l_out '>
+                    <text class="gd_pr_puch2_t_l_r ">{{goods_info.card_info.card_name}}</text>
+                  </view>
+                </view>
+              </view>
+
+              <view class="weui-flex">
+                <view class="weui-flex__item">限购：{{goods_info.restriction==0?'不限':goods_info.restriction+'件'}}</view>
+                <view>已下单{{goods_info.sales}}件</view>
+              </view>
+              <!-- 送货上门、到店自提 -->
+              <vwx-good-express genre="{{goods_info.genre}}" starttime="{{store_info.start_time}}" endtime="{{store_info.end_time}}"></vwx-good-express>
+              <!-- 送货上门、到店自提 -->
+
+            </view>
+          </view>
+          <!--店铺信息  -->
+          <vwx-shop-item data="{{store_info}}" bind:storebutton="storebutton"></vwx-shop-item>
+          <!--更多活动详情  -->
+          <vwx-tab tabs="{{tabs}}" bind:myselect="myselect" act-index="{{activeIndex}}"></vwx-tab>
+          <vwx-good-more info="{{goods_info}}" activeIndex="{{activeIndex}}" comments="{{evaluate_list}}"></vwx-good-more>
+        </view>
+      </view>
+    </view>
+    <!--页面复制添加bar  -->
+    <view class="shopBarPage">
+      <view>已有{{applyNum}}位同行使用</view>
+      <vwx-button type='s' text="复制并使用该方案" bindtap='copyAdd'></vwx-button>
+    </view>
+  </view>
+</compage>

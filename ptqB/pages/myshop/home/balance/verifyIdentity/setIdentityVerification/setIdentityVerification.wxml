@@ -1,0 +1,26 @@
+<view class="index_all_box">
+	<view class="psa_t">
+		<view class="psa_t_txt">
+			<text style="margin-left: 20rpx;">设置安全密码<text style="color:#999">（6位数字）</text></text>
+		</view>
+		<view class="psa_t_input">
+			<input placeholder="请输入您的6位安全密码" bindinput="inputBtn" data-index="0" type="number" maxlength="6" />
+		</view>
+	</view>
+
+	<view class="psa_t psa_b">
+		<view class="psa_t_txt">
+			<text style="margin-left: 20rpx;">请认真填写以下信息，用于找回安全密码</text>
+		</view>
+		<view class="psa_t_input">
+			<input placeholder="请填写真实姓名" bindinput="inputBtn" data-index="1" />
+		</view>
+		<view class="psa_t_input">
+			<input placeholder="请填写您的证件号码" type="idcard" bindinput="inputBtn" data-index="2" />
+		</view>
+	</view>
+
+	<view class="ad_add cenFlex" style="background: #{{clickF?'e60012':'cccccc'}}" bindtap="nextPage">确认添加</view>
+</view>
+
+<diyModal id='diyModal' titleHide='{{tip.showTitle}}' onceConfirm='{{tip.hideCancel}}' content='{{tip.content}}' bind:cancelEvent='{{tip.fail}}' bind:confirmEvent='{{tip.success}}'></diyModal>

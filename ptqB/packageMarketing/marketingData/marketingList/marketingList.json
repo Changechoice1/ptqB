@@ -1,0 +1,6 @@
+{
+  "navigationBarTitleText": "营销数据",
+  "component": true,
+  "usingComponents": {
+    "compage": "/vwx/component/template/"
+  }}

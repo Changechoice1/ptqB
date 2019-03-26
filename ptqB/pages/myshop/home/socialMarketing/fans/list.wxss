@@ -1,0 +1,204 @@
+/* pages/myshop/expand/fans/list.wxss */
+@import '/weui.wxss';
+@import 'base.wxss';
+
+page{
+   height: 100%;
+}
+.container{
+  height: 100%;
+}
+.no{
+  background-color: #fff;
+}
+.yes{
+  background-color: #f0f0f0;
+}
+/* header */
+.header{
+  height: 98rpx;
+  line-height: 98rpx;
+  background-color: #fff;
+  text-align: center;
+  color: #333;
+  font-size: 30rpx;
+}
+.header > view{
+  width: 160rpx;
+  height: 100%;
+}
+.header_l{
+  margin-left: 150rpx;
+}
+.header_r{
+  margin-right: 150rpx;
+}
+.active{
+  color: #e60012;
+  border-bottom: 2rpx solid #e60012;
+}
+
+
+/* cont */
+.cont{
+  height: 100%;
+}
+/* no_list */
+.no_list{
+  height: 100%;
+  background-color: #fff;
+}
+.tip_img{
+  margin-top: 225rpx;
+}
+.tip_img > image{
+  width: 350rpx;
+  height: 160rpx;
+}
+.tip_txt{
+  margin-top: 110rpx;
+  text-align: center; 
+  color: #333;
+  font-size: 32rpx;
+}
+
+/* cus */
+.cont_title{
+  padding: 0 30rpx;
+  height: 88rpx;
+  line-height: 88rpx;
+  font-size: 28rpx;
+}
+.cont_title_btn{
+  padding: 15rpx 20rpx;
+  border: 1px solid #999;
+  border-radius: 10rpx;
+  line-height: 1;
+  background-color: #fff;
+}
+.followed_fans_nums{
+  font-size: 25rpx;
+  color: #999;
+}
+.cus_list{
+
+}
+.cus_list_item{
+  margin-bottom: 16rpx;
+  padding: 0 30rpx;
+  background-color: #fff;
+}
+.cus_item_t{
+  padding: 20rpx 0;
+}
+.cus_item_info_logo{
+  width: 80rpx;
+  height: 80rpx;
+  border-radius: 50%;
+  overflow: hidden;
+}
+.cus_item_info_logo > image{
+  width: 100%;
+  height: 100%;
+}
+.cus_item_info_name{
+  margin-left: 22rpx;
+  width: 350rpx;
+  height: 80rpx;
+  line-height: 80rpx;
+  background-size: 100% 100%;
+  font-size: 28rpx;
+  overflow: hidden;
+  text-overflow: ellipsis;
+}
+.cus_item_opt_txt{
+  line-height: 1;
+  color: #999;
+  font-size: 28rpx;
+}
+.cus_item_opt_icon{
+  margin-left: 20rpx;
+  width: 12rpx;
+  height: 24rpx;
+  line-height: 24rpx;
+  overflow: hidden;
+}
+.cus_item_opt_icon > image{
+  width: 100%;
+  height: 100%;
+}
+.cus_item_b{
+  padding: 20rpx 0;
+}
+.cus_item_msg_lab{
+  font-size: 24rpx;
+  color: #666;
+  text-align: center;
+}
+.cus_item_msg_val{
+  margin-top: 12rpx;
+  font-size: 26rpx;
+  color: #333;
+  text-align: center;
+  overflow: hidden;
+  text-overflow: ellipsis;
+}
+.cus_item_msg_val > text{
+  font-size: 24rpx;
+}
+.cus_item_msg_val > .gj{
+  color: #e60012;
+}
+.cus_item_msg_val > .kj{
+  color: #E971D7;
+}
+
+/* fans */
+.fans{
+  height: 100%;
+}
+.list_c1{
+  width: 38%;
+}
+.list_c2{
+  width: 30%;
+}
+.list_c3{
+  width: 32%;
+}
+.list_header{
+  padding: 30rpx;
+  background-color: #fff;
+  font-size: 26rpx;
+}
+.fans_list_item{
+  padding: 20rpx 30rpx;
+  background-color: #fff;
+}
+.fans_item_info_logo{
+  width: 80rpx;
+  height: 80rpx;
+  border-radius: 50%;
+  overflow: hidden;
+}
+.fans_item_info_logo > image{
+  width: 100%;
+  height: 100%;
+}
+.fans_item_info_name{
+  margin-left: 22rpx;
+  width: 150rpx;
+  height: 80rpx;
+  line-height: 80rpx;
+  background-size: 100% 100%;
+  font-size: 28rpx;
+  overflow: hidden;
+  text-overflow: ellipsis;
+}
+.fans_item_follow_time, .fans_item_is_followed_wechat{
+  font-size: 26rpx;
+  color: #666;
+}
+.no_followed{
+  color: #e60012;
+}

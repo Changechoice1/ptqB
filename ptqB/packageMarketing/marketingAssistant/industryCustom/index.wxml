@@ -1,0 +1,26 @@
+<!--packageMarketing/industryCustom/index.wxml-->
+<import src="/template/template.wxml" />
+<compage id="compage">
+  <view class="top-title">
+    <view class="top-l">{{category_name}}行业定制</view>
+    <view class="top-r">行业精准活动方案 你也能做营销大师 </view>
+  </view>
+  <!-- tab -->
+  <view class="type_tab">
+    <view wx:for="{{tabs}}" wx:key="{{index}}" class="type_tab_item {{tab == item.type ? 'type_tab_item_on' : ''}}" data-type="{{item.type}}" bindtap="changeTab">{{item.name}}</view>
+  </view>
+
+  <view class="index_box" wx:if="{{industryInfo.length>0}}">
+    <view class="custom-list" style="padding-top:30rpx;">
+      <block wx:for="{{industryInfo}}" wx:key="index">
+        <template is="industry-custom-list1" data="{{item}}"></template>
+      </block>
+    </view>
+  </view>
+  <view class="null_data" wx:if="{{industryInfo.length<=0}}">
+    <view class="null_img">
+      <image src="{{nullData.nullImg}}"></image>
+    </view>
+    <view class="no_solu">{{nullData.noActiviti}}</view>
+  </view>
+</compage>

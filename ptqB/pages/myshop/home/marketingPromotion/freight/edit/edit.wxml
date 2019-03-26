@@ -1,0 +1,160 @@
+<compage id="compage">
+  <view class="index_all_box">
+    <view class="frea">
+      <view class="frea_t">
+        <view class="frea_t_l">模板名称</view>
+        <view class="frea_t_r cenFlex">
+          <input type="text" placeholder="请输入模板名称" placeholder-class="aaF" data-index="0" data-field="name" maxlength="30" data-pattern="Cha3" data-minlen="2" data-maxlen="30"  bindinput="formInput" bindconfirm='formInput' bindblur='endFormInput' value="{{baseinput[0]}}" focus="{{focusField == 'name'}}"/>
+        </view>
+      </view>
+      <!-- 是否启用模板 -->
+      <view class="frea_open">
+        <view class="frea_open_t" data-index='0' bindtap='allFlagBtn'>
+          <view class="frea_t_l">启用模板</view>
+          <view class="frea_t_r cenFlex">
+            <view class="frea_t_r_in">
+              <view class="red_check" wx:if="{{allFlageArr[0]}}">
+                <image src="{{imgUrl}}ab_ico1.png"></image>
+              </view>
+              <view class="gray_check" wx:if="{{!allFlageArr[0]}}"></view>
+              <view class="frea_t_r_in_txt">是</view>
+            </view>
+            <view class="frea_t_r_in">
+              <view class="red_check" wx:if="{{!allFlageArr[0]}}">
+                <image src="{{imgUrl}}ab_ico1.png"></image>
+              </view>
+              <view class="gray_check" wx:if="{{allFlageArr[0]}}"></view>
+              <view class="frea_t_r_in_txt">否</view>
+            </view>
+          </view>
+        </view>
+        <view class="frea_open_m" data-index='1' bindtap='allFlagBtn'>
+          <view class="frea_t_l">满额包邮</view>
+          <view class="frea_t_r cenFlex" style="border-bottom: 2rpx #f0f0f0 solid;">
+            <view class="frea_t_r_in">
+              <view class="red_check" wx:if="{{allFlageArr[1]}}">
+                <image src="{{imgUrl}}ab_ico1.png"></image>
+              </view>
+              <view class="gray_check" wx:if="{{!allFlageArr[1]}}"></view>
+              <view class="frea_t_r_in_txt">开启</view>
+            </view>
+            <view class="frea_t_r_in">
+              <view class="red_check" wx:if="{{!allFlageArr[1]}}">
+                <image src="{{imgUrl}}ab_ico1.png"></image>
+              </view>
+              <view class="gray_check" wx:if="{{allFlageArr[1]}}"></view>
+              <view class="frea_t_r_in_txt">关闭</view>
+            </view>
+          </view>
+        </view>
+        <view class="frea_open_m" wx:if="{{allFlageArr[1]}}">
+          <view class="frea_t_l">满额包邮</view>
+          <view class="frea_t_r cenFlex">
+            <input type="text" placeholder="请输入满减金额" placeholder-class="aaF" data-index="1" bindblur="baseInput" value="{{baseinput[1]}}" type="digit" focus="{{focusField == 'full_reduce_price'}}"/>
+          </view>
+        </view>
+      </view>
+      <!-- 首件的数量盒子 -->
+      <view class="frea_friNum">
+        <view class="frea_friNum_in">
+          <view class="frea_t_l">首件数量</view>
+          <view class="frea_t_r cenFlex">
+            <input type="text" placeholder="请输入首件数量" placeholder-class="aaF" data-index="2" bindblur="baseInput" value="{{baseinput[2]}}" type="number" focus="{{focusField == 'first_num'}}"/>
+          </view>
+        </view>
+        <view class="frea_friNum_in">
+          <view class="frea_t_l">运费金额</view>
+          <view class="frea_t_r cenFlex">
+            <input type="text" placeholder="请输入运费金额" placeholder-class="aaF" data-index="3" bindblur="baseInput" value="{{baseinput[3]}}" type="digit" focus="{{focusField == 'price'}}"/>
+          </view>
+        </view>
+        <view class="frea_friNum_in">
+          <view class="frea_t_l">续件数量</view>
+          <view class="frea_t_r cenFlex">
+            <input type="text" placeholder="请输入续件数量" placeholder-class="aaF" data-index="4" bindblur="baseInput" value="{{baseinput[4]}}" type="number" focus="{{focusField == 'add_num'}}"/>
+          </view>
+        </view>
+        <view class="frea_friNum_in">
+          <view class="frea_t_l">续费金额</view>
+          <view class="frea_t_r cenFlex">
+            <input type="text" placeholder="请输入续费金额" placeholder-class="aaF" data-index="5" bindblur="baseInput" value="{{baseinput[5]}}" type="digit" focus="{{focusField == 'add_price'}}"/>
+          </view>
+        </view>
+      </view>
+      <!-- 续件数量 -->
+      <view class="frea_Ren" wx:for="{{allear}}" wx:key="{{index}}">
+        <view class="frea_friNum_in" style="height: 100%;">
+          <view class="frea_t_l">区域设置</view>
+          <view class="frea_t_r aaF cenFlex" style="padding: 20rpx 0rpx;">
+            {{allear[index]}}
+          </view>
+        </view>
+        <view class="frea_friNum_in">
+          <view class="frea_t_l">首件数量</view>
+          <view class="frea_t_r cenFlex">
+            <input type="text" placeholder="请输入首件数量" placeholder-class="aaF" data-index="{{index}}" bindblur="allInput" value="{{allfirst[index]}}" type="number"/>
+          </view>
+        </view>
+        <view class="frea_friNum_in">
+          <view class="frea_t_l">运费金额</view>
+          <view class="frea_t_r cenFlex">
+            <input type="text" placeholder="请输入首件金额" placeholder-class="aaF" data-index="{{index}}" bindblur="allInput1" value="{{allfirstPrice[index]}}" type="digit"/>
+          </view>
+        </view>
+        <view class="frea_friNum_in">
+          <view class="frea_t_l">续件数量</view>
+          <view class="frea_t_r cenFlex">
+            <input type="text" placeholder="请输入续件数量" placeholder-class="aaF" data-index="{{index}}" bindblur="allInput2" value="{{allfirstAdd[index]}}" type="number"/>
+          </view>
+        </view>
+        <view class="frea_friNum_in">
+          <view class="frea_t_l">续费金额</view>
+          <view class="frea_t_r cenFlex">
+            <input type="text" placeholder="请输入续件金额" placeholder-class="aaF" data-index="{{index}}" bindblur="allInput3" value="{{allfirstPriceAdd[index]}}" type="digit"/>
+          </view>
+        </view>
+        <view class="frea_del">
+          <view class="frea_del_in cenFlex" bindtap="delArea" data-index="{{index}}">删除</view>
+        </view>
+      </view>
+      <!-- 删除的按钮 -->
+      
+      <!-- 点击设置区域运费 -->
+      <view class="frea_areaFre" bindtap="regSet">
+        <view class="frea_areaFre_l">
+          设置区域运费
+        </view>
+        <view class="frea_areaFre_r">
+          <image src="{{imgUrl}}gy_ico.png"></image>
+        </view>
+      </view>
+    </view>
+    <!-- 点击保存 -->
+    <view class="clickPreser cenFlex {{clickF?'upInfoMess':''}}" bindtap="{{clickF?'upInfoMess':''}}">保存</view>
+    <!-- 二类数据检索 -->
+    <view class="mengban" bindtap='hideAll' wx:if='{{industry}}'></view>
+    <view class="list_one" wx:if='{{industry}}' style="top: 0; bottom: 80rpx;">
+      <scroll-view class="list_one_l" scroll-y='true' style="min-width: 240rpx;">
+        <view class="list_one_l_in {{listSty[index]?'list_one_l_in_a':''}}" data-name="{{item.name}}" data-index="{{index}}" bindtap="preBtn" data-id="{{item.id}}" wx:for="{{perArr}}" wx:key="{{index}}">
+          <view class="list_one_l_in_i {{listSty[index]?'list_one_l_in_i_a':''}}"><view style='margin-left: 20rpx;'>{{item.name}}</view></view>
+        </view>
+      </scroll-view>
+      <scroll-view class="list_one_r" scroll-y='true' style="height: 100%;" scroll-into-view="{{topId}}">
+        <view wx:for="{{listCityArr}}" wx:key="{{index}}" data-id="{{'id'+index}}" style="border-bottom: 2rpx #000 solid;">
+          <view class="list_one_r_in_h" style="color: #000;font-size: 24rpx;font-weight: 600;padding: 20rpx;">{{item.name}}</view>
+            <view class="list_one_r_in" bindtap="searchBtn1" data-index="{{index}}" wx:for="{{item.info}}" wx:key="{{index}}" data-id="{{item.id}}">
+            <view class="list_one_r_in_l" style="color: #333">
+              {{item.name}}
+            </view>
+            <view class="list_one_r_in_r">
+              <image src="{{imgUrl}}{{!item.sel?'fre_ico1.png':''}}"></image>
+            </view>
+          </view>
+        </view>
+      </scroll-view>
+    </view>
+    <view class="bottomBtn_fre" wx:if='{{industry}}'>
+      <view class="bottomBtn_fre_r cenFlex" bindtap="confirmBtn">确定</view>
+    </view>
+  </view>
+</compage>

@@ -1,0 +1,109 @@
+<!--pages/myshop/expand/fans/cusDetail.wxml-->
+<import src="/template/activity/actType/actType.wxml" />
+<!-- 头部 -->
+<compage id="compage">
+<view class='header'>
+  <view class='flex-center'>
+    <view class='header_logo'>
+      <image src='{{consInfo.wx_img}}'></image>
+    </view>
+  </view>
+  <view class='heder_name txt-center'>{{consInfo.wx_name}}</view>
+</view>
+
+<!-- 消费信息 -->
+<view class='box consumption_info'>
+  <view class='title b-b'>消费信息</view>
+  <view class='cons_cont txt-center'>
+    <view class='const_cont_inbox flex-between'>
+      <view class='const_cont_item'>
+        <view class='lab'>最近下单时间</view>
+        <view class='val'>
+          {{consInfo.recent_time}}
+          <text class="{{consInfo.type == 0 ? 'gj' : consInfo.type == 2 ? 'kj' : ''}}">{{consInfo.type == 0 ? '(刮奖)' : consInfo.type == 2 ? '(砍价)' : ''}}</text>
+        </view>
+      </view>
+      <view class='const_cont_item'>
+        <view class='lab'>累计参与活动次数</view>
+        <view class='val'>{{consInfo.take_part_times}}</view>
+      </view>
+      <view class='const_cont_item'>
+        <view class='lab'>累计消费金额</view>
+        <view class='val'>{{consInfo.total_fee}}</view>
+      </view>
+    </view>
+    <view class='const_cont_inbox flex-between'>
+      <view class='const_cont_item'>
+        <view class='lab'>专享卡张数</view>
+        <view class='val'>{{consInfo.excl_card_amount}}</view>
+      </view>
+      <view class='const_cont_item'>
+        <view class='lab'>代金券张数</view>
+        <view class='val'>{{consInfo.voucher_count}}</view>
+      </view>
+      <view class='const_cont_item'>
+        <view class='lab'>待消费订单</view>
+        <view class='val'>{{consInfo.unco_orders}}</view>
+      </view>
+    </view>
+  </view>
+</view>
+
+<!-- 联系方式 -->
+<view class='box contact_info'>
+  <view class="contact_title title {{contactInfo.length > 0 ? 'b-b' : ''}}">联系方式
+    <view wx:if="{{contactInfo.length > 0 && !isEdit}}" class='contact_btn_edit' bindtap='editContacts'>编辑</view>
+    <view wx:if="{{contactInfo.length > 0 && isEdit}}" class='contact_btn_edit flex'>
+      <view class='contact_btn_calcel' bindtap='cancelContacts'>取消</view>
+      <view bindtap='confirmContacts'>确定</view>
+    </view>
+  </view>
+  <view class='contact_cont'>
+    <view wx:for="{{isExpanded ? contactInfo : mContactInfo}}" wx:key='{{index}}' class='contact_item b-b flex' data-index='{{index}}' bindtap='setDefault'>
+      <view wx:if="{{isEdit}}" class='contact_sel'>
+        <image src="{{item.is_default ? '/images/selected.png' : '/images/noSelected.png'}}"></image>
+      </view>
+      <view>{{item.contact_phone}}</view>
+      <view class='contact_name'>{{item.contact_name}}</view>
+      <view wx:if="{{item.is_default == 1}}" class='contact_default'>（默认）</view>
+    </view>
+  </view>
+  <view wx:if='{{isMore && !isExpanded}}' class='contact_all flex-center b-t' bindtap="allContacts">
+    <view class='contact_all_txt'>查看全部</view>
+    <view class='contact_all_icon'>
+      <image src='/images/go.png'></image>
+    </view>
+  </view>
+  <view wx:if='{{isMore && isExpanded}}' class='contact_all flex-center b-t' bindtap='lessContacts'>
+    <view class='contact_less_icon'>
+      <image src='/images/up.png'></image>
+    </view>
+  </view>
+</view>
+
+<!-- 订单信息 -->
+<view class='box order_info'>
+  <view class='title'>参与活动</view>
+  <view class='order_list'>
+    <view class='list_item b-b' wx:for='{{orderInfo}}' wx:key='{{index}}'>
+      <view class='item-logo fl'>
+        <image class='item-logo-img' src="{{item.is_group==5 ? '/images/actGjmd.png' : item.goods_img}}" mode='scaleToFill'></image>
+      </view>
+
+      <view class='item-cont fr'>
+        <view class='item-name flex'>
+          <template wx:if="{{item.is_group != 5}}" is="actType" data="{{...item}}"></template>
+          <text>{{item.goods_name ? item.goods_name : '刮奖免单'}}</text>
+        </view>
+        <view class='item-time'>下单时间：{{item.add_time_str}}</view>
+        <view class='item-num'>数量：{{item.nums}}</view>
+        <view class='item-price'>总价：{{item.total_price}}</view>
+        <view class='item-type'>{{item.order_status}}</view>
+      </view>
+      <view class='clear'></view>
+    </view>
+  </view>
+</view>
+
+<diyMoadel id='diyMoadel' title='{{tip.title}}' content='{{tip.content}}' cancelText='{{tip.cancelText}}' confirmText='{{tip.confirmText}}' txtAlign='{{tip.txtAlign}}' titleHide='{{tip.titleHide}}' onceConfirm='{{tip.onceConfirm}}' bind:confirmEvent='closeTip'></diyMoadel>
+</compage>

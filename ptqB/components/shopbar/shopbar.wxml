@@ -1,0 +1,6 @@
+<!--component/shopBar/shopBar.wxml-->
+<!--活动详情页面底部bar  -->
+<view class="shopBarPage">
+    <view>已有{{applyNums}}位同行使用</view>
+    <vwx-button type='s' text="复制并使用该方案" bindtap='copyAdd'></vwx-button>
+</view>

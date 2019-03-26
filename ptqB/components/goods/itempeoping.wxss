@@ -1,0 +1,34 @@
+/* component/goods/itempeoping.wxss */
+@import "../../css/weui.wxss";
+
+.avatar {
+   width: 80rpx;
+   height: 80rpx;
+   min-width: 80rpx;
+   border-radius: 50%;
+   overflow: hidden;
+}
+.weui-btn_warn{
+    background: #e70012;
+    color: #fff;
+    font-size: 26rpx;
+    padding: 10rpx 20rpx;
+    border-radius: 5rpx;
+    margin-left: 20rpx;
+    overflow: hidden;
+
+}
+.weui-flex__people{
+   text-align: right;
+   font-size: 24rpx;
+}
+.p_time{
+   font-size: 22rpx;
+   color: #999;
+}
+.weui-flex__people text{
+   color: #e60012;
+}
+.ptmore{
+   width: 100%;
+}

@@ -1,0 +1,105 @@
+<compage id='compage'>
+   <view class="index_all_box">
+      <view class='redetail_con1'>
+         <view class='redetail_block'>
+            <view class='redetail_b_inner'>
+               <view class='redetail_b_left'>
+                  {{info.type == 1 || info.type == 5 ? '入账金额' : '出账金额'}}
+               </view>
+               <view class="redetail_b_right {{info.type==1 || item.type==5 ? 'plus' : 'minus'}}">
+                  {{info.type==1 || item.type==5 ? '+' : '-'}}{{info.amount}}
+               </view>
+            </view>
+         </view>
+      </view>
+      <view class='redetail_con2'>
+         <view class='redetail_block' wx:if="{{!(info.way == 1 && info.item.length == 0)}}" wx:for="{{info.item}}" wx:key="{{index}}">
+            <view class='redetail_b_inner'>
+               <view class='redetail_b_left' style="padding-left: 30rpx;color:#999;">
+                  {{index}}
+               </view>
+               <view class='redetail_b_right'>
+                  {{item}}
+               </view>
+            </view>
+         </view>
+         <view class='redetail_block' wx:if="{{info.way != 1 && !info.item}}">
+            <view class='redetail_b_inner'>
+               <view class='redetail_b_left' style="padding-left: 30rpx;color:#999;">
+                  {{info.wayname}}
+               </view>
+               <view class='redetail_b_right'>
+                  {{info.type == 1 || info.type == 5 ? '' : '-'}}{{info.amount}}
+               </view>
+            </view>
+         </view>
+      </view>
+      <view class='redetail_con3'>
+         <view class='redetail_block'>
+            <view class='redetail_b_inner'>
+               <view class='redetail_b_left'>
+                  类型
+               </view>
+               <view class='redetail_b_right'>
+                  {{info.type == 1 ? '收入' : info.type == 0 || info.type == 2 ? '支出' : info.type == 4 ? '提现' : info.type == 5 ? '提现失败' : ''}}
+               </view>
+            </view>
+         </view>
+         <view class='redetail_block'>
+            <view class='redetail_b_inner'>
+               <view class='redetail_b_left'>
+                  时间
+               </view>
+               <view class='redetail_b_right'>
+                  {{info.create_at}}
+               </view>
+            </view>
+         </view>
+         <view class='redetail_block'>
+            <view class='redetail_b_inner'>
+               <view class='redetail_b_left'>
+                  订单号
+               </view>
+               <view class='redetail_b_right'>
+                  {{info.order_no}}
+               </view>
+            </view>
+         </view>
+         <view wx:if="{{info.serial_no}}" class='redetail_block'>
+            <view class='redetail_b_inner'>
+               <view class='redetail_b_left'>
+                  流水号
+               </view>
+               <view class='redetail_b_right'>
+                  {{info.serial_no}}
+               </view>
+            </view>
+         </view>
+         <view wx:if="{{info.type != 5}}" class='redetail_block'>
+            <view class='redetail_b_inner'>
+               <view class='redetail_b_left'>
+                  支付渠道
+               </view>
+               <view class='redetail_b_right'>
+                  {{payment}}
+               </view>
+            </view>
+         </view>
+         <view wx:if="{{info.remark}}" class='redetail_block'>
+            <view class='redetail_b_inner'>
+               <view class='redetail_b_left'>
+                  备注
+               </view>
+               <view class='redetail_b_right'>
+                  {{info.remark ? info.remark : ''}}
+               </view>
+            </view>
+         </view>
+      </view>
+      <view wx:if="{{info.type == 1 && info.item.isOrder}}" class='redetail_btn' bindtap='toOrder' data-id='{{detailData.order_id}}'>
+         <view class='redetail_btn_inner'>
+            订单详情
+         </view>
+      </view>
+   </view>
+</compage>

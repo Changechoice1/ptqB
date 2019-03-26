@@ -1,0 +1,39 @@
+/* packageMarketing/marketingList/marketingList.wxss */
+@import "/template/marketing/marketing.wxss" ;
+@import "/app.wxss";
+.active_nav {
+  border-bottom: 2rpx solid #eee;
+  padding: 0 26rpx;
+  background: #fff;
+  position: relative;
+  z-index: 20;
+  font-size: 28rpx;
+}
+
+.active_nav_box {
+  display: flex;
+  justify-content: space-around;
+  box-sizing: border-box;
+}
+
+.active_nav_inner {
+  border-bottom: 2rpx solid rgba(255, 255, 255, 1);
+  min-width: 20%;
+  height: 90rpx;
+  line-height: 90rpx;
+  text-align: center;
+}
+
+.active_nav_inner.active {
+  color: #e60012;
+}
+
+.active_nav_inner.active {
+  border-color: #e60012;
+}
+/* 活动列表 */
+
+.active_list {
+  background-color: rgba(247,247,247,1);
+  margin: 18rpx 0;
+}

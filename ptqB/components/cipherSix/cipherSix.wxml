@@ -1,0 +1,34 @@
+<view class="csb"  style="font-size: 32rpx;">
+	<view class="csb_mask" bindtap="hide" wx:if="{{isShow}}"></view>
+	<view class="csb_box" wx:if="{{isShow}}" style="top:{{fouce?35:50}}%">
+		<view class="csb_box_t">
+			输入提现密码
+			<view class="csb_box_t_eidt" bindtap="hide">
+				<image src="/images/withn_ico1.png"></image>
+			</view>
+		</view>
+		<view class="csb_box_m">
+			<view class="csb_box_m_price cenFlex">
+				{{price}}
+			</view>
+			<view class="csb_box_m_pay">
+				<view class="csb_box_m_pay1">{{titleTxt}}</view>
+				<view class="csb_box_m_pay2">
+					<view class="csb_box_m_pay2_img cenFlex">
+						<image src="{{txImg}}"></image>
+					</view>
+					<view class="csb_box_m_pay2_txt cenFlex">{{txTest}}</view>
+				</view>
+			</view>
+		</view>
+		<view class="csb_box_m_p cenFlex" bindtap="show">
+			<view class="csb_box_m_p_input">
+				<input type="text" maxlength="6" bindinput="passInput" focus="{{fouce}}" type="number"/>
+			</view>
+			<view class="csb_box_m_p_in cenFlex" wx:for="{{6}}" wx:key="{{index}}">
+				<view class="gB_r" wx:if="{{passTxt.length>index}}" ></view>
+				<view class="gB_huh" wx:if="{{passTxt.length==index}}"></view>
+			</view>
+		</view>
+	</view>
+</view>

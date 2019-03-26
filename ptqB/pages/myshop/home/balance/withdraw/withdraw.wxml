@@ -1,0 +1,55 @@
+<compage id='compage'>
+  <view class="index_all_box">
+      <view class="br_top">可提现金额：¥{{widthDraData.wallet}}，今日剩余提现次数：{{widthDraData.deposit.deposit_num}}次</view>
+      <view class="br_cont">
+          <view class="br_cont_b">
+              <input type="text" placeholder="请输入提现金额(不小于10元)" placeholder-style="color:#cdcdcd" bindinput="moneyNowBtn" bindconfirm='moneyNowBtn' value='{{new_money?new_money:""}}' type="digit" />
+          </view>
+      </view>
+      <view class="br_foot">
+          <view class="br_top_foot">提现到</view>
+          <view class="br_foot_pay" data-index="1" bindtap="tapPayMode">
+              <view class="br_foot_pay_l cenFlex">
+                  <view class="br_foot_pay_l_in1">
+                      <image src="{{imgUrl}}with3_ico1.png"></image>
+                  </view>
+                  <view class="br_foot_pay_l_in2">微信钱包</view>
+              </view>
+              <view class="br_foot_pay_r" wx:if="{{wechatPayFlage}}">
+                  <image src="{{imgUrl}}ab_ico1.png"></image>
+              </view>
+              <view class="br_foot_pay_r_l" wx:if="{{!wechatPayFlage}}"></view>
+          </view>
+      </view>
+      <view class="br_foot">
+          <view class="br_top_foot">提现规则</view>
+          <view class="with_rule">
+              <text wx:if="{{!wechatPayFlage}}">{{widthDraData.withdraw_d_res.explain}}</text>
+              <text wx:if="{{wechatPayFlage}}">单日、单笔限额¥20000.00，微信未实名认证用户无法成功提现，暂无手续费。最低提现金额10元</text>
+          </view>
+      </view>
+      <!-- 点击提现 -->
+      <view class="cenFlex">
+          <view class="br_rechBtn cenFlex" style="background: #{{new_money>=10?'e70012':'cccccc'}}" bindtap="{{new_money>=10?'securityWith':''}}">确认提现</view>
+      </view>
+      <!-- 提现成功以后的弹框 -->
+      <view wx:if="{{successShow}}" class='wd_sModel_box'>
+        <view class="wd_sModel" >
+          <view class="wd_sModel_t cenFlex">
+              <view class="wd_sModel_t_in">
+                  <view class="wd_sModel_t_img">
+                      <image src="{{imgUrl}}with3_ico4.png"></image>
+                  </view>
+                  <view class="wd_sModel_t_txt1 cenFlex">提现成功</view>
+                  <view class="wd_sModel_t_txt2 cenFlex">预计将在1个工作日内到账</view><!-- 银行卡：会在1-3个工作日内到账 -->
+              </view>
+            </view>
+            <view class="wd_sModel_b cenFlex" data-type='success' bindtap="hideAll" >确定</view>
+        </view> 
+      </view>
+  </view>
+
+  <diyModal id='diyModal' titleHide='{{tipShowTitle}}' onceConfirm='{{tipHideCancel}}' content='{{tipContent}}' bind:cancelEvent='{{tipFail}}' bind:confirmEvent='{{tipSuccess}}' style='z-index: 999;'></diyModal>
+
+  <cipherSix id='cipherSix' price='{{new_money}}' bind:passInput='passInput'></cipherSix>
+</compage>

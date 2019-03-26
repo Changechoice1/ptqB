@@ -1,0 +1,26 @@
+page {
+    background-color: #f0f0f0;
+    text-align: center;
+}
+
+.header {
+    margin-top: 300rpx;
+    font-size: 28rpx;
+}
+
+.cont {
+    margin-top: 50rpx;
+    font-size: 28rpx;
+    color: #999;
+}
+
+.btn {
+    margin: 70rpx auto;
+    border: 1rpx solid #bdbdbd;
+    border-radius: 10rpx;
+    width: 260rpx;
+    height: 60rpx;
+    line-height: 60rpx;
+    background-color: #fff;
+    font-size: 26rpx;
+}

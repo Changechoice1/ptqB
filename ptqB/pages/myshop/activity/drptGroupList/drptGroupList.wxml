@@ -1,0 +1,58 @@
+<import src="/template/template.wxml" />
+<view class="index_all_box">
+    <view class='active_choose_con'>
+        <view class='active_choose'>
+            <view class='active_c_1'>
+                <view class='active_c1_inner active_c1_inner1' bindtap='showHide'>
+                    {{statusList[showS].content}}
+                    <view class='active_c1_icon cenFlex'>
+                        <image src='{{imgUrl}}right_icon.png'></image>
+                    </view>
+                </view>
+            </view>
+            <view class='active_c_2'>
+                数量：{{begroupData.group_num}}
+            </view>
+        </view>
+    </view>
+    <view class='active_mask' wx:if='{{show}}' bindtap='showHide'></view>
+    <view class='active_c_dropdown' wx:if='{{show}}'>
+        <view class='active_cd_block' wx:for='{{statusList}}' wx:key='{{index}}' data-index='{{index}}' bindtap="typeChecked">
+            <text class="{{showS == index ? 'active_status' : ''}}">{{item.content}}</text>
+            <view class="active_cd_okBtn cenFlex">
+                <image src="{{imgUrl}}/near3_ico4.png" wx:if="{{showS == index ? true : false}}"></image>
+            </view>
+        </view>
+    </view>
+
+
+    <view class='active_list'>
+        <view class='active_l_block active_l_block_0' data-index='{{index}}' data-id='{{item.goods_id}}' data-type="{{item.group_id}}" wx:for='{{begroupData.list}}' wx:key="{{index}}">
+            <view class='active_detail_img'>
+                <view class='active_l_img cenFlex'>
+                    <image mode="aspectFill" src='{{item.logo_img}}'></image>
+                </view>
+                <view class='active_detail_status'>{{item.group_str}}</view>
+            </view>
+            <view class='active_l_content'>
+                <view class='active_l_h'>{{item.goods_name}}</view>
+                <view class='active_detail_desc'>
+                    <view class='active_detail_d_list'>
+                        开团时间：{{item.time}}
+                    </view>
+                    <view class='active_detail_d_list'>
+                        拼团价：{{item.price_str}}
+                    </view>
+                    <view class='active_detail_d_list'>
+                        现在有人数：{{item.now_number}}人
+                    </view>
+                    <view class='active_detail_d_list'>
+                        团购总人数：{{item.group_headcount}}人
+                    </view>
+                </view>
+            </view>
+            <navigator class="mini_program" target="miniProgram" open-type="navigate" app-id="wxd25131b98741c7cb" path="/pages/goodsInfo/goodsPeople/goodsPeople?goods_id={{item.goods_id}}&group_id={{item.group_id}}" extra-data="{foo: 'bar'}" />
+        </view>
+    </view>
+    <template is="nullData" data="{{nullData}}" wx:if="{{begroupData.list.length == 0}}"/>
+</view>

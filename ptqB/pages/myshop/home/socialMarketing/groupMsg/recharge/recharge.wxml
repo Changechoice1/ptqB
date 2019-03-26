@@ -1,0 +1,34 @@
+<diyMoadel id='diyMoadel' content="{{modelData.con || ''}}" titleHide="{{modelData.titleHide}}" onceConfirm="{{modelData.onceConfirm}}"
+    bind:cancelEvent="{{modelData.cancelEvent || 'hideDialog'}}" bind:confirmEvent="{{modelData.confirmEvent  || 'hideDialog'}}"
+    zstype="{{modelData.zstype || '1'}}" showList="{{modelData.bindArr}}" txtAlign="{{modelData.txtAlign}}" nodesStr="{{modelData.nodesStr}}" redTxt="{{modelData.redTxt || ''}}">
+</diyMoadel>
+<cipherSix id="cipherSix" bind:passInput="passInput" price="{{priceTxt}}" titleTxt="短信充值" txImg="{{sixObj.txImg || ''}}" txTest="{{sixObj.txTest || ''}}"></cipherSix>
+<view class="index_all_box">
+    <view class="gmr_t">
+        <view class="gmr_t_in {{gmrSty[index] || ''}} cenFlex" data-index="{{index}}" bindtap="changeRechBtn" wx:for="{{gmrArr}}"
+            wx:key="{{index}}">
+            <view class="gmr_t_in_in">
+                <view class="gmr_t_in_in_t cenFlex">{{item.quantity}}条</view>
+                <view class="gmr_t_in_in_b cenFlex">售价：{{item.price}}元</view>
+            </view>
+        </view>
+    </view>
+    <view class="gmr_m">
+        <view class="gmr_m_t">支付方式</view>
+        <view class="gmr_m_pay sbFlex" data-index="1" bindtap="payTypeBtn">
+            <view class="gmr_m_pay_l cenFlex">
+                <view class="gmr_m_pay_l_img cenFlex">
+                    <image mode="widthFix" src="/images/payType2.png"></image>
+                </view>
+                <view class="gmr_m_pay_l_txt">微信支付</view>
+            </view>
+            <view class="gmr_m_pay_r">
+                <view class='radio_img cenFlex' wx:if='{{!wxPay}}'>
+                    <image src='{{imgUrl}}ab_ico1.png'></image>
+                </view>
+                <view class='radio_img_none' wx:if='{{wxPay}}'></view>
+            </view>
+        </view>
+    </view>
+    <view class="gmr_btn cenFlex" bindtap="payType">立即支付¥{{priceTxt}}</view>
+</view>

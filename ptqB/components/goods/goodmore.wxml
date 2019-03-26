@@ -1,0 +1,36 @@
+<!--component/goods/goodmore.wxml-->
+
+<view class='good_more'>
+   <!--切换菜单  -->
+   <vwx-tab tabs="{{tabs}}" bindmyselect="selectTab" act-index="{{activeIndex}}"></vwx-tab>
+   <view class='' wx:if="{{activeIndex==0}}">
+      <view class='good_more_gz'>
+         <view class='h3'>活动规则</view>
+         <view class="gd_foot_info_rule_in_in">
+            <view class="gd_foot_info_rule_in_in_txt">活动在线时间</view>
+            <view class="gd_foot_info_rule_in_in_txt">{{info.a_start_time}} 至 {{info.a_end_time}}</view>
+         </view>
+         <view class="gd_foot_info_rule_in_in" wx:if="{{data.is_time==1}}">
+            <view class="gd_foot_info_rule_in_in_txt">使用有效时间</view>
+            <view class="gd_foot_info_rule_in_in_txt">{{info.use_start_time}} 至 {{info.use_end_time}}</view>
+         </view>
+         <view class="gd_foot_info_rule_in_in" wx:if="{{data.is_subscribe==1}}">
+            <view class="gd_foot_info_rule_in_in_txt">预约信息</view>
+            <view class="gd_foot_info_rule_in_in_txt">{{info.subscribe}}</view>
+         </view>
+      </view>
+      <view class='good_more_sp'>
+         <view class='h4'>商品详情</view>
+         <view>
+            <!-- {{info.goods_detail}} -->
+            <rich-text nodes="{{info.goods_detail}}"></rich-text>
+         </view>
+      </view>
+      <view class='good_more_img' wx:for="{{info.goods_detail_imgs}}" wx:key="index">
+         <image mode='widthFix' bindload="imgload" src='{{item}}'></image>
+      </view>
+   </view>
+   <view wx:else>
+      <vwx-evaluation-list eval_list="{{comments}}"></vwx-evaluation-list>
+   </view>
+</view>

@@ -1,0 +1,9 @@
+{
+    "navigationBarTitleText": "店铺设置",
+    "component": true,
+    "usingComponents": {
+      "compage": "/vwx/component/template/",
+      "vwx-modal": "/components/modal/modal",
+      "vwx-button": "/components/button/button"
+    }
+}

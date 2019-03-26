@@ -1,0 +1,218 @@
+<import src="/template/payQrImg/payQrImg.wxml" />
+<compage id="compage">
+  <view style="height: {{payQrImgFlag ? nonautoHeight : ''}}px; overflow: hidden;">
+    <view class="scroll_tip">
+      <view class="scroll_tip_inner">
+         <view class="scroll_tip_cont" style="left: {{-scrollLeft}}rpx">{{swiperTip}}</view>
+      </view>
+    </view>
+    <view class="form_box">
+      <form bindsubmit="submitForm">
+
+        <!-- 1、活动类型 -->
+        <view class="item flex-x-between">
+          <view class="name">活动类型<text class="required">*</text><text class="tip" data-tip="0" bindtap="showInstruction"></text></view>
+          <view class="value">刮奖免单</view>
+        </view>
+
+        <!-- 2、活动有效时间 -->
+        <view class="item flex-x-between">
+          <view class="name">活动有效时间<text class="required">*</text></view>
+          <view class="value">
+            <view class="option fl flex-y-center" data-field="valid_period" data-value="48" bindtap="formSelect">
+              <icon class="{{form.valid_period == 48 ? 'icon-pq-ygtcs' : 'icon-pq-ygtct'}}"></icon>
+              <text>48小时</text>
+            </view>
+            <view class="clear"></view>
+          </view>
+        </view>
+
+        <!-- 3、代金券有效期 -->
+        <view class="item flex-x-between">
+          <view class="name">代金券有效期<text class="required">*</text></view>
+          <view class="value">
+            <view class="option fl flex-y-center" data-field="limit_time" data-value="1" bindtap="formSelect">
+              <icon class="{{form.limit_time == 1 ? 'icon-pq-ygtcs' : 'icon-pq-ygtct'}}"></icon>
+              <text>1个月</text>
+            </view>
+            <view class="option fl flex-y-center" data-field="limit_time" data-value="3" bindtap="formSelect">
+              <icon class="{{form.limit_time == 3 ? 'icon-pq-ygtcs' : 'icon-pq-ygtct'}}"></icon>
+              <text>3个月</text>
+            </view>
+            <view class="clear"></view>
+          </view>
+        </view>
+
+        <!-- 4、最低参与活动的消费金额 -->
+        <view class="item">
+          <view class="item_cont flex-x-between">
+            <view class="name name1">
+              <view>参与活动的最低消费金额<text class="required">*</text></view>
+              <view class="item_tip">(建议设置人均消费值)</view>
+            </view>
+            <view class="value value1">
+              <input placeholder-class="placeholder" type="number" data-field="secs_price" value="{{form.secs_price || ''}}" placeholder="输入金额" bindconfirm="formInput"  bindinput="formInput" focus="{{focusField == 'secs_price'}}"></input>
+            </view>
+          </view>
+        </view>
+
+        <!-- 5、返还发起者实际现金金额 -->
+        <view class="item">
+          <view class="name name2">
+            <view>返还发起者实际现金金额<text class="required">*</text></view>
+            <view class="item_tip">（系统默认由5位好友刮出）（自定义0%不发起刮奖免单）</view>
+          </view>
+          <view class="value value2 flex-x-between">
+            <view class="option flex-y-center" data-field="return_rate" data-value="5" data-flagfield="return_customize" data-flagvalue="0" bindtap="formSelect">
+              <icon class="{{form.return_customize == 0 && form.return_rate == 5 ? 'icon-pq-ygtcs' : 'icon-pq-ygtct'}}"></icon>
+              <text>5%</text>
+            </view>
+            <view class="option flex-y-center" data-field="return_rate" data-value="10" data-flagfield="return_customize" data-flagvalue="0" bindtap="formSelect">
+              <icon class="{{form.return_customize == 0 && form.return_rate == 10 ? 'icon-pq-ygtcs' : 'icon-pq-ygtct'}}"></icon>
+              <text>10%</text>
+            </view>
+            <view class="option flex-y-center" data-field="return_rate" data-value="15" data-flagfield="return_customize" data-flagvalue="0" bindtap="formSelect">
+              <icon class="{{form.return_customize == 0 && form.return_rate == 15 ? 'icon-pq-ygtcs' : 'icon-pq-ygtct'}}"></icon>
+              <text>15%</text>
+            </view>
+          </view>
+          <view class="value value2 flex-x-between">
+            <view class="option flex-y-center" data-field="return_rate" data-value="" data-flagfield="return_customize" data-flagvalue="1" bindtap="formSelect">
+              <icon class="{{form.return_customize == 1 ? 'icon-pq-ygtcs' : 'icon-pq-ygtct'}}"></icon>
+              <text>自定义</text>
+            </view>
+            <view wx:if="{{form.return_customize == 1}}" class="option flex-y-center" style="width: 66%;">
+              <input type='number' placeholder='请输入整数返现比例' value="{{form.return_rate}}" data-field="return_rate" bindconfirm="formInput"  bindinput="formInput" focus="{{form.return_customize == 1 && focusField == 'return_rate'}}"></input>%
+            </view>
+          </view>
+        </view>
+
+        <!-- 6、代金券满减条件设置 -->
+        <view class="item">
+          <view class="name name2">
+            <view>代金券满减条件设置<text class="required">*</text><text class="tip" data-tip="1" bindtap="showInstruction"></text></view>
+          </view>
+          <view class="value value2 flex-x-between">
+            <view class="option flex-y-center" data-field="voucher_rate" data-value="9" data-flagfield="voucher_customize" data-flagvalue="0" bindtap="formSelect">
+              <icon class="{{form.voucher_customize == 0 && form.voucher_rate == 9 ? 'icon-pq-ygtcs' : 'icon-pq-ygtct'}}"></icon>
+              <text>9折</text>
+            </view>
+            <view class="option flex-y-center" data-field="voucher_rate" data-value="" data-flagfield="voucher_customize" data-flagvalue="1" bindtap="formSelect">
+              <icon class="{{form.voucher_customize == 1 ? 'icon-pq-ygtcs' : 'icon-pq-ygtct'}}"></icon>
+              <text>自定义</text>
+            </view>
+            <view class="option flex-y-center">
+              <view wx:if="{{form.voucher_customize == 1}}" class="flex-y-center" style="width:100%;">
+                <input type='digit' placeholder='1.0-9.9' style="width:100rpx" value="{{form.voucher_rate}}" data-field="voucher_rate" bindconfirm="formInput"  bindinput="formInput" focus="{{form.voucher_customize == 1 && focusField == 'voucher_rate'}}"></input>
+                <text>折</text>
+              </view>
+            </view>
+          </view>
+        </view>
+
+        <!-- 算法模拟 -->
+        <view>
+          <view class="item">
+            <view class="value value2 flex-center">
+              <view class="calc_btn {{!form.secs_price || (form.return_customize == 1 && form.return_rate == 0) ? '' : 'active'}}" bindtap="showSimulation">
+                {{!form.secs_price || (form.return_customize == 1 && form.return_rate == 0) || !showSimulation ? '单个客户的活动数据分析' : '收起'}}
+                <text class="{{!form.secs_price || (form.return_customize == 1 && form.return_rate == 0) || !showSimulation ? '' : 'diy_icon_down'}}"></text>
+              </view>
+            </view>
+          </view>
+          <view wx:if="{{form.secs_price && (form.return_customize != 1 || form.return_rate != 0) && showSimulation}}" class="sim_box">
+            <view class="sim_item flex-between">
+              <input type='digit' placeholder-class="placeholder" placeholder='请输入金额' focus="{{focusField == 'simulate_amount'}}" data-field="simulate_amount" bindconfirm="simulateInput" bindblur="simulateInput" value="{{simulate_amount}}"></input>
+              <vwx-button type="s" text="数据分析" theme="font-r1" bind:tap-event="calc"></vwx-button>
+            </view>
+            <view class="sim_tip">请输入假设的单笔消费金额：</view>
+            <view class="sim_res_title">数据分析</view>
+            <view wx:for="{{simulation}}" wx:key="{{index}}" class="sim_res_b">
+              <view wx:for="{{item}}" wx:key="{{index}}" wx:for-item="subItem" wx:for-index="subIndex" class="sim_res_b_item flex-between">
+                <view>{{subItem.title}}<text class="item_unit">{{subItem.unit}}</text></view>
+                <view>{{subItem.value}}</view>
+              </view>
+            </view>
+          </view>
+        </view>
+
+        <!-- 7、背景音乐 -->
+        <view>
+          <view class="item flex-x-between">
+            <view class="name">选择活动背景音乐<text class="required">*</text></view>
+            <view class="value flex-between" data-field="music_id" data-value="music_name" bindtap="formListSelect">
+              <view>{{form.music_name}}</view>
+              <view class="{{showOptList && showOptListField == 'music_id' ? 'diy_icon_down' : 'diy_icon_right'}}"></view>
+            </view>
+          </view>
+          <view class="option_list" wx:if="{{showOptList && showOptListField == 'music_id'}}">
+            <view class="option_item flex-between" wx:for="{{musicList}}" wx:key="{{index}}">
+              <view class="option_item_left" data-id="{{item.id}}" data-name="{{item.music_name}}" bindtap="formListItemSelect">
+                <view class="option_index fl">{{index + 1}}</view>
+                <view class="option_name fl onFontNow {{item.id == tempOptListId ? 'selected' : ''}}">{{item.music_name}}</view>
+              </view>
+              <view wx:if="{{playMusic.id != item.id}}" data-item="{{item}}" bindtap="playMusic">试听</view>
+              <view class="play_music" wx:if="{{playMusic.id == item.id}}" bindtap="pauseMusic"><image src="/images/playMusic.png"></image></view>
+            </view>
+            <view class="option_opt_box flex-end">
+              <vwx-button type="s" text="取消" color="#fff" bgColor="#ccc" bind:tap-event="cancelFormListSelect"></vwx-button>
+              <vwx-button type="s" text="确定" style="margin-left: 30rpx;" bind:tap-event="certainFormListSelect"></vwx-button>
+            </view>
+          </view>
+        </view>
+        
+        <!-- 8、商家信息 -->
+        <view>
+          <view class="item item1 flex-x-between">
+            <view class="name name3">商家简介<text class="required">*</text></view>
+            <view class="value value3">
+              <!-- 1、商家简介 -->
+              <textarea wx:if="{{!showModal}}" data-field="goods_des" value="{{form.goods_des}}" placeholder-style='z-index: -1;' rows="4" bindinput="formInput" bindconfirm="formInput" focus="{{focusField == 'goods_des'}}" disabled='{{showModal ? true : false}}' maxlength="50" bindtap='focusTextarea'></textarea>
+              <!-- 2、商家图 -->
+              <view>
+                <view wx:for="{{form.goods_detail_imgs}}" wx:key="{{index}}" class="img_item flex-x-between">
+                  <view class="img_box">
+                    <image class="img_del" src="https://www.pintuanqu.cn/Public/WeChatApps/image/with3_ico3.png" data-type="1" data-field="goods_detail_imgs" data-index="{{index}}" bindtap="delImg"></image>
+                    <image src='{{item}}' data-url="{{item}}" bindtap='previewImg'></image>
+                  </view>
+                  <!-- 移动图标 -->
+                  <view class="move_box flex-y-between">
+                    <view class="move_up_img {{index != 0 ? '' : 'unvisible'}}" data-field="goods_detail_imgs" data-index="{{index}}" bindtap="moveUpImg">
+                      <image src="/images/bus3_ico11_1.png"></image>
+                    </view>
+                    <view class="move_down_img {{index != form.goods_detail_imgs.length - 1 ? '' : 'unvisible'}}" data-field="goods_detail_imgs" data-index="{{index}}" bindtap="moveDownImg">
+                      <image src="/images/bus3_ico10_1.png"></image>
+                    </view>
+                  </view>
+                </view>
+                <!-- 上传图片（超过15张详情图不显示） -->
+                <view wx:if="{{form.goods_detail_imgs.length < 15}}" class="img_item flex-x-between" data-type="1" data-field="goods_detail_imgs" bindtap="uploadImg">
+                  <view class="img_box">
+                    <image src='https://www.pintuanqu.cn/Public/WeChatApps/image/active_add.jpg'></image>
+                    <input class='hidden'></input>
+                  </view>
+                  <view class="move_box flex-center"></view>
+                </view>
+                <view class="value_tip">(手机横构图或竖构图)</view>
+              </view>
+            </view>
+          </view>
+        </view>
+
+        <!-- 提示信息 -->
+        <!-- <view class="form_tip">温馨提示：<text class='required'>*</text> 为必填项，点击<view class='tip'></view>可查看设置相关说明</view> -->
+
+        <!-- 按钮 -->
+        <view class="form_btn">
+          <vwx-button id="submit_btn" text="{{form.id && !editType ? '确认修改' : '发布'}}" loading="true" bind:tap-event="submitForm"></vwx-button>
+        </view>
+      </form>
+    </view>
+
+    <!-- canvas -->
+    <view wx:if="{{payQrImgFlag}}" class="canvas_box">
+      <template is="payQrImg" data="{{payQrImgInfo}}"></template>
+    </view>
+    <canvas canvas-id='payQrImgCanvas' disable-scroll="true" class="canvas"></canvas>
+  </view>
+</compage>

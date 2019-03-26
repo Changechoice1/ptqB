@@ -1,0 +1,164 @@
+@import '/template/activity/actType/actType.wxss';
+@import "../TDetail.wxss";
+@import "../ptljTDetail/ptljTDetail.wxss";
+.container{
+  padding-bottom:100rpx;
+}
+.near_goods_t_r {
+   text-align: right;
+   color: #fff;
+   font-size: 20rpx;
+}
+
+.peoping {
+   margin-top: 0;
+}
+.conmentGoods{
+  width:100%;
+height:600px;
+overflow:hidden;
+
+}
+.activity_flow{
+  background:#fff;
+  margin-bottom:20rpx;
+}
+
+.gd_pr_t_in{
+  line-height: 2;
+	font-size: 32rpx;
+  font-weight: bold;
+  color: #333;
+}
+.sale_info{
+  margin-bottom: 10rpx;
+  font-size: 26rpx;
+  color: #666;
+}
+.p_time, .p_time2 {
+   font-size: 10px;
+   color: #999;
+   line-height: 1.6;
+}
+
+.p_time2 {
+   line-height: 2;
+   font-size: 11px;
+}
+
+.p_time2 text {
+   color: #e60012;
+}
+
+.gdi_groupNum_m {
+   display: block;
+   margin: auto;
+   text-align: center;
+   font-size: 12px;
+   line-height: 2;
+}
+
+.gdi_groupNum_w {
+   font-size: 12px;
+   width: 80%;
+   margin: 20rpx auto;
+   margin-bottom: 0;
+   display: flex;
+   flex-wrap: wrap;
+   justify-content: center;
+}
+
+.a_fz {
+   color: #e60012;
+}
+
+.gdi_groupNum_w_in {
+   margin: 14rpx;
+   width: 120rpx;
+   min-width: 120rpx;
+   text-align: center;
+   font-size: 12px;
+   line-height: 2.5;
+}
+
+.gdi_groupNum_w_in  image {
+   display: block;
+   border-radius: 50%;
+   width: 120rpx;
+   height: 120rpx;
+}
+
+vwx-peoping-item {
+   display: block;
+   width: 100%;
+}
+
+.inpeople   .weui-panel__hd:after {
+   left: 0;
+}
+
+.inpeople  .weui-panel__bd {
+   padding: 0.5em;
+   font-size: 12px;
+   text-align: center;
+   line-height: 2;
+}
+
+.inpeople  i {
+   color: #666;
+}
+
+.inpeople  .icon-pq-right {
+   line-height: 14vw;
+   font-size: 18px;
+}
+
+.inpeople   .circle {
+   background-color: #eee;
+   color: #e60012;
+   border-radius: 50%;
+   width: 13vw;
+   height: 13vw;
+   line-height: 16vw;
+   margin: auto;
+}
+.inpeople .weui-cells{
+   margin: 0;
+}
+.inpeople:before {
+   border: none;
+}
+
+.inpeople_f {
+   margin-top: 0;
+}
+
+.inpeople_f .weui-panel__bd {
+   padding: 0;
+}
+
+.gdp_man_in_img {
+   padding: 10rpx 20rpx 10rpx 20rpx;
+}
+.gdp_man_in_img image{
+   margin-right:5px;
+}
+
+.gdp_man_in_img image {
+   margin: 10rpx 20rpx;
+}
+.rcmd_activ{
+height:85rpx;
+background:#fff;
+width:100%;
+font-size:1.2em;
+
+}
+.rcmd_activ_in{
+  padding-bottom: 44px
+}
+.cenFlex {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}

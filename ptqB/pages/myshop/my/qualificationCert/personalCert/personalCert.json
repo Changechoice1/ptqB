@@ -1,0 +1,8 @@
+{
+    "navigationBarTitleText": "个人认证",
+    "component": true,
+    "usingComponents": {
+      "compage": "/vwx/component/template/",
+      "vwx-modal": "/components/modal/modal"
+    }
+}

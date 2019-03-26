@@ -1,0 +1,15 @@
+/* component/shopBar/shopBar.wxss */
+
+@import "../../css/weui.wxss";
+.shopBarPage {
+   height: 100rpx;
+   background: #fff;
+   display: flex;
+   align-items: center;
+   justify-content: space-between;
+   position: fixed;
+   bottom: 0;
+   width: 100%;
+   overflow: hidden;
+   z-index: 999;
+}

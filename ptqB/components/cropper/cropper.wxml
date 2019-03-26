@@ -1,0 +1,39 @@
+<view wx:if="{{showCropper}}" class="crop-container">
+  <!-- 1、裁剪框层 -->
+  <view class="crop-layer crop-layer1">
+    <view class="crop-box" bindtouchstart="touchStart" bindtouchmove="touchMove" bindtouchend="touchEnd" style="width: {{crop.width}}rpx; height: {{crop.height}}rpx;">
+      <view class="crop-box-angle1"></view>
+      <view class="crop-box-angle2"></view>
+      <view class="crop-box-angle3"></view>
+      <view class="crop-box-angle4"></view>
+    </view>
+    <view class="crop-opt flex-x-between">
+      <view class="crop-opt-cancel" bindtap="cancel">
+        <image src="/images/opt-cancel.png"></image>
+      </view>
+      <view class="crop-opt-rate">
+        <view class='crop-opt-rate-box'></view>
+        <view class='crop-opt-rate-txt'>{{crop.width / crop.height}} : 1</view>
+      </view>
+      <view class="crop-opt-save" bindtap="save">
+        <image src="/images/opt-save.png"></image>
+      </view>
+    </view>
+  </view>
+
+  <!-- 2、裁剪后的图片层 -->
+  <view class="crop-layer crop-layer2" style="margin-left: {{edgeDis}}rpx; width: {{crop.width}}rpx; height: {{crop.height}}rpx;">
+    <image style="margin-top: {{imgTop - 200}}rpx; margin-left: {{imgLeft - edgeDis}}rpx; width: {{cropImgWidth}}rpx; height: {{cropImgHeight}}rpx;" src="{{img}}"></image>
+  </view>
+
+  <!-- 3、遮罩层 -->
+  <view class="crop-layer crop-layer3"></view>
+
+  <!-- 4、原图片层 -->
+  <view class="crop-layer crop-layer4">
+    <image class="crop-origin-img" src="{{img}}" style="top: {{imgTop}}rpx; left: {{imgLeft}}rpx; width: {{cropImgWidth}}rpx; height: {{cropImgHeight}}rpx;"></image>
+  </view>
+
+  <!-- canvas -->
+  <canvas canvas-id='crop-img' style="width: {{crop.width}}rpx; height: {{crop.height}}rpx;"></canvas>
+</view>

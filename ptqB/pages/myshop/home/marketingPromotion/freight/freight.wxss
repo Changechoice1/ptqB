@@ -1,0 +1,81 @@
+@import '/template/template.wxss';
+.fre{
+	padding: 30rpx;
+	padding-bottom: 120rpx;
+}
+.fre_in{
+	border:2rpx #999 solid;
+	border-radius: 15rpx;
+	margin: 0rpx auto;
+	margin-bottom: 30rpx;
+	background: #fff;
+}
+.fre_t{
+	padding: 20rpx 30rpx;
+	padding-bottom: 0rpx;
+}
+.fre_t_t{
+	display: flex;
+	align-items: center;
+	justify-content: space-between;
+}
+.fre_t_t_l {
+    font-size: 30rpx;
+} 
+.fre_m{
+	padding: 30rpx;
+	line-height: 45rpx;
+	border-bottom: 2rpx #999 dashed;
+}
+.fre_m_in{
+	display: flex;
+	align-items: center;
+}
+.fre_m_in_in{
+	width: 230rpx;
+}
+.fre_b{
+	height: 100rpx;
+	display: flex;
+	align-items: center;
+	justify-content: space-between;
+}
+.fre_b{
+	color: #666;
+	padding:0rpx 30rpx;
+}
+.fre_b_r_in{
+	width: 150rpx;
+	height: 55rpx;
+	border:2rpx #999999 solid;
+	border-radius: 10rpx;
+}
+.fre_bottom{
+	position: fixed;
+	bottom: -4rpx;
+	background: #fff;
+	height: 100rpx;
+	width: 100%;
+	display: flex;
+	flex-direction: row-reverse;
+	align-items: center;
+	border-top: 2rpx #e8e8e8 solid;
+}
+.fre_bottom_in{
+	width: 155rpx;
+	height: 65rpx;
+	border-radius: 10rpx;
+	background: #e60012;
+	color: #fff;
+	margin-right: 30rpx;
+}
+.nD_i_in{
+  margin: 200rpx auto;
+}
+.noM_b>.noM_b_in{
+   font-size: 28rpx;
+}
+.noMMb{
+   height: 100%;
+   bottom: 0;
+}

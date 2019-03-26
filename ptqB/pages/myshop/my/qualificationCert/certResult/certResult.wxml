@@ -1,0 +1,89 @@
+<view class="index_all_box">
+    <!-- 上方三个认证流程 -->
+    <view class="payYear_h">
+        <view class="payYear_h_in">
+            <view class="payYear_h_in1">
+                <view class="payYear_h_in1_r">
+                    <image src="{{imgUrl}}authen_ico10.png" wx:if="{{payAll1[0]}}"></image>
+                    <text wx:if="{{!payAll1[0]}}">1</text>
+                </view>
+                <view class="payYear_h_in1_rr"></view>
+            </view>
+            <view class="payYear_h_in1 payYear_h_in2">
+                <view class="payYear_h_in1_rr" style="background: {{payAll1[1]||payAll1[2]?'#ff4352':'#eee'}};"></view>
+                <view class="payYear_h_in1_r">
+                    <image src="{{imgUrl}}authen_ico10.png" wx:if="{{payAll1[1]||payAll1[2]}}"></image>
+                    <text wx:if="{{!(payAll1[1]||payAll1[2])}}">2</text>
+                </view>
+                <view class="payYear_h_in1_rr" style="background: #{{payAll1[1]||payAll1[2]?'ff4352':'eee'}};"></view>
+            </view>
+            <view class="payYear_h_in1 payYear_h_in3">
+                <view class="payYear_h_in1_rr" style="background: #{{payAll1[2]?'ff4352':'eee'}};"></view>
+                <view class="payYear_h_in1_r">
+                    <image src="{{imgUrl}}authen_ico10.png" wx:if="{{payAll1[2]}}"></image>
+                    <text wx:if="{{!payAll1[2]}}">3</text>
+                </view>
+            </view>
+        </view>
+    </view>
+
+
+    <!-- 支付认证年费 -->
+    <view class="pay_all_box1" wx:if='{{payAll1[0] && is_authentication==0}}'>
+        <!-- 认证年费标题 -->
+        <view class="payYear_m">
+            <view class="payYear_m_t">认证年费：
+                <text>¥300/1年</text>
+            </view>
+        </view>
+
+        <!-- 支付方式 -->
+        <view class="payYear_pyStyle" style='margin-bottom: 160rpx;'>
+            <view class="payYear_pyStyle_h">支付方式：</view>
+            <view class="payYear_pyStyle_w">
+                <view class="payYear_pyStyle_w_l">
+                    <view class="payYear_pyStyle_w_l1">
+                        <image src="{{imgUrl}}authen_ico11.png"></image>
+                    </view>
+                    <view class="payYear_pyStyle_w_l2">微信支付</view>
+                </view>
+                <view class="payYear_pyStyle_w_r">
+                    <view class="payYear_pyStyle_w_r_in">
+                        <radio value="" checked="true" />
+                    </view>
+                </view>
+            </view>
+        </view>
+        <!-- 点击认证 -->
+        <view class="okNext" bindtap="payMoneyBtn">支付</view>
+    </view>
+
+
+    <!-- 认证审核中 -->
+    <view class="pay_all_box2" wx:if='{{payAll1[1]}}'>
+        <view class="pay_all_box2_in">
+            <view class="pay_all_box2_in_in">
+                <view class="pay_all_box2_in_in_t">
+                    <image src="{{imgUrl}}authen_ico12.png"></image>
+                </view>
+                <view class="pay_all_box2_in_in_b">认证审核中,请耐心等待</view>
+            </view>
+        </view>
+        <view class="okNext" bindtap="backHome">我知道了</view>
+    </view>
+    <view class="pay_all_box3" wx:if='{{payAll1[2]}}'>
+        <view class="pay_all_box2_in">
+            <view class="pay_all_box2_in_in">
+                <view class="pay_all_box2_in_in_t">
+                    <image src="{{imgUrl}}authen_ico13.png"></image>
+                </view>
+                <view class="pay_all_box2_in_in_b">您已实名认证</view>
+                <view class="pay_all_box2_in_in_b" style="margin-top: 20rpx;">开始时间：{{timeData.start_time}}</view>
+                <view class="pay_all_box2_in_in_b">结束时间：{{timeData.end_time}}</view>
+                <view class="pay_all_box2_in_in_b" wx:if="{{timeData.is_auth==1}}" style="margin-top: 20rpx;">
+                    <text style="color:#ff6d63;">即将过期</text>，请过期后重新认证</view>
+            </view>
+        </view>
+        <view class="okNext" bindtap="backHome">我知道了</view>
+    </view>
+</view>

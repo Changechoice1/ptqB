@@ -1,0 +1,8 @@
+{
+  "navigationBarTitleText": "营销助手",
+  "component": true,
+  "usingComponents": {
+    "compage": "/vwx/component/template/"
+   
+  }
+}

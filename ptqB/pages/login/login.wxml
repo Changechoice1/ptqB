@@ -1,0 +1,28 @@
+<view class="verification_box">
+    <view class="verification_in_box">
+        <view class="verification_in_box_l">手机号</view>
+        <view class="verification_in_box_r">
+            <input type="number" placeholder="请输入手机号" bindinput="mobileInput" maxlength="11" />
+        </view>
+    </view>
+    <view class="verification_in_box">
+        <view class="verification_in_box_l">验证码</view>
+        <view class="verification_in_box_r">
+            <input type="number" placeholder="请输入验证码" bindinput="codeInput" maxlength="6" />
+        </view>
+        <view class="yzm_btn" bindtap="{{btntap}}">{{codename}}
+            <text wx:if="{{codename>0}}" style="font-size: 30rpx;">s</text>
+        </view>
+    </view>
+    <view class="success_over_box" bindtap="Submit">确定</view>
+</view>
+<!-- 拼团趣提供技术支持 -->
+<!-- <view class="cenFlex">
+    <view class="in_b_xcimg">
+        <image src="/images/my_ico32.png"></image>
+    </view>
+</view>
+<view class='footer1'>
+    <view class="in_b_txt cenFlex">拼团趣提供技术支持</view>
+    <navigator class="apply_store cenFlex" target="miniProgram" open-type="navigate" app-id="wxd25131b98741c7cb" path="/pages/my/applyStore/index">商家申请入驻</navigator>
+</view> -->

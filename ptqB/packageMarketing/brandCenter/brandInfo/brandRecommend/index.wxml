@@ -1,0 +1,26 @@
+<!--packageMarketing/brandCenter/brandInfo/brandRecommend/index.wxml-->
+<import src="/template/template.wxml" />
+<compage id="compage">
+  <view class="top-title">
+    <view class="top-l">{{brandName}}品牌活动</view>
+    <view class="top-r">品牌精准活动方案 你也能做营销大师 </view>
+  </view>
+  <!-- tab -->
+  <view class="type_tab">
+    <view wx:for="{{tabs}}" wx:key="{{index}}" class="type_tab_item {{type == item.type ? 'type_tab_item_on' : ''}}" data-type="{{item.type}}" bindtap="changeTab">{{item.name}}</view>
+  </view>
+
+  <view class="index_box" wx:if="{{!noList}}">
+    <view class="custom-list" style="padding-top:30rpx;">
+      <block wx:for="{{list}}" wx:key="index">
+        <template is="industry-custom-list1" data="{{item}}"></template>
+      </block>
+    </view>
+  </view>
+  <view class="null_data" wx:if="{{noList}}">
+    <view class="null_img">
+      <image src="{{noListData.img}}"></image>
+    </view>
+    <view class="no_solu">{{noListData.txt}}</view>
+  </view>
+</compage>

@@ -1,0 +1,7 @@
+{
+  "component": true,
+  "usingComponents": {
+    "compage": "/vwx/component/template/",
+    "diyMoadel": "/components/diyMoadel/diyMoadel"
+  }
+}

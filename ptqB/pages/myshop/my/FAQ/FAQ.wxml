@@ -1,0 +1,16 @@
+<compage id="compage">
+  <view class="index_all_box">
+      <view class="sl_t">
+          <image src="{{ossImgUrl}}FAQ.png" class="slide-image" />
+      </view>
+      <view class="sl_type" wx:if="{{slTabFlag}}">
+          <view class="sl_type_in cenFlex {{styArr[index]}}" data-index="{{index}}" bindtap="tabStyBtn" wx:for="{{slData.type[0].type}}" wx:key="{{index}}" data-id="{{item.id}}">{{item.title}}</view>
+      </view>
+      <!-- 标题列表 -->
+      <view class="sl_tit" wx:if="{{slTabFlag}}">
+          <view class="sl_tit_list" wx:for="{{slList}}" wx:key="{{index}}" bindtap="sliNav" data-id="{{item.id}}">
+              {{item.theme}}
+          </view>
+      </view>
+  </view>
+</compage>

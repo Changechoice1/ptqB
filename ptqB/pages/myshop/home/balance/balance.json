@@ -1,0 +1,8 @@
+{
+	"navigationBarTitleText": "我的钱包",
+  "component": true,
+  "usingComponents": {
+    "compage": "/vwx/component/template",
+    "diyModal": "/components/diyMoadel/diyMoadel"
+  }
+}

@@ -1,0 +1,19 @@
+<import src="/template/marketing/marketing.wxml" />
+<import src="/template/template.wxml" />
+<compage id="compage">
+  <!-- 分类导航 -->
+  <view class='active_nav'>
+    <view class='active_nav_box'>
+      <view wx:for="{{navList}}" wx:key="index" bindtap='changeNav' data-index="{{index}}" data-nav="{{item.actType}}" class='active_nav_inner {{nav == index ? "active" : ""}}'>{{item.name}}</view>
+    </view>
+  </view>
+
+  <!-- 活动商品列表 -->
+  <view class='active_list' wx:if='{{focus_list.length>0}}' wx:for="{{focus_list}}" wx:key="{{index}}">
+    <template is="marketing" data="{{item}}"></template>
+  </view>
+  <!-- 无数据 -->
+  <view class="no_list_box" wx:if='{{focus_list.length == 0}}'>
+    <template is="nullData" data="{{noListData}}" />
+  </view>
+</compage>

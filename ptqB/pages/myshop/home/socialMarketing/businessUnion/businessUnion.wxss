@@ -1,0 +1,301 @@
+@import '/template/template.wxss';
+
+page {
+    background: #fff;
+}
+
+.bus_t, .tyTime_box {
+    height: 50px;
+    color: #444;
+    background: #f0f0f0;
+}
+
+.tyTime_box {
+    justify-content: space-between;
+    padding: 0 30rpx;
+    color: #e60012;
+}
+
+.goAuthNav {
+    background: #e60012;
+    color: #fff;
+    border-radius: 10rpx;
+    width: 140rpx;
+    text-align: center;
+    height: 46rpx;
+    line-height: 46rpx;
+}
+
+.bus_m {
+    padding: 30rpx;
+    background: #fff;
+    border-bottom: 20rpx #f0f0f0 solid;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+}
+
+.bus_m_l {
+    display: flex;
+}
+
+.bus_m_l_l {
+    width: 95rpx;
+    height: 95rpx;
+    min-width: 95rpx;
+}
+
+.bus_m_l_r {
+    padding-left: 30rpx;
+}
+
+.bus_m_l_r_2 {
+    margin-top: 10rpx;
+    color: #999;
+}
+
+.bus_m_r {
+    width: 30rpx;
+    height: 30rpx;
+    min-width: 30rpx;
+}
+
+.bus_listTab {
+    height: 100rpx;
+    padding: 0rpx 100rpx;
+    display: flex;
+    align-items: center;
+    justify-content: space-around;
+    background: #fff;
+    border-bottom: 2rpx #f0f0f0 solid;
+}
+
+.bus_listTab_in {
+    width: 100%;
+}
+
+.bus_listTab_in_in {
+    height: 96rpx;
+    border-bottom: 2rpx #fff solid;
+    width: 160rpx;
+}
+
+.bus_listTab_in_in_act {
+    color: #e60012;
+    border-bottom: 2rpx #e60012 solid;
+}
+
+.bus_fr {
+    padding-bottom: 120rpx;
+}
+.commentHm{
+    overflow: hidden;
+    width: 100%;
+    height: 800rpx;
+    background: #000;
+}
+.bus_fr_in {
+    padding: 20rpx 30rpx;
+    background: #fff;
+    border-bottom: 2rpx #f0f0f0 solid;
+    display: flex;
+    height: 90px;
+    align-items: center;
+    position: relative;
+}
+
+.bus_fr_in_act {
+    position: absolute;
+    z-index: 999;
+    opacity: 0.6;
+    box-shadow: 0rpx 0rpx 20rpx #f0f0f0;
+    width: 90%;
+    padding: 20rpx 5%;
+}
+
+.bus_fr_in_l {
+    width: 125rpx;
+    height: 125rpx;
+    min-width: 125rpx;
+}
+
+.bus_fr_in_r {
+    padding-left: 20rpx;
+    width: 100%;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+}
+
+.bus_fr_in_r_b {
+    display: flex;
+    justify-content: space-between;
+    align-items: flex-end;
+    margin-top: 30rpx;
+    position: relative;
+}
+
+.bus_fr_in_r_b_l_img {
+    width: 30rpx;
+    height: 30rpx;
+    min-width: 30rpx;
+    margin-right: 10rpx;
+}
+
+.bus_fr_in_r_b_l_txt {
+    color: #999;
+}
+
+.bus_fr_in_r_b_r {
+    width: 130rpx;
+    height: 55rpx;
+    color: #fff;
+    background: #e60012;
+    border-radius: 10rpx;
+}
+
+.bus_eidt {
+    height: 100rpx;
+    display: flex;
+    border-top: 2rpx #f0f0f0 solid;
+    justify-content: space-between;
+    padding: 0rpx 4%;
+    align-items: center;
+    background: #fff;
+    position: fixed;
+    bottom: -0rpx;
+    width: 92%;
+    z-index: 10;
+}
+
+.bus_eidt_l {
+    color: #e60012;
+}
+
+.bus_eidt_r_in {
+    width: 150rpx;
+    height: 60rpx;
+    border-radius: 15rpx;
+    border: 2rpx #999 solid;
+    color: #666;
+}
+
+.bus_fr_in_move {
+    width: 50rpx;
+    height: 50rpx;
+    min-width: 50rpx;
+    margin-right: 30rpx;
+}
+
+.bus_eidt_r_in_act {
+    background: #e60012;
+    color: #fff;
+    border: 2rpx #e60012 solid;
+}
+
+.bus_del_l_img {
+    width: 39rpx;
+    height: 39rpx;
+    min-width: 39rpx;
+    border-radius: 50%;
+    overflow: hidden;
+    margin-right: 20rpx;
+}
+
+.bus_del_l_grad {
+    width: 36rpx;
+    height: 36rpx;
+    min-width: 36rpx;
+    border-radius: 50%;
+    border: 2rpx #999 solid;
+    margin-right: 20rpx;
+}
+
+.bus_apply_in {
+    padding: 20rpx 30rpx;
+    border-bottom: 2rpx #f0f0f0 solid;
+    display: flex;
+}
+
+.bus_apply_in_l {
+    width: 125rpx;
+    height: 125rpx;
+    min-width: 125rpx;
+}
+
+.bus_apply_in_r {
+    display: flex;
+    justify-content: space-between;
+    flex-direction: column;
+    width: 100%;
+    padding-left: 20rpx;
+}
+
+.bus_apply_in_r_b {
+    display: flex;
+    justify-content: space-between;
+    align-items: flex-end;
+}
+
+.bus_apply_in_r_b_r view {
+    width: 125rpx;
+    height: 50rpx;
+    border-radius: 10rpx;
+}
+
+.bus_apply_in_r_b_r_1 {
+    border: 2rpx #999 solid;
+    margin-right: 20rpx;
+    color: #666;
+}
+
+.bus_apply_in_r_b_r_2 {
+    background: #e60012;
+    color: #fff;
+    border: 2rpx #e60012 solid;
+}
+
+.allmenban {
+    z-index: 20;
+}
+
+.storeEwm_in_img {
+    width: 400rpx;
+    height: 400rpx;
+    margin: 90rpx auto 40rpx;
+}
+
+.storeEwm {
+    display: block;
+    position: fixed;
+    width: 80%;
+    height: 50%;
+    top: 25%;
+    left: 10%;
+    background: #fff;
+    z-index: 30;
+    border-radius: 15rpx;
+}
+/*排序的样式*/
+.bus_sort{
+    height: 60rpx;
+    position: absolute;
+    top: 50%;
+    transform: translateY(-50%);
+    right: 30rpx;
+}
+.bus_sort_in{
+    width: 60rpx;
+    height: 60rpx;
+    min-width: 60rpx;
+}
+
+.bus_fr_in_r_b_text {
+    font-size: 24rpx;
+    color: #666;
+    margin-top: 10rpx;
+}
+
+.bus_fr_in_r_b_l_1 {
+    justify-content: flex-start;
+}

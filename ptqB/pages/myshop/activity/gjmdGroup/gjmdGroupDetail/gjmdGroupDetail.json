@@ -1,0 +1,9 @@
+{
+  "navigationBarTitleText": "刮奖明细",
+  "component": true,
+  "usingComponents": {
+    "compage": "/vwx/component/template/",
+    "vwx-button": "/components/button/button/",
+    "vwx-modal": "/components/modal/modal/"
+  }
+}

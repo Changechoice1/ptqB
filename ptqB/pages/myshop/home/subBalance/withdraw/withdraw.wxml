@@ -1,0 +1,49 @@
+<view class="index_all_box">
+	<view class="br_top">
+		<view class="br_top_l">余额：¥{{widthDraData.wallet}}</view>
+		<view class="br_top_b">
+			<input type="text" placeholder="请输入提现金额"  placeholder-class="aaF" bindinput="moneyNowBtn" type="digit"/>
+		</view>
+	</view>
+	<view class="br_foot">
+		<view class="br_top_foot">支付方式</view>
+		<view class="br_foot_pay" data-index="1" bindtap="tapPayMode">
+			<view class="br_foot_pay_l cenFlex">
+				<view class="br_foot_pay_l_in1">
+					<image src="{{imgUrl}}with3_ico1.png"></image>
+				</view>
+				<view class="br_foot_pay_l_in2">微信支付</view>
+			</view>
+			<view class="br_foot_pay_r" wx:if="{{wechatPayFlage}}">
+				<image src="{{imgUrl}}ab_ico1.png"></image>
+			</view>
+			<view class="br_foot_pay_r_l" wx:if="{{!wechatPayFlage}}"></view>
+		</view>
+	</view>
+	<view class="br_foot">
+		<view class="br_top_foot">提现规则</view>
+		<view class="with_rule">
+			<text wx:if="{{!wechatPayFlage}}">{{widthDraData.withdraw_d_res.explain}}</text>
+			<text wx:if="{{wechatPayFlage}}">单日、单笔限额¥20000.00，微信未实名认证用户无法成功提现，暂无手续费。最低提现金额10元</text>
+		</view>
+	</view>
+
+	<!-- 点击提现 -->
+	<view class="cenFlex">
+		<view class="br_rechBtn cenFlex" style="background: #{{new_money>=10?'e70012':'cccccc'}}" bindtap="securityWith">确认提现</view>
+	</view>
+	<view class="menban" wx:if="{{txTxFlage}}" bindtap="quiteUp"></view>
+	<view class="txBox_with" wx:if="{{txTxFlage}}">
+		<view class="header_Box">提示</view>
+		<view class="contentBox">
+			<view style="margin-bottom: 10rpx;">提现金额:<text style="color: #f98700;font-size: 24rpx;">{{new_money}}</text>元 手续费:<text style="color: #f98700;font-size: 24rpx;">{{service_charge}}</text>元 实到金额:<text style="color: #f98700;font-size: 24rpx;">{{shidao}}</text>元 </view>
+			<view wx:if="{{!wechatPayFlage}}">支付宝帐号:{{widthDraData.alipay_single.account_number}}</view>
+			<view wx:if="{{!wechatPayFlage}}">支付宝姓名:{{widthDraData.alipay_single.real_name}}</view>
+			<view style="color: #999;margin-top: 10rpx;" wx:if="{{!wechatPayFlage}}">如支付宝账户和姓名错误或不匹配，提现金额将在两小时内自动返回至您的拼团趣账户</view>
+		</view>
+		<view class="okBtn">
+			<view class="okBtnUp_inBox" bindtap="quiteUp" style="color: #000000;border-right: 2rpx #eee solid;">取消</view>
+			<view class="okBtnUp_inBox" bindtap="canUp">确定提现</view>
+		</view>
+	</view>
+</view>

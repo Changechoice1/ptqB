@@ -1,0 +1,228 @@
+.form_box{
+  padding-top: 98rpx;
+}
+form{
+  line-height: 1.8;
+  font-size: 26rpx;
+}
+.block{
+  margin-top: 20rpx;
+}
+.placeholder{
+  line-height: 1.8;
+  color: #999;
+  font-size: 26rpx;
+}
+.required{
+  margin-left: 5rpx;
+  color: #ff4949;
+  font-weight: bolder;
+}
+.tip{
+  position: relative;
+}
+.tip::after{
+  content: '?';
+  position: absolute;
+  top: 5rpx;
+  left: 5rpx;
+  width: 24rpx;
+  height: 24rpx;
+  line-height: 24rpx;
+  border: 2rpx solid #319d19;
+  border-radius: 50%;
+  color: #319d19;
+  font-size: 26rpx;
+  text-align: center;
+}
+.item{
+  box-sizing: border-box;
+  padding: 0 30rpx;
+  border-bottom: 2rpx solid #eee;
+  background-color: #fff;
+  width: 100%;
+}
+.sub_item{
+  border: none;
+}
+.item .name{
+  position: relative;
+  padding: 25rpx 0;
+  width: 37%;
+  height: 100%;
+}
+.item .tip1{
+  color: #e60012;
+  font-size: 24rpx;
+}
+.item .no_pad_value{
+  padding: 0;
+  width: 60%;
+}
+.item .value{
+  padding: 25rpx 0;
+  width: 60%;
+}
+.item .value1{
+  padding: 25rpx 0;
+  width: 100%;
+}
+.item .value_b{
+  padding: 25rpx 0;
+  border-bottom: 2rpx solid #eee;
+  width: 60%;
+}
+.item .value_item{
+  padding: 25rpx 0;
+}
+.item .value_item_b{
+  padding: 25rpx 0;
+  border-bottom: 2rpx solid #eee;
+}
+.item .value_item_b:last-child{
+  border-bottom: none;
+}
+.item .option{
+  width: 50%;
+}
+icon{
+  margin-right: 10rpx;
+}
+.icon-pq-ygtct, .icon-pq-ygtcs{
+  font-size: 30rpx;
+}
+.icon-pq-ygtcs{
+  color: #e60012;
+}
+textarea{
+  box-sizing: border-box;
+  padding: 20rpx;
+  background-color: #f5f5f5;
+  line-height: 1.4;
+  width: 100%;
+}
+.label_input{
+  margin-left: 10rpx;
+}
+/* 全国统一运费金额 */
+.common_freight{
+  position: relative;
+}
+.freight_amount{
+  position: absolute;
+  top: 17rpx;
+  right: 0;
+  width: 45%;
+}
+/* 商品信息 */
+.goods_info{}
+/* 上传图片 */
+.img_item{
+  margin-top: 40rpx;
+}
+.img_item:first-child{
+  margin-top: 0;
+}
+.img_box{
+  position: relative;
+  width: 345rpx;
+  height: 230rpx;
+}
+.img_box > image{
+  width: 100%;
+  height: 100%;
+}
+.img_box > .img_del{
+  position: absolute;
+  top: -20rpx;
+  right: -20rpx;
+  width: 40rpx;
+  height: 40rpx;
+  line-height: 40rpx;
+  text-align: center;
+}
+.move_box{
+  padding: 30rpx 0;
+}
+.move_box > view{
+  width: 65rpx;
+  height: 65rpx;
+  border-radius: 50%;
+}
+
+/* 商品类型 */
+.option.goods_type_option2{
+  width: 100%;
+}
+/* 团购价格 */
+.group_price{
+  color: #e60012;
+}
+/* 赠送专享卡 */
+.title{
+  padding: 30rpx;
+}
+/* 表单提示 */
+.form_tip{
+  padding: 30rpx;
+  background-color: #fff;
+  text-align: center;
+  font-size: 24rpx;
+}
+.form_tip .tip{
+  display: inline-block;
+  position: relative;
+  width: 50rpx;
+  height: 30rpx;
+}
+.form_tip .tip::after{
+  top: 5rpx;
+  left: 10rpx;
+}
+/* 表单提交按钮 */
+.form_btn{
+  padding: 30rpx 0 100rpx;
+  background-color: #fff;
+}
+
+/* 表单列表 */
+.option_list{
+  padding-bottom: 10rpx;
+  background-color: #fff;
+  font-size: 28rpx;
+}
+.option_list > view{
+  padding: 0 30rpx;
+  height: 88rpx;
+  line-height: 88rpx;
+}
+.option_item{
+  border-bottom: 2rpx solid #eee;
+}
+.play_music{
+  width: 42rpx;
+  height: 38rpx;
+}
+.play_music > image{
+  display: initial;
+  width: 100%;
+  height: 100%;
+}
+
+.option_item_left{
+  width: 90%;
+}
+.option_index{
+  color: #999;
+}
+.option_name{
+  margin-left: 30rpx;
+  width: 90%;
+}
+.option_name.selected{
+  color: #e60012;
+}
+.option_opt_box{
+  position: relative;
+  box-shadow: 0 10rpx 16rpx rgba(97, 97, 97, .13);
+}

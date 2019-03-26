@@ -1,0 +1,89 @@
+<view class="index_all_box">
+    <view class="exc">
+        <!-- <view class="exc_t"></view> -->
+        <view class='buy_one'>
+            {{card_info.is_exclusive==1 ? '购买人' : '领取人'}}: {{card_info.wx_name}}
+        </view>
+        <view class="exc_m">
+            <view class="exc_m_t">
+                <view class="exc_m_t_l">
+                    <image src="{{card_info.card_img}}"></image>
+                </view>
+                <view class="exc_m_t_r">
+                    <view class="exc_m_t_r_t">
+                        <view class="exc_m_t_r_t_1">
+                            <view class="exc_m_t_r_t_1_l" wx:if="{{card_info.is_exclusive==2}}">
+                                <text>赠</text>
+                            </view>
+                            <view class="exc_m_t_r_t_1_m" wx:if="{{card_info.is_exclusive==2}}">·</view>
+                            <view class="exc_m_t_r_t_1_r">
+                                <image src="{{imgUrl}}vip_ico6.png"></image>
+                            </view>
+                        </view>
+                        <view class="exc_m_t_r_t_2">{{card_info.card_name || '(暂无名称)'}}</view>
+                    </view>
+                    <view class="exc_m_t_r_b">
+                        优惠价:¥{{card_info.card_price}}
+                    </view>
+                </view>
+            </view>
+        </view>
+        <view class="exc_b">
+            <view class="exc_b_in">
+                <view class="exc_b_l">{{card_info.card_use_end_time}}</view>
+                <view class="exc_b_r">
+                    已用：
+                    <text style="color:#000;">{{card_info.yet_use_num}}次</text>
+                </view>
+                <view class="exc_b_r">
+                    剩余：
+                    <text style="color:#000;">{{card_info.card_use_num - card_info.yet_use_num}}次</text>
+                </view>
+            </view>
+        </view>
+    </view>
+
+    <view class='exc_info_list'>
+        <view class='exc_il_inner'>
+            <view class='exc_li_block exc_li_block_1' bindtap="callPhone">
+                <view class='exc_li_name'>
+                    联系买家
+                </view>
+                <view class='exc_li_icon cenFlex'>
+                    <image src='/images/phone.png'></image>
+                </view>
+            </view>
+            <view class='exc_li_block'>
+                <view class='exc_li_detail'>
+                    <view class='exc_li_time'>
+                        订单编号：{{card_info.order_no}}
+                    </view>
+                </view>
+                <view class='exc_li_detail'>
+                    <view class='exc_li_time'>
+                        下单时间：{{card_info.order_time}}
+                    </view>
+                </view>
+            </view>
+        </view>
+    </view>
+    <view class='exc_info_list' wx:if="{{exCardBList[0]}}">
+        <view class='exc_il_inner'>
+            <view class='exc_li_block exc_li_block_1'>
+                <view class='exc_li_name'>
+                    核销记录
+                </view>
+                <view class='exc_li_icon cenFlex'>
+                    
+                </view>
+            </view>
+            <view class='exc_li_block' wx:for="{{exCardBList}}">
+                <view class='exc_li_detail'>
+                    <view class='exc_li_time'>
+                        核销时间：{{item.time}}
+                    </view>
+                </view>
+            </view>
+        </view>
+    </view>
+</view>

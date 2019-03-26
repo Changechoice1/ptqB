@@ -1,0 +1,707 @@
+<compage id="compage">
+  <form  bindsubmit="submitForm" style="{{!showCrop?'':'visibility:hidden;'}}">
+    <!-- 公共一 -->
+    <!-- 1、活动类型 -->
+    <view class="item flex-x-between">
+      <view class="name">活动类型
+        <text class="required">*</text>
+      </view>
+      <view class="value">
+        {{form.is_group == 1 ? '拼团立减' : form.is_group == 3 ? '多人拼团' : form.is_group == 4 ? '限时专享' : form.is_group == 6 ? '砍价' : '' }}
+      </view>
+    </view>
+    <!-- 2、是否上架 -->
+    <view class="item flex-x-between">
+      <view class="name">是否上架
+        <text class="required">*</text>
+      </view>
+      <view class="value">
+        <view class="option fl flex-y-center" data-field="is_sale" data-value="1" bindtap="formSelect">
+          <icon class="{{form.is_sale == 1 ? 'icon-pq-ygtcs' : 'icon-pq-ygtct'}}"></icon>
+          <text>是</text>
+        </view>
+        <view class="option fl flex-y-center" data-field="is_sale" data-value="0" bindtap="formSelect">
+          <icon class="{{form.is_sale == 0 ? 'icon-pq-ygtcs' : 'icon-pq-ygtct'}}"></icon>
+          <text>否</text>
+        </view>
+        <view class="clear"></view>
+      </view>
+    </view>
+
+    <!-- 一、拼团立减 -->
+    <view wx:if="{{form.is_group == 1}}">
+      <!-- 1、参团人数 -->
+      <view class="item flex-x-between">
+        <view class="name">参团人数
+          <text class="required">*</text>
+        </view>
+        <view class="value">
+          <view class="option fl flex-y-center" data-field="joinnum" data-value="2" bindtap="formSelect">
+            <icon class="{{form.joinnum == 2 ? 'icon-pq-ygtcs' : 'icon-pq-ygtct'}}"></icon>
+            <text>2人团</text>
+          </view>
+          <view class="clear"></view>
+        </view>
+      </view>
+      <!-- 2、团长价 -->
+      <view class="item flex-x-between">
+        <view class="name">团长价
+          <text class="required">*</text>
+          <text class="tip" data-tip="0" bindtap="showInstruction"></text>
+        </view>
+        <view class="value">
+          <input placeholder-class="placeholder" type="digit" data-field="goods_price" value="{{form.goods_price || ''}}" placeholder="￥请输入团长价" bindconfirm="formInput" bindinput="formInput" focus="{{focusField == 'goods_price'}}"></input>
+        </view>
+      </view>
+      <!-- 3、递减金额 -->
+      <view class="item">
+        <view class="sub_item flex-x-between">
+          <view class="name">递减金额
+            <text class="required">*</text>
+          </view>
+          <view class="value_b">
+            <input placeholder-class="placeholder" type="digit" data-field="reduce_price" value="{{form.reduce_price || ''}}" placeholder="￥请输入递减金额" bindconfirm="formInput" bindinput="formInput" focus="{{focusField == 'reduce_price'}}"></input>
+          </view>
+        </view>
+        <view class="sub_item flex-x-between">
+          <view class="name"></view>
+          <view class="value_b">
+            <vwx-button theme="font-r1" text="查看团购价格详情" bind:tap-event="getGroupPrice"></vwx-button>
+          </view>
+        </view>
+        <view wx:if="{{showGroupPrice}}" class="sub_item flex-x-between">
+          <view class="name">当前团购价格</view>
+          <view class="no_pad_value group_price">
+            <view class="value_item_b" wx:for="{{groupPriceArr}}" wx:key="{{index}}">{{item.text}}： ￥{{item.value}}</view>
+          </view>
+        </view>
+      </view>
+    </view>
+
+    <!-- 二、多人拼团 -->
+    <view wx:if="{{form.is_group == 3}}">
+      <!-- 1、拼团价 -->
+      <view class="item flex-x-between">
+        <view class="name">拼团价
+          <text class="required">*</text>
+          <text class="tip" data-tip="0" bindtap="showInstruction"></text>
+        </view>
+        <view class="value">
+          <input placeholder-class="placeholder" type="digit" data-field="secs_price" value="{{form.secs_price || ''}}" placeholder="￥请输入拼团价" bindconfirm="formInput" bindinput="formInput" focus="{{focusField == 'secs_price'}}"></input>
+        </view>
+      </view>
+      <!-- 2、原价 -->
+      <view class="item flex-x-between">
+        <view class="name">原价
+          <text class="required">*</text>
+        </view>
+        <view class="value">
+          <input placeholder-class="placeholder" type="digit" data-field="goods_price" value="{{form.goods_price || ''}}" placeholder="￥请输入原价" bindconfirm="formInput" bindinput="formInput" focus="{{focusField == 'goods_price'}}"></input>
+        </view>
+      </view>
+      <!-- 3、成团有效时间 -->
+      <view class="item flex-x-between">
+        <view class="name">成团有效时间
+          <text class="required">*</text>
+          <text class="tip" data-tip="1" bindtap="showInstruction"></text>
+        </view>
+        <view class="value">
+          <view class="option fl flex-y-center" data-field="valid_period" data-value="3" bindtap="formSelect">
+            <icon class="{{form.valid_period == 3 ? 'icon-pq-ygtcs' : 'icon-pq-ygtct'}}"></icon>
+            <text>3小时</text>
+          </view>
+          <view class="option fl flex-y-center" data-field="valid_period" data-value="12" bindtap="formSelect">
+            <icon class="{{form.valid_period == 12 ? 'icon-pq-ygtcs' : 'icon-pq-ygtct'}}"></icon>
+            <text>12小时</text>
+          </view>
+          <view class="option fl flex-y-center" data-field="valid_period" data-value="24" bindtap="formSelect">
+            <icon class="{{form.valid_period == 24 ? 'icon-pq-ygtcs' : 'icon-pq-ygtct'}}"></icon>
+            <text>24小时</text>
+          </view>
+          <view class="clear"></view>
+        </view>
+      </view>
+      <!-- 4、参团人数 -->
+      <view class="item flex-x-between">
+        <view class="name">参团人数
+          <text class="required">*</text>
+        </view>
+        <view class="value">
+          <input placeholder-class="placeholder" type="number" data-field="joinnum" value="{{form.joinnum || ''}}" placeholder="请输入拼团人数，最少2人" bindconfirm="formInput" bindinput="formInput" focus="{{focusField == 'joinnum'}}"></input>
+        </view>
+      </view>
+      <!-- 5、模拟成团 -->
+      <view class="item flex-x-between">
+        <view class="name">模拟成团
+          <text class="required">*</text>
+          <text class="tip" data-tip="1" bindtap="showInstruction"></text>
+        </view>
+        <view class="value">
+          <view class="option fl flex-y-center" data-field="is_virtual_group" data-value="1" bindtap="formSelect">
+            <icon class="{{form.is_virtual_group == 1 ? 'icon-pq-ygtcs' : 'icon-pq-ygtct'}}"></icon>
+            <text>是</text>
+          </view>
+          <view class="option fl flex-y-center" data-field="is_virtual_group" data-value="0" bindtap="formSelect">
+            <icon class="{{form.is_virtual_group == 0 ? 'icon-pq-ygtcs' : 'icon-pq-ygtct'}}"></icon>
+            <text>否</text>
+          </view>
+          <view class="clear"></view>
+        </view>
+      </view>
+      <!-- 6、凑团设置 -->
+      <view class="item flex-x-between">
+        <view class="name">凑团设置
+          <text class="required">*</text>
+          <text class="tip" data-tip="1" bindtap="showInstruction"></text>
+        </view>
+        <view class="value">
+          <view class="option fl flex-y-center" data-field="is_open_together" data-value="1" bindtap="formSelect">
+            <icon class="{{form.is_open_together == 1 ? 'icon-pq-ygtcs' : 'icon-pq-ygtct'}}"></icon>
+            <text>是</text>
+          </view>
+          <view class="option fl flex-y-center" data-field="is_open_together" data-value="0" bindtap="formSelect">
+            <icon class="{{form.is_open_together == 0 ? 'icon-pq-ygtcs' : 'icon-pq-ygtct'}}"></icon>
+            <text>否</text>
+          </view>
+          <view class="clear"></view>
+        </view>
+      </view>
+    </view>
+
+    <!-- 三、限时专享 -->
+    <view wx:if="{{form.is_group == 4}}">
+      <!-- 1、商品类型 -->
+      <view class="item flex-x-between">
+        <view class="name">商品类型
+          <text class="required">*</text>
+        </view>
+        <view class="value">
+          <view class="option fl flex-y-center {{form.goods_id && !isAdd && form.is_exclusive != 0 ? 'disabled' : ''}}" data-field="is_exclusive" data-value="0" data-disabled="{{form.goods_id && !isAdd ? true : false}}" bindtap="formSelect">
+            <icon class="{{form.is_exclusive == 0 ? 'icon-pq-ygtcs' : 'icon-pq-ygtct'}}"></icon>
+            <text>商品</text>
+          </view>
+          <view class="option fl flex-y-center {{form.goods_id && !isAdd && form.is_exclusive != 1 ? 'disabled' : ''}}" data-field="is_exclusive" data-value="1" data-disabled="{{form.goods_id && !isAdd ? true : false}}" bindtap="formSelect">
+            <icon class="{{form.is_exclusive == 1 ? 'icon-pq-ygtcs' : 'icon-pq-ygtct'}}"></icon>
+            <text>专享卡</text>
+          </view>
+          <view class="goods_type_option2 option fl flex-y-center {{form.goods_id && !isAdd && form.is_exclusive != 2 ? 'disabled' : ''}}" data-field="is_exclusive" data-value="2" data-disabled="{{form.goods_id && !isAdd ? true : false}}" bindtap="formSelect">
+            <icon class="{{form.is_exclusive == 2 ? 'icon-pq-ygtcs' : 'icon-pq-ygtct'}}"></icon>
+            <text>商品+赠送专享卡</text>
+          </view>
+          <view class="clear"></view>
+        </view>
+      </view>
+      <!-- 2、优惠价 -->
+      <view class="item flex-x-between">
+        <view class="name">优惠价
+          <text class="required">*</text>
+        </view>
+        <view class="value">
+          <input placeholder-class="placeholder" type="digit" data-field="secs_price" value="{{form.secs_price}}" placeholder="￥请输入优惠价" bindconfirm="formInput" bindinput="formInput" focus="{{focusField == 'secs_price'}}"></input>
+        </view>
+      </view>
+      <!-- 3、原价 -->
+      <view class="item flex-x-between">
+        <view class="name">原价
+          <text class="required">*</text>
+        </view>
+        <view class="value">
+          <input placeholder-class="placeholder" type="digit" data-field="goods_price" value="{{form.goods_price}}" placeholder="￥请输入原价" bindconfirm="formInput" bindinput="formInput" focus="{{focusField == 'goods_price'}}"></input>
+        </view>
+      </view>
+      <!-- 4、使用次数 -->
+      <view wx:if="{{form.is_group == 4 && form.is_exclusive == 1}}" class="item flex-x-between">
+        <view class="name">使用次数
+          <text class="required">*</text>
+        </view>
+        <view class="value">
+          <input placeholder-class="placeholder" type="number" data-field="card_use_num" value="{{form.card_use_num}}" placeholder="请输入专享卡使用次数" bindconfirm="formInput" bindinput="formInput" focus="{{focusField == 'card_use_num'}}"></input>
+        </view>
+      </view>
+    </view>
+
+    <!-- 四、砍价 -->
+    <view wx:if="{{form.is_group == 6}}">
+      <!-- 1、底价 -->
+      <view class="item flex-x-between">
+        <view class="name">底价
+          <text class="required">*</text>
+        </view>
+        <view class="value">
+          <input placeholder-class="placeholder" type="digit" data-field="secs_price" value="{{form.secs_price || ''}}" placeholder="￥请输入底价金额" bindconfirm="formInput" bindinput="formInput" focus="{{focusField == 'secs_price'}}"></input>
+        </view>
+      </view>
+      <!-- 2、原价 -->
+      <view class="item flex-x-between">
+        <view class="name">原价
+          <text class="required">*</text>
+        </view>
+        <view class="value">
+          <input placeholder-class="placeholder" type="digit" data-field="goods_price" value="{{form.goods_price || ''}}" placeholder="￥请输入原价金额" bindconfirm="formInput" bindinput="formInput" focus="{{focusField == 'goods_price'}}"></input>
+        </view>
+      </view>
+      <!-- 3、砍至底价人数 -->
+      <view class="item flex-x-between">
+        <view class="name">砍至底价人数
+          <text class="required">*</text>
+        </view>
+        <view class="value">
+          <view class="option fl flex-y-center" data-field="joinnum" data-value="10" bindtap="formSelect">
+            <icon class="{{form.joinnum == 10 ? 'icon-pq-ygtcs' : 'icon-pq-ygtct'}}"></icon>
+            <text>10人</text>
+          </view>
+          <view class="option fl flex-y-center" data-field="joinnum" data-value="15" bindtap="formSelect">
+            <icon class="{{form.joinnum == 15 ? 'icon-pq-ygtcs' : 'icon-pq-ygtct'}}"></icon>
+            <text>15人</text>
+          </view>
+          <view class="option fl flex-y-center" data-field="joinnum" data-value="20" bindtap="formSelect">
+            <icon class="{{form.joinnum == 20 ? 'icon-pq-ygtcs' : 'icon-pq-ygtct'}}"></icon>
+            <text>20人</text>
+          </view>
+          <view class="clear"></view>
+        </view>
+      </view>
+      <!-- 4、必须底价支付 -->
+      <view class="item flex-x-between">
+        <view class="name">砍价中途购买<text class="required">*</text></view>
+        <view class="value">
+          <view class="option fl flex-y-center" data-field="is_bottom" data-value="0" bindtap="formSelect">
+            <icon class="{{form.is_bottom == 0 ? 'icon-pq-ygtcs' : 'icon-pq-ygtct'}}"></icon>
+            <text>允许</text>
+          </view>
+          <view class="option fl flex-y-center" data-field="is_bottom" data-value="1" bindtap="formSelect">
+            <icon class="{{form.is_bottom == 1 ? 'icon-pq-ygtcs' : 'icon-pq-ygtct'}}"></icon>
+            <text>不允许</text>
+          </view>
+          <view class="clear"></view>
+        </view>
+      </view>
+    </view>
+
+    <!-- 公共二 -->
+    <view class="{{form.is_group == 6 ? 'block' : ''}}">
+      <!-- 1、个人限购 -->
+      <view class="item flex-x-between">
+        <view class="name">个人限购
+          <text class="required">*</text>
+        </view>
+        <view class="value">
+          <input placeholder-class="placeholder" type="number" data-field="restriction" value="{{form.restriction}}" placeholder="限购数量（件/人，0即不限购）" bindconfirm="formInput" bindinput="formInput" focus="{{focusField == 'restriction'}}"></input>
+        </view>
+      </view>
+      <!-- 2、活动时间 -->
+      <view class="item flex-x-between">
+        <view class="name">活动时间
+          <text class="required">*</text>
+        </view>
+        <view class="no_pad_value"> 
+          <view class="value_item_b" data-field="start_time" data-name="开始时间" bindtap='showDatetimePicker'>
+            <input placeholder-class="placeholder" type="text" name="start_time" value="{{form.start_time}}" placeholder="开始时间" disabled='true' focus="{{focusField == 'start_time'}}"></input>
+          </view>
+          <view class="value_item_b" data-field="end_time" data-name="结束时间" bindtap='showDatetimePicker'>
+            <input placeholder-class="placeholder" type="text" name="end_time" value="{{form.end_time}}" placeholder="结束时间" disabled='true' focus="{{focusField == 'end_time'}}"></input>
+          </view>
+        </view>
+      </view>
+      <!-- 3、物流方式：（送货上门 || 两者皆可：不限使用有效期 && 不需要预约） -->
+      <view class="item flex-x-between">
+        <view class="name">物流方式
+          <text class="required">*</text>
+        </view>
+        <view class="value">
+          <view class="option fl flex-y-center" data-field="genre" data-value="1" bindtap="formSelect">
+            <icon class="{{form.genre == 1 ? 'icon-pq-ygtcs' : 'icon-pq-ygtct'}}"></icon>
+            <text>门店自提</text>
+          </view>
+          <view class="option fl flex-y-center {{form.is_time == 1 || form.is_subscribe == 1 ? 'disabled' : ''}}" data-field="genre" data-value="0" data-disabled="{{form.is_time == 1 || form.is_subscribe == 1 ? true : false}}" bindtap="formSelect">
+            <icon class="{{form.genre == 0 ? 'icon-pq-ygtcs' : 'icon-pq-ygtct'}}"></icon>
+            <text>送货上门</text>
+          </view>
+          <view class="option fl flex-y-center {{form.is_time == 1 || form.is_subscribe == 1 ? 'disabled' : ''}}" data-field="genre" data-value="3" data-disabled="{{form.is_time == 1 || form.is_subscribe == 1 ? true : false}}" bindtap="formSelect">
+            <icon class="{{form.genre == 3 ? 'icon-pq-ygtcs' : 'icon-pq-ygtct'}}"></icon>
+            <text>两者皆可</text>
+          </view>
+          <view class="clear"></view>
+        </view>
+      </view>
+      <!-- 4、设置运费（物流方式：送货上门 || 两者皆可） -->
+      <view wx:if="{{form.genre != 1}}" class="item flex-x-between">
+        <view class="name">设置运费
+          <text class="required">*</text>
+        </view>
+        <view class="no_pad_value">
+          <view class="value_item_b" data-field="freight_id" data-value="0" bindtap="formSelect">
+            <icon class="{{form.freight_id && form.freight_id != '0' ? 'icon-pq-ygtct' : 'icon-pq-ygtcs'}}"></icon>
+            <text>包邮</text>
+          </view>
+          <view class="value_item_b common_freight">
+            <view data-field="freight_id" data-value="2" bindtap="formSelect">
+              <icon class="{{form.freight_id && form.freight_id == '2' ? 'icon-pq-ygtcs' : 'icon-pq-ygtct'}}"></icon>
+              <text>全国统一运费</text>
+            </view>
+            <view class="freight_amount">
+              <input placeholder-class="placeholder" placeholder="输入金额" data-field="unite_freight" value="{{form.unite_freight}}" disabled="{{form.freight_id != '2'}}" bindconfirm="formInput" bindinput="formInput" focus="{{focusField == 'unite_freight'}}"></input>
+            </view>
+          </view>
+          <view wx:if="{{info.freight_name}}" class="value_item_b" data-field="freight_id" data-value="1" bindtap="formSelect">
+            <icon class="{{form.freight_id && form.freight_id == '1' ? 'icon-pq-ygtcs' : 'icon-pq-ygtct'}}"></icon>
+            <text>{{info.freight_name}}</text>
+          </view>
+        </view>
+      </view>
+      <!-- 5、使用有效期：（限时间：物流方式=门店自提；限时间：开始时间 && 结束时间） -->
+      <view class="item flex-x-between">
+        <view class="name">使用有效期
+          <text class="required">*</text>
+        </view>
+        <view class="value">
+          <view class="option fl flex-y-center" data-field="is_time" data-value="0" bindtap="formSelect">
+            <icon class="{{form.is_time == 0 ? 'icon-pq-ygtcs' : 'icon-pq-ygtct'}}"></icon>
+            <text>不限</text>
+          </view>
+          <view wx:if="{{form.genre == 1}}" class="option fl flex-y-center" data-field="is_time" data-value="1" bindtap="formSelect">
+            <icon class="{{form.is_time == 1 ? 'icon-pq-ygtcs' : 'icon-pq-ygtct'}}"></icon>
+            <text>限时间</text>
+          </view>
+        </view>
+      </view>
+      <!-- 6、有效期时间(使用有效期：限时间) -->
+      <view wx:if="{{form.is_time == 1}}" class="item flex-x-between">
+        <view class="name"></view>
+        <view class="no_pad_value">
+          <view class="value_item_b" data-field="use_start_time" data-name="开始时间" bindtap='showDatetimePicker'>
+            <input placeholder-class="placeholder" name="use_start_time" value="{{form.use_start_time}}" placeholder='开始时间' disabled='true' focus="{{focusField == 'use_start_time'}}"></input>
+          </view>
+          <view class="value_item_b" data-field="use_end_time" data-name="结束时间" bindtap='showDatetimePicker'>
+            <input placeholder-class="placeholder" name="use_end_time" value="{{form.use_end_time}}" placeholder='结束时间' disabled='true' focus="{{focusField == 'use_end_time'}}"></input>
+          </view>
+        </view>
+      </view>
+      <!-- 7、预约设置（需要预约：物流方式=门店自提；需要预约：预约要求） -->
+      <view class="item flex-x-between">
+        <view class="name">预约设置
+          <text class="required">*</text>
+        </view>
+        <view class="{{form.is_subscribe == '1' ? 'value_b': 'value'}}">
+          <view class="option fl flex-y-center" data-field="is_subscribe" data-value="0" bindtap="formSelect">
+            <icon class="{{form.is_subscribe == 0 ? 'icon-pq-ygtcs' : 'icon-pq-ygtct'}}"></icon>
+            <text>不需要</text>
+          </view>
+          <view wx:if="{{form.genre == 1}}" class="option fl flex-y-center" data-field="is_subscribe" data-value="1" bindtap="formSelect">
+            <icon class="{{form.is_subscribe == 1 ? 'icon-pq-ygtcs' : 'icon-pq-ygtct'}}"></icon>
+            <text>需要预约</text>
+          </view>
+        </view>
+      </view>
+      <!-- 8、预约要求（预约设置：需要预约） -->
+      <view wx:if="{{form.is_subscribe == 1}}" class="item flex-x-between">
+        <view class="name"></view>
+        <view class="value_b">
+          <input placeholder-class="placeholder" data-field="subscribe" value="{{form.subscribe}}" placeholder='请输入预约要求' bindconfirm="formInput" bindinput="formInput" focus="{{focusField == 'subscribe'}}"></input>
+        </view>
+      </view>
+    </view>
+
+    <!-- 商品/专享卡信息 -->
+    <view class="block goods_info">
+      <!-- 1、商品/专享卡名称 -->
+      <view class="item flex-x-between">
+        <view class="name">{{goodsType}}名称
+          <text class="required">*</text>
+        </view>
+        <view class="value">
+          <input placeholder-class="placeholder" type="text" data-field="goods_name" maxlength="30" data-pattern="Cha3" data-minlen="2" data-maxlen="30"  bindinput="formInput" bindconfirm='formInput' bindblur='endFormInput' value="{{form.goods_name}}" placeholder="请输入{{goodsType}}名称" focus="{{focusField == 'goods_name'}}"></input>
+        </view>
+      </view>
+      <!-- 2、商品/专享卡详情 -->
+      <view class="item" bindtap='focusTextarea' data-field="goods_detail">
+        <view class="name">{{goodsType}}详情
+          <text class="required">*</text>
+        </view>
+        <view class="value1">
+          <textarea wx:if="{{!showModal}}" data-field="goods_detail" maxlength="15000" data-pattern="Cha3" data-minlen="2" data-maxlen="15000"  bindinput="formInput" bindconfirm='formInput' bindblur='endFormInput' value="{{form.goods_detail}}" placeholder="{{showModal ? '' : '请输入' + goodsType +'详情'}}" placeholder-style='z-index: -1;' rows="6" focus="{{focusField == 'goods_detail'}}"
+            disabled='{{showModal ? true : false}}'></textarea>
+        </view>
+      </view>
+      <!-- 3、商品/专享卡轮播图 -->
+      <view class="item flex-x-between">
+        <view class="name">
+          轮播图
+          <text class="required">*</text>
+          <view class="tip1" data-tip="2" bindtap="showInstruction">图片上传失败？</view>
+        </view>
+        <view class="no_pad_value">
+          <view class="value_item">（手机横构图，最多上传3张，大小不超过2M/张）</view>
+          <view class="value_item">
+            <!-- 轮播图列表 -->
+            <view wx:for="{{form.goods_slide}}" wx:key="{{index}}" class="img_item flex-x-between">
+              <view class="img_box">
+                <image class="img_del" src="https://www.pintuanqu.cn/Public/WeChatApps/image/with3_ico3.png" data-type="0" data-field="goods_slide" data-index="{{index}}" bindtap="delImg"></image>
+                <image mode="aspectFill" src='{{item}}' data-url="{{item}}" bindtap='previewImg'></image>
+              </view>
+              <!-- 移动图标 -->
+              <view class="move_box flex-y-between">
+                <view class="move_up_img {{index != 0 ? '' : 'unvisible'}}" data-field="goods_slide" data-index="{{index}}" bindtap="moveUpImg">
+                  <image src="/images/bus3_ico11_1.png"></image>
+                </view>
+                <view class="move_down_img {{index != form.goods_slide.length - 1 ? '' : 'unvisible'}}" data-field="goods_slide" data-index="{{index}}" bindtap="moveDownImg">
+                  <image src="/images/bus3_ico10_1.png"></image>
+                </view>
+              </view>
+            </view>
+            <!-- 上传图片（超过3张轮播图不显示） -->
+            <view wx:if="{{form.goods_slide.length < 3}}" class="img_item flex-x-between" data-type="0" data-field="goods_slide" data-cut="true" bindtap="selectImg">
+              <view class="img_box">
+                <image src='https://www.pintuanqu.cn/Public/WeChatApps/image/active_add.jpg'></image>
+                <input class='hidden' focus="{{focusField == 'goods_slide'}}"></input>
+              </view>
+              <view class="move_box flex-center"></view>
+            </view>
+          </view>
+        </view>
+      </view>
+      <!-- 4、商品/专享卡详情图 -->
+      <view class="item flex-x-between">
+        <view class="name">
+          详情图
+          <text class="required">*</text>
+          <view class="tip1" data-tip="2" bindtap="showInstruction">图片上传失败？</view>
+        </view>
+        <view class="no_pad_value">
+          <view class="value_item">（尺寸不限，最多上传15张，大小不超过2M/张）</view>
+          <view class="value_item">
+            <!-- 详情图列表 -->
+            <view wx:for="{{form.goods_detail_imgs}}" wx:key="{{index}}" class="img_item flex-x-between">
+              <view class="img_box">
+                <image class="img_del" src="https://www.pintuanqu.cn/Public/WeChatApps/image/with3_ico3.png" data-type="1" data-field="goods_detail_imgs" data-index="{{index}}" bindtap="delImg"></image>
+                <image mode="aspectFill" src='{{item}}' data-url="{{item}}" bindtap='previewImg'></image>
+              </view>
+              <!-- 移动图标 -->
+              <view class="move_box flex-y-between">
+                <view class="move_up_img {{index != 0 ? '' : 'unvisible'}}" data-field="goods_detail_imgs" data-index="{{index}}" bindtap="moveUpImg">
+                  <image src="/images/bus3_ico11_1.png"></image>
+                </view>
+                <view class="move_down_img {{index != form.goods_detail_imgs.length - 1 ? '' : 'unvisible'}}" data-field="goods_detail_imgs" data-index="{{index}}" bindtap="moveDownImg">
+                  <image src="/images/bus3_ico10_1.png"></image>
+                </view>
+              </view>
+            </view>
+            <!-- 上传图片（超过15张详情图不显示） -->
+            <view wx:if="{{form.goods_detail_imgs.length < 15}}" class="img_item flex-x-between" data-type="1" data-field="goods_detail_imgs" bindtap="selectImg">
+              <view class="img_box">
+                <image src='https://www.pintuanqu.cn/Public/WeChatApps/image/active_add.jpg'></image>
+                <input class='hidden' focus="{{focusField == 'goods_detail_imgs'}}"></input>
+              </view>
+              <view class="move_box flex-center"></view>
+            </view>
+          </view>
+        </view>
+      </view>
+      <!-- 5、库存数量 -->
+      <view class="item flex-x-between">
+        <view class="name">库存数量
+          <text class="required">*</text>
+        </view>
+        <view class="value">
+          <input placeholder-class="placeholder" type="number" data-field="inventory" value="{{form.inventory}}" placeholder="请输入库存数量" bindconfirm="formInput" bindinput="formInput" focus="{{focusField == 'inventory'}}"></input>
+        </view>
+      </view>
+      <!-- 6、排序设置 -->
+      <view class="item flex-x-between">
+        <view class="name">排序设置
+          <text class="required">*</text>
+        </view>
+        <view class="value">
+          <input placeholder-class="placeholder" type="number" maxlength="9" data-field="sort" value="{{form.sort}}" placeholder="请输入排序号（数字越大越靠前）" bindconfirm="formInput" bindinput="formInput" focus="{{focusField == 'sort'}}"></input>
+        </view>
+      </view>
+      <!-- 7、员工提成设置（拼团立减、限时专享） -->
+      <view wx:if="{{(form.is_group == 1 || form.is_group == 4 || form.is_group == 6) && is_account == 0}}" class="item flex-x-between">
+        <view class="name">员工提成设置
+          <text class="required">*</text>
+        </view>
+        <view class="value">
+          <view class="option fl flex-y-center" data-field="is_unit" data-value="1" bindtap="formSelect">
+            <icon class="{{form.is_unit == 1 ? 'icon-pq-ygtcs' : 'icon-pq-ygtct'}}"></icon>
+            <text>是</text>
+          </view>
+          <view class="option fl flex-y-center" data-field="is_unit" data-value="0" bindtap="formSelect">
+            <icon class="{{form.is_unit == 0 ? 'icon-pq-ygtcs' : 'icon-pq-ygtct'}}"></icon>
+            <text>否</text>
+          </view>
+        </view>
+      </view>
+      <!-- 8、员工提成(拼团立减；员工提成设置：是) -->
+      <view wx:if="{{form.is_group == 1 && form.is_unit == 1 && is_account == 0}}" class="item flex-x-between">
+        <view class="name"></view>
+        <view class="no_pad_value">
+          <view class="value_item_b flex">
+            团长单
+            <input placeholder-class="placeholder" type="digit" data-field="group_each_unit" value="{{form.group_each_unit}}" placeholder='￥请输入提成金额' bindconfirm="formInput" bindinput="formInput" focus="{{focusField == 'group_each_unit'}}"></input>
+          </view>
+          <view class="value_item_b flex">
+            参团单
+            <input placeholder-class="placeholder" type="digit" data-field="each_unit" value="{{form.each_unit}}" placeholder='￥请输入提成金额' bindconfirm="formInput" bindinput="formInput" focus="{{focusField == 'each_unit'}}"></input>
+          </view>
+        </view>
+      </view>
+      <!-- 8、员工提成(限时专享；员工提成设置：是) -->
+      <view wx:if="{{(form.is_group == 4 || form.is_group == 6) && form.is_unit == 1 && is_account == 0}}" class="item flex-x-between">
+        <view class="name"></view>
+        <view class="no_pad_value">
+          <view class="value_item_b flex">
+            每笔订单
+            <input placeholder-class="placeholder" type="digit" data-field="each_unit" value="{{form.each_unit}}" placeholder='￥请输入提成金额' bindconfirm="formInput" bindinput="formInput" focus="{{focusField == 'each_unit'}}"></input>
+          </view>
+        </view>
+      </view>
+      <!-- 9、选择背景音乐 -->
+      <view wx:if="{{form.is_group == 6}}">
+          <view class="item flex-x-between">
+            <view class="name">选择背景音乐<text class="required">*</text></view>
+            <view class="value flex-between" data-field="music_id" data-value="music_name" bindtap="formListSelect">
+              <view>{{form.music_name}}</view>
+              <view class="{{showOptList && showOptListField == 'music_id' ? 'diy_icon_down' : 'diy_icon_right'}}"></view>
+            </view>
+          </view>
+          <view class="option_list" wx:if="{{showOptList && showOptListField == 'music_id'}}">
+            <view class="option_item flex-between" wx:for="{{musicList}}" wx:key="{{index}}">
+              <view class="option_item_left" data-id="{{item.id}}" data-name="{{item.music_name}}" bindtap="formListItemSelect">
+                <view class="option_index fl">{{index + 1}}</view>
+                <view class="option_name fl onFontNow {{item.id == tempOptListId ? 'selected' : ''}}">{{item.music_name}}</view>
+              </view>
+              <view wx:if="{{playMusic.id != item.id}}" data-item="{{item}}" bindtap="playMusic">试听</view>
+              <view class="play_music" wx:if="{{playMusic.id == item.id}}" bindtap="pauseMusic"><image src="/images/playMusic.png"></image></view>
+            </view>
+            <view class="option_opt_box flex-end">
+              <vwx-button type="s" text="取消" color="#fff" bgColor="#ccc" bind:tap-event="cancelFormListSelect"></vwx-button>
+              <vwx-button type="s" text="确定" style="margin-left: 30rpx;" bind:tap-event="certainFormListSelect"></vwx-button>
+            </view>
+          </view>
+        </view>
+    </view>
+
+    <!-- 专享卡信息(限时专享 && 商品+赠送专享卡) -->
+    <view wx:if="{{form.is_group == 4 && form.is_exclusive == 2}}">
+      <view class="title">赠送专享卡</view>
+      <!-- 1、赠送专享卡名称 -->
+      <view class="item flex-x-between">
+        <view class="name">专享卡名称
+          <text class="required">*</text>
+        </view>
+        <view class="value">
+          <input placeholder-class="placeholder" type="text" data-field="card_name" maxlength="30" data-pattern="Cha3" data-minlen="2" data-maxlen="30"  bindinput="formInput" bindconfirm='formInput' bindblur='endFormInput' value="{{form.card_name}}" placeholder="请输入专享卡名称" focus="{{focusField == 'card_name'}}"></input>
+        </view>
+      </view>
+      <!-- 2、赠送专享卡价值 -->
+      <view class="item flex-x-between">
+        <view class="name">专享卡价值
+          <text class="required">*</text>
+        </view>
+        <view class="value">
+          <input placeholder-class="placeholder" type="digit" data-field="card_price" value="{{form.card_price}}" placeholder="￥请输入专享卡价值" bindconfirm="formInput" bindinput="formInput" focus="{{focusField == 'card_price'}}"></input>
+        </view>
+      </view>
+      <!-- 3、赠送专享卡使用次数 -->
+      <view class="item flex-x-between">
+        <view class="name">使用次数
+          <text class="required">*</text>
+        </view>
+        <view class="value">
+          <input placeholder-class="placeholder" type="number" data-field="card_use_num" value="{{form.card_use_num}}" placeholder="￥请输入专享卡使用次数" bindconfirm="formInput" bindinput="formInput" focus="{{focusField == 'card_use_num'}}"></input>
+        </view>
+      </view>
+      <!-- 4、赠送专享卡使用有效期 -->
+      <view class="item flex-x-between">
+        <view class="name">使用有效期
+          <text class="required">*</text>
+        </view>
+        <view class="value">
+          <view class="option fl flex-y-center" data-field="card_is_time" data-value="0" bindtap="formSelect">
+            <icon class="{{form.card_is_time == 0 ? 'icon-pq-ygtcs' : 'icon-pq-ygtct'}}"></icon>
+            <text>不限</text>
+          </view>
+          <view class="option fl flex-y-center" data-field="card_is_time" data-value="1" bindtap="formSelect">
+            <icon class="{{form.card_is_time == 1 ? 'icon-pq-ygtcs' : 'icon-pq-ygtct'}}"></icon>
+            <text>限时间</text>
+          </view>
+        </view>
+      </view>
+      <!-- 5、赠送专享卡有效期时间(使用有效期：限时间) -->
+      <view wx:if="{{form.card_is_time == 1}}" class="item flex-x-between">
+        <view class="name"></view>
+        <view class="no_pad_value">
+          <view class="value_item_b" data-field="card_use_start_time" data-name="开始时间" bindtap='showDatetimePicker'>
+            <input placeholder-class="placeholder" name="card_use_start_time" value="{{form.card_use_start_time}}" placeholder='开始时间' disabled='true' focus="{{focusField == 'card_use_start_time'}}"></input>
+          </view>
+          <view class="value_item_b" data-field="card_use_end_time" data-name="结束时间" bindtap='showDatetimePicker'>
+            <input placeholder-class="placeholder" name="card_use_end_time" value="{{form.card_use_end_time}}" placeholder='结束时间' disabled='true' focus="{{focusField == 'card_use_end_time'}}"></input>
+          </view>
+        </view>
+      </view>
+      <!-- 6、赠送专享卡详情 -->
+      <view class="item" bindtap='focusTextarea' data-field="card_detail">
+        <view class="name">专享卡详情
+          <text class="required">*</text>
+        </view>
+        <view class="value1">
+          <textarea wx:if="{{!showModal}}" data-field="card_detail" maxlength="15000" data-pattern="Cha3" data-minlen="2" data-maxlen="15000"  bindinput="formInput" bindconfirm='formInput' bindblur='endFormInput' value="{{form.card_detail}}" placeholder="{{showModal ? '' : '请输入专享卡详情'}}" rows="6" focus="{{focusField == 'card_detail'}}" disabled='{{showModal ? true : false}}'></textarea>
+        </view>
+      </view>
+      <!-- 7、赠送专享卡详情图 -->
+      <view class="item flex-x-between">
+        <view class="name">
+          详情图
+          <text class="required">*</text>
+          <view class="tip1" data-tip="2" bindtap="showInstruction">图片上传失败？</view>
+        </view>
+        <view class="no_pad_value">
+          <view class="value_item">（尺寸不限，最多上传15张，大小不超过2M/张）</view>
+          <view class="value_item">
+            <!-- 赠送专享卡详情图列表 -->
+            <view wx:for="{{form.card_detail_imgs}}" wx:key="{{index}}" class="img_item flex-x-between">
+              <view class="img_box">
+                <image class="img_del" src="https://www.pintuanqu.cn/Public/WeChatApps/image/with3_ico3.png" data-type="2" data-field="card_detail_imgs" data-index="{{index}}" bindtap="delImg"></image>
+                <image mode="aspectFill" src='{{item}}' data-url="{{item}}" bindtap='previewImg'></image>
+              </view>
+              <!-- 移动图标 -->
+              <view class="move_box flex-y-between">
+                <view class="move_up_img {{index != 0 ? '' : 'unvisible'}}" data-field="card_detail_imgs" data-index="{{index}}" bindtap="moveUpImg">
+                  <image src="/images/bus3_ico11_1.png"></image>
+                </view>
+                <view class="move_down_img {{index != form.card_detail_imgs.length - 1 ? '' : 'unvisible'}}" data-field="card_detail_imgs" data-index="{{index}}" bindtap="moveDownImg">
+                  <image src="/images/bus3_ico10_1.png"></image>
+                </view>
+              </view>
+            </view>
+            <!-- 上传赠送专享卡图片 -->
+            <view wx:if="{{form.card_detail_imgs.length < 15}}" class="img_item flex-x-between" data-type="2" data-field="card_detail_imgs" bindtap="selectImg">
+              <view class="img_box">
+                <image src='https://www.pintuanqu.cn/Public/WeChatApps/image/active_add.jpg'></image>
+                <input class='hidden' focus="{{focusField == 'card_detail_imgs'}}"></input>
+              </view>
+              <view class="move_box flex-center"></view>
+            </view>
+          </view>
+        </view>
+      </view>
+    </view>
+
+    <!-- 提示信息 -->
+    <view class="form_tip">温馨提示：
+      <text class='required'>*</text> 为必填项，点击
+      <view class='tip'></view>可查看设置相关说明</view>
+
+    <!-- 按钮 -->
+    <view class="form_btn">
+      <vwx-button id="submit_btn" text="{{form.goods_id && !editType ? '确认修改' : '发布'}}" loading="true" bind:tap-event="submitForm"></vwx-button>
+    </view>
+
+  </form>
+
+  <!-- 裁剪框 -->
+  <vwx-cropper  id="cropper" style="{{showCrop?'position:fixed;top:0;width:100%;height:100%;z-index:1000':'z-index:-1000'}}" img="{{tempImg}}" bind:upload-img="uploadCutImg" bind:hide-cropper="hideCropper"></vwx-cropper>
+
+  <!-- 时间选择器 -->
+  <vwx-datetime wx:if="{{showDatetimePicker}}" title="{{picker.name}}" years="{{years}}" bind:cancel="cancelDatetime" bind:confirm="confirmDatetime"></vwx-datetime>
+</compage>

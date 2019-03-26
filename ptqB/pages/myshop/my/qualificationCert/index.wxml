@@ -1,0 +1,113 @@
+{{}}
+<!-- 实名认证 -->
+<view class="index_all_box">
+    <!-- 店铺盒子 -->
+    <view class="store_box">
+        <view class="store_box_l">
+            <view class="store_img cenFlex">
+                <image src="{{authData.store_logo}}"></image>
+            </view>
+            <view class="store_name">
+                <view class="store_name_t"> {{authData.store_name}} </view>
+                <view class="store_name_b1" wx:if="{{authData.is_authentication!=1}}">
+                    立即实名认证享受更多特权服务
+                </view>
+                <view class="store_name_b2" wx:if="{{authData.is_authentication==1}}">
+                    <view class="store_name_b2_in2">
+                        <view class="store_name_b2_in2_2">时间至：{{timeData.end_time}}</view>
+                    </view>
+                </view>
+            </view>
+        </view>
+        <view class="store_end" bindtap="{{authData.is_authentication==3?'':'navGoBtn'}}" wx:if="{{authData.is_authentication==1}}">
+            <view class="store_end_t cenFlex">
+                <image src="{{authData.authentication_type == 2?'/images/index3_ico3.png':'/images/goods3_ico1.png'}}"></image>
+            </view>
+            <view class="store_end_b cenFlex" style="color:#f7a20e">{{authData.authentication_type == 2?'店铺认证':'个人认证'}}</view>
+        </view>
+        <view class="store_end" bindtap="{{authData.is_authentication==3?'':'navGoBtn'}}" wx:if="{{authData.is_authentication!=1}}">
+            <view class="store_end_t cenFlex">
+                <image src="{{imgUrl}}authen_ico1_a.png"></image>
+            </view>
+            <view class="store_end_b cenFlex" style="color:#999999">未认证</view>
+        </view>
+    </view>
+    <!--  -->
+
+    <!-- 申请认证 -->
+    <!-- <view class="apply_box" wx:if="{{authData.is_authentication==0 || authData.is_authentication==2}}"> -->
+    <view class="apply_box" wx:if="{{authData.is_authentication==0 || authData.is_authentication==2}}">
+        <view class="apply_box_h">
+            申请认证类型
+        </view>
+        <view class="apply_box_w">
+            <view class="apply_box_w_in apply_box_w_in1" bindtap="{{authData.is_authentication==0?'textNav':authData.is_authentication==1?'':authData.is_authentication==2?'':'textNav'}}" data-type="1" data-id="{{authData.store_id}}">
+                <view class="apply_box_w_in1">
+                    <view class="apply_box_w_in_t cenFlex">
+                        <image src="{{imgUrl}}authen_ico3.png"></image>
+                    </view>
+                    <view class="apply_box_w_in_b">个人实名认证</view>
+                    <view class="apply_box_w_in1_in cenFlex">
+                        {{authData.is_authentication==0?'立即申请':authData.is_authentication==1?'已认证':authData.is_authentication==2?'审核中':'立即申请'}}
+                    </view>
+                </view>
+            </view>
+            <view class="apply_box_w_in apply_box_w_in2" bindtap="{{authData.is_authentication==0?'textNav':authData.is_authentication==1?'':authData.is_authentication==2?'':''}}" data-type="2" data-id="{{authData.store_id}}">
+                <view class="apply_box_w_in1">
+                    <view class="apply_box_w_in_t cenFlex">
+                        <image src="{{imgUrl}}authen_ico2.png"></image>
+                    </view>
+                    <view class="apply_box_w_in_b">店铺实名认证</view>
+                </view>
+                <view class="apply_box_w_in1_in cenFlex">{{authData.is_authentication==0?'立即申请':authData.is_authentication==1?'已认证':authData.is_authentication==2?'审核中':'立即申请'}}</view>
+            </view>
+        </view>
+    </view>
+
+    <!-- 重新认证 -->
+    <view class="otherReason" wx:if='{{authData.is_authentication==3}}'>
+        <view class="otherReason_t">
+            审核未通过：
+            <text>请重新上传资料</text>
+        </view>
+        <view class='otherR_con'>
+            <view class='othorR_inner'>
+                <text>身份证不清晰</text>
+                <view class="okNext" bindtap="againBtn" data-type="{{authData.type}}" data-id="{{authData.store_id}}">重新提交资料</view>
+            </view>
+        </view>
+    </view>
+
+    <!-- 特权认证 -->
+    <view class="pool_box">
+        <view class="apply_box_h">
+            认证特权一览
+        </view>
+        <view class="apply_box_b">
+            <view class='apply_inner'>
+                <view class='apply_table'>
+                    <view class='apply_table_in apply_table1'>
+                        功能权限
+                    </view>
+                    <view class='apply_table_in apply_table2'>
+                        认证前
+                    </view>
+                    <view class='apply_table_in apply_table3'>
+                        认证后
+                    </view>
+                </view>
+                <view class='apply_table {{index%2 == 0 ? "apply_table_line" : "apply_table_line_1"}}' wx:for='{{poolArr1}}' wx:key="{{index}}">
+                    <view class='apply_table_in apply_table1'>
+                        {{item.textZh}}
+                    </view>
+                    <view class='apply_table_in apply_table2 cenFlex'>
+                        <image src="{{imgUrl}}auth_before.png"></image>
+                    </view>
+                    <view class='apply_table_in apply_table3 cenFlex'>
+                        <image src="{{imgUrl}}auth_after.png"></image>
+                    </view>
+                </view>
+            </view>
+        </view>
+    </view>
+</view>

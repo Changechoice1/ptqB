@@ -1,0 +1,8 @@
+{
+  "navigationBarTitleText": "拼团趣-首页",
+  "component": true,
+  "usingComponents": {
+    "compage": "/vwx/component/template/",
+    "vwx-modal": "/components/modal/modal"
+  }
+}

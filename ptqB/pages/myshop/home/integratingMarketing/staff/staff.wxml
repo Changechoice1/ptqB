@@ -1,0 +1,221 @@
+<import src="/template/template.wxml" />
+<import src="/template/activity/actType/actType.wxml" />
+
+<view class="index_all_box">
+    <!-- 分类导航 -->
+    <view class='nav'>
+        <view class='nav_inner'>
+            <view class='nav_block {{nav == 0 ? "active" : ""}}' wx:if="{{is_account==0}}">
+                <view class='nav_text' data-index='0' bindtap='changeNav'>员工设置</view>
+            </view>
+            <view class='nav_block {{nav == 1 ? "active" : ""}}'>
+                <view class='nav_text' data-index='1' bindtap='changeNav'>查看活动</view>
+            </view>
+            <view class='nav_block {{nav == 2 ? "active" : ""}}'>
+                <view class='nav_text' data-index='2' bindtap='changeNav'>排行榜</view>
+            </view>
+        </view>
+    </view>
+    <!-- 主体 -->
+    <!-- 员工设置 -->
+    <view class='active_has_none' wx:if='{{nav==0 && staffList.length == 0 && is_account==0}}'>
+        <view class='active_none_inner'>
+            <view class='active_none_img cenFlex'>
+                <image src='/images/yg_none_1.png'></image>
+            </view>
+            <text>暂无员工，快去添加吧</text>
+        </view>
+    </view>
+    <view class='main' wx:if='{{nav == 0 && staffList.length > 0 && is_account==0}}'>
+        <view class='main_inner' wx:for='{{staffList}}' data-index='{{index}}' data-id='{{item.account_id}}' wx:key='{{index}}' bindtap="pushIdBtn">
+            <view class='main_block'>
+                <view class='main_radio' wx:if='{{status == 1}}'>
+                    <view class="red_check cenFlex" wx:if="{{idArr[index]}}">
+                        <image src="{{imgUrl}}ab_ico1.png"></image>
+                    </view>
+                    <view class="gray_check" wx:if="{{!idArr[index]}}"></view>
+                </view>
+                <view class='main_1'>
+                    {{index+1}}
+                </view>
+                <view class='main_2'>
+                    <view class='main_2_img cenFlex'>
+                        <image mode="aspectFill" src='{{item.wx_img}}'></image>
+                    </view>
+                </view>
+                <view class='main_3'>
+                    <view class='main_3_name'>{{item.wx_name}}</view>
+                    <view class='main_3_true'>
+                        <text>员工姓名：</text>{{item.remark}}
+                    </view>
+                </view>
+            </view>
+            <view class='sub_b_2'>
+                <view class='sub_b2_1'>
+                    <!-- <text>员工姓名：</text>{{item.is_remark == '0' ? '未备注' : item.remark}} -->
+                </view>
+                <view class='sub_b2_2' data-id='{{item.account_id}}' data-remark='{{item.remark}}' data-status='{{item.is_remark}}' bindtap='openEditRemark'>
+                    修改备注
+                </view>
+            </view>
+        </view>
+    </view>
+    <!-- 底部按钮 -->
+    <view class='btn' wx:if='{{nav == 0 && status == 0}}'>
+        <view class='btn_inner'>
+            <view class='btn_0 btn_1' bindtap='changeEdit' wx:if='{{staffList.length > 0}}'>
+                编辑
+            </view>
+            <view class='btn_0 btn_2' bindtap='addStaff'>
+                添加
+            </view>
+        </view>
+    </view>
+    <view class='btn' wx:if='{{nav == 0 && status == 1}}'>
+        <view class='btn_inner'>
+            <view class='btn_0 btn_1' bindtap='cancelEdit'>
+                取消
+            </view>
+            <view class='btn_0 btn_2' bindtap='confirmBtn'>
+                删除
+            </view>
+        </view>
+    </view>
+    <!-- 查看活动 -->
+    <view class='active_has_none' wx:if='{{nav==1 && aaData.length == 0}}'>
+        <view class='active_none_inner'>
+            <view class='active_none_img cenFlex'>
+                <image src='/images/active_none_1.png'></image>
+            </view>
+            <text>暂时没有活动</text>
+        </view>
+    </view>
+    <view class='look' wx:if='{{nav == 1 && aaData.length > 0}}'>
+        <view class='look_inner'>
+            <view class='look_block' wx:for='{{aaData}}' wx:key='{{index}}'>
+                <view class='look_1'>
+                    <view class='look_1_img'>
+                        <view class='look_1_img_inner cenFlex'>
+                            <image mode="aspectFill" src='{{item.goods_img}}'></image>
+                        </view>
+                    </view>
+                    <view class='look_1_text'>
+                        <view class='look_1_h'>
+                            {{item.goods_name}}
+                        </view>
+                        <view class='look_1_price'>
+                            <view class='look_1_p'>
+                                <view class='look_1_p_o'>
+                                    {{item.original_price_str}}
+                                    <text>￥{{item.original_price}}</text>
+                                </view>
+                                <view class='look_1_p_n'>
+                                    {{item.price_str}}
+                                </view>
+                            </view>
+                            <template is="actType" data="{{...item}}"></template>
+                        </view>
+                    </view>
+                </view>
+                <view class='look_2'>
+                    <view wx:if='{{item.is_group == 1}}'>
+                        <text>开团提成：</text>¥{{item.group_each_unit}}</view>
+                    <view wx:if='{{item.is_group == 1}}'>
+                        <text>参团提成：</text>¥{{item.each_unit}}</view>
+                    <view wx:if='{{item.is_group != 1}}'>
+                        <text>每件提成：</text>¥{{item.each_unit}}</view>
+                </view>
+                <navigator class="mini_program" target="miniProgram" open-type="navigate" app-id="wxd25131b98741c7cb" path="/pages/goodsInfo/{{item.is_group == 1 ? 'goodsGroup/goodsGroup' : item.is_group == 3 ? 'goodsPeople/goodsPeople' : item.is_group == 4 ? 'goodsSale/goodsSale' : item.is_group == 6 ? 'goodsBargain/goodsBargain' : 'goodsGroup/goodsGroup'}}?goods_id={{item.goods_id}}" />
+            </view>
+        </view>
+    </view>
+    <!-- 排行榜 -->
+    <view class='active_has_none' wx:if='{{nav==2 && rlData.length == 0}}'>
+        <view class='active_none_inner'>
+            <view class='active_none_img cenFlex'>
+                <image src='/images/yg_none_2.png'></image>
+            </view>
+            <text>暂无排行信息</text>
+        </view>
+    </view>
+    <view class='rank' wx:if='{{nav == 2 && rlData.length > 0}}'>
+        <view class='rank_divide'>
+            <view class='divide_1'>
+                <view class='divide_img cenFlex'>
+                    <image src='{{imgUrl}}staffing_icon_1.png'></image>
+                </view>
+                <view class='divide_text'>自然月</view>
+            </view>
+            <view class='divide_2' bindtap='openChoose'>
+                <view class='divide_time'>{{timeNow}}</view>
+                <view class='divide_icon cenFlex'>
+                    <image src='{{imgUrl}}gy_ico.png'></image>
+                </view>
+            </view>
+        </view>
+        <view class='rank_inner'>
+            <view class='main_block' wx:for='{{rlData}}' data-index='{{index}}' data-id='{{item.account_id}}' wx:key='{{index}}' bindtap='toStaffingDetail' >
+                <view class='main_1'>
+                    {{index+1}}
+                </view>
+                <view class='main_2'>
+                    <view class='main_2_img cenFlex'>
+                        <image mode="aspectFill" src='{{item.wx_img}}'></image>
+                    </view>
+                </view>
+                <view class='main_3'>
+                    <view class='main_3_name rank_name'>
+                        <text>{{item.wx_name}}</text>
+                        <text class='rank_money'>{{item.all_amount}}</text>
+                    </view>
+                    <view class='main_3_true rank_name'>
+                        <view class='rank_true'>
+                            <text>员工姓名：</text>{{item.remark || '暂无'}}</view>
+                        <view class='rank_num'>{{item.num || 0}}笔</view>
+                    </view>
+                </view>
+            </view>
+        </view>
+    </view>
+    <!-- 选择开启/关闭时间 -->
+    <view class='choose_oc_time' wx:if='{{chooseTime}}'>
+        <view class='choose_oc_inner'>
+            <view class='choose_oc_h'>
+                选择时间和日期
+            </view>
+            <picker-view indicator-style="height: 100rpx;" value="{{value}}" bindchange="bindChange">
+                <picker-view-column>
+                    <view wx:for="{{years}}" wx:key='{{index}}' class='choose_oc_line'>{{item}}年</view>
+                </picker-view-column>
+                <picker-view-column>
+                    <view wx:for="{{months}}" wx:key='{{index}}' class='choose_oc_line'>{{item}}月</view>
+                </picker-view-column>
+            </picker-view>
+            <view class='choose_oc_btn'>
+                <view class='cancle' bindtap='closeChoose'>取消</view>
+                <view class='confirm' bindtap="confirmTimeBtn">确定</view>
+            </view>
+        </view>
+    </view>
+    <!-- 修改备注名 -->
+    <view class='sub_edit_remark' wx:if='{{editRemark == 1}}'>
+        <view class='sub_edit_inner'>
+            <view class='sub_e_h'>
+                请修改子账号备注
+            </view>
+            <view class='sub_e_main'>
+                <view class='sub_em_h'>
+                    备注名
+                </view>
+                <view class='sub_em_input'>
+                    <input type='text' placeholder='修改备注名' data-index="0" maxlength="8" data-pattern="Cha3" data-minlen="2" data-maxlen="8" bindinput="inputTxt" value="{{inputArr[0]}}" bindconfirm="inputTxt" placeholder-class='placeholder_color'></input>
+                </view>
+            </view>
+            <view class='sub_e_btn'>
+                <view class='sub_eb_1' bindtap='closeEditRemark'>暂不修改</view>
+                <view class='sub_eb_2' data-id='{{account_idEidt}}' bindtap='confirmEditRemark'>确定</view>
+            </view>
+        </view>
+    </view>
+</view>
+<template is="noTModale" data="{{notMData}}" />

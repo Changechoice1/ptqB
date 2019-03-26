@@ -1,0 +1,29 @@
+@import '../list.wxss';
+@import '/template/template.wxss';
+page{
+  background-color: #fff !important;
+}
+.active_list{
+  padding: 0;
+}
+.active_detail_desc {
+    margin-top: 20rpx;
+}
+
+.active_detail_d_list {
+    font-size: 0.9em;
+    color: #666;
+    margin-top: 10rpx;
+}
+
+.active_detail_status {
+    color: #e60012;
+    text-align: center;
+    margin-top: 20rpx;
+}
+.active_l_block{
+  position: relative;
+}
+.active_status{
+  color: #e60012;
+}

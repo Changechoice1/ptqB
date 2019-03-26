@@ -1,0 +1,32 @@
+<import src="/template/template.wxml" />
+<compage id="compage">
+  <view class="list_box">
+    <view class="tab">
+      <view class="tab_item fl {{tab == 0 ? 'active' : ''}}" data-tab="0" bindtap="switchTab">
+        已免单 ({{info.cash_back}}元)
+      </view>
+      <view class="tab_item fl {{tab == 1 ? 'active' : ''}}" data-tab="1" bindtap="switchTab">
+        代金券 ({{info.ticket_back ? info.ticket_back + '元' : '待使用'}})
+      </view>
+      <view class="clear"></view>
+    </view>
+    <view wx:if="{{!noList}}" class="list">
+      <view wx:for="{{list}}" wx:key="{{index}}" class="list_item flex-between">
+        <view class="logo">
+          <image src="{{item.wx_img}}"></image>
+        </view>
+        <view class="info">
+          <view class="info_title onFontNow">"<text>{{item.wx_name}}</text>"{{tab == 0 ? (item.type==1?'为发起者刮出现金红包':'为发起者刮出消费奖励') : '刮出' + item.voucher_amount + '元代金券 满' + item.lowest_amount + '元'}}</view>
+          <view class="info_other flex-x-between flex-y-end">
+            <view class="{{tab == 1 && item.status != 2 ? 'unvisible' : ''}}" class="info_datetime">{{tab == 1 && item.status != 2 ? '' : item.create_time}}</view>
+            <view wx:if="{{tab == 0&&item.type == 1}}" class="info_amount"><text>{{item.get_amount}}</text>元</view>
+            <view wx:if="{{tab == 0&&item.type == 2}}" class="info_amount"><text>{{item.voucher_amount}}</text>元</view>
+            
+            <view wx:if="{{tab == 1}}" class="{{item.status == 1 ? 'info_state0' : 'info_state1'}}">{{item.status == 1 ? '未使用' : item.status == 2 ? '已使用' : '已过期'}}</view>
+          </view>
+        </view>
+      </view>
+    </view>
+    <template is="nullData" data="{{noListData}}" wx:if="{{noList}}"/>
+  </view>
+</compage>

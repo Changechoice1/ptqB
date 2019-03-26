@@ -1,0 +1,37 @@
+<template name="payQrImg">
+  <view class="img-box">
+    <view class="img-banner">
+      <view class="img-banner-inbox flex-x-between">
+        <view class="img-banner-info">
+          <view class="img-banner-info-logo flex-center">
+            <image src="{{payQrImgInfo.logo}}"></image>
+          </view>
+          <view class="img-banner-info-name">{{payQrImgInfo.name}}</view>
+        </view>
+        <view class="img-banner-ico">×</view>
+        <view class="img-banner-info">
+          <view class="img-banner-info-logo flex-center">
+            <image src="{{payQrImgInfo.logo1}}"></image>
+          </view>
+          <view class="img-banner-info-name">{{payQrImgInfo.name1}}</view>
+        </view>
+      </view>
+      <view class="img-banner-title">{{payQrImgInfo.title}}</view>
+    </view>
+
+    <view class="img-content">
+      <view class="img-content-qr">
+        <image src="{{payQrImgInfo.qrImg}}"></image>
+      </view>
+      <view class="img-content-title">{{payQrImgInfo.text}}</view>
+    </view>
+
+    <view class="img-footer">
+      <view class="img-footer-title">{{payQrImgInfo.tipTitle}}</view>
+      <view class="img-footer-content">{{payQrImgInfo.tipCont}}</view>
+      <view class="img-footer-btn">
+        <vwx-button id="save_btn" text="保存二维码图片" loading="true" bind:tap-event="savePayQrImg"></vwx-button>
+      </view>
+    </view>
+  </view>
+</template> 

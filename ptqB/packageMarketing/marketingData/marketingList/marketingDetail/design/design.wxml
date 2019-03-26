@@ -1,0 +1,46 @@
+<compage id="compage" >
+
+<view class='container'>
+   <view class='pageHerd'>
+      <view class='title'>
+         申请物料设计
+      </view>
+      <view class='logo'>
+         <image  src='../../../../../images/designLogo.png'></image>
+      </view>
+   </view>
+   <view class='pageBody'>
+      <view class='labelList' wx:for='{{labelList}}' wx:key='index' wx:for-index="pindex">
+         <view class='itemBox' data-i='{{pindex}}'  bindtap='doSelect'>
+            <view class='itemLabel'>{{item.label}}</view>
+            <view class='itemText'>{{item.text}}</view>
+            <view class='rightarr'><view class="{{item.checked?'diy_icon_down':'diy_icon_right'}}" wx:if='{{item.childen}}'></view></view>
+         </view>
+         <view class='itemChildenBox' wx:if='{{item.checked}}'>
+            <view  wx:for='{{item.childen}}' wx:for-item='childen'  wx:key='index' wx:for-index="iindex" class='{{childen.checked?"itemBox checked":"itemBox"}}' data-i='{{iindex}}' data-pi='{{pindex}}' bindtap='doChecked'>
+               <view class='itemText'>{{childen.text}}</view>
+               <view class='checkedImg' wx:if='{{childen.checked}}'><image src="{{imgUrl}}near3_ico4.png" ></image></view>
+            </view>
+         </view>
+      </view>
+   </view>
+   <view class='btnBox'>
+      <view class='submitBtn' bindtap='onSubmit'>
+         立即提交
+      </view>
+   
+   </view>
+</view>
+</compage>
+<!-- <view class='popup'>
+   <view class='popupBox'>
+      <view class='popupTitle'>温馨提示</view>
+      <view class='popupText'>
+         <view>信息已经成功提交</view>
+         <view>工作人员将在1-3个工作日联系您</view>
+      </view>
+      <view class='popupBtn'>
+         确定
+      </view>
+   </view>
+</view> -->

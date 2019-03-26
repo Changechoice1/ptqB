@@ -1,0 +1,25 @@
+<view wx:if="{{showCropper}}" class="cropper-wrapper">
+    <canvas
+            class="cropper"
+            disable-scroll="true"
+            bindtouchstart="touchStart"
+            bindtouchmove="touchMove"
+            bindtouchend="touchEnd"
+            style="width:{{cropperOpt.width}}px;height:{{cropperOpt.height}}px;background-color: rgba(0, 0, 0, 0.8)"
+            canvas-id="{{cropperOpt.id}}">
+    </canvas>
+    <view class="cropper-buttons">
+        <view class="crop-opt flex-x-between">
+          <view class="crop-opt-cancel" bindtap="cancel">
+            <image src="/images/opt-cancel.png"></image>
+          </view>
+          <view class="crop-opt-rate">
+            <view class='crop-opt-rate-box'></view>
+            <view class='crop-opt-rate-txt'>{{cropperOpt.cut.width / cropperOpt.cut.height}} : 1</view>
+          </view>
+          <view class="crop-opt-save" bindtap="save">
+            <image src="/images/opt-save.png"></image>
+          </view>
+        </view>
+    </view>
+</view>

@@ -1,0 +1,9 @@
+<!--component/goods/goodexpress.wxml-->
+<view class='exp'>
+   <view class='good_title_sm'>
+      <text class="{{genre==0||genre==3?'':'yyy'}}"   >● 送货上门</text>
+   </view>
+   <view class='good_title_sm'>
+      <text class="{{genre==1||genre==3?'':'yyy'}}">● 到店自提（营业时间{{starttime}}-{{endtime}}） </text>   
+   </view>
+</view>

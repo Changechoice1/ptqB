@@ -1,0 +1,10 @@
+{
+  "usingComponents": {
+    "compage": "/vwx/component/template/",
+    "vwx-button": "/components/button/button",
+    "vwx-shop-item": "/components/goods/itemShop",
+    "vwx-good-more": "/components/goods/goodmore",
+    "vwx-countdown": "/components/countdown/countdown",
+    "vwx-good-express": "/components/goods/goodexpress"
+  }
+}

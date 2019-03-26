@@ -1,0 +1,7 @@
+{
+  "component": true,
+  "usingComponents": {
+   "vwx-tab": "/components/tabs/tab",
+   "vwx-evaluation-list": "/components/evaluationlist/evaluationlist"
+  }
+}

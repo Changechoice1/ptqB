@@ -1,0 +1,264 @@
+<compage id="compage">
+  <!-- 店铺设置 -->
+  <view class="index_all_box">
+
+      <!-- 店铺状态 -->
+      <view class='block_1'>
+          <view class='divide'>
+              <view class='divide_inner'>
+                  店铺状态
+              </view>
+          </view>
+          <view class="myshopTools">
+              <view class="myshopTools_r">
+                  <view class="myshopTools_r_in myshopTools_r_in1" bindtap="openChange">
+                      <!-- <radio value="" checked="{{openFlag}}" /> -->
+                      <view class='radio_none' wx:if='{{!openFlag}}'></view>
+                      <view class='radio_img cenFlex' wx:if='{{openFlag}}'>
+                          <image src='{{imgUrl}}ab_ico1.png'></image>
+                      </view>
+                      开店状态
+                  </view>
+                  <view class="myshopTools_r_in myshopTools_r_in2" bindtap="openChange">
+                      <!-- <radio value="" checked="{{!openFlag}}" /> -->
+                      <view class='radio_none' wx:if='{{openFlag}}'></view>
+                      <view class='radio_img cenFlex' wx:if='{{!openFlag}}'>
+                          <image src='{{imgUrl}}ab_ico1.png'></image>
+                      </view>
+                      关闭状态
+                  </view>
+              </view>
+          </view>
+      </view>
+
+      <!-- 店铺图片 -->
+      <view class='block_2'>
+          <view class='divide'>
+              <view class='divide_inner'>
+                  <!-- 店铺图片 -->
+                  店铺LOGO
+              </view>
+          </view>
+          <view class='add_setting myshopTools'>
+              <view class='add_inner'><!-- myshopTools_r -->
+                  <view class='add_btn' bindtap='upImgUrlBtn' data-index="0">
+                      <view class='add_logo'>
+                          <!-- 店铺LOGO -->
+                          <image src='{{imgUrl}}addlogo_icon.png' wx:if="{{!imgs[0]}}"></image>
+                          <image src="{{imgs[0]}}" wx:if="{{imgs[0]}}"></image>
+                      </view>
+                  </view>
+              </view>
+          </view>
+      </view>
+
+      <!-- 基本信息 -->
+      <view class='block_3'>
+          <view class='divide'>
+              <view class='divide_inner'>
+                  基本信息
+              </view>
+          </view>
+          <view class='input_group myshopTools'>
+              <view class='input_inner'>
+                  <view class="input_inner_l">
+                      店铺名称
+                  </view>
+                  <view class="input_inner_r">
+                      <input type="text" placeholder="请输入店铺名称" data-index="0" data-field="storeName" maxlength="9" data-pattern="Cha2" data-minlen="1" data-maxlen="9" bindfocus="startInputTxt" bindinput="inputTxt" bindconfirm='inputTxt' bindblur='endInputTxt' value="{{inputArr[0]}}" placeholder-class='placeholder_color' focus="{{focusField == 'storeName'}}" />
+                  </view>
+              </view>
+              <view class='input_inner'>
+                  <view class="input_inner_l">
+                      店铺简介
+                  </view>
+                  <view class="input_inner_r">
+                      <input type="text" placeholder="请输入您的店铺简介" data-index="1" data-field="storeIntro" maxlength="200" data-pattern="Cha3"  data-minlen="2" data-maxlen="200" bindfocus="startInputTxt" bindinput="inputTxt" bindconfirm='inputTxt' bindblur='endInputTxt' value="{{inputArr[1]}}" placeholder-class='placeholder_color' focus="{{focusField == 'storeIntro'}}"/>
+                  </view>
+              </view>
+              <view class='input_inner'>
+                  <view class="input_inner_l">
+                      行业类别
+                  </view>
+                  <view class="input_inner_r" bindtap='chooseCateOpen'>
+                      <input type="text" placeholder="请选择经营品类" data-index="2" bindinput="inputTxt" value="{{cate}}" disabled='disabled' placeholder-class='placeholder_color' />
+                      <view class='input_choose flex-y-center'>
+                          <image src='{{imgUrl}}gy_ico.png'></image>
+                      </view>
+                  </view>
+              </view>
+              <view class='input_inner'>
+                  <view class="input_inner_r input_inner_r_1" style='justify-content: flex-end;width:100%;' bindtap='chooseCateOpen1'>
+                      <view class='input_inner_r_line' style='width:80%;'>
+                          <input type="text" placeholder="请选择经营品类" bindinput="inputTxt" placeholder-class='placeholder_color' disabled='disabled' value='{{cate1}}' />
+                      </view>
+                  </view>
+              </view>
+          </view>
+      </view>
+
+      <!-- 店主信息 -->
+      <view class='block_4'>
+          <view class='divide'>
+              <view class='divide_inner'>
+                  店主信息
+              </view>
+          </view>
+          <view class='input_group myshopTools'>
+              <view class='input_inner'>
+                  <view class="input_inner_l">
+                      负责人
+                  </view>
+                  <view class="input_inner_r">
+                      <input type="text" placeholder="请输入负责人姓名" data-index="3" data-field="represent" maxlength="8" data-pattern="Cha0" data-minlen="2" data-maxlen="8" bindfocus="startInputTxt" bindinput="inputTxt" bindconfirm='inputTxt' bindblur='endInputTxt' value="{{inputArr[3]}}" placeholder-class='placeholder_color' focus="{{focusField == 'represent'}}"/>
+                  </view>
+              </view>
+              <view class='input_inner'>
+                  <view class="input_inner_l">
+                      负责号码
+                  </view>
+                  <view class="input_inner_r">
+                      <input type="telephone" placeholder="请输入负责人手机号" data-index="4" data-field="representPhone" maxlength="11" data-pattern="Tel" data-minlen="11" data-maxlen="11" bindfocus="startInputTxt" bindinput="inputTxt" bindconfirm='inputTxt' bindblur='endInputTxt' value="{{inputArr[4]}}" placeholder-class='placeholder_color' disabled='{{inputArr[4] ? "disabled" : "false"}}' style="color:#999;" focus="{{focusField == 'representPhone'}}"/>
+                  </view>
+              </view>
+              <view class='input_inner'>
+                  <view class="input_inner_l">
+                      客服电话
+                  </view>
+                  <view class="input_inner_r">
+                      <input type="telephone" placeholder="请输入客服电话" data-index="5" data-field="kefu_tel" maxlength="13" data-pattern="TelAPhone" data-minlen="6" data-maxlen="13" bindfocus="startInputTxt" bindinput="inputTxt" bindconfirm='inputTxt' bindblur='endInputTxt' value="{{inputArr[5]}}" placeholder-class='placeholder_color'  focus="{{focusField == 'kefu_tel'}}"/>
+                  </view>
+              </view>
+              <view class='input_inner'>
+                  <view class="input_inner_l">
+                      营业时间
+                  </view>
+                  <view class="input_inner_r" bindtap='openChooseTime'>
+                      <input type="telephone" placeholder="请选择营业时间" data-index="6" bindinput="inputTxt" value="{{inputArr[6]}}" placeholder-class='placeholder_color' disabled="disabled" />
+                      <view class='input_choose flex-y-center'>
+                          <image src='{{imgUrl}}gy_ico.png'></image>
+                      </view>
+                  </view>
+              </view>
+              <view class='input_inner input_inner_add'>
+                  <view class="input_inner_l input_inner_l_add">
+                      店铺地址
+                  </view>
+                  <view class="input_inner_r input_inner_r_1">
+                      <view class='input_inner_r_line'>
+                          <picker bindchange="cityBtn" value="{{index}}" range="{{preArrName}}">
+                              <view class="picker">{{cityAllName[0] || '请选择省份'}}</view>
+                          </picker>
+                          <view class='input_choose flex-y-center'>
+                              <image src='{{imgUrl}}gy_ico.png'></image>
+                          </view>
+                      </view>
+                      <view class='input_inner_r_line' wx:if="{{cityAllName[0]}}">
+                          <picker bindchange="cityBtn1" value="{{index}}" range="{{cityArrName}}">
+                              <view class="picker">{{cityAllName[1]==cityAllName[0]?cityAllName[2]:cityAllName[1]==''?'请选择城市':cityAllName[1]}}</view>
+                          </picker>
+                          <view class='input_choose flex-y-center'>
+                              <image src='{{imgUrl}}gy_ico.png'></image>
+                          </view>
+                      </view>
+                      <view class='input_inner_r_line' wx:if="{{((cityAllName[1] && areaArrName[0]) || (eidtF>0 && cityAllName[1]!=cityAllName[2])) && cityAllName[1]!=cityAllName[0]}}">
+                          <picker bindchange="cityBtn2" value="{{index}}" range="{{areaArrName}}">
+                              <view class="picker">{{cityAllName[2] || '请选择区域'}}</view>
+                          </picker>
+                          <view class='input_choose flex-y-center'>
+                              <image src='{{imgUrl}}gy_ico.png'></image>
+                          </view>
+                      </view>
+                      <view class='input_inner_r_line'>
+                          <input type="text" placeholder="请输入您的店铺详细地址（如：阡陌路120号）" data-index="10" data-field="storeaddress" maxlength="60" data-pattern="Cha3" data-minlen="5" data-maxlen="60" bindfocus="startInputTxt" bindinput="inputTxt" bindconfirm='inputTxt' bindblur='endInputTxt' value="{{inputArr[10]}}" placeholder-class='placeholder_color'focus="{{focusField == 'storeaddress'}}"/>
+                          <text class='bind_map' bindtap='loaclOldAddBtn1'>点击地图定位</text>
+                      </view>
+                  </view>
+              </view>
+          </view>
+      </view>
+
+      <!-- 定位地图 -->
+      <view class='map_con myshopTools'>
+          <view class='map_inner'>
+              <view class='map_title'>点击定位确定当前门店位置，下方地图拖动可以调整门店详细定位</view>
+              <view class='map_main'>
+                  <map id="map4select" wx:if="{{showMap && !chooseTime && !chooseCateShow && !chooseCateShow1}}" scale="{{mapScale}}" longitude="{{longitude}}" latitude="{{latitude}}" controls="{{controlsImg}}" bindcontroltap="controltap" markers="{{markers}}" bindmarkertap="markertap" bindregionchange="mapChange" show-location style="width: 100%; height: {{mapHeight}}px;"></map>
+              </view>
+              <view class='map_btn' bindtap='goOriginBtn'>
+                  <view class='map_btn_inner'>当前位置定位</view>
+                  <view class="clear"></view>
+              </view>
+          </view>
+      </view>
+
+      <!-- <view class="fix_btn" bindtap="confirmBtn">
+          <text>立即保存</text>
+      </view> -->
+      <view class="form_btn">
+        <vwx-button id="submit_btn" text="立即保存" loading="true" bind:tap-event="confirmBtn"></vwx-button>
+      </view>
+
+      <!-- 经营品类选择 -->
+      <view class='mask' wx:if='{{chooseCateShow}}' bindtap='chooseCateClose'></view>
+      <view class='choose_cate' wx:if='{{chooseCateShow}}'>
+          <scroll-view class='choose_cate_inner' scroll-y='true'>
+              <view class='choose_cate_block'>
+                  <!-- <radio value="" checked='{{chooseCate == 0}}' bindtap='chooseCate' data-cate='0' data-name='请选择经营品类' /> -->
+                  请选择经营品类
+              </view>
+              <view class='choose_cate_block' wx:for='{{cateArray}}' wx:key='{{item.category_pid}}' bindtap='chooseCate' data-cate='{{item.category_pid}}' data-name='{{item.name}}'>
+                  <radio value="" checked="{{chooseCate == item.category_pid}}" bindtap='chooseCate' data-cate='{{item.category_pid}}' data-name='{{item.name}}'/>{{item.name}}
+              </view>
+          </scroll-view>
+      </view>
+
+      <!-- 二级品类选择 -->
+      <view class='mask' wx:if='{{chooseCateShow1}}' bindtap='chooseCateClose1'></view>
+      <view class='choose_cate' wx:if='{{chooseCateShow1}}'>
+          <scroll-view class='choose_cate_inner' scroll-y='true'>
+              <view class='choose_cate_block'>
+                  <!-- <radio value="" bindtap='chooseCate1' checked='{{chooseCate1 == 0}}' data-cate='0' data-name='请选择二级经营品类' /> -->
+                  请选择二级经营品类
+              </view>
+              <view class='choose_cate_block' wx:for='{{cateArray1}}' wx:key='{{item.category_pid}}' bindtap='chooseCate1' data-cate='{{item.category_id}}' data-name='{{item.name}}'>
+                  <radio value="" checked="{{chooseCate1 == item.category_id}}" bindtap='chooseCate1' data-cate='{{item.category_id}}' data-name='{{item.name}}'/> {{item.name}}
+              </view>
+          </scroll-view>
+      </view>
+
+
+      <!-- 选择经营时间 -->
+      <view class='mask' wx:if='{{chooseTime}}' bindtap='closeChooseTime'></view>
+      <view class='choose_oc_time' wx:if='{{chooseTime}}'>
+          <view class='choose_oc_inner'>
+              <view class='choose_oc_h'>
+                  选择营业时间
+              </view>
+              <picker-view indicator-style="height: 50rpx;" value="{{value}}" bindchange="bindChange">
+                  <picker-view-column>
+                      <view wx:for="{{hours}}" wx:key='{{index}}' class='choose_oc_line'>{{item}}时</view>
+                  </picker-view-column>
+                  <picker-view-column>
+                      <view wx:for="{{minutes}}" wx:key='{{index}}' class='choose_oc_line'>{{item}}分</view>
+                  </picker-view-column>
+              </picker-view>
+              <view class='choose_oc_h'>
+                  选择关闭时间
+              </view>
+              <picker-view indicator-style="height: 50rpx;" value="{{value1}}" bindchange="bindChange_1">
+                  <picker-view-column>
+                      <view wx:for="{{hours1}}" wx:key='{{index}}' class='choose_oc_line'>{{item}}时</view>
+                  </picker-view-column>
+                  <picker-view-column>
+                      <view wx:for="{{minutes1}}" wx:key='{{index}}' class='choose_oc_line'>{{item}}分</view>
+                  </picker-view-column>
+              </picker-view>
+              <view class='choose_oc_btn'>
+                  <view class='cancle' bindtap='closeChooseTime'>取消</view>
+                  <view class='confirm' bindtap='confirmChooseTime'>确定</view>
+              </view>
+          </view>
+      </view>
+  </view>
+</compage>

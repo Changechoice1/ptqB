@@ -1,0 +1,10 @@
+<view class="index_all_box">
+	<view class="iden_body_box">
+		<view class="iden_in_box" wx:for='{{allName}}' wx:key="{{index}}" data-index='{{index}}' bindtap="allBtna">
+			<view>{{item.name}}</view>
+			<view class="iden_imgBox_in" wx:if="{{allSty[index]}}" >
+				<image src="{{imgUrl}}ab_ico1.png"></image>
+			</view>
+		</view>
+	</view>
+</view>

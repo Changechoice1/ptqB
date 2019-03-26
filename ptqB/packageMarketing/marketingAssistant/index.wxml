@@ -1,0 +1,115 @@
+<!--packageMarketing/marketingAssistant/index.wxml-->
+<import src="/template/template.wxml" />
+<compage id="compage">
+  <view class="container" wx:if="{{index == 0}}">
+    <view class="changeIndus {{shakeFlag==1 && false?'shake':''}}" animation="{{animation}}" bindtap='goStoreSet'>
+      <image src="{{changeImg}}" mode="aspectFit"></image>
+    </view>
+    <view wx:if="{{nullFlag==0}}">
+      <view class="top-banner" wx:if="{{banner.length>0}}">
+        <swiper class="" indicator-dots="true" indicator-color="#ccc" indicator-active-color="#e60012" circular="true" autoplay="true" current="0" interval="4000" duration="500">
+          <block wx:for="{{banner}}" wx:key="{{index}}">
+            <swiper-item class="item-img">
+              <view class="img-content" data-id="{{item.goods_id}}" data-item="{{item}}" bindtap='goTDetail'>
+                <image mode="aspectFill" src='{{item.goods_img}}'></image>
+                <view class="imgSelf flex-c" style="background-color:#{{item.is_group==1?'ff4949':item.is_group==3?'FF5581':item.is_group==4?'ffa625':item.is_group==6?'E971D7':''}}">{{item.is_group==3?'多人拼团':item.is_group==1?'拼团立减':item.is_group==4?'限时专享':item.is_group==6?'砍价':''}}</view>
+                <view class="suspend-content">
+                  <view class="top-roll">
+                    <swiper class="swiper_container" vertical="true" autoplay="true" circular="true" interval="2000">
+                      <block wx:for="{{item.stores}}" wx:key="index" wx:for-item="use_item">
+                        <swiper-item>
+                          <view class="roll">
+                            <view class="logo">
+                              <image mode="aspectFill" src="{{use_item.storelogo}}" mode="aspectFill"></image>
+                            </view>
+                            <view class="use-busi">【{{use_item.storename}}】使用了该方案</view>
+                          </view>
+                        </swiper-item>
+                      </block>
+                    </swiper>
+                  </view>
+                  <view class="sus-bottom-b"></view>
+                  <view class="sus-bottom">
+                    <view class="b-l">帮助商家累计销量提升{{item.sales_count}}单</view>
+                    <view class="b-r">已有{{item.same_kind_count}}个同行使用</view>
+                  </view>
+                </view>
+              </view>
+              <view class="item-activiname">{{item.goods_des}}</view>
+
+            </swiper-item>
+          </block>
+        </swiper>
+      </view>
+      <!-- 优秀店铺   start -->
+      <view class="best-store" wx:if="{{excellent.length>0}}">
+        <view class="title">优秀店铺</view>
+        <!-- <swiper class="best-swiper" touch="false" display-multiple-items="4" circular="true" autoplay="true" current="0" interval="0" duration="6000"> -->
+        <view style="position:relative">
+          <view class="store-list" style="left:-{{left}}rpx">
+            <block wx:for="{{excellent}}" wx:key="index">
+              <!-- <swiper-item style="width:auto !important "> -->
+              <view class="item-store" data-poster="{{item.poster}}" bindtap="previewPoster">
+                <view class="item-logo">
+                  <image mode="aspectFill" src="{{item.storelogo}}" mode="aspectFill"></image>
+                </view>
+                <view class="item-name">{{item.storename}}</view>
+              </view>
+              <!-- </swiper-item> -->
+            </block>
+          </view>
+        </view>
+        <!-- </swiper> -->
+      </view>
+      <!-- 优秀店铺   end -->
+
+      <!-- 行业定制 start -->
+      <view class="indus-custom">
+        <view class="top-title">
+          <view class="custom-title">{{category_name}}行业定制</view>
+          <view class="more-solu" bindtap='moreSolution'>更多方案
+            <icon class="icon-pq-rightarr"></icon>
+          </view>
+        </view>
+        <view class="custom-list">
+          <block wx:for="{{customize}}" wx:key="index" data-id="{{item.goods_id}}" data-type="{{item.is_group}}" bindtap='goTDetail'>
+            <template is="industry-custom-list1" data="{{item}}"></template>
+          </block>
+        </view>
+      </view>
+      <!-- 行业定制 end -->
+
+      <!-- 行业热门营销方案  start -->
+      <view class="hot-marketing">
+        <view class="hot-title">
+          <view class="custom-title">{{category_pname}}行业热门营销方案</view>
+          <view class="more-solu" bindtap='allSolution'>全部方案
+            <icon class="icon-pq-rightarr"></icon>
+          </view>
+        </view>
+        <view style="padding:0 30rpx;box-sizing:border-box;background:white;">
+          <view class="custom-list">
+            <block wx:for="{{hot}}" wx:key="index" data-id="{{item.goods_id}}" data-type="{{item.is_group}}" bindtap='goTDetail'>
+              <template is="industry-hot-list1" data="{{item}}"></template>
+            </block>
+          </view>
+          <view class="bottom-more" bindtap='allSolution'>
+            <view>查看更多方案</view>
+            <icon class="icon-pq-rightarr" style="color:#999;font-size:30rpx;margin-bottom:-3rpx;margin-left:10rpx"></icon>
+          </view>
+        </view>
+      </view>
+
+    </view>
+
+    <view class="null_data" wx:if="{{nullFlag==1}}">
+      <view class="null_img">
+        <image src="{{nullData.nullImg}}"></image>
+      </view>
+      <view class="no_activi">{{nullData.noActiviti}}</view>
+      <view class="go_set">{{nullData.goSetting}}</view>
+      <view class="settingBtn" bindtap='goStoreSet'>前往店铺设置</view>
+    </view>
+  </view>
+</compage>
+<!-- 行业热门营销方案  end -->

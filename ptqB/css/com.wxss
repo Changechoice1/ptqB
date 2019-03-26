@@ -1,0 +1,146 @@
+.weui-cells {
+   color: #607d8b;
+   font-size: 14px;
+}
+
+.h1 {
+   font-size: 26px;
+   line-height: 1.6;
+}
+
+.h2 {
+   font-size: 22px;
+   line-height: 1.6;
+}
+
+.h3 {
+   font-size: 18px;
+   line-height: 1.6;
+}
+
+.h4 {
+   font-size: 16px;
+   line-height: 1.6;
+}
+
+.h5 {
+   font-size: 14px;
+   line-height: 1.6;
+}
+
+/*标签  */
+.yyy {
+   font-size: 13px;
+}
+
+/*滚动图片  */
+
+.headerImgBox {
+   width: 100%;
+   height: 500rpx;
+   position: relative;
+}
+
+.headerImgBox swiper-item {
+   width: 100%;
+   height: 100%;
+   overflow: hidden;
+}
+
+.headerImgBox swiper-item image {
+   width: 100%;
+}
+/* 文字超出省略号 */
+.clamp1,.clamp2{    
+    text-overflow: ellipsis;
+    -webkit-box-orient: vertical;
+    display: -webkit-box;
+    overflow: hidden;
+}
+.clamp1{
+    -webkit-line-clamp: 1;
+    word-break: break-all;
+}
+.clamp2{
+    -webkit-line-clamp: 2;
+}
+/*类型切换菜单  */
+
+.weui-navbar {
+   border: none;
+   position: relative;
+   background-color: #fff;
+}
+
+.weui-navbar__item {
+   padding: 0 0 10px 0;
+   height: 80rpx;
+   position: relative;
+}
+
+.weui-navbar__title {
+   line-height: 80rpx;
+}
+
+.weui-navbar__item.weui-bar__item_on {
+   color: #e60012;
+}
+
+.weui-navbar__item.weui-bar__item_on::after {
+   content: '';
+   position: absolute;
+   width: 100%;
+   height: 1;
+   color: #e5e5e5;
+   -webkit-transform-origin: 0 0;
+   transform-origin: 0 0;
+   -webkit-transform: scale(0.5);
+   transform: scale(0.5);
+   z-index: 100;
+   bottom: 0px;
+   left: 25%;
+   border-bottom: 4px solid #e60012;
+}
+
+/*间隔  */
+
+.space-w10, .space-h10, .space-w30, .space-h30, .space-h60, .space-w60,
+.space-h120, .space-w120 {
+   display: inline-block;
+   width: 10px;
+}
+
+.space-h10 {
+   height: 10px;
+}
+
+.space-w30 {
+   width: 30px;
+}
+
+.space-h30 {
+   height: 30px;
+}
+
+.space-w60 {
+   width: 60px;
+}
+
+.space-h60 {
+   height: 60px;
+}
+
+.space-w120 {
+   width: 120px;
+}
+
+.space-h120 {
+   height: 120px;
+}
+/*头像  */
+.avatar {
+    border-radius: 50%;
+    width: 80rpx;
+    height: 80rpx;
+    overflow: hidden;
+}

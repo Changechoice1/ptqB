@@ -1,0 +1,152 @@
+<import src="/template/template.wxml" />
+<import src="/template/activity/actType/actType.wxml" />
+
+<compage id="compage">
+  <view class="index_all_box">
+      <view class="exE_t">
+          <view class="exE_t_in cenFlex" bindtap="evaTabFlag" data-index="0">
+              <view class="exE_t_in_in cenFlex {{evaTabFlag?'exE_t_in_in_act':''}}">已回复</view>
+          </view>
+          <view class="exE_t_in cenFlex" bindtap="evaTabFlag" data-index="1">
+              <view class="exE_t_in_in cenFlex {{slist.length == 0 ? '' : 'exE_t_in_in2'}} {{!evaTabFlag?'exE_t_in_in_act':''}}">待回复</view>
+          </view>
+      </view>
+      <!-- 已回复盒子 -->
+      <template is="nullData" data="{{nullData}}" wx:if='{{evaTabFlag && nlist.length == 0}}' />
+      <view class="exE_canReply" wx:if="{{evaTabFlag && nlist.length > 0 }}">
+          <view class="eva" wx:for="{{nlist}}" wx:key="{{index}}">
+              <!-- 头部 -->
+              <view class="eva_t">
+                  <view class="eva_t_l cenFlex">
+                      <image mode="aspectFill" src="{{item.wx_img}}"></image>
+                  </view>
+                  <view class="eva_t_r">
+                      <view class="eva_t_r_in">
+                          <view class="eva_t_r_in_l">{{item.wx_name}}</view>
+                          <view class="eva_t_r_in_r cenFlex">
+                              <view class="eva_t_r_in_r_in1">{{item.status==1?'客户不可见':'客户可见'}}</view>
+                              <view class="eva_t_r_in_r_in2 cenFlex">
+                                  <image src="/images/ev_ico1.png"></image>
+                              </view>
+                          </view>
+                      </view>
+                      <view class="eva_t_r_in" style="margin-top: 15rpx;">
+                          <view class="eva_t_r_in_l1">{{item.add_time}}</view>
+                          <view class="eva_t_r_in_r cenFlex">
+                              <view class="stratNum" wx:for="{{5}}" wx:key="{{index}}" wx:for-item="startItem">
+                                  <image src="{{imgUrl}}{{index<item.score?'goods3_ico11.png':'goods3_ico12.png'}}"></image>
+                              </view>
+                          </view>
+                      </view>
+                  </view>
+                  <view class="clickF" data-id="{{item.evaluate_id}}" data-index="{{index}}" bindtap="changeTypeBtn"></view>
+              </view>
+              <!-- 文字评价 -->
+              <view class="eva_txt">
+                  {{item.content}}
+              </view>
+              <!-- 图片评价 -->
+              <view class="eva_img">
+                  <view class="eva_img_in" wx:for="{{item.img_array}}" wx:key="{{index}}" bindtap="seeImgUrl" data-type="{{item}}">
+                      <image mode="aspectFill" src="{{item}}"></image>
+                  </view>
+              </view>
+              <!-- 商家回复 -->
+              <view class="eva_store" wx:if="{{item.is_reply==1}}">
+                  <view class="eva_store_in">
+                      商家回复：
+                      <text style="color:#999;">{{item.reply_content}}</text>
+                  </view>
+              </view>
+              <!-- 商品的缩略图 -->
+              <view class="eva_goods">
+                  <view class="eva_goods_l">
+                      <image mode="aspectFill" src="{{item.goods_img}}"></image>
+                  </view>
+                  <view class="eva_goods_r">
+                      <view class="eva_goods_r_t twoFontNow">{{item.goods_name}}</view>
+                      <view class="eva_goods_r_b">
+                          <view class="eva_goods_r_b_l">
+                              <view class="eva_goods_r_b_l_in1">x{{item.nums}}</view>
+                              <view class="eva_goods_r_b_l_in2">{{item.goods_price}}</view>
+                          </view>
+                          <template is="actType" data="{{...item}}"></template>
+                      </view>
+                  </view>
+              </view>
+          </view>
+      </view>
+      <!-- 未回复盒子 -->
+      <template is="nullData" data="{{nullData}}" wx:if='{{!evaTabFlag && slist.length == 0}}' />
+      <view class="exE_canReply" wx:if="{{!evaTabFlag && slist.length > 0}}">
+          <view class="eva" wx:for="{{slist}}" wx:key="{{index}}" wx:if="{{item.is_reply==0}}">
+              <!-- 头部 -->
+              <view class="eva_t">
+                  <view class="eva_t_l cenFlex">
+                      <image mode="aspectFill" src="{{item.wx_img}}"></image>
+                  </view>
+                  <view class="eva_t_r">
+                      <view class="eva_t_r_in">
+                          <view class="eva_t_r_in_l">{{item.wx_name || '匿名'}}</view>
+                          <view class="eva_t_r_in_r cenFlex">
+                              <view class="eva_t_r_in_r_in1">{{item.status==1?'客户不可见':'客户可见'}}</view>
+                              <view class="eva_t_r_in_r_in2 cenFlex">
+                                  <image src="/images/ev_ico1.png"></image>
+                              </view>
+                          </view>
+                      </view>
+                      <view class="eva_t_r_in" style="margin-top: 15rpx;">
+                          <view class="eva_t_r_in_l1">{{item.add_time}}</view>
+                          <view class="eva_t_r_in_r cenFlex">
+                              <view class="stratNum" wx:for="{{5}}" wx:key="{{index}}" wx:for-item="startItem">
+                                  <image src="{{imgUrl}}{{index<item.score?'goods3_ico11.png':'goods3_ico12.png'}}"></image>
+                              </view>
+                          </view>
+                      </view>
+                  </view>
+                  <view class="clickF" data-id="{{item.evaluate_id}}" data-index="{{index}}" bindtap="changeTypeBtnNot"></view>
+              </view>
+              <!-- 文字评价 -->
+              <view class="eva_txt">
+                  {{item.content}}
+              </view>
+              <!-- 图片评价 -->
+              <view class="eva_img">
+                  <view class="eva_img_in" wx:for="{{item.img_array}}" wx:key="{{index}}" bindtap="seeImgUrl" data-type="{{item}}">
+                      <image mode="aspectFill" src="{{item}}"></image>
+                  </view>
+              </view>
+              <!-- 商品的缩略图 -->
+              <view class="eva_goods">
+                  <view class="eva_goods_l">
+                      <image mode="aspectFill" src="{{item.goods_img}}"></image>
+                  </view>
+                  <view class="eva_goods_r">
+                      <view class="eva_goods_r_t twoFontNow">{{item.goods_name}}</view>
+                      <view class="eva_goods_r_b">
+                          <view class="eva_goods_r_b_l">
+                              <view class="eva_goods_r_b_l_in1">x{{item.nums}}</view>
+                              <view class="eva_goods_r_b_l_in2">{{item.goods_price}}</view>
+                          </view>
+                          <template is="actType" data="{{...item}}"></template>
+                      </view>
+                  </view>
+              </view>
+              <!-- 点击回复 -->
+              <view class="eva_storeHf {{item.Focus?'FocusFiex':''}}">
+                  <view class="eva_storeHf_t" wx:if='{{showHf}}'>
+                      <textarea class="{{inputArr[index] ? 'textarea_float' : 'textarea'}}" data-index="{{index}}" data-field="content" maxlength="200" data-pattern="Cha3" data-minlen="2" data-maxlen="200" bindinput="inputBtn" bindconfirm='inputBtn' bindblur='endInputBtn' value="{{inputArr[index]}}" bindfocus="textHeightFocus" focus="isFocus"></textarea>
+                      <view wx:if="{{!inputArr[index]}}" class="textarea_placehoder">快回复买家答谢一下吧!</view>
+                  </view>
+                  <view class="eva_storeHf_in cenFlex" data-id="{{item.evaluate_id}}" bindtap="replyBuyBtn" data-index="{{index}}">回复</view>
+              </view>
+              <view class="eva_storeHf" style="background: #fff;" wx:if='{{item.Focus}}'>
+                  <view class="eva_storeHf_t" >
+                      <view class="textarea"></view>
+                  </view>
+              </view>
+              <view class="allmenban" wx:if='{{item.Focus}}' data-index="{{index}}" bindtap='textHeightBlur'></view>
+          </view>
+      </view>
+  </view>
+</compage>

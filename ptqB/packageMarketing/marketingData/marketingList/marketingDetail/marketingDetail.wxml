@@ -1,0 +1,57 @@
+<!--packageMarketing/marketingList/marketingDetail/marketingDetail.wxml-->
+<import src="/template/template.wxml" />
+<import src="/template/payQrImg/payQrImg.wxml" />
+<import src="/template/marketing/marketing.wxml" />
+<compage id="compage" >
+<view class='container'>
+   <view class='detailBox' wx:for='{{thisMarketing}}' wx:key='{{item.id}}'>
+      <template is="marketing" data="{{item}}"></template>
+   </view>
+   <view class='goPageList'>
+      <view class='textBox'>
+         <view class='text'>
+            有这么多人在关注你的店铺和活动，财富已经慢慢在客户资源的日积月累中产生啦。
+         </view>
+      </view>
+      <view class='listTitle'>
+         <view>活动建议</view>
+         <text>还有很大的进步空间，快来试试以下方法吧!</text>
+      </view>
+      <view class='goPageItem'>
+         <view class='item_l'>
+            <view class='itemLogoBox'>
+               <image src='../../../../images/marketing1.png'></image>
+
+            </view>
+            <view class='itemContent'>
+               <view class='itemTitle'>老板转发好友</view>
+               <view class='itemText'>利用好友资源，提高浏览量</view>
+            </view>
+         </view>
+         <view class='item_r'>
+            <view class='button'>去分享<navigator  class="mini_program" target="miniProgram" open-type="navigate" app-id="wxd25131b98741c7cb" path="{{miniProgramPath}}" ></navigator></view>
+         </view>
+      </view>
+      <view class='goPageItem' wx:for="{{goPageList}}" wx:key="{{index}}"  data-path='{{item.path}}' data-id='{{item.id}}' bindtap='goPage'>
+         <view class='item_l'>
+            <view class='itemLogoBox'>
+               <image src='{{item.imgUrl}}'></image>
+            </view>
+            <view class='itemContent'>
+               <view class='itemTitle'>{{item.title}}</view>
+               <view class='itemText'>{{item.text}}</view>
+            </view>
+         </view>
+         <view class='item_r'>
+            <view class='itemLink'>
+               {{item.btnText}}<i class="icon iconfont icon-pq-rightarr" wx:if='{{!item.isDesign}}'></i>
+            </view>
+         </view>
+      </view>
+   </view>
+</view>
+<view wx:if="{{payQrImgFlag}}" class="canvas_box" bindtap="hidePayQrImg">
+   <template is="payQrImg" data="{{payQrImgInfo}}"></template>
+</view>
+<canvas canvas-id='payQrImgCanvas' disable-scroll="true" class="canvas"></canvas>
+</compage>

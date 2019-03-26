@@ -1,0 +1,141 @@
+<import src="/template/template.wxml" />
+<view class="index_all_box" wx:if='{{infoData}}'>
+    <view class="tyTime_box cenFlex" style="height:{{txHeight}}px" wx:if="{{countDown<=0 && infoData.authentication_info.is_authentication!=1}}">
+        <text>体验期已过，请去实名认证</text>
+        <view class="goAuthNav" bindtap="navAut">去认证</view>
+    </view>
+    <view class="bus_m" bindtap="showEwm">
+        <view class="bus_m_l">
+            <view class="bus_m_l_l">
+                <image src="{{imgUrl}}bus3_ico1.png"></image>
+            </view>
+            <view class="bus_m_l_r">
+                <view class="bus_m_l_r_1">二维码</view>
+                <view class="bus_m_l_r_2">扫一扫加入商业联盟</view>
+            </view>
+        </view>
+        <view class="bus_m_r cenFlex">
+            <image src="{{imgUrl}}gy_ico.png"></image>
+        </view>
+    </view>
+    <!-- 商业联盟的列表 -->
+    <view class="bus_listTab">
+        <view class="bus_listTab_in cenFlex" data-index="1" bindtap="accLoadingBtn">
+            <view class="bus_listTab_in_in cenFlex {{accAllFlge==1?'bus_listTab_in_in_act':''}}">已联盟</view>
+        </view>
+        <view class="bus_listTab_in cenFlex" data-index="0" bindtap="accLoadingBtn">
+            <view class="bus_listTab_in_in cenFlex {{accAllFlge==0?'bus_listTab_in_in_act':''}}">申请列表</view>
+        </view>
+    </view>
+    <!-- 商家列表 -->
+    <view class="bus_fr" wx:if="{{accAllFlge==1}}">
+        <template is="nullData" data="{{nullData}}" wx:if='{{list1.length == 0}}' />
+        <view class="bus_fr_in {{moveSortBox && index==clickIndex?'bus_fr_in_act':''}}" wx:if='{{list1.length > 0}}' wx:for="{{list1}}" wx:key="{{index}}" data-id="{{item.ally_id}}" data-index="{{index}}" bindtap="{{editDelFlag?'onceSelectBtn':''}}">
+            <view class="bus_del_l_img" wx:if="{{editDelFlag && onceRadArr[index]}}">
+                <image src="{{imgUrl}}ab_ico1.png"></image>
+            </view>
+            <view class="bus_del_l_grad" wx:if="{{editDelFlag && !onceRadArr[index]}}"></view>
+            <view class="bus_fr_in_l">
+                <image src="{{item.store_logo}}"></image>
+            </view>
+            <view class="bus_fr_in_r">
+                <view class="bus_fr_in_r_t">{{item.store_name}}</view>
+                <view class="bus_fr_in_r_b">
+                    <view class='bus_fr_in_r_b_outer'>
+                        <view class="bus_fr_in_r_b_l bus_fr_in_r_b_l_1 cenFlex">
+                            <view class="bus_fr_in_r_b_l_img cenFlex">
+                                <image src="{{imgUrl}}bus3_ico2.png"></image>
+                            </view>
+                            <view class="bus_fr_in_r_b_l_txt">{{item.fans_number}}</view>
+                        </view>
+                        <view class='bus_fr_in_r_b_text'>
+                            加入时间: {{item.update_time}}
+                        </view>
+                    </view>
+                    <navigator class="bus_fr_in_r_b_r cenFlex" wx:if="{{!moveFlag}}" target="miniProgram" open-type="navigate" app-id="wxd25131b98741c7cb" path="/pages/myStore/index?store_id={{item.store_id}}" extra-data="{foo: 'bar'}">
+                        进店
+                    </navigator>
+                    <!-- 排序的按钮 -->
+                </view>
+                <view class="bus_sort cenFlex" wx:if="{{moveFlag}}">
+                    <view class="bus_sort_in" style="margin-right: 30rpx;" data-index="{{index}}" data-type="1" catchtap="{{index!=0?'allSortBtn':''}}">
+                        <image src="/images/bus3_ico11.png" wx:if="{{index!=0}}"></image>
+                    </view>
+                    <view class="bus_sort_in" data-index="{{index}}" data-type="2" catchtap="{{index!=list1.length-1?'allSortBtn':''}}">
+                        <image src="/images/bus3_ico10.png" wx:if="{{index!=list1.length-1}}"></image>
+                    </view>
+                </view>
+            </view>
+        </view>
+    </view>
+    <!-- 申请列表 -->
+    <view class="bus_apply" wx:if="{{accAllFlge==0}}">
+        <template is="nullData" data="{{nullData}}" wx:if='{{list2.length == 0}}' />
+        <view class="bus_apply_in" wx:if='{{list2.length > 0}}' wx:for='{{list2}}' wx:key='{{index}}' data-index='{{index}}' data-id='{{item.id}}'>
+            <view class="bus_apply_in_l">
+                <image src="{{item.store_logo}}"></image>
+            </view>
+            <view class="bus_apply_in_r">
+                <view class="bus_apply_in_r_t">{{item.store_name}}</view>
+                <view class="bus_apply_in_r_b">
+                    <view class='bus_fr_in_r_b_outer'>
+                        <view class="bus_fr_in_r_b_l bus_fr_in_r_b_l_1 cenFlex">
+                            <view class="bus_fr_in_r_b_l_img cenFlex">
+                                <image src="{{imgUrl}}bus3_ico2.png"></image>
+                            </view>
+                            <view class="bus_fr_in_r_b_l_txt">{{item.fans_number}}</view>
+                        </view>
+                        <view class='bus_fr_in_r_b_text'>
+                            加入时间: {{item.update_time}}
+                        </view>
+                    </view>
+                    <view class="bus_apply_in_r_b_r cenFlex">
+                        <view class="bus_apply_in_r_b_r_1 cenFlex" data-id="{{item.ally_id}}" data-index="{{index}}" bindtap='listDel'>拒绝</view>
+                        <view class="bus_apply_in_r_b_r_2 cenFlex" data-id="{{item.ally_id}}" data-index="{{index}}" bindtap="agreeBtn">同意</view>
+                    </view>
+                </view>
+            </view>
+        </view>
+    </view>
+    <!-- 底部的编辑盒子 -->
+    <view class="bus_eidt" wx:if="{{!editDelFlag && accAllFlge==1 && list1.length > 0}}">
+        <view class="bus_eidt_l">{{moveFlag?'上下移动调整顺序':'首先推荐顺序靠前的商家'}}</view>
+        <view class="bus_eidt_r cenFlex" wx:if="{{!moveFlag}}">
+            <view class="bus_eidt_r_in cenFlex" style="margin-right: 20rpx;" bindtap="sortBusBtn">排列顺序</view>
+            <view class="bus_eidt_r_in cenFlex" bindtap="editDelBtnL1">编辑</view>
+        </view>
+        <!-- 拖拽排序的右侧 -->
+        <view class="bus_eidt_r cenFlex" wx:if="{{moveFlag}}">
+            <view class="bus_eidt_r_in cenFlex" style="margin-right: 20rpx;" bindtap="sortBusBtnHide">取消</view>
+            <view class="bus_eidt_r_in bus_eidt_r_in_act cenFlex" bindtap='sortBusBtnConfirm'>保存</view>
+        </view>
+    </view>
+    <view class="bus_eidt" wx:if="{{editDelFlag && accAllFlge==1 && list1.length > 0}}">
+        <view class="bus_del_l cenFlex" bindtap='allSelectBtn'>
+            <view class="bus_del_l_img" wx:if="{{allSelectFlag}}">
+                <image src="{{imgUrl}}ab_ico1.png"></image>
+            </view>
+            <view class="bus_del_l_grad" wx:if="{{!allSelectFlag}}"></view>
+            <view class="bus_del_l_txt">{{allSelectFlag?'取消全选':'全选'}}</view>
+        </view>
+        <!-- 拖拽排序的右侧 -->
+        <view class="bus_eidt_r cenFlex">
+            <view class="bus_eidt_r_in cenFlex" style="margin-right: 20rpx;" bindtap="editDelBtnL">取消</view>
+            <view class="bus_eidt_r_in bus_eidt_r_in_act cenFlex" bindtap="delbusArrBtn">删除</view>
+        </view>
+    </view>
+
+    <!-- 提示拒绝 -->
+    <template is="noTModale" data="{{notMData}}" />
+
+    <!-- 扫描二维码 -->
+    <view class="allmenban" bindtap="hideEwm" wx:if="{{ewmF}}"></view>
+    <view class="storeEwm" wx:if="{{ewmF}}" data-index="{{ewmImg}}" bindtap="shopEwmBtn">
+        <view class="storeEwm_in_img cenFlex">
+            <image src="{{ewmImg}}"></image>
+        </view>
+        <view class="storeEwm_in_txt cenFlex">
+            扫一扫！添加成为盟友!
+        </view>
+    </view>
+</view>

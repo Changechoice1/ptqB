@@ -1,0 +1,6 @@
+<!--component/goods/goodSwiper.wxml-->
+<swiper class="headerImgBox" indicator-dots indicator-active-color="#e60012" autoplay circular indicator-color="rgba(255, 255, 255, 1)">
+   <swiper-item wx:for="{{list}}" wx:key="{{index}}">
+      <image mode="aspectFill" src="{{item}}" class="slide-image" />
+   </swiper-item>
+</swiper>

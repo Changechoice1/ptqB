@@ -1,0 +1,5 @@
+<view class="index_all_box">
+	<button hover-class="none" class="buttonStyle" bindtap="userInfo" open-type="getUserInfo"></button>
+	<view class="contentBox" style="background: url({{imgUrl}}storeBg.jpg) no-repeat;background-size: 100%;">
+	</view>
+</view>
